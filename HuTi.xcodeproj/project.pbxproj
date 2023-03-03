@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */; };
 		FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0E76C4299CDD4600E4818C /* SignUpViewController.xib */; };
+		FC0E76CB299F254C00E4818C /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76C9299F254C00E4818C /* OTPViewController.swift */; };
+		FC0E76CC299F254C00E4818C /* OTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0E76CA299F254C00E4818C /* OTPViewController.xib */; };
+		FC0E76D1299F2B5D00E4818C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76D0299F2B5D00E4818C /* BaseViewController.swift */; };
+		FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76FC29B1A19400E4818C /* ConfirmPasswordViewController.swift */; };
+		FC0E76FF29B1A19500E4818C /* ConfirmPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0E76FD29B1A19400E4818C /* ConfirmPasswordViewController.xib */; };
 		FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF7315299CC33500BF327A /* AppDelegate.swift */; };
 		FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF7317299CC33500BF327A /* SceneDelegate.swift */; };
 		FCBF731F299CC33A00BF327A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCBF731E299CC33A00BF327A /* Assets.xcassets */; };
@@ -20,6 +25,11 @@
 /* Begin PBXFileReference section */
 		FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC0E76C4299CDD4600E4818C /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		FC0E76C9299F254C00E4818C /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
+		FC0E76CA299F254C00E4818C /* OTPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OTPViewController.xib; sourceTree = "<group>"; };
+		FC0E76D0299F2B5D00E4818C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FC0E76FC29B1A19400E4818C /* ConfirmPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewController.swift; sourceTree = "<group>"; };
+		FC0E76FD29B1A19400E4818C /* ConfirmPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmPasswordViewController.xib; sourceTree = "<group>"; };
 		FCBF7312299CC33500BF327A /* HuTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCBF7315299CC33500BF327A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCBF7317299CC33500BF327A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +60,32 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		FC0E76C8299F223C00E4818C /* OTP */ = {
+			isa = PBXGroup;
+			children = (
+				FC0E76C9299F254C00E4818C /* OTPViewController.swift */,
+				FC0E76CA299F254C00E4818C /* OTPViewController.xib */,
+			);
+			path = OTP;
+			sourceTree = "<group>";
+		};
+		FC0E76CD299F2AA400E4818C /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				FC0E76D0299F2B5D00E4818C /* BaseViewController.swift */,
+			);
+			path = BaseClass;
+			sourceTree = "<group>";
+		};
+		FC0E770029B1A19B00E4818C /* ConfirmPassword */ = {
+			isa = PBXGroup;
+			children = (
+				FC0E76FC29B1A19400E4818C /* ConfirmPasswordViewController.swift */,
+				FC0E76FD29B1A19400E4818C /* ConfirmPasswordViewController.xib */,
+			);
+			name = ConfirmPassword;
+			sourceTree = "<group>";
+		};
 		FCBF7309299CC33500BF327A = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				FCBF732A299CC37100BF327A /* Application */,
+				FC0E76CD299F2AA400E4818C /* BaseClass */,
 				FCBF7329299CC36500BF327A /* Modules */,
 				FCBF732B299CC44000BF327A /* Resource */,
 				FCBF7323299CC33A00BF327A /* Info.plist */,
@@ -82,6 +119,8 @@
 			children = (
 				FCBF732C299CC48C00BF327A /* SignIn */,
 				FC0E76C7299CDD4D00E4818C /* SignUp */,
+				FC0E76C8299F223C00E4818C /* OTP */,
+				FC0E770029B1A19B00E4818C /* ConfirmPassword */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -171,10 +210,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC0E76FF29B1A19500E4818C /* ConfirmPasswordViewController.xib in Resources */,
 				FCBF7322299CC33A00BF327A /* LaunchScreen.storyboard in Resources */,
 				FCBF7330299CC4E500BF327A /* SignInViewController.xib in Resources */,
 				FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */,
 				FCBF731F299CC33A00BF327A /* Assets.xcassets in Resources */,
+				FC0E76CC299F254C00E4818C /* OTPViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,10 +226,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC0E76CB299F254C00E4818C /* OTPViewController.swift in Sources */,
+				FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */,
 				FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */,
 				FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */,
 				FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */,
 				FCBF732F299CC4E500BF327A /* SignInViewController.swift in Sources */,
+				FC0E76D1299F2B5D00E4818C /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +300,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -310,7 +354,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

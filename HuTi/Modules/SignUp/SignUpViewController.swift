@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,13 +15,17 @@ class SignUpViewController: UIViewController {
     }
     
     private func setupUI() {
-        self.navigationController?.isNavigationBarHidden = true
+        isHiddenNavigationBar = true
     }
 
 
     @IBAction func onClickedSignInBtn(_ sender: UIButton) {
         let vc = SignInViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigateTo(vc)
     }
     
+    @IBAction func onClickedContinueBtn(_ sender: UIButton) {
+        let vc = OTPViewController()
+        navigateTo(vc)
+    }
 }

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -54,7 +55,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnb-tm-0r8" userLabel="signInButton">
-                    <rect key="frame" x="40" y="418.66666666666669" width="350" height="40"/>
+                    <rect key="frame" x="40" y="428.66666666666669" width="350" height="40"/>
                     <color key="backgroundColor" red="0.75308537480000004" green="0.326120615" blue="0.26264229420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="I6F-cr-IR5"/>
@@ -69,6 +70,9 @@
                             <integer key="value" value="8"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onClickedContinueBtn:" destination="-1" eventType="touchUpInside" id="8VG-qp-p8j"/>
+                    </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OpV-1p-H79" userLabel="bottomStackView">
                     <rect key="frame" x="100.33333333333333" y="848" width="229.33333333333337" height="30"/>
@@ -103,7 +107,7 @@
                 <constraint firstItem="cK4-XA-tPy" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ArK-hh-XtP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5js-Fn-cSt" secondAttribute="trailing" constant="40" id="DGS-pV-9P4"/>
                 <constraint firstItem="nnb-tm-0r8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="Dlf-vu-IQJ"/>
-                <constraint firstItem="nnb-tm-0r8" firstAttribute="top" secondItem="5js-Fn-cSt" secondAttribute="bottom" constant="20" id="Omo-pq-2bB"/>
+                <constraint firstItem="nnb-tm-0r8" firstAttribute="top" secondItem="5js-Fn-cSt" secondAttribute="bottom" constant="30" id="Omo-pq-2bB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OpV-1p-H79" secondAttribute="bottom" constant="20" id="PXQ-6C-A2H"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nnb-tm-0r8" secondAttribute="trailing" constant="40" id="Q8a-mF-Wgj"/>
                 <constraint firstItem="5js-Fn-cSt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="UgQ-9r-uBf"/>
@@ -112,7 +116,7 @@
                 <constraint firstItem="5js-Fn-cSt" firstAttribute="top" secondItem="cK4-XA-tPy" secondAttribute="bottom" constant="20" id="sDr-lm-qFJ"/>
                 <constraint firstItem="cK4-XA-tPy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tMg-dB-BTu"/>
             </constraints>
-            <point key="canvasLocation" x="-280" y="-15"/>
+            <point key="canvasLocation" x="-287" y="-438"/>
         </view>
     </objects>
     <resources>
