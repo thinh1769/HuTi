@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E04D744477EEFCB514E8B28 /* Pods_HuTi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29605AC57F7499D1B086D28D /* Pods_HuTi.framework */; };
 		FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */; };
 		FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0E76C4299CDD4600E4818C /* SignUpViewController.xib */; };
 		FC0E76CB299F254C00E4818C /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76C9299F254C00E4818C /* OTPViewController.swift */; };
@@ -14,15 +15,28 @@
 		FC0E76D1299F2B5D00E4818C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76D0299F2B5D00E4818C /* BaseViewController.swift */; };
 		FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76FC29B1A19400E4818C /* ConfirmPasswordViewController.swift */; };
 		FC0E76FF29B1A19500E4818C /* ConfirmPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0E76FD29B1A19400E4818C /* ConfirmPasswordViewController.xib */; };
+		FC2E2C1729B71ABB00DADA16 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E2C1529B71ABB00DADA16 /* AddressCollectionViewCell.swift */; };
+		FC2E2C1829B71ABB00DADA16 /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2E2C1629B71ABB00DADA16 /* AddressCollectionViewCell.xib */; };
+		FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E2C1A29B71C2100DADA16 /* FilterResultTableViewCell.swift */; };
+		FC2E2C1D29B71C2100DADA16 /* FilterResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2E2C1B29B71C2100DADA16 /* FilterResultTableViewCell.xib */; };
+		FC2E2C2029B73B4400DADA16 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E2C1F29B73B4400DADA16 /* Post.swift */; };
+		FC2E2C2229B73BD700DADA16 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E2C2129B73BD700DADA16 /* Address.swift */; };
 		FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF7315299CC33500BF327A /* AppDelegate.swift */; };
 		FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF7317299CC33500BF327A /* SceneDelegate.swift */; };
 		FCBF731F299CC33A00BF327A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCBF731E299CC33A00BF327A /* Assets.xcassets */; };
 		FCBF7322299CC33A00BF327A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCBF7320299CC33A00BF327A /* LaunchScreen.storyboard */; };
 		FCBF732F299CC4E500BF327A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF732D299CC4E500BF327A /* SignInViewController.swift */; };
 		FCBF7330299CC4E500BF327A /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCBF732E299CC4E500BF327A /* SignInViewController.xib */; };
+		FCC364FD29B6D91D001A9310 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC364FC29B6D91D001A9310 /* MainTabBarController.swift */; };
+		FCC3650129B6D9A5001A9310 /* FilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC364FF29B6D9A5001A9310 /* FilterResultViewController.swift */; };
+		FCC3650229B6D9A5001A9310 /* FilterResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC3650029B6D9A5001A9310 /* FilterResultViewController.xib */; };
+		FCC3650429B6F164001A9310 /* FilterResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3650329B6F164001A9310 /* FilterResultViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202975FB1ABBB5219A59709D /* Pods-HuTi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuTi.release.xcconfig"; path = "Target Support Files/Pods-HuTi/Pods-HuTi.release.xcconfig"; sourceTree = "<group>"; };
+		29605AC57F7499D1B086D28D /* Pods_HuTi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuTi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		620668C98BB036879901C46F /* Pods-HuTi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuTi.debug.xcconfig"; path = "Target Support Files/Pods-HuTi/Pods-HuTi.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC0E76C4299CDD4600E4818C /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		FC0E76C9299F254C00E4818C /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +44,12 @@
 		FC0E76D0299F2B5D00E4818C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FC0E76FC29B1A19400E4818C /* ConfirmPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewController.swift; sourceTree = "<group>"; };
 		FC0E76FD29B1A19400E4818C /* ConfirmPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmPasswordViewController.xib; sourceTree = "<group>"; };
+		FC2E2C1529B71ABB00DADA16 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC2E2C1629B71ABB00DADA16 /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		FC2E2C1A29B71C2100DADA16 /* FilterResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultTableViewCell.swift; sourceTree = "<group>"; };
+		FC2E2C1B29B71C2100DADA16 /* FilterResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterResultTableViewCell.xib; sourceTree = "<group>"; };
+		FC2E2C1F29B73B4400DADA16 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FC2E2C2129B73BD700DADA16 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		FCBF7312299CC33500BF327A /* HuTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCBF7315299CC33500BF327A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCBF7317299CC33500BF327A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +58,10 @@
 		FCBF7323299CC33A00BF327A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCBF732D299CC4E500BF327A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FCBF732E299CC4E500BF327A /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		FCC364FC29B6D91D001A9310 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		FCC364FF29B6D9A5001A9310 /* FilterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultViewController.swift; sourceTree = "<group>"; };
+		FCC3650029B6D9A5001A9310 /* FilterResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterResultViewController.xib; sourceTree = "<group>"; };
+		FCC3650329B6F164001A9310 /* FilterResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,12 +69,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E04D744477EEFCB514E8B28 /* Pods_HuTi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CEE159E96CA1DD043BDB884 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29605AC57F7499D1B086D28D /* Pods_HuTi.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4EDACB083F25C42C5C30435E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				620668C98BB036879901C46F /* Pods-HuTi.debug.xcconfig */,
+				202975FB1ABBB5219A59709D /* Pods-HuTi.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FC0E76C7299CDD4D00E4818C /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				FC0E76D0299F2B5D00E4818C /* BaseViewController.swift */,
+				FCC364FC29B6D91D001A9310 /* MainTabBarController.swift */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -86,11 +129,49 @@
 			name = ConfirmPassword;
 			sourceTree = "<group>";
 		};
+		FC2E2C1329B71A7F00DADA16 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FC2E2C1929B71B7300DADA16 /* FilterResultTableViewCell */,
+				FC2E2C1429B71A8D00DADA16 /* AddressCollectionViewCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FC2E2C1429B71A8D00DADA16 /* AddressCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FC2E2C1529B71ABB00DADA16 /* AddressCollectionViewCell.swift */,
+				FC2E2C1629B71ABB00DADA16 /* AddressCollectionViewCell.xib */,
+			);
+			path = AddressCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FC2E2C1929B71B7300DADA16 /* FilterResultTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FC2E2C1A29B71C2100DADA16 /* FilterResultTableViewCell.swift */,
+				FC2E2C1B29B71C2100DADA16 /* FilterResultTableViewCell.xib */,
+			);
+			path = FilterResultTableViewCell;
+			sourceTree = "<group>";
+		};
+		FC2E2C1E29B73B1500DADA16 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC2E2C1F29B73B4400DADA16 /* Post.swift */,
+				FC2E2C2129B73BD700DADA16 /* Address.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FCBF7309299CC33500BF327A = {
 			isa = PBXGroup;
 			children = (
 				FCBF7314299CC33500BF327A /* HuTi */,
 				FCBF7313299CC33500BF327A /* Products */,
+				4EDACB083F25C42C5C30435E /* Pods */,
+				0CEE159E96CA1DD043BDB884 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +189,7 @@
 				FCBF732A299CC37100BF327A /* Application */,
 				FC0E76CD299F2AA400E4818C /* BaseClass */,
 				FCBF7329299CC36500BF327A /* Modules */,
+				FC2E2C1E29B73B1500DADA16 /* Models */,
 				FCBF732B299CC44000BF327A /* Resource */,
 				FCBF7323299CC33A00BF327A /* Info.plist */,
 			);
@@ -121,6 +203,7 @@
 				FC0E76C7299CDD4D00E4818C /* SignUp */,
 				FC0E76C8299F223C00E4818C /* OTP */,
 				FC0E770029B1A19B00E4818C /* ConfirmPassword */,
+				FCC364FE29B6D959001A9310 /* FilterResultViewController */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -137,6 +220,7 @@
 		FCBF732B299CC44000BF327A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FC2E2C1329B71A7F00DADA16 /* Cell */,
 				FCBF7320299CC33A00BF327A /* LaunchScreen.storyboard */,
 				FCBF731E299CC33A00BF327A /* Assets.xcassets */,
 			);
@@ -152,6 +236,16 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
+		FCC364FE29B6D959001A9310 /* FilterResultViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FCC364FF29B6D9A5001A9310 /* FilterResultViewController.swift */,
+				FCC3650329B6F164001A9310 /* FilterResultViewModel.swift */,
+				FCC3650029B6D9A5001A9310 /* FilterResultViewController.xib */,
+			);
+			path = FilterResultViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +253,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCBF7326299CC33A00BF327A /* Build configuration list for PBXNativeTarget "HuTi" */;
 			buildPhases = (
+				9712E1503051066EDA9865DC /* [CP] Check Pods Manifest.lock */,
 				FCBF730E299CC33500BF327A /* Sources */,
 				FCBF730F299CC33500BF327A /* Frameworks */,
 				FCBF7310299CC33500BF327A /* Resources */,
+				947E65E93AE47301AB7714BB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,7 +284,7 @@
 				};
 			};
 			buildConfigurationList = FCBF730D299CC33500BF327A /* Build configuration list for PBXProject "HuTi" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -213,13 +309,58 @@
 				FC0E76FF29B1A19500E4818C /* ConfirmPasswordViewController.xib in Resources */,
 				FCBF7322299CC33A00BF327A /* LaunchScreen.storyboard in Resources */,
 				FCBF7330299CC4E500BF327A /* SignInViewController.xib in Resources */,
+				FC2E2C1829B71ABB00DADA16 /* AddressCollectionViewCell.xib in Resources */,
 				FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */,
 				FCBF731F299CC33A00BF327A /* Assets.xcassets in Resources */,
+				FCC3650229B6D9A5001A9310 /* FilterResultViewController.xib in Resources */,
 				FC0E76CC299F254C00E4818C /* OTPViewController.xib in Resources */,
+				FC2E2C1D29B71C2100DADA16 /* FilterResultTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		947E65E93AE47301AB7714BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HuTi/Pods-HuTi-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HuTi/Pods-HuTi-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HuTi/Pods-HuTi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9712E1503051066EDA9865DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HuTi-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FCBF730E299CC33500BF327A /* Sources */ = {
@@ -228,11 +369,18 @@
 			files = (
 				FC0E76CB299F254C00E4818C /* OTPViewController.swift in Sources */,
 				FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */,
+				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
+				FCC364FD29B6D91D001A9310 /* MainTabBarController.swift in Sources */,
+				FC2E2C2029B73B4400DADA16 /* Post.swift in Sources */,
 				FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */,
+				FC2E2C2229B73BD700DADA16 /* Address.swift in Sources */,
 				FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */,
+				FCC3650429B6F164001A9310 /* FilterResultViewModel.swift in Sources */,
 				FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */,
+				FCC3650129B6D9A5001A9310 /* FilterResultViewController.swift in Sources */,
 				FCBF732F299CC4E500BF327A /* SignInViewController.swift in Sources */,
 				FC0E76D1299F2B5D00E4818C /* BaseViewController.swift in Sources */,
+				FC2E2C1729B71ABB00DADA16 /* AddressCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +514,7 @@
 		};
 		FCBF7327299CC33A00BF327A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 620668C98BB036879901C46F /* Pods-HuTi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -392,6 +541,7 @@
 		};
 		FCBF7328299CC33A00BF327A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 202975FB1ABBB5219A59709D /* Pods-HuTi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
