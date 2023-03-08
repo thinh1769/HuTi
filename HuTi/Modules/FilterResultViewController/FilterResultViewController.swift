@@ -34,6 +34,7 @@ class FilterResultViewController: BaseViewController {
     
     
     private func setupUI() {
+        viewModel.initData()
         isHiddenNavigationBar = true
         switch viewModel.tabBarItem {
         case 0:
@@ -45,17 +46,31 @@ class FilterResultViewController: BaseViewController {
         default:
             titleLabel.text = "Nhà đất bán"
         }
+        setupCollectionView()
+        setupTableView()
+    }
+    
+    private func setupCollectionView() {
+        addressCollectionView.register(AddressCollectionViewCell.nib, forCellWithReuseIdentifier: AddressCollectionViewCell.reusableIdentifier)
+        
+        viewModel.address.asObservable()
+            .bind(to: addressCollectionView.rx.items(cellIdentifier: AddressCollectionViewCell.reusableIdentifier, cellType: AddressCollectionViewCell.self)) { (index, element, cell) in
+                cell.titleLabel.text = element
+            }.disposed(by: viewModel.bag)
     }
     
     private func setupTableView() {
-        filterResultTableView.rowHeight = 120
+        filterResultTableView.rowHeight = 130
         filterResultTableView.separatorStyle = .none
         
         filterResultTableView.register(FilterResultTableViewCell.nib, forCellReuseIdentifier: FilterResultTableViewCell.reusableIdentifier)
         
         viewModel.post.asObservable()
             .bind(to: filterResultTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { (index, element, cell) in
-                
+                cell.postTitleLabel.text = element.title
+                cell.priceLabel.text = element.price
+                cell.addressLabel.text = element.address
+                cell.authorLabel.text = element.authorName
             }.disposed(by: viewModel.bag)
         
         filterResultTableView.rx

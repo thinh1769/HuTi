@@ -18,19 +18,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="152" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAN-55-noO">
-                        <rect key="frame" x="57.333333333333329" y="16" width="37.333333333333329" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" name="black"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMb-2P-vuL">
+                        <rect key="frame" x="0.0" y="0.0" width="152" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAN-55-noO">
+                                <rect key="frame" x="57.333333333333329" y="16" width="37.333333333333329" height="18"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jAN-55-noO" firstAttribute="centerX" secondItem="KMb-2P-vuL" secondAttribute="centerX" id="20w-0r-Bva"/>
+                            <constraint firstItem="jAN-55-noO" firstAttribute="centerY" secondItem="KMb-2P-vuL" secondAttribute="centerY" id="9wF-QG-0D8"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" name="white"/>
             <constraints>
-                <constraint firstItem="jAN-55-noO" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Ety-ym-e1g"/>
-                <constraint firstItem="jAN-55-noO" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="uVg-eN-hMC"/>
+                <constraint firstAttribute="trailing" secondItem="KMb-2P-vuL" secondAttribute="trailing" id="9ia-kU-duO"/>
+                <constraint firstItem="KMb-2P-vuL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fBi-MT-Zc0"/>
+                <constraint firstAttribute="bottom" secondItem="KMb-2P-vuL" secondAttribute="bottom" id="oUC-W7-Xh5"/>
+                <constraint firstItem="KMb-2P-vuL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qw8-HX-F4k"/>
             </constraints>
             <size key="customSize" width="152" height="50"/>
             <userDefinedRuntimeAttributes>
@@ -40,8 +53,9 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="titleLabel" destination="jAN-55-noO" id="I6K-fX-EFC"/>
+                <outlet property="view" destination="KMb-2P-vuL" id="Ujf-kB-9LO"/>
             </connections>
-            <point key="canvasLocation" x="17" y="-101"/>
+            <point key="canvasLocation" x="-217" y="-9"/>
         </collectionViewCell>
     </objects>
     <resources>

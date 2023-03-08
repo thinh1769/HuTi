@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+class SignInViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,12 +16,16 @@ class SignInViewController: UIViewController {
     }
     
     private func setupUI() {
-        self.navigationController?.isNavigationBarHidden = true
+        isTouchDismissKeyboardEnabled = true
+        isHiddenNavigationBar = true
     }
 
     @IBAction func onClickedSignUpBtn(_ sender: UIButton) {
         let vc = SignUpViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigateTo(vc)
     }
     
+    @IBAction func onClickedSignInBtn(_ sender: UIButton) {
+        setRootTabBar()
+    }
 }

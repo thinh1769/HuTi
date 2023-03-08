@@ -24,4 +24,8 @@ class ConfirmPasswordViewController: BaseViewController {
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func onClickedContinueBtn(_ sender: UIButton) {
+        setRootTabBar()
+    }
 }

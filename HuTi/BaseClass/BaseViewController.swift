@@ -37,4 +37,16 @@ class BaseViewController: UIViewController {
     func navigateTo(_ controller: UIViewController, _ animated: Bool = true) {
         self.navigationController?.pushViewController(controller, animated: animated)
     }
+    
+    func setRootTabBar() {
+        guard let window = UIApplication.shared.windows.first else { return }
+        window.rootViewController = MainTabBarController()
+        window.makeKeyAndVisible()
+        
+        UIView.transition(with: window,
+                          duration: 0.5,
+                          options: [.transitionCrossDissolve],
+                          animations: {},
+                          completion: nil)
+    }
 }
