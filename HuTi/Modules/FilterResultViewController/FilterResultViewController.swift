@@ -55,8 +55,10 @@ class FilterResultViewController: BaseViewController {
         
         viewModel.address.asObservable()
             .bind(to: addressCollectionView.rx.items(cellIdentifier: AddressCollectionViewCell.reusableIdentifier, cellType: AddressCollectionViewCell.self)) { (index, element, cell) in
-                cell.titleLabel.text = element
+                cell.config(content: element)
             }.disposed(by: viewModel.bag)
+        
+        addressCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
     }
     
     private func setupTableView() {
@@ -88,5 +90,15 @@ extension FilterResultViewController {
         let controller = FilterResultViewController(nibName: "FilterResultViewController", bundle: Bundle.main)
         controller.viewModel.tabBarItem = tabBarItem
         return controller
+    }
+}
+
+extension FilterResultViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cell = addressCollectionView.dequeueReusableCell(withReuseIdentifier: AddressCollectionViewCell.reusableIdentifier, for: indexPath) as! AddressCollectionViewCell
+        let item = viewModel.address.value[indexPath.row]
+        cell.config(content: item)
+        let width = cell.contentLabel.intrinsicContentSize.width + 20
+        return CGSize(width: width, height: 40)
     }
 }

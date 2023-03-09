@@ -22,6 +22,13 @@ class MainTabBarController: UITabBarController {
         projectTab.title = "Dự án"
         accountTab.title = "Tài khoản"
         
+        sellTab.tabBarItem.image = UIImage(named: "house")
+        forRentTab.tabBarItem.image = UIImage(named: "house")
+        projectTab.tabBarItem.image = UIImage(named: "project")
+        accountTab.tabBarItem.image = UIImage(named: "user")
+        
         self.setViewControllers([sellTab,forRentTab,projectTab,accountTab], animated: true)
+        
+        self.tabBar.tintColor = UIColor(named: "themeText")
     }
 }

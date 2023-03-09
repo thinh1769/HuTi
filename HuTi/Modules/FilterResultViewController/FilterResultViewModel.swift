@@ -19,7 +19,7 @@ class FilterResultViewModel {
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu"),
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu"),
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu")]
-    let addressTemp = ["TP. Hồ Chí Minh", "Quận Tân Phú", "1"]
+    let addressTemp = ["TP. Hồ Chí Minh", "Quận Tân Phú", "Tân Sơn Nhì"]
     let post = BehaviorRelay<[Post]>(value: [])
     let address = BehaviorRelay<[String]>(value: [])
     var tabBarItem = 0
