@@ -9,6 +9,16 @@ import UIKit
 
 class BaseViewController: UIViewController {
  
+    var mainTabBarController: MainTabBarController? {
+        return tabBarController as? MainTabBarController
+    }
+    
+    var isHiddenMainTabBar = false {
+        didSet {
+            self.mainTabBarController?.tabBar.isHidden = isHiddenMainTabBar
+        }
+    }
+    
     var isHiddenNavigationBar = false {
         didSet {
             self.navigationController?.isNavigationBarHidden = isHiddenNavigationBar
@@ -36,6 +46,10 @@ class BaseViewController: UIViewController {
     
     func navigateTo(_ controller: UIViewController, _ animated: Bool = true) {
         self.navigationController?.pushViewController(controller, animated: animated)
+    }
+    
+    func popViewController(_ animated: Bool = true) {
+        self.navigationController?.popViewController(animated: animated)
     }
     
     func setRootTabBar() {

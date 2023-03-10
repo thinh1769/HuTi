@@ -16,6 +16,7 @@ class SignInViewController: BaseViewController {
     }
     
     private func setupUI() {
+        isHiddenMainTabBar = true
         isTouchDismissKeyboardEnabled = true
         isHiddenNavigationBar = true
     }

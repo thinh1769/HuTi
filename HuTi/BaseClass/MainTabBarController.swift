@@ -12,23 +12,32 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let sellTab = FilterResultViewController.instance(tabBarItem: 0)
-        let forRentTab = FilterResultViewController.instance(tabBarItem: 1)
-        let projectTab = FilterResultViewController.instance(tabBarItem: 2)
-        let accountTab = FilterResultViewController.instance(tabBarItem: 4)
+        let sellTab = FilterResultViewController.instance(tabBarItemTitle: TabBarItemTitle.sell.rawValue)
+        let sellNaVC = UINavigationController(rootViewController: sellTab)
         
-        sellTab.title = "Bán"
-        forRentTab.title = "Cho thuê"
-        projectTab.title = "Dự án"
-        accountTab.title = "Tài khoản"
+        let forRentTab = FilterResultViewController.instance(tabBarItemTitle: TabBarItemTitle.forRent.rawValue)
+        let forRentNaVC = UINavigationController(rootViewController: forRentTab)
         
-        sellTab.tabBarItem.image = UIImage(named: "house")
-        forRentTab.tabBarItem.image = UIImage(named: "house")
-        projectTab.tabBarItem.image = UIImage(named: "project")
-        accountTab.tabBarItem.image = UIImage(named: "user")
+        let projectTab = FilterResultViewController.instance(tabBarItemTitle: TabBarItemTitle.project.rawValue)
+        let projectNaVC = UINavigationController(rootViewController: projectTab)
         
-        self.setViewControllers([sellTab,forRentTab,projectTab,accountTab], animated: true)
+        let accountTab =  AccountViewController()
+        let accountNaVC = UINavigationController(rootViewController: accountTab)
         
-        self.tabBar.tintColor = UIColor(named: "themeText")
+        sellTab.title = TabBarItemTitle.sell.rawValue
+        forRentTab.title = TabBarItemTitle.forRent.rawValue
+        projectTab.title = TabBarItemTitle.project.rawValue
+        accountTab.title = TabBarItemTitle.account.rawValue
+        
+        sellTab.tabBarItem.image = UIImage(named: ImageName.HOUSE)
+        forRentTab.tabBarItem.image = UIImage(named: ImageName.HOUSE)
+        projectTab.tabBarItem.image = UIImage(named: ImageName.PROJECT)
+        accountTab.tabBarItem.image = UIImage(named: ImageName.USER)
+        
+        let tabBarItemList = [sellNaVC,forRentNaVC,projectNaVC,accountNaVC]
+        
+        self.setViewControllers(tabBarItemList, animated: true)
+        
+        self.tabBar.tintColor = UIColor(named: ColorName.THEMETEXT)
     }
 }

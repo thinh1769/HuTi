@@ -22,7 +22,7 @@ class FilterResultViewModel {
     let addressTemp = ["TP. Hồ Chí Minh", "Quận Tân Phú", "Tân Sơn Nhì"]
     let post = BehaviorRelay<[Post]>(value: [])
     let address = BehaviorRelay<[String]>(value: [])
-    var tabBarItem = 0
+    var tabBarItemTitle = TabBarItemTitle.sell.rawValue
     
     func initData() {
         post.accept(postTemp)

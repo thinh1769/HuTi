@@ -70,33 +70,34 @@
                         <action selector="onClickedContinueBtn:" destination="-1" eventType="touchUpInside" id="1fW-fN-Y5J"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meB-HN-Fti">
-                    <rect key="frame" x="20" y="69" width="50" height="50"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1D-C4-KM6">
+                    <rect key="frame" x="20" y="69" width="40" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="JqP-8d-geQ"/>
-                        <constraint firstAttribute="width" constant="50" id="fZa-Fk-HSk"/>
+                        <constraint firstAttribute="height" constant="40" id="EbH-pR-M1H"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="IeZ-4q-PMi"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ve1-Vb-1BV"/>
+                        <constraint firstAttribute="width" constant="40" id="yU6-2g-zdE"/>
                     </constraints>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal">
                         <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large" variableValue="1"/>
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <integer key="value" value="25"/>
+                            <integer key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="onClickedBackBtn:" destination="-1" eventType="touchUpInside" id="iO5-JI-Q8D"/>
+                        <action selector="onClickedBackBtn:" destination="-1" eventType="touchUpInside" id="bSb-Gk-79o"/>
                     </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.97974282499999998" green="0.92949610949999995" blue="0.92156225439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="meB-HN-Fti" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="44X-8v-4Hy"/>
                 <constraint firstItem="Pcg-io-QgJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="550-OG-Ci8"/>
                 <constraint firstItem="Bfa-St-661" firstAttribute="top" secondItem="YwJ-NR-4Pe" secondAttribute="bottom" constant="20" id="5WE-AU-zhw"/>
                 <constraint firstItem="Pcg-io-QgJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5ms-H8-hFh"/>
@@ -105,10 +106,11 @@
                 <constraint firstItem="YwJ-NR-4Pe" firstAttribute="top" secondItem="HD6-Kv-5X7" secondAttribute="bottom" constant="20" id="QzB-jd-nzn"/>
                 <constraint firstItem="HD6-Kv-5X7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="RC0-B6-wf6"/>
                 <constraint firstItem="Pcg-io-QgJ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="V9Z-aF-tGl"/>
-                <constraint firstItem="meB-HN-Fti" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="V9x-sT-wLp"/>
                 <constraint firstItem="YwJ-NR-4Pe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="W1H-WY-d5q"/>
                 <constraint firstItem="HD6-Kv-5X7" firstAttribute="top" secondItem="Pcg-io-QgJ" secondAttribute="bottom" constant="20" id="a49-sG-2mD"/>
                 <constraint firstItem="Bfa-St-661" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="dBu-41-2Wd"/>
+                <constraint firstItem="c1D-C4-KM6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="fXi-KK-Dcb"/>
+                <constraint firstItem="c1D-C4-KM6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="gFM-Fw-sMb"/>
                 <constraint firstItem="Pcg-io-QgJ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="nTG-Wy-Bxh"/>
             </constraints>
             <point key="canvasLocation" x="-572.09302325581393" y="5.7939914163090132"/>

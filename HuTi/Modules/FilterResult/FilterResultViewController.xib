@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,6 +15,7 @@
                 <outlet property="addressCollectionView" destination="0id-pZ-wd4" id="93Q-6F-nYd"/>
                 <outlet property="filterResultTableView" destination="UPl-U2-856" id="sMz-U3-FMD"/>
                 <outlet property="mapButton" destination="eiy-dx-C6t" id="Q0c-p4-2d4"/>
+                <outlet property="mapView" destination="PvB-YN-gVZ" id="6Rl-Ix-xAo"/>
                 <outlet property="subtitleLabel" destination="yvh-9K-Cv8" id="ZkJ-PH-dl8"/>
                 <outlet property="titleLabel" destination="lEM-Uz-LPX" id="Zyn-qB-hXO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -93,6 +95,10 @@
                     <color key="textColor" name="black"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvB-YN-gVZ">
+                    <rect key="frame" x="0.0" y="180" width="390" height="630"/>
+                    <standardMapConfiguration key="preferredConfiguration"/>
+                </mapView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
@@ -102,6 +108,7 @@
                 <constraint firstItem="0id-pZ-wd4" firstAttribute="top" secondItem="yvh-9K-Cv8" secondAttribute="bottom" constant="10" id="9L2-Dy-S8y"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yvh-9K-Cv8" secondAttribute="trailing" constant="20" id="CM9-ty-j7I"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0id-pZ-wd4" secondAttribute="trailing" constant="10" id="IBB-On-Gwp"/>
+                <constraint firstItem="PvB-YN-gVZ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="UZe-Uc-GSn"/>
                 <constraint firstItem="eiy-dx-C6t" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="W2N-wS-ChT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UPl-U2-856" secondAttribute="bottom" id="Y7X-zh-cZ0"/>
                 <constraint firstItem="UPl-U2-856" firstAttribute="top" secondItem="0id-pZ-wd4" secondAttribute="bottom" constant="10" id="a6V-Jm-1GE"/>
@@ -109,13 +116,16 @@
                 <constraint firstItem="eiy-dx-C6t" firstAttribute="leading" secondItem="lEM-Uz-LPX" secondAttribute="trailing" constant="10" id="eYk-ef-rus"/>
                 <constraint firstItem="yvh-9K-Cv8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="frG-zt-wmm"/>
                 <constraint firstItem="hMd-JW-JRY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ix7-qy-Oq6"/>
+                <constraint firstItem="PvB-YN-gVZ" firstAttribute="top" secondItem="0id-pZ-wd4" secondAttribute="bottom" constant="10" id="kNS-ME-mvF"/>
                 <constraint firstItem="UPl-U2-856" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="mob-NA-pQO"/>
                 <constraint firstItem="hMd-JW-JRY" firstAttribute="leading" secondItem="eiy-dx-C6t" secondAttribute="trailing" constant="5" id="sN7-bg-DrH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UPl-U2-856" secondAttribute="trailing" id="vlk-M8-FJy"/>
+                <constraint firstItem="PvB-YN-gVZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="wIt-9g-QKv"/>
+                <constraint firstItem="PvB-YN-gVZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xIe-vf-7oT"/>
                 <constraint firstItem="0id-pZ-wd4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="zMK-oA-YZh"/>
                 <constraint firstItem="yvh-9K-Cv8" firstAttribute="top" secondItem="lEM-Uz-LPX" secondAttribute="bottom" constant="10" id="zw3-W0-tet"/>
             </constraints>
-            <point key="canvasLocation" x="-417" y="-15"/>
+            <point key="canvasLocation" x="-911" y="-37"/>
         </view>
     </objects>
     <resources>

@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MapKit
 
 class FilterResultViewController: BaseViewController {
     
@@ -16,36 +17,31 @@ class FilterResultViewController: BaseViewController {
     @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet private weak var mapButton: UIButton!
     @IBOutlet private weak var filterResultTableView: UITableView!
+    @IBOutlet private weak var mapView: MKMapView!
     
     var viewModel = FilterResultViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
     @IBAction func onClickedFilterBtn(_ sender: UIButton) {
-        
+        let vc = OTPViewController()
+        navigateTo(vc)
     }
     
     @IBAction func onClickedMapBtn(_ sender: UIButton) {
+        mapView.isHidden = !mapView.isHidden
+        filterResultTableView.isHidden = !filterResultTableView.isHidden
     }
     
     
     private func setupUI() {
         viewModel.initData()
+        mapView.isHidden = true
         isHiddenNavigationBar = true
-        switch viewModel.tabBarItem {
-        case 0:
-            titleLabel.text = "Nhà đất bán"
-        case 1:
-            titleLabel.text = "Nhà đất cho thuê"
-        case 2:
-            titleLabel.text = "Dự án"
-        default:
-            titleLabel.text = "Nhà đất bán"
-        }
+        titleLabel.text = viewModel.tabBarItemTitle
         setupCollectionView()
         setupTableView()
     }
@@ -86,9 +82,9 @@ class FilterResultViewController: BaseViewController {
 }
 
 extension FilterResultViewController {
-    class func instance(tabBarItem: Int) -> FilterResultViewController {
-        let controller = FilterResultViewController(nibName: "FilterResultViewController", bundle: Bundle.main)
-        controller.viewModel.tabBarItem = tabBarItem
+    class func instance(tabBarItemTitle: String) -> FilterResultViewController {
+        let controller = FilterResultViewController(nibName: ClassNibName.FilterResultViewController, bundle: Bundle.main)
+        controller.viewModel.tabBarItemTitle = tabBarItemTitle
         return controller
     }
 }

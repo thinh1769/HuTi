@@ -36,7 +36,7 @@ class OTPViewController: BaseViewController {
     }
     
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        popViewController()
     }
     
     private func setupOTPStackView() {
@@ -62,7 +62,7 @@ class OTPViewController: BaseViewController {
     
     private func createOTPLabel() -> UILabel {
         let label = UILabel()
-        label.backgroundColor = UIColor(named: "otpBackground")
+        label.backgroundColor = UIColor(named: ColorName.OTPBACKGROUD)
         label.widthAnchor.constraint(equalToConstant: OTPTextField.bounds.width / CGFloat(numberOfOTP)).isActive = true
         label.heightAnchor.constraint(equalToConstant: 85).isActive = true
         label.layer.cornerRadius = 8

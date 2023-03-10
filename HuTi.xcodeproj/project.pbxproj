@@ -31,6 +31,11 @@
 		FCC3650129B6D9A5001A9310 /* FilterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC364FF29B6D9A5001A9310 /* FilterResultViewController.swift */; };
 		FCC3650229B6D9A5001A9310 /* FilterResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC3650029B6D9A5001A9310 /* FilterResultViewController.xib */; };
 		FCC3650429B6F164001A9310 /* FilterResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3650329B6F164001A9310 /* FilterResultViewModel.swift */; };
+		FCC3AD2729BB33010050B58B /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3AD2629BB33000050B58B /* CommonConstants.swift */; };
+		FCEE1A1E29B9DAD700AEF380 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */; };
+		FCEE1A1F29B9DAD700AEF380 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */; };
+		FCEE1A2429BAD27500AEF380 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */; };
+		FCEE1A2529BAD27500AEF380 /* AccountDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEE1A2329BAD27500AEF380 /* AccountDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +67,11 @@
 		FCC364FF29B6D9A5001A9310 /* FilterResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultViewController.swift; sourceTree = "<group>"; };
 		FCC3650029B6D9A5001A9310 /* FilterResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterResultViewController.xib; sourceTree = "<group>"; };
 		FCC3650329B6F164001A9310 /* FilterResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultViewModel.swift; sourceTree = "<group>"; };
+		FCC3AD2629BB33000050B58B /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
+		FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
+		FCEE1A2329BAD27500AEF380 /* AccountDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,10 +197,12 @@
 			isa = PBXGroup;
 			children = (
 				FCBF732A299CC37100BF327A /* Application */,
+				FCBF732B299CC44000BF327A /* Resource */,
+				FC2E2C1329B71A7F00DADA16 /* Cell */,
+				FCEE1A2929BB2DE900AEF380 /* Constants */,
 				FC0E76CD299F2AA400E4818C /* BaseClass */,
 				FCBF7329299CC36500BF327A /* Modules */,
 				FC2E2C1E29B73B1500DADA16 /* Models */,
-				FCBF732B299CC44000BF327A /* Resource */,
 				FCBF7323299CC33A00BF327A /* Info.plist */,
 			);
 			path = HuTi;
@@ -203,7 +215,9 @@
 				FC0E76C7299CDD4D00E4818C /* SignUp */,
 				FC0E76C8299F223C00E4818C /* OTP */,
 				FC0E770029B1A19B00E4818C /* ConfirmPassword */,
-				FCC364FE29B6D959001A9310 /* FilterResultViewController */,
+				FCC364FE29B6D959001A9310 /* FilterResult */,
+				FCEE1A2029B9DAE400AEF380 /* Account */,
+				FCEE1A2129BAD25900AEF380 /* AccountDetail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -220,7 +234,6 @@
 		FCBF732B299CC44000BF327A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				FC2E2C1329B71A7F00DADA16 /* Cell */,
 				FCBF7320299CC33A00BF327A /* LaunchScreen.storyboard */,
 				FCBF731E299CC33A00BF327A /* Assets.xcassets */,
 			);
@@ -236,14 +249,40 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		FCC364FE29B6D959001A9310 /* FilterResultViewController */ = {
+		FCC364FE29B6D959001A9310 /* FilterResult */ = {
 			isa = PBXGroup;
 			children = (
 				FCC364FF29B6D9A5001A9310 /* FilterResultViewController.swift */,
 				FCC3650329B6F164001A9310 /* FilterResultViewModel.swift */,
 				FCC3650029B6D9A5001A9310 /* FilterResultViewController.xib */,
 			);
-			path = FilterResultViewController;
+			path = FilterResult;
+			sourceTree = "<group>";
+		};
+		FCEE1A2029B9DAE400AEF380 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */,
+				FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		FCEE1A2129BAD25900AEF380 /* AccountDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */,
+				FCEE1A2329BAD27500AEF380 /* AccountDetailViewController.xib */,
+			);
+			path = AccountDetail;
+			sourceTree = "<group>";
+		};
+		FCEE1A2929BB2DE900AEF380 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FCC3AD2629BB33000050B58B /* CommonConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,9 +349,11 @@
 				FCBF7322299CC33A00BF327A /* LaunchScreen.storyboard in Resources */,
 				FCBF7330299CC4E500BF327A /* SignInViewController.xib in Resources */,
 				FC2E2C1829B71ABB00DADA16 /* AddressCollectionViewCell.xib in Resources */,
+				FCEE1A1F29B9DAD700AEF380 /* AccountViewController.xib in Resources */,
 				FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */,
 				FCBF731F299CC33A00BF327A /* Assets.xcassets in Resources */,
 				FCC3650229B6D9A5001A9310 /* FilterResultViewController.xib in Resources */,
+				FCEE1A2529BAD27500AEF380 /* AccountDetailViewController.xib in Resources */,
 				FC0E76CC299F254C00E4818C /* OTPViewController.xib in Resources */,
 				FC2E2C1D29B71C2100DADA16 /* FilterResultTableViewCell.xib in Resources */,
 			);
@@ -368,16 +409,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC0E76CB299F254C00E4818C /* OTPViewController.swift in Sources */,
+				FCEE1A2429BAD27500AEF380 /* AccountDetailViewController.swift in Sources */,
 				FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */,
 				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
 				FCC364FD29B6D91D001A9310 /* MainTabBarController.swift in Sources */,
 				FC2E2C2029B73B4400DADA16 /* Post.swift in Sources */,
 				FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */,
+				FCC3AD2729BB33010050B58B /* CommonConstants.swift in Sources */,
 				FC2E2C2229B73BD700DADA16 /* Address.swift in Sources */,
 				FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */,
 				FCC3650429B6F164001A9310 /* FilterResultViewModel.swift in Sources */,
 				FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */,
 				FCC3650129B6D9A5001A9310 /* FilterResultViewController.swift in Sources */,
+				FCEE1A1E29B9DAD700AEF380 /* AccountViewController.swift in Sources */,
 				FCBF732F299CC4E500BF327A /* SignInViewController.swift in Sources */,
 				FC0E76D1299F2B5D00E4818C /* BaseViewController.swift in Sources */,
 				FC2E2C1729B71ABB00DADA16 /* AddressCollectionViewCell.swift in Sources */,
