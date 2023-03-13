@@ -86,7 +86,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-U2-856">
-                    <rect key="frame" x="10" y="180" width="380" height="630"/>
+                    <rect key="frame" x="10" y="180" width="370" height="630"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hiện đang có 124 nhà đất đang bán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvh-9K-Cv8" userLabel="subtitleLabel">
@@ -119,7 +119,7 @@
                 <constraint firstItem="PvB-YN-gVZ" firstAttribute="top" secondItem="0id-pZ-wd4" secondAttribute="bottom" constant="10" id="kNS-ME-mvF"/>
                 <constraint firstItem="UPl-U2-856" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="mob-NA-pQO"/>
                 <constraint firstItem="hMd-JW-JRY" firstAttribute="leading" secondItem="eiy-dx-C6t" secondAttribute="trailing" constant="5" id="sN7-bg-DrH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UPl-U2-856" secondAttribute="trailing" id="vlk-M8-FJy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UPl-U2-856" secondAttribute="trailing" constant="10" id="vlk-M8-FJy"/>
                 <constraint firstItem="PvB-YN-gVZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="wIt-9g-QKv"/>
                 <constraint firstItem="PvB-YN-gVZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xIe-vf-7oT"/>
                 <constraint firstItem="0id-pZ-wd4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="zMK-oA-YZh"/>

@@ -32,6 +32,9 @@
 		FCC3650229B6D9A5001A9310 /* FilterResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC3650029B6D9A5001A9310 /* FilterResultViewController.xib */; };
 		FCC3650429B6F164001A9310 /* FilterResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3650329B6F164001A9310 /* FilterResultViewModel.swift */; };
 		FCC3AD2729BB33010050B58B /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3AD2629BB33000050B58B /* CommonConstants.swift */; };
+		FCC3AD3129BF047B0050B58B /* PostedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3AD2F29BF047B0050B58B /* PostedViewController.swift */; };
+		FCC3AD3229BF047B0050B58B /* PostedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC3AD3029BF047B0050B58B /* PostedViewController.xib */; };
+		FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3AD3329BF04A60050B58B /* PostedViewModel.swift */; };
 		FCEE1A1E29B9DAD700AEF380 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */; };
 		FCEE1A1F29B9DAD700AEF380 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */; };
 		FCEE1A2429BAD27500AEF380 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */; };
@@ -68,6 +71,9 @@
 		FCC3650029B6D9A5001A9310 /* FilterResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterResultViewController.xib; sourceTree = "<group>"; };
 		FCC3650329B6F164001A9310 /* FilterResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultViewModel.swift; sourceTree = "<group>"; };
 		FCC3AD2629BB33000050B58B /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
+		FCC3AD2F29BF047B0050B58B /* PostedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedViewController.swift; sourceTree = "<group>"; };
+		FCC3AD3029BF047B0050B58B /* PostedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostedViewController.xib; sourceTree = "<group>"; };
+		FCC3AD3329BF04A60050B58B /* PostedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedViewModel.swift; sourceTree = "<group>"; };
 		FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
 		FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 				FCC364FE29B6D959001A9310 /* FilterResult */,
 				FCEE1A2029B9DAE400AEF380 /* Account */,
 				FCEE1A2129BAD25900AEF380 /* AccountDetail */,
+				FCC3AD2829BEF9380050B58B /* Posted */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -257,6 +264,16 @@
 				FCC3650029B6D9A5001A9310 /* FilterResultViewController.xib */,
 			);
 			path = FilterResult;
+			sourceTree = "<group>";
+		};
+		FCC3AD2829BEF9380050B58B /* Posted */ = {
+			isa = PBXGroup;
+			children = (
+				FCC3AD2F29BF047B0050B58B /* PostedViewController.swift */,
+				FCC3AD3329BF04A60050B58B /* PostedViewModel.swift */,
+				FCC3AD3029BF047B0050B58B /* PostedViewController.xib */,
+			);
+			path = Posted;
 			sourceTree = "<group>";
 		};
 		FCEE1A2029B9DAE400AEF380 /* Account */ = {
@@ -356,6 +373,7 @@
 				FCEE1A2529BAD27500AEF380 /* AccountDetailViewController.xib in Resources */,
 				FC0E76CC299F254C00E4818C /* OTPViewController.xib in Resources */,
 				FC2E2C1D29B71C2100DADA16 /* FilterResultTableViewCell.xib in Resources */,
+				FCC3AD3229BF047B0050B58B /* PostedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,11 +430,13 @@
 				FCEE1A2429BAD27500AEF380 /* AccountDetailViewController.swift in Sources */,
 				FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */,
 				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
+				FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */,
 				FCC364FD29B6D91D001A9310 /* MainTabBarController.swift in Sources */,
 				FC2E2C2029B73B4400DADA16 /* Post.swift in Sources */,
 				FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */,
 				FCC3AD2729BB33010050B58B /* CommonConstants.swift in Sources */,
 				FC2E2C2229B73BD700DADA16 /* Address.swift in Sources */,
+				FCC3AD3129BF047B0050B58B /* PostedViewController.swift in Sources */,
 				FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */,
 				FCC3650429B6F164001A9310 /* FilterResultViewModel.swift in Sources */,
 				FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */,

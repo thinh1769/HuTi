@@ -62,7 +62,7 @@ class OTPViewController: BaseViewController {
     
     private func createOTPLabel() -> UILabel {
         let label = UILabel()
-        label.backgroundColor = UIColor(named: ColorName.OTPBACKGROUD)
+        label.backgroundColor = UIColor(named: ColorName.otpBackground)
         label.widthAnchor.constraint(equalToConstant: OTPTextField.bounds.width / CGFloat(numberOfOTP)).isActive = true
         label.heightAnchor.constraint(equalToConstant: 85).isActive = true
         label.layer.cornerRadius = 8

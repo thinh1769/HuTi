@@ -23,9 +23,13 @@ class AccountViewController: BaseViewController {
     }
     
     @IBAction func onClickedPostedBtn(_ sender: UIButton) {
+        let vc = PostedViewController.instance(title: MainTitle.postedPosts)
+        navigateTo(vc)
     }
     
     @IBAction func onClickedFavoritePostBtn(_ sender: UIButton) {
+        let vc = PostedViewController.instance(title: MainTitle.favoritePosts)
+        navigateTo(vc)
     }
     
     @IBAction func onClickedAccountDetailBtn(_ sender: UIButton) {

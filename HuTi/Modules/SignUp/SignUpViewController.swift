@@ -9,6 +9,8 @@ import UIKit
 
 class SignUpViewController: BaseViewController {
 
+    @IBOutlet private weak var phoneTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -16,6 +18,11 @@ class SignUpViewController: BaseViewController {
     
     private func setupUI() {
         isHiddenNavigationBar = true
+        
+        phoneTextField.attributedPlaceholder = NSAttributedString(
+            string: CommonConstants.phoneNumber,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
+        )
     }
 
 

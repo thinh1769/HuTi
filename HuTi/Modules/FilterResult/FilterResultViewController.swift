@@ -34,12 +34,18 @@ class FilterResultViewController: BaseViewController {
     @IBAction func onClickedMapBtn(_ sender: UIButton) {
         mapView.isHidden = !mapView.isHidden
         filterResultTableView.isHidden = !filterResultTableView.isHidden
+        if !mapView.isHidden {
+            mapButton.setImage(UIImage(named: ImageName.list), for: .normal)
+        } else {
+            mapButton.setImage(UIImage(systemName: "map"), for: .normal)
+        }
     }
     
     
     private func setupUI() {
         viewModel.initData()
         mapView.isHidden = true
+        
         isHiddenNavigationBar = true
         titleLabel.text = viewModel.tabBarItemTitle
         setupCollectionView()
@@ -58,17 +64,14 @@ class FilterResultViewController: BaseViewController {
     }
     
     private func setupTableView() {
-        filterResultTableView.rowHeight = 130
+        filterResultTableView.rowHeight = CommonConstants.tableRowHeight
         filterResultTableView.separatorStyle = .none
         
         filterResultTableView.register(FilterResultTableViewCell.nib, forCellReuseIdentifier: FilterResultTableViewCell.reusableIdentifier)
         
         viewModel.post.asObservable()
             .bind(to: filterResultTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { (index, element, cell) in
-                cell.postTitleLabel.text = element.title
-                cell.priceLabel.text = element.price
-                cell.addressLabel.text = element.address
-                cell.authorLabel.text = element.authorName
+                cell.config(element, isHiddenAuthorAndHeart: false)
             }.disposed(by: viewModel.bag)
         
         filterResultTableView.rx

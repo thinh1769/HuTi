@@ -9,13 +9,14 @@ import UIKit
 
 class FilterResultTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var postImage: UIImageView!
-    @IBOutlet weak var postTitleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var heartBtn: UIImageView!
-    @IBOutlet weak var cellView: UIView!
+    @IBOutlet private weak var postImage: UIImageView!
+    @IBOutlet private weak var postTitleLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var authorLabel: UILabel!
+    @IBOutlet private weak var heartBtn: UIImageView!
+    @IBOutlet private weak var cellView: UIView!
+    @IBOutlet weak var bottomView: UIView!
     
     static var reusableIdentifier: String {
         return String(describing: self)
@@ -38,8 +39,18 @@ class FilterResultTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func config(_  post: Post, isHiddenAuthorAndHeart: Bool) {
+        postTitleLabel.text = post.title
+        priceLabel.text = post.price
+        addressLabel.text = post.address
+        authorLabel.text = post.authorName
+        
+        if isHiddenAuthorAndHeart {
+            bottomView.isHidden = true
+            addressLabel.numberOfLines = 0
+        }
     }
     
 }

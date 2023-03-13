@@ -1,15 +1,15 @@
 //
-//  FilterResultViewModel.swift
+//  PostedViewModel.swift
 //  HuTi
 //
-//  Created by Nguyễn Thịnh on 07/03/2023.
+//  Created by Nguyễn Thịnh on 13/03/2023.
 //
 
 import Foundation
-import RxCocoa
 import RxSwift
+import RxCocoa
 
-class FilterResultViewModel {
+class PostedViewModel {
     let bag = DisposeBag()
     let postTemp = [Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu"),
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu"),
@@ -19,13 +19,10 @@ class FilterResultViewModel {
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu"),
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu"),
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu")]
-    let addressTemp = ["TP. Hồ Chí Minh", "Quận Tân Phú", "Tân Sơn Nhì"]
     let post = BehaviorRelay<[Post]>(value: [])
-    let address = BehaviorRelay<[String]>(value: [])
-    var tabBarItemTitle = TabBarItemTitle.sell
+    var title = MainTitle.postedPosts
     
     func initData() {
         post.accept(postTemp)
-        address.accept(addressTemp)
     }
 }
