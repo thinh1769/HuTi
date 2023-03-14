@@ -18,25 +18,18 @@ class OTPViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
+}
+
+// MARK: - SetupUI.
+extension OTPViewController {
     private func setupUI() {
         OTPTextField.tintColor = .clear
         OTPTextField.textColor = .clear
         OTPTextField.delegate = self
         isTouchDismissKeyboardEnabled = true
         setupOTPStackView()
-    }
-    
-    @IBAction func onClickedContinueBtn(_ sender: UIButton) {
-        let vc = ConfirmPasswordViewController()
-        navigateTo(vc)
-    }
-    
-    @IBAction func onClickedBackBtn(_ sender: UIButton) {
-        popViewController()
     }
     
     private func setupOTPStackView() {
@@ -72,9 +65,21 @@ class OTPViewController: BaseViewController {
         label.textAlignment = .center
         return label
     }
-
 }
 
+// MARK: - IBAction.
+extension OTPViewController {
+    @IBAction func onClickedContinueBtn(_ sender: UIButton) {
+        let vc = ConfirmPasswordViewController()
+        navigateTo(vc)
+    }
+    
+    @IBAction func onClickedBackBtn(_ sender: UIButton) {
+        backToPreviousView()
+    }
+}
+
+// MARK: - UITextFieldDelegate.
 extension OTPViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string != "" {

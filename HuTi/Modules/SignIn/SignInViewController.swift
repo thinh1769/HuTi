@@ -17,7 +17,10 @@ class SignInViewController: BaseViewController {
 
         setupUI()
     }
-    
+}
+
+// MARK: - SetupUI.
+extension SignInViewController {
     private func setupUI() {
         isHiddenMainTabBar = true
         isTouchDismissKeyboardEnabled = true
@@ -32,7 +35,10 @@ class SignInViewController: BaseViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
     }
+}
 
+// MARK: - IBAction.
+extension SignInViewController {
     @IBAction func onClickedSignUpBtn(_ sender: UIButton) {
         let vc = SignUpViewController()
         navigateTo(vc)

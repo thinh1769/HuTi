@@ -19,6 +19,7 @@ struct ImageName {
     static let project = "project"
     static let user = "user"
     static let list = "list"
+    static let map = "map"
 }
 
 struct ColorName {

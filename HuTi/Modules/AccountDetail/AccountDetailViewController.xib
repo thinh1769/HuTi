@@ -331,8 +331,6 @@
                                 <constraint firstItem="4Rc-IZ-rFe" firstAttribute="top" secondItem="d0T-ta-pc1" secondAttribute="top" id="hzy-kg-BEV"/>
                                 <constraint firstAttribute="trailing" secondItem="4Rc-IZ-rFe" secondAttribute="trailing" id="pyZ-B3-ZQV"/>
                             </constraints>
-                            <viewLayoutGuide key="contentLayoutGuide" id="f3e-e6-pe3"/>
-                            <viewLayoutGuide key="frameLayoutGuide" id="atV-f2-SeZ"/>
                         </scrollView>
                     </subviews>
                     <color key="backgroundColor" name="white"/>
@@ -376,7 +374,7 @@
                 <constraint firstItem="bXn-mJ-nCx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wSM-ND-tlU"/>
                 <constraint firstItem="Ept-iE-04R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="zFu-ZN-Ve4"/>
             </constraints>
-            <point key="canvasLocation" x="273" y="-47"/>
+            <point key="canvasLocation" x="279" y="-47"/>
         </view>
     </objects>
     <resources>

@@ -48,7 +48,7 @@ class BaseViewController: UIViewController {
         self.navigationController?.pushViewController(controller, animated: animated)
     }
     
-    func popViewController(_ animated: Bool = true) {
+    func backToPreviousView(_ animated: Bool = true) {
         self.navigationController?.popViewController(animated: animated)
     }
     

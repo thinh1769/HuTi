@@ -20,15 +20,14 @@ class PostedViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
     }
-    
+}
+
+// MARK: - SetupUI.
+extension PostedViewController {
     private func setupUI() {
         viewModel.initData()
         titleLabel.text = viewModel.title
         setupTableView()
-    }
-
-    @IBAction func onClickedBackBtn(_ sender: UIButton) {
-        popViewController()
     }
     
     private func setupTableView() {
@@ -53,9 +52,16 @@ class PostedViewController: BaseViewController {
                 print("table cell selected")
             }.disposed(by: viewModel.bag)
     }
-    
 }
 
+// MARK: - IBAction.
+extension PostedViewController {
+    @IBAction func onClickedBackBtn(_ sender: UIButton) {
+        backToPreviousView()
+    }
+}
+
+// MARK: - Instance.
 extension PostedViewController {
     class func instance(title: String) -> PostedViewController {
         let controller = PostedViewController(nibName: ClassNibName.PostedViewController, bundle: Bundle.main)

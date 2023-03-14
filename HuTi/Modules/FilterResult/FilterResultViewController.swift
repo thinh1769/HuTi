@@ -25,23 +25,10 @@ class FilterResultViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
     }
-    
-    @IBAction func onClickedFilterBtn(_ sender: UIButton) {
-        let vc = OTPViewController()
-        navigateTo(vc)
-    }
-    
-    @IBAction func onClickedMapBtn(_ sender: UIButton) {
-        mapView.isHidden = !mapView.isHidden
-        filterResultTableView.isHidden = !filterResultTableView.isHidden
-        if !mapView.isHidden {
-            mapButton.setImage(UIImage(named: ImageName.list), for: .normal)
-        } else {
-            mapButton.setImage(UIImage(systemName: "map"), for: .normal)
-        }
-    }
-    
-    
+}
+
+// MARK: - SetupUI.
+extension FilterResultViewController {
     private func setupUI() {
         viewModel.initData()
         mapView.isHidden = true
@@ -81,9 +68,27 @@ class FilterResultViewController: BaseViewController {
                 print("table cell selected")
             }.disposed(by: viewModel.bag)
     }
-    
 }
 
+// MARK: - IBAction.
+extension FilterResultViewController {
+    @IBAction func onClickedFilterBtn(_ sender: UIButton) {
+        let vc = OTPViewController()
+        navigateTo(vc)
+    }
+    
+    @IBAction func onClickedMapBtn(_ sender: UIButton) {
+        mapView.isHidden = !mapView.isHidden
+        filterResultTableView.isHidden = !filterResultTableView.isHidden
+        if !mapView.isHidden {
+            mapButton.setImage(UIImage(named: ImageName.list), for: .normal)
+        } else {
+            mapButton.setImage(UIImage(systemName: ImageName.map), for: .normal)
+        }
+    }
+}
+
+// MARK: - Instance.
 extension FilterResultViewController {
     class func instance(tabBarItemTitle: String) -> FilterResultViewController {
         let controller = FilterResultViewController(nibName: ClassNibName.FilterResultViewController, bundle: Bundle.main)
@@ -92,6 +97,7 @@ extension FilterResultViewController {
     }
 }
 
+// MARK: - Kích thước collectionView cell.
 extension FilterResultViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cell = addressCollectionView.dequeueReusableCell(withReuseIdentifier: AddressCollectionViewCell.reusableIdentifier, for: indexPath) as! AddressCollectionViewCell

@@ -35,6 +35,8 @@
 		FCC3AD3129BF047B0050B58B /* PostedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3AD2F29BF047B0050B58B /* PostedViewController.swift */; };
 		FCC3AD3229BF047B0050B58B /* PostedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC3AD3029BF047B0050B58B /* PostedViewController.xib */; };
 		FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3AD3329BF04A60050B58B /* PostedViewModel.swift */; };
+		FCC3AD3829C01EC90050B58B /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3AD3629C01EC90050B58B /* NewPostViewController.swift */; };
+		FCC3AD3929C01EC90050B58B /* NewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC3AD3729C01EC90050B58B /* NewPostViewController.xib */; };
 		FCEE1A1E29B9DAD700AEF380 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */; };
 		FCEE1A1F29B9DAD700AEF380 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */; };
 		FCEE1A2429BAD27500AEF380 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */; };
@@ -74,6 +76,8 @@
 		FCC3AD2F29BF047B0050B58B /* PostedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedViewController.swift; sourceTree = "<group>"; };
 		FCC3AD3029BF047B0050B58B /* PostedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostedViewController.xib; sourceTree = "<group>"; };
 		FCC3AD3329BF04A60050B58B /* PostedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedViewModel.swift; sourceTree = "<group>"; };
+		FCC3AD3629C01EC90050B58B /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		FCC3AD3729C01EC90050B58B /* NewPostViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPostViewController.xib; sourceTree = "<group>"; };
 		FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
 		FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				FC0E770029B1A19B00E4818C /* ConfirmPassword */,
 				FCC364FE29B6D959001A9310 /* FilterResult */,
 				FCEE1A2029B9DAE400AEF380 /* Account */,
+				FCC3AD3529C01EA50050B58B /* NewPost */,
 				FCEE1A2129BAD25900AEF380 /* AccountDetail */,
 				FCC3AD2829BEF9380050B58B /* Posted */,
 			);
@@ -274,6 +279,15 @@
 				FCC3AD3029BF047B0050B58B /* PostedViewController.xib */,
 			);
 			path = Posted;
+			sourceTree = "<group>";
+		};
+		FCC3AD3529C01EA50050B58B /* NewPost */ = {
+			isa = PBXGroup;
+			children = (
+				FCC3AD3629C01EC90050B58B /* NewPostViewController.swift */,
+				FCC3AD3729C01EC90050B58B /* NewPostViewController.xib */,
+			);
+			path = NewPost;
 			sourceTree = "<group>";
 		};
 		FCEE1A2029B9DAE400AEF380 /* Account */ = {
@@ -369,6 +383,7 @@
 				FCEE1A1F29B9DAD700AEF380 /* AccountViewController.xib in Resources */,
 				FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */,
 				FCBF731F299CC33A00BF327A /* Assets.xcassets in Resources */,
+				FCC3AD3929C01EC90050B58B /* NewPostViewController.xib in Resources */,
 				FCC3650229B6D9A5001A9310 /* FilterResultViewController.xib in Resources */,
 				FCEE1A2529BAD27500AEF380 /* AccountDetailViewController.xib in Resources */,
 				FC0E76CC299F254C00E4818C /* OTPViewController.xib in Resources */,
@@ -435,6 +450,7 @@
 				FC2E2C2029B73B4400DADA16 /* Post.swift in Sources */,
 				FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */,
 				FCC3AD2729BB33010050B58B /* CommonConstants.swift in Sources */,
+				FCC3AD3829C01EC90050B58B /* NewPostViewController.swift in Sources */,
 				FC2E2C2229B73BD700DADA16 /* Address.swift in Sources */,
 				FCC3AD3129BF047B0050B58B /* PostedViewController.swift in Sources */,
 				FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */,
