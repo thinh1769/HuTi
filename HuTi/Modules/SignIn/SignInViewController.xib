@@ -25,10 +25,10 @@
                     <rect key="frame" x="0.0" y="59" width="430" height="279.66666666666669"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCk-N4-awJ" userLabel="phoneView">
-                    <rect key="frame" x="40" y="358.66666666666669" width="350" height="40"/>
+                    <rect key="frame" x="40" y="358.66666666666669" width="350" height="50"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HJF-qe-mDp" userLabel="personIcon">
-                            <rect key="frame" x="10" y="6.6666666666666679" width="30" height="27.333333333333336"/>
+                            <rect key="frame" x="10" y="11.666666666666668" width="30" height="27.333333333333336"/>
                             <color key="tintColor" red="0.66440481049498656" green="0.65704069829982936" blue="0.68471881596729012" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="1Pd-E4-cS8"/>
@@ -36,14 +36,14 @@
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDL-o3-U5f" userLabel="phoneTextField">
-                            <rect key="frame" x="50" y="0.0" width="300" height="40"/>
+                            <rect key="frame" x="50" y="0.0" width="300" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                             <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="KTc-b2-bF2"/>
+                        <constraint firstAttribute="height" constant="50" id="KTc-b2-bF2"/>
                         <constraint firstItem="XDL-o3-U5f" firstAttribute="top" secondItem="ZCk-N4-awJ" secondAttribute="top" id="StM-M2-OSP"/>
                         <constraint firstAttribute="bottom" secondItem="XDL-o3-U5f" secondAttribute="bottom" id="ULK-Fa-i8w"/>
                         <constraint firstItem="XDL-o3-U5f" firstAttribute="leading" secondItem="HJF-qe-mDp" secondAttribute="trailing" constant="10" id="VHX-VC-X04"/>
@@ -58,10 +58,10 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Foo-0m-6hp" userLabel="passwordView">
-                    <rect key="frame" x="40" y="408.66666666666669" width="350" height="40"/>
+                    <rect key="frame" x="40" y="418.66666666666669" width="350" height="50"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="50s-dR-B1B" userLabel="lockIcon">
-                            <rect key="frame" x="10" y="6" width="30" height="28"/>
+                            <rect key="frame" x="10" y="11" width="30" height="28"/>
                             <color key="tintColor" red="0.6644048105" green="0.6570406983" blue="0.68471881599999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="PuQ-fg-1Ys"/>
@@ -69,7 +69,7 @@
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1tA-RE-7H1" userLabel="passwordTextField">
-                            <rect key="frame" x="50" y="0.0" width="300" height="40"/>
+                            <rect key="frame" x="50" y="0.0" width="300" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
@@ -78,7 +78,7 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="1tA-RE-7H1" secondAttribute="bottom" id="Etw-9i-0w2"/>
                         <constraint firstItem="1tA-RE-7H1" firstAttribute="leading" secondItem="50s-dR-B1B" secondAttribute="trailing" constant="10" id="IGm-PR-71G"/>
-                        <constraint firstAttribute="height" constant="40" id="X51-eo-jr8"/>
+                        <constraint firstAttribute="height" constant="50" id="X51-eo-jr8"/>
                         <constraint firstAttribute="trailing" secondItem="1tA-RE-7H1" secondAttribute="trailing" id="dub-0O-MQL"/>
                         <constraint firstItem="1tA-RE-7H1" firstAttribute="top" secondItem="Foo-0m-6hp" secondAttribute="top" id="fgy-A2-fsZ"/>
                         <constraint firstItem="50s-dR-B1B" firstAttribute="centerY" secondItem="Foo-0m-6hp" secondAttribute="centerY" id="pL9-LR-XCp"/>
@@ -91,10 +91,10 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysI-tY-DmG" userLabel="signInButton">
-                    <rect key="frame" x="40" y="478.66666666666669" width="350" height="40.000000000000057"/>
+                    <rect key="frame" x="40" y="498.66666666666674" width="350" height="50"/>
                     <color key="backgroundColor" red="0.75308537480000004" green="0.326120615" blue="0.26264229420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="oET-SL-KbR"/>
+                        <constraint firstAttribute="height" constant="50" id="oET-SL-KbR"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -111,7 +111,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVM-fw-O9M" userLabel="google&amp;ForgotPassView">
-                    <rect key="frame" x="40" y="538.66666666666663" width="350" height="50"/>
+                    <rect key="frame" x="40" y="568.66666666666663" width="350" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFa-Ha-e31" userLabel="forgotPassButton">
                             <rect key="frame" x="214" y="8" width="136" height="34"/>

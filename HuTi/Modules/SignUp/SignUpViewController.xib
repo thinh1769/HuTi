@@ -24,10 +24,10 @@
                     <rect key="frame" x="0.0" y="59" width="430" height="279.66666666666669"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5js-Fn-cSt" userLabel="phoneView">
-                    <rect key="frame" x="40" y="358.66666666666669" width="350" height="40"/>
+                    <rect key="frame" x="40" y="358.66666666666669" width="350" height="50"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WIA-QE-7OF" userLabel="personIcon">
-                            <rect key="frame" x="10" y="6.6666666666666679" width="30" height="27.333333333333336"/>
+                            <rect key="frame" x="10" y="11.666666666666668" width="30" height="27.333333333333336"/>
                             <color key="tintColor" red="0.6644048105" green="0.6570406983" blue="0.68471881599999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="F8h-Jj-L9E"/>
@@ -35,7 +35,7 @@
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WK2-Hq-MyD" userLabel="phoneTextField">
-                            <rect key="frame" x="50" y="0.0" width="300" height="40"/>
+                            <rect key="frame" x="50" y="0.0" width="300" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                             <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                         </textField>
@@ -43,7 +43,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="WIA-QE-7OF" firstAttribute="leading" secondItem="5js-Fn-cSt" secondAttribute="leading" constant="10" id="33c-ys-4we"/>
-                        <constraint firstAttribute="height" constant="40" id="9ei-9f-m5f"/>
+                        <constraint firstAttribute="height" constant="50" id="9ei-9f-m5f"/>
                         <constraint firstItem="WK2-Hq-MyD" firstAttribute="leading" secondItem="WIA-QE-7OF" secondAttribute="trailing" constant="10" id="CAp-L3-GRV"/>
                         <constraint firstAttribute="bottom" secondItem="WK2-Hq-MyD" secondAttribute="bottom" id="IYb-nB-eoU"/>
                         <constraint firstItem="WK2-Hq-MyD" firstAttribute="top" secondItem="5js-Fn-cSt" secondAttribute="top" id="T4p-Pt-eup"/>
@@ -57,10 +57,10 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnb-tm-0r8" userLabel="signInButton">
-                    <rect key="frame" x="40" y="428.66666666666669" width="350" height="40"/>
+                    <rect key="frame" x="40" y="438.66666666666669" width="350" height="50"/>
                     <color key="backgroundColor" red="0.75308537480000004" green="0.326120615" blue="0.26264229420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="I6F-cr-IR5"/>
+                        <constraint firstAttribute="height" constant="50" id="I6F-cr-IR5"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>

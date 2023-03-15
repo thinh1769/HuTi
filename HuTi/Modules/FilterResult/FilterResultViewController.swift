@@ -73,7 +73,7 @@ extension FilterResultViewController {
 // MARK: - IBAction.
 extension FilterResultViewController {
     @IBAction func onClickedFilterBtn(_ sender: UIButton) {
-        let vc = OTPViewController()
+        let vc = FilterViewController()
         navigateTo(vc)
     }
     

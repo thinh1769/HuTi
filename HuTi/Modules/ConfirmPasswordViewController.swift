@@ -25,11 +25,11 @@ extension ConfirmPasswordViewController {
         isHiddenNavigationBar = true
         
         passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: CommonConstants.phoneNumber,
+            string: CommonConstants.password,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(
-            string: CommonConstants.phoneNumber,
+            string: CommonConstants.confirmPassword,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
     }
