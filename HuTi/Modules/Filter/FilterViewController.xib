@@ -49,13 +49,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZn-ih-k7y">
-                    <rect key="frame" x="20" y="117" width="350" height="613"/>
+                    <rect key="frame" x="0.0" y="117" width="390" height="613"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PG5-ST-P6Y">
-                            <rect key="frame" x="0.0" y="0.0" width="350" height="779"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="779"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1n-7a-TUC" userLabel="typeView">
-                                    <rect key="frame" x="20" y="5" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="5" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Loại bất động sản" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GH5-dz-qOz">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -88,7 +88,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dry-bf-Mkf" userLabel="cityView">
-                                    <rect key="frame" x="20" y="65" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="65" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tỉnh, thành phố" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2YW-7G-euG">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -121,7 +121,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHm-5D-WLP" userLabel="districtView">
-                                    <rect key="frame" x="20" y="125" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="125" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Quận, huyện" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G3a-86-wIB">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -154,7 +154,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYT-VH-OuK" userLabel="wardView">
-                                    <rect key="frame" x="20" y="185" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="185" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phường, xã" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UMb-KQ-oHe">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -187,7 +187,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIV-fK-Q63" userLabel="streetView">
-                                    <rect key="frame" x="20" y="245" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="245" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Đường, phố" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EKQ-aa-L4N">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -220,13 +220,13 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh mục lọc thêm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="az9-bf-8lj" userLabel="extraTitleLabel">
-                                    <rect key="frame" x="20" y="305" width="310" height="24"/>
+                                    <rect key="frame" x="40" y="305" width="310" height="24"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                     <color key="textColor" name="themeText"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gX-0G-M8d" userLabel="priceView">
-                                    <rect key="frame" x="20" y="339" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="339" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mức giá" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4hh-TV-Cpc">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -259,7 +259,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCt-9n-yKy" userLabel="acreageView">
-                                    <rect key="frame" x="20" y="399" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="399" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Diện tích" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FmC-cQ-4JL">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -292,7 +292,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQd-lK-SSr" userLabel="legalView">
-                                    <rect key="frame" x="20" y="459" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="459" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Giấy tờ pháp lý" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-SD-fAg">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -325,7 +325,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhy-l3-dHn" userLabel="funitureView">
-                                    <rect key="frame" x="20" y="519" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="519" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nội thất" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ka4-4c-eK6">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -358,7 +358,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HxE-sv-h5l" userLabel="bathroomView">
-                                    <rect key="frame" x="20" y="579" width="310" height="30"/>
+                                    <rect key="frame" x="40" y="579" width="310" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số phòng tắm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxi-vc-e7Q">
                                             <rect key="frame" x="19.999999999999993" y="5" width="122.33333333333331" height="20"/>
@@ -409,7 +409,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1X-DH-HXw" userLabel="bedroomView">
-                                    <rect key="frame" x="20" y="619" width="310" height="30"/>
+                                    <rect key="frame" x="40" y="619" width="310" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số phòng ngủ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG2-Hu-7Qh">
                                             <rect key="frame" x="19.999999999999993" y="5" width="122.33333333333331" height="20"/>
@@ -460,7 +460,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22R-4K-fSd" userLabel="houseDirectionView">
-                                    <rect key="frame" x="20" y="659" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="659" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hướng nhà" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="txm-On-osT">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -493,7 +493,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1b9-JV-ljM" userLabel="balconyDirectionView">
-                                    <rect key="frame" x="20" y="719" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="719" width="310" height="50"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HeU-bF-Cx8">
                                             <rect key="frame" x="275" y="17.999999999999961" width="25" height="14.999999999999996"/>
@@ -526,7 +526,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <edgeInsets key="layoutMargins" top="5" left="20" bottom="10" right="20"/>
+                            <edgeInsets key="layoutMargins" top="5" left="40" bottom="10" right="40"/>
                         </stackView>
                     </subviews>
                     <constraints>
@@ -575,7 +575,7 @@
             <constraints>
                 <constraint firstItem="NhC-Jx-0oi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="17g-io-w90"/>
                 <constraint firstItem="6FP-vd-c3c" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="3yW-Z8-hA3"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LZn-ih-k7y" secondAttribute="trailing" constant="20" id="BlM-6b-xD5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LZn-ih-k7y" secondAttribute="trailing" id="BlM-6b-xD5"/>
                 <constraint firstItem="BfX-zI-9Lh" firstAttribute="top" secondItem="LZn-ih-k7y" secondAttribute="bottom" constant="10" id="Cyk-yu-f4C"/>
                 <constraint firstItem="LZn-ih-k7y" firstAttribute="top" secondItem="6FP-vd-c3c" secondAttribute="bottom" constant="20" id="DzG-Cf-C8Y"/>
                 <constraint firstItem="6FP-vd-c3c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="FAw-Fm-hVf"/>
@@ -583,7 +583,7 @@
                 <constraint firstItem="rne-Rp-Bjy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LNw-zn-jtP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BfX-zI-9Lh" secondAttribute="trailing" constant="20" id="afq-ow-d3E"/>
                 <constraint firstItem="rne-Rp-Bjy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="b85-WF-8Tc"/>
-                <constraint firstItem="LZn-ih-k7y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="bY1-uA-giG"/>
+                <constraint firstItem="LZn-ih-k7y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bY1-uA-giG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NhC-Jx-0oi" secondAttribute="trailing" constant="20" id="gox-13-jXT"/>
                 <constraint firstItem="BfX-zI-9Lh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="znI-yN-WU1"/>
             </constraints>

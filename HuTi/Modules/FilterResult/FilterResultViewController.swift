@@ -65,7 +65,12 @@ extension FilterResultViewController {
             .modelSelected(Post.self)
             .subscribe { [weak self] element in
                 guard let self = self else { return }
-                print("table cell selected")
+                if self.viewModel.tabBarItemTitle == TabBarItemTitle.project {
+                    let vc = ProjectDetailViewController()
+                    self.navigateTo(vc)
+                } else {
+                    print("table cell selected")
+                }
             }.disposed(by: viewModel.bag)
     }
 }
