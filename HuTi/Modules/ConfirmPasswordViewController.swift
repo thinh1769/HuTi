@@ -16,10 +16,7 @@ class ConfirmPasswordViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
     }
-}
-
-// MARK: - SetupUI.
-extension ConfirmPasswordViewController {
+    
     private func setupUI() {
         isTouchDismissKeyboardEnabled = true
         isHiddenNavigationBar = true
@@ -33,10 +30,7 @@ extension ConfirmPasswordViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
     }
-}
-
-// MARK: - IBAction.
-extension ConfirmPasswordViewController {
+    
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         backToPreviousView()
     }
@@ -45,3 +39,4 @@ extension ConfirmPasswordViewController {
         setRootTabBar()
     }
 }
+

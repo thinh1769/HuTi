@@ -15,10 +15,7 @@ class SignUpViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
     }
-}
-
-// MARK: - SetupUI.
-extension SignUpViewController {
+    
     private func setupUI() {
         isHiddenNavigationBar = true
         
@@ -27,10 +24,7 @@ extension SignUpViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
     }
-}
-
-// MARK: - IBAction.
-extension SignUpViewController {
+    
     @IBAction func onClickedSignInBtn(_ sender: UIButton) {
         let vc = SignInViewController()
         navigateTo(vc)

@@ -20,10 +20,16 @@ class OTPViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
     }
-}
-
-// MARK: - SetupUI.
-extension OTPViewController {
+    
+    @IBAction func onClickedContinueBtn(_ sender: UIButton) {
+        let vc = ConfirmPasswordViewController()
+        navigateTo(vc)
+    }
+    
+    @IBAction func onClickedBackBtn(_ sender: UIButton) {
+        backToPreviousView()
+    }
+    
     private func setupUI() {
         OTPTextField.tintColor = .clear
         OTPTextField.textColor = .clear
@@ -64,18 +70,6 @@ extension OTPViewController {
         label.clipsToBounds = true
         label.textAlignment = .center
         return label
-    }
-}
-
-// MARK: - IBAction.
-extension OTPViewController {
-    @IBAction func onClickedContinueBtn(_ sender: UIButton) {
-        let vc = ConfirmPasswordViewController()
-        navigateTo(vc)
-    }
-    
-    @IBAction func onClickedBackBtn(_ sender: UIButton) {
-        backToPreviousView()
     }
 }
 

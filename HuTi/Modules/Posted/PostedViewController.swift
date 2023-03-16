@@ -20,10 +20,7 @@ class PostedViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
     }
-}
-
-// MARK: - SetupUI.
-extension PostedViewController {
+    
     private func setupUI() {
         viewModel.initData()
         titleLabel.text = viewModel.title
@@ -52,10 +49,7 @@ extension PostedViewController {
                 print("table cell selected")
             }.disposed(by: viewModel.bag)
     }
-}
-
-// MARK: - IBAction.
-extension PostedViewController {
+    
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         backToPreviousView()
     }

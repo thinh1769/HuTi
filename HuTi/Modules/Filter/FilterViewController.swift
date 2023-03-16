@@ -15,19 +15,11 @@ class FilterViewController: BaseViewController {
         
     }
     
-
-}
-
-// MARK: - SetupUI.
-extension FilterViewController {
     private func setupUI() {
         isHiddenMainTabBar = true
         isTouchDismissKeyboardEnabled = true
     }
-}
-
-// MARK: - IBAction.
-extension FilterViewController {
+    
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         isHiddenMainTabBar = false
         backToPreviousView()
@@ -38,3 +30,4 @@ extension FilterViewController {
         backToPreviousView()
     }
 }
+

@@ -14,20 +14,11 @@ class AccountDetailViewController: BaseViewController {
         setupUI()
         
     }
-
-}
-
-// MARK: - SetupUI.
-extension AccountDetailViewController {
+    
     private func setupUI() {
-        isHiddenNavigationBar = true
         isTouchDismissKeyboardEnabled = true
     }
 
-}
-
-// MARK: - IBAction.
-extension AccountDetailViewController {
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         backToPreviousView()
     }

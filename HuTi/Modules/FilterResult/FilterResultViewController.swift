@@ -25,10 +25,7 @@ class FilterResultViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
     }
-}
-
-// MARK: - SetupUI.
-extension FilterResultViewController {
+    
     private func setupUI() {
         viewModel.initData()
         mapView.isHidden = true
@@ -69,14 +66,12 @@ extension FilterResultViewController {
                     let vc = ProjectDetailViewController()
                     self.navigateTo(vc)
                 } else {
-                    print("table cell selected")
+                    let vc = PostDetailViewController()
+                    self.navigateTo(vc)
                 }
             }.disposed(by: viewModel.bag)
     }
-}
-
-// MARK: - IBAction.
-extension FilterResultViewController {
+    
     @IBAction func onClickedFilterBtn(_ sender: UIButton) {
         let vc = FilterViewController()
         navigateTo(vc)

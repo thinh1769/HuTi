@@ -14,17 +14,11 @@ class NewPostViewController: BaseViewController {
         setupUI()
         
     }
-}
-
-// MARK: - SetupUI.
-extension NewPostViewController {
+    
     private func setupUI() {
         
     }
-}
-
-// MARK: - SetupUI.
-extension NewPostViewController {
+    
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         backToPreviousView()
     }

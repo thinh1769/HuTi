@@ -14,17 +14,11 @@ class AccountViewController: BaseViewController {
         
         setupUI()
     }
-}
-
-// MARK: - SetupUI.
-extension AccountViewController {
+    
     private func setupUI() {
         isHiddenNavigationBar = true
     }
-}
-
-// MARK: - @IBAction.
-extension AccountViewController {
+    
     @IBAction func onClickedNewPostBtn(_ sender: UIButton) {
         let vc = NewPostViewController()
         navigateTo(vc)
@@ -50,3 +44,4 @@ extension AccountViewController {
         navigateTo(vc)
     }
 }
+
