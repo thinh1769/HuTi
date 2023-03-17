@@ -57,7 +57,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyd-aB-YfV">
-                    <rect key="frame" x="0.0" y="147" width="390" height="673"/>
+                    <rect key="frame" x="0.0" y="147" width="390" height="663"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qB-YM-SDo">
                             <rect key="frame" x="10" y="0.0" width="370" height="1084.3333333333333"/>
@@ -191,7 +191,7 @@
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da4-nI-aeI">
                                             <rect key="frame" x="20" y="393.66666666666663" width="330" height="182.66666666666663"/>
-                                            <mutableString key="text">Dự án Avatar Thủ Đức là khu căn hộ chung cư cao cấp nằm ngay mặt tiền Vành đai 2, phường Trường Thọ, Thủ Đức, TP. HCM. Đây là dự án mới nhất của chủ đầu tư Hưng Thịnh ra mắt thị trường trong năm 2023. Avatar Thủ Đức Dự án có quy mô 5.11ha, bao gồm 6 block chung cư cao từ 28-33 tầng, cung ứng cho thị trường khoảng 2700 căn hộ. </mutableString>
+                                            <string key="text">Dự án Avatar Thủ Đức là khu căn hộ chung cư cao cấp nằm ngay mặt tiền Vành đai 2, phường Trường Thọ, Thủ Đức, TP. HCM. Đây là dự án mới nhất của chủ đầu tư Hưng Thịnh ra mắt thị trường trong năm 2023. Avatar Thủ Đức Dự án có quy mô 5.11ha, bao gồm 6 block chung cư cao từ 28-33 tầng, cung ứng cho thị trường khoảng 2700 căn hộ. </string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -272,13 +272,13 @@
                 <constraint firstItem="21c-qp-mzd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="DDQ-z1-qoS"/>
                 <constraint firstItem="21c-qp-mzd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="EhI-sh-asR"/>
                 <constraint firstItem="zyd-aB-YfV" firstAttribute="top" secondItem="21c-qp-mzd" secondAttribute="bottom" constant="10" id="Hhd-hd-DTr"/>
-                <constraint firstItem="zyd-aB-YfV" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="10" id="cZb-uP-Qcg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="zyd-aB-YfV" secondAttribute="bottom" id="jZs-Jk-vGM"/>
                 <constraint firstItem="ipn-Jb-lBI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kq7-JA-Opy"/>
                 <constraint firstItem="ipn-Jb-lBI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="uAw-bg-p70"/>
                 <constraint firstItem="2DU-kL-O51" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="vWe-9H-OSY"/>
                 <constraint firstItem="zyd-aB-YfV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wWp-aN-xYM"/>
             </constraints>
-            <point key="canvasLocation" x="-22" y="31"/>
+            <point key="canvasLocation" x="-23.076923076923077" y="30.568720379146917"/>
         </view>
     </objects>
     <resources>

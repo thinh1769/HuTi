@@ -27,6 +27,9 @@ struct ColorName {
     static let themeText = "themeText"
     static let otpBackground = "otpBackground"
     static let gray = "gray"
+    static let white = "white"
+    static let black = "black"
+    static let red = "red"
 }
 
 struct TabBarItemTitle {

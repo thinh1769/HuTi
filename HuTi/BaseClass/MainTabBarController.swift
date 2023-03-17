@@ -39,5 +39,7 @@ class MainTabBarController: UITabBarController {
         self.setViewControllers(tabBarItemList, animated: true)
         
         self.tabBar.tintColor = UIColor(named: ColorName.themeText)
+        
+        self.tabBar.backgroundColor = UIColor(named: ColorName.white)
     }
 }

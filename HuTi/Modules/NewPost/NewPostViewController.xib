@@ -51,7 +51,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eme-NT-hY5">
-                    <rect key="frame" x="0.0" y="70" width="375" height="587"/>
+                    <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5R0-sq-jff" userLabel="infoStackView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="2050"/>
@@ -1257,7 +1257,7 @@
                 <constraint firstItem="eme-NT-hY5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dIF-Jv-8WN"/>
                 <constraint firstItem="eme-NT-hY5" firstAttribute="top" secondItem="eFB-9t-KvU" secondAttribute="bottom" constant="20" id="elb-TF-5Wp"/>
                 <constraint firstItem="D44-Un-bLi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="kTH-9B-lHo"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="eme-NT-hY5" secondAttribute="bottom" constant="10" id="mgX-Xo-zTN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="eme-NT-hY5" secondAttribute="bottom" id="mgX-Xo-zTN"/>
                 <constraint firstItem="eFB-9t-KvU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="sZn-zJ-Jda"/>
                 <constraint firstItem="D44-Un-bLi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zO7-qh-kwn"/>
             </constraints>
