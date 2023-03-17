@@ -31,8 +31,6 @@ class OTPViewController: BaseViewController {
     }
     
     private func setupUI() {
-        let backButton = BackButton(frame: CGRect(x: 20 , y: view.safeAreaInsets.top  , width: 40, height: 40))
-        view.addSubview(backButton)
         OTPTextField.tintColor = .clear
         OTPTextField.textColor = .clear
         OTPTextField.delegate = self
