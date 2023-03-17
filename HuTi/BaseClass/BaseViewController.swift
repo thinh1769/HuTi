@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
         }
     }
     
-    var isHiddenNavigationBar = false {
+    var isHiddenNavigationBar = true {
         didSet {
             self.navigationController?.isNavigationBarHidden = isHiddenNavigationBar
         }

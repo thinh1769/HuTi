@@ -16,7 +16,6 @@ class AccountViewController: BaseViewController {
     }
     
     private func setupUI() {
-        isHiddenNavigationBar = true
     }
     
     @IBAction func onClickedNewPostBtn(_ sender: UIButton) {

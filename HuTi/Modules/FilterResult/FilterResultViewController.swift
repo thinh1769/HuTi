@@ -29,8 +29,7 @@ class FilterResultViewController: BaseViewController {
     private func setupUI() {
         viewModel.initData()
         mapView.isHidden = true
-        
-        isHiddenNavigationBar = true
+    
         titleLabel.text = viewModel.tabBarItemTitle
         setupCollectionView()
         setupTableView()

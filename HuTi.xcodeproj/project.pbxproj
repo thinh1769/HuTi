@@ -43,6 +43,7 @@
 		FCC3AD4329C1C2220050B58B /* ProjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC3AD4129C1C2220050B58B /* ProjectDetailViewController.xib */; };
 		FCC3AD4729C2F8C60050B58B /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3AD4529C2F8C60050B58B /* PostDetailViewController.swift */; };
 		FCC3AD4829C2F8C60050B58B /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC3AD4629C2F8C60050B58B /* PostDetailViewController.xib */; };
+		FCC3AD4B29C4236E0050B58B /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3AD4A29C4236E0050B58B /* BackButton.swift */; };
 		FCEE1A1E29B9DAD700AEF380 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */; };
 		FCEE1A1F29B9DAD700AEF380 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */; };
 		FCEE1A2429BAD27500AEF380 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */; };
@@ -90,6 +91,7 @@
 		FCC3AD4129C1C2220050B58B /* ProjectDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDetailViewController.xib; sourceTree = "<group>"; };
 		FCC3AD4529C2F8C60050B58B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		FCC3AD4629C2F8C60050B58B /* PostDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
+		FCC3AD4A29C4236E0050B58B /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
 		FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				FC0E76D0299F2B5D00E4818C /* BaseViewController.swift */,
-				FCC364FC29B6D91D001A9310 /* MainTabBarController.swift */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -221,6 +222,7 @@
 				FCBF732A299CC37100BF327A /* Application */,
 				FCBF732B299CC44000BF327A /* Resource */,
 				FC2E2C1329B71A7F00DADA16 /* Cell */,
+				FCC3AD4929C422F70050B58B /* CustomClass */,
 				FCEE1A2929BB2DE900AEF380 /* Constants */,
 				FC0E76CD299F2AA400E4818C /* BaseClass */,
 				FCBF7329299CC36500BF327A /* Modules */,
@@ -330,6 +332,15 @@
 				FCC3AD4629C2F8C60050B58B /* PostDetailViewController.xib */,
 			);
 			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		FCC3AD4929C422F70050B58B /* CustomClass */ = {
+			isa = PBXGroup;
+			children = (
+				FCC364FC29B6D91D001A9310 /* MainTabBarController.swift */,
+				FCC3AD4A29C4236E0050B58B /* BackButton.swift */,
+			);
+			path = CustomClass;
 			sourceTree = "<group>";
 		};
 		FCEE1A2029B9DAE400AEF380 /* Account */ = {
@@ -494,6 +505,7 @@
 				FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */,
 				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
 				FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */,
+				FCC3AD4B29C4236E0050B58B /* BackButton.swift in Sources */,
 				FCC364FD29B6D91D001A9310 /* MainTabBarController.swift in Sources */,
 				FC2E2C2029B73B4400DADA16 /* Post.swift in Sources */,
 				FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */,

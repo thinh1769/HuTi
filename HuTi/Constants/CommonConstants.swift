@@ -20,6 +20,7 @@ struct ImageName {
     static let user = "user"
     static let list = "list"
     static let map = "map"
+    static let backButton = "chevron.left"
 }
 
 struct ColorName {

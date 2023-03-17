@@ -17,8 +17,6 @@ class SignUpViewController: BaseViewController {
     }
     
     private func setupUI() {
-        isHiddenNavigationBar = true
-        
         phoneTextField.attributedPlaceholder = NSAttributedString(
             string: CommonConstants.phoneNumber,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]

@@ -19,8 +19,7 @@ class ConfirmPasswordViewController: BaseViewController {
     
     private func setupUI() {
         isTouchDismissKeyboardEnabled = true
-        isHiddenNavigationBar = true
-        
+
         passwordTextField.attributedPlaceholder = NSAttributedString(
             string: CommonConstants.password,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
