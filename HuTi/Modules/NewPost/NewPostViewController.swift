@@ -27,6 +27,15 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var forRentView: UIView!
     
     let typePicker = UIPickerView()
+    let cityPicker = UIPickerView()
+    let districtPicker = UIPickerView()
+    let wardPicker = UIPickerView()
+    let projectPicker = UIPickerView()
+    let legalPicker = UIPickerView()
+    let funiturePicker = UIPickerView()
+    let houseDirectionPicker = UIPickerView()
+    let balconyDirectionPicker = UIPickerView()
+    
     var viewModel = NewPostViewModel()
     
     override func viewDidLoad() {
@@ -42,10 +51,10 @@ class NewPostViewController: BaseViewController {
     
     private func setupPickerView() {
         setupTypePickerView()
-//        setupCityPickerView()
-//        setupDistrictPickerView()
-//        setupWardPickerView()
-//        setupProjectPickerView()
+        setupCityPickerView()
+        setupDistrictPickerView()
+        setupWardPickerView()
+        setupProjectPickerView()
 //        setupLegalPickerView()
 //        setupFuniturePickerView()
 //        setupHouseDirectionPickerView()
@@ -81,7 +90,10 @@ class NewPostViewController: BaseViewController {
             viewModel.typeProperty.accept(TypeProperty.forRent)
         }
     }
-    
+}
+
+// MARK: - SetupPicker
+extension NewPostViewController {
     private func setupTypePickerView() {
         typeTextField.inputView = typePicker
         typeTextField.tintColor = .clear
@@ -100,94 +112,79 @@ class NewPostViewController: BaseViewController {
         }.disposed(by: viewModel.bag)
     }
     
-//    private func setupCityPickerView() {
-//        typeTextField.inputView = typePicker
-//        typeTextField.tintColor = .clear
-//        typePicker.tag = PickerTag.type
-//        typeTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.type)
-//
-//        if !isSelectedSellBtn.isHidden {
-//            viewModel.typeProperty.accept(TypeProperty.sell)
-//        } else {
-//            viewModel.typeProperty.accept(TypeProperty.forRent)
-//        }
-//
-//        viewModel.typeProperty.subscribe(on: MainScheduler.instance)
-//            .bind(to: typePicker.rx.itemTitles) { (row, element) in
-//                return element
-//            }.disposed(by: viewModel.bag)
-//
-//        typePicker.rx.itemSelected.bind { (row: Int, component: Int) in
-//            self.viewModel.selectedType = row
-//        }.disposed(by: viewModel.bag)
-//    }
-//
-//    private func setupDistrictPickerView() {
-//        typeTextField.inputView = typePicker
-//        typeTextField.tintColor = .clear
-//        typePicker.tag = PickerTag.type
-//        typeTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.type)
-//
-//        if !isSelectedSellBtn.isHidden {
-//            viewModel.typeProperty.accept(TypeProperty.sell)
-//        } else {
-//            viewModel.typeProperty.accept(TypeProperty.forRent)
-//        }
-//
-//        viewModel.typeProperty.subscribe(on: MainScheduler.instance)
-//            .bind(to: typePicker.rx.itemTitles) { (row, element) in
-//                return element
-//            }.disposed(by: viewModel.bag)
-//
-//        typePicker.rx.itemSelected.bind { (row: Int, component: Int) in
-//            self.viewModel.selectedType = row
-//        }.disposed(by: viewModel.bag)
-//    }
-//
-//    private func setupWardPickerView() {
-//        typeTextField.inputView = typePicker
-//        typeTextField.tintColor = .clear
-//        typePicker.tag = PickerTag.type
-//        typeTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.type)
-//
-//        if !isSelectedSellBtn.isHidden {
-//            viewModel.typeProperty.accept(TypeProperty.sell)
-//        } else {
-//            viewModel.typeProperty.accept(TypeProperty.forRent)
-//        }
-//
-//        viewModel.typeProperty.subscribe(on: MainScheduler.instance)
-//            .bind(to: typePicker.rx.itemTitles) { (row, element) in
-//                return element
-//            }.disposed(by: viewModel.bag)
-//
-//        typePicker.rx.itemSelected.bind { (row: Int, component: Int) in
-//            self.viewModel.selectedType = row
-//        }.disposed(by: viewModel.bag)
-//    }
-//
-//    private func setupProjectPickerView() {
-//        typeTextField.inputView = typePicker
-//        typeTextField.tintColor = .clear
-//        typePicker.tag = PickerTag.type
-//        typeTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.type)
-//
-//        if !isSelectedSellBtn.isHidden {
-//            viewModel.typeProperty.accept(TypeProperty.sell)
-//        } else {
-//            viewModel.typeProperty.accept(TypeProperty.forRent)
-//        }
-//
-//        viewModel.typeProperty.subscribe(on: MainScheduler.instance)
-//            .bind(to: typePicker.rx.itemTitles) { (row, element) in
-//                return element
-//            }.disposed(by: viewModel.bag)
-//
-//        typePicker.rx.itemSelected.bind { (row: Int, component: Int) in
-//            self.viewModel.selectedType = row
-//        }.disposed(by: viewModel.bag)
-//    }
-//
+    private func setupCityPickerView() {
+        cityTextField.inputView = cityPicker
+        cityTextField.tintColor = .clear
+        cityPicker.tag = PickerTag.city
+        cityTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.city)
+
+        viewModel.city.accept(TypeProperty.sell)
+
+        viewModel.city.subscribe(on: MainScheduler.instance)
+            .bind(to: cityPicker.rx.itemTitles) { (row, element) in
+                return element
+            }.disposed(by: viewModel.bag)
+
+        cityPicker.rx.itemSelected.bind { (row: Int, component: Int) in
+            self.viewModel.selectedCity = row
+        }.disposed(by: viewModel.bag)
+    }
+
+    private func setupDistrictPickerView() {
+        districtTextField.inputView = districtPicker
+        districtTextField.tintColor = .clear
+        districtPicker.tag = PickerTag.district
+        districtTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.district)
+
+        viewModel.district.accept(TypeProperty.sell)
+
+        viewModel.district.subscribe(on: MainScheduler.instance)
+            .bind(to: districtPicker.rx.itemTitles) { (row, element) in
+                return element
+            }.disposed(by: viewModel.bag)
+
+        districtPicker.rx.itemSelected.bind { (row: Int, component: Int) in
+            self.viewModel.selectedDistrict = row
+        }.disposed(by: viewModel.bag)
+    }
+
+    private func setupWardPickerView() {
+        wardTextField.inputView = wardPicker
+        wardTextField.tintColor = .clear
+        wardPicker.tag = PickerTag.ward
+        wardTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.ward)
+
+        viewModel.ward.accept(TypeProperty.sell)
+        
+
+        viewModel.ward.subscribe(on: MainScheduler.instance)
+            .bind(to: wardPicker.rx.itemTitles) { (row, element) in
+                return element
+            }.disposed(by: viewModel.bag)
+
+        wardPicker.rx.itemSelected.bind { (row: Int, component: Int) in
+            self.viewModel.selectedWard = row
+        }.disposed(by: viewModel.bag)
+    }
+
+    private func setupProjectPickerView() {
+        projectTextField.inputView = projectPicker
+        projectTextField.tintColor = .clear
+        projectPicker.tag = PickerTag.project
+        projectTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.project)
+
+        viewModel.project.accept(TypeProperty.sell)
+
+        viewModel.project.subscribe(on: MainScheduler.instance)
+            .bind(to: projectPicker.rx.itemTitles) { (row, element) in
+                return element
+            }.disposed(by: viewModel.bag)
+
+        projectPicker.rx.itemSelected.bind { (row: Int, component: Int) in
+            self.viewModel.selectedProject = row
+        }.disposed(by: viewModel.bag)
+    }
+
 //    private func setupLegalPickerView() {
 //        typeTextField.inputView = typePicker
 //        typeTextField.tintColor = .clear
@@ -301,7 +298,13 @@ class NewPostViewController: BaseViewController {
         case PickerTag.type:
             typeTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.city:
-            typeTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+            cityTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+        case PickerTag.district:
+            districtTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+        case PickerTag.ward:
+            wardTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+        case PickerTag.project:
+            projectTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         default:
             return
         }

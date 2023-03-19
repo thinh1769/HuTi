@@ -12,9 +12,9 @@ import RxRelay
 class NewPostViewModel {
     let bag = DisposeBag()
     let typeProperty = BehaviorRelay<[String]>(value: [])
-    let city = BehaviorRelay<[City]>(value: [])
-    let district = BehaviorRelay<[District]>(value: [])
-    let ward = BehaviorRelay<[Ward]>(value: [])
+    let city = BehaviorRelay<[String]>(value: [])
+    let district = BehaviorRelay<[String]>(value: [])
+    let ward = BehaviorRelay<[String]>(value: [])
     let project = BehaviorRelay<[String]>(value: [])
     let legal = BehaviorRelay<[String]>(value: [])
     let funiture = BehaviorRelay<[String]>(value: [])
@@ -41,19 +41,19 @@ class NewPostViewModel {
             }
         case PickerTag.city:
             if city.value.count > 0 {
-                return city.value[selectedCity].name
+                return city.value[selectedCity]
             } else {
                 return ""
             }
         case PickerTag.district:
             if district.value.count > 0 {
-                return district.value[selectedDistrict].name
+                return district.value[selectedDistrict]
             } else {
                 return ""
             }
         case PickerTag.ward:
             if ward.value.count > 0 {
-                return ward.value[selectedWard].name
+                return ward.value[selectedWard]
             } else {
                 return ""
             }
