@@ -18,7 +18,7 @@ struct CommonConstants {
 }
 
 struct TextFieldPlaceHolder {
-    static let type = "Loại bất động sản"
+    static let typeProperty = "Loại bất động sản"
     static let city = "Tỉnh, thành phố"
     static let district = "Quận, huyện"
     static let ward = "Phường, xã"
@@ -36,7 +36,7 @@ struct PickerTag {
     static let city = 1
     static let district = 2
     static let ward = 3
-    static let street = 4
+    static let project = 4
     static let price = 5
     static let acreage = 6
     static let legal = 7
@@ -84,5 +84,9 @@ struct MainTitle {
     static let project = "Dự án"
     static let postedPosts = "Các tin đã đăng"
     static let favoritePosts = "Tin đăng yêu thích"
-    
+}
+
+struct TypeProperty {
+    static let sell = ["Căn hộ chung cư", "Nhà riêng", "Nhà biệt thự, liền kề", "Nhà mặt phố", "Nhà phố thương mại", "Đất"]
+    static let forRent = ["Căn hộ chung cư", "Nhà riêng", "Nhà biệt thự, liền kề", "Nhà mặt phố", "Nhà trọ, phòng trọ", "Nhà phố thương mại", "Văn phòng", "Cửa hàng, kiot", "Kho, nhà xưởng", "Đất", "Bất động sản khác"]
 }
