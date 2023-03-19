@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2282B38129C6E7CA002C4125 /* NewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2282B38029C6E7CA002C4125 /* NewPostViewModel.swift */; };
+		22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */; };
+		22D2E25329C6C11600E46CAF /* UserDefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */; };
 		8E04D744477EEFCB514E8B28 /* Pods_HuTi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29605AC57F7499D1B086D28D /* Pods_HuTi.framework */; };
 		FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */; };
 		FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0E76C4299CDD4600E4818C /* SignUpViewController.xib */; };
@@ -52,6 +55,9 @@
 
 /* Begin PBXFileReference section */
 		202975FB1ABBB5219A59709D /* Pods-HuTi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuTi.release.xcconfig"; path = "Target Support Files/Pods-HuTi/Pods-HuTi.release.xcconfig"; sourceTree = "<group>"; };
+		2282B38029C6E7CA002C4125 /* NewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewModel.swift; sourceTree = "<group>"; };
+		22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Ext.swift"; sourceTree = "<group>"; };
 		29605AC57F7499D1B086D28D /* Pods_HuTi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuTi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		620668C98BB036879901C46F /* Pods-HuTi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuTi.debug.xcconfig"; path = "Target Support Files/Pods-HuTi/Pods-HuTi.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +122,14 @@
 				29605AC57F7499D1B086D28D /* Pods_HuTi.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22D2E25129C6C0FA00E46CAF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4EDACB083F25C42C5C30435E /* Pods */ = {
@@ -225,6 +239,7 @@
 				FCC3AD4929C422F70050B58B /* CustomClass */,
 				FCEE1A2929BB2DE900AEF380 /* Constants */,
 				FC0E76CD299F2AA400E4818C /* BaseClass */,
+				22D2E25129C6C0FA00E46CAF /* Extensions */,
 				FCBF7329299CC36500BF327A /* Modules */,
 				FC2E2C1E29B73B1500DADA16 /* Models */,
 				FCBF7323299CC33A00BF327A /* Info.plist */,
@@ -302,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				FCC3AD3629C01EC90050B58B /* NewPostViewController.swift */,
+				2282B38029C6E7CA002C4125 /* NewPostViewModel.swift */,
 				FCC3AD3729C01EC90050B58B /* NewPostViewController.xib */,
 			);
 			path = NewPost;
@@ -347,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				FCEE1A1C29B9DAD600AEF380 /* AccountViewController.swift */,
+				22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */,
 				FCEE1A1D29B9DAD600AEF380 /* AccountViewController.xib */,
 			);
 			path = Account;
@@ -503,6 +520,7 @@
 				FC0E76CB299F254C00E4818C /* OTPViewController.swift in Sources */,
 				FCEE1A2429BAD27500AEF380 /* AccountDetailViewController.swift in Sources */,
 				FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */,
+				22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */,
 				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
 				FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */,
 				FCC3AD4B29C4236E0050B58B /* BackButton.swift in Sources */,
@@ -516,8 +534,10 @@
 				FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */,
 				FCC3650429B6F164001A9310 /* FilterResultViewModel.swift in Sources */,
 				FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */,
+				22D2E25329C6C11600E46CAF /* UserDefault+Ext.swift in Sources */,
 				FCC3650129B6D9A5001A9310 /* FilterResultViewController.swift in Sources */,
 				FCEE1A1E29B9DAD700AEF380 /* AccountViewController.swift in Sources */,
+				2282B38129C6E7CA002C4125 /* NewPostViewModel.swift in Sources */,
 				FCBF732F299CC4E500BF327A /* SignInViewController.swift in Sources */,
 				FC0E76D1299F2B5D00E4818C /* BaseViewController.swift in Sources */,
 				FC2E2C1729B71ABB00DADA16 /* AddressCollectionViewCell.swift in Sources */,

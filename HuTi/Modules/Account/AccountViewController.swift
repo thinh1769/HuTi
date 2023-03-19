@@ -9,6 +9,22 @@ import UIKit
 
 class AccountViewController: BaseViewController {
     
+    @IBOutlet weak var accountNameLabel: UILabel!
+    @IBOutlet weak var signInBtn: UIButton!
+    @IBOutlet weak var signedInStackView: UIStackView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let isLogin = UserDefaults.isSignIn else { return }
+        if isLogin {
+            signInBtn.isHidden = true
+            signedInStackView.isHidden = false
+        } else {
+            accountNameLabel.text = CommonConstants.notSignIn
+            signInBtn.isHidden = false
+            signedInStackView.isHidden = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,6 +32,12 @@ class AccountViewController: BaseViewController {
     }
     
     private func setupUI() {
+        
+    }
+    
+    @IBAction func onClickedSignInBtn(_ sender: UIButton) {
+        let vc = SignInViewController()
+        navigateTo(vc)
     }
     
     @IBAction func onClickedNewPostBtn(_ sender: UIButton) {
@@ -39,6 +61,7 @@ class AccountViewController: BaseViewController {
     }
     
     @IBAction func onClickedSignOutBtn(_ sender: UIButton) {
+        UserDefaults.isSignIn = false
         let vc = SignInViewController()
         navigateTo(vc)
     }

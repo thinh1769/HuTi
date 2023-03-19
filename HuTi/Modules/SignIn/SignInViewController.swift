@@ -38,6 +38,7 @@ class SignInViewController: BaseViewController {
     }
     
     @IBAction func onClickedSignInBtn(_ sender: UIButton) {
+        UserDefaults.isSignIn = true
         setRootTabBar()
     }
 }

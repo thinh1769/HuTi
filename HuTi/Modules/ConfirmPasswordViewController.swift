@@ -35,6 +35,7 @@ class ConfirmPasswordViewController: BaseViewController {
     }
     
     @IBAction func onClickedContinueBtn(_ sender: UIButton) {
+        UserDefaults.isSignIn = true
         setRootTabBar()
     }
 }
