@@ -11,7 +11,7 @@ import RxRelay
 
 class NewPostViewModel {
     let bag = DisposeBag()
-    let typeProperty = BehaviorRelay<[String]>(value: [])
+    let typeRealEstate = BehaviorRelay<[String]>(value: [])
     let city = BehaviorRelay<[String]>(value: [])
     let district = BehaviorRelay<[String]>(value: [])
     let ward = BehaviorRelay<[String]>(value: [])
@@ -34,8 +34,8 @@ class NewPostViewModel {
     func pickItem(pickerTag: Int) -> String? {
         switch pickerTag{
         case PickerTag.type:
-            if typeProperty.value.count > 0 {
-                return typeProperty.value[selectedType]
+            if typeRealEstate.value.count > 0 {
+                return typeRealEstate.value[selectedType]
             } else {
                 return ""
             }

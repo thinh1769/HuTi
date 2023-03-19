@@ -18,7 +18,7 @@ struct CommonConstants {
 }
 
 struct TextFieldPlaceHolder {
-    static let typeProperty = "Loại bất động sản"
+    static let typeRealEstate = "Loại bất động sản"
     static let city = "Tỉnh, thành phố"
     static let district = "Quận, huyện"
     static let ward = "Phường, xã"
@@ -86,7 +86,21 @@ struct MainTitle {
     static let favoritePosts = "Tin đăng yêu thích"
 }
 
-struct TypeProperty {
-    static let sell = ["Căn hộ chung cư", "Nhà riêng", "Nhà biệt thự, liền kề", "Nhà mặt phố", "Nhà phố thương mại", "Đất"]
-    static let forRent = ["Căn hộ chung cư", "Nhà riêng", "Nhà biệt thự, liền kề", "Nhà mặt phố", "Nhà trọ, phòng trọ", "Nhà phố thương mại", "Văn phòng", "Cửa hàng, kiot", "Kho, nhà xưởng", "Đất", "Bất động sản khác"]
+struct TypeRealEstate {
+    static let sell = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort]
+    static let forRent = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.motel, Self.office, Self.shopKiosk, Self.wareHouseFactory, Self.land, Self.otherRealEstate]
+    
+    static let apartment = "Căn hộ chung cư"
+    static let home = "Nhà riêng"
+    static let villa = "Nhà biệt thự, liền kề"
+    static let streetHouse = "Nhà mặt phố"
+    static let shopHouse = "Nhà phố thương mại"
+    static let projectLand = "Đất nền dự án"
+    static let land = "Đất"
+    static let farmResort = "Trang trại, khu nghỉ dưỡng"
+    static let motel = "Nhà trọ, phòng trọ"
+    static let office = "Văn phòng"
+    static let shopKiosk = "Cửa hàng, kiot"
+    static let wareHouseFactory = "Kho, nhà xưởng"
+    static let otherRealEstate = "Bất động sản khác"
 }
