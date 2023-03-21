@@ -10,6 +10,8 @@
 		2282B38129C6E7CA002C4125 /* NewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2282B38029C6E7CA002C4125 /* NewPostViewModel.swift */; };
 		22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */; };
 		22D2E25329C6C11600E46CAF /* UserDefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */; };
+		22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */; };
+		22EC390429C9D2AC00174D65 /* ProjectFilterResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22EC390229C9D2AC00174D65 /* ProjectFilterResultTableViewCell.xib */; };
 		8E04D744477EEFCB514E8B28 /* Pods_HuTi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29605AC57F7499D1B086D28D /* Pods_HuTi.framework */; };
 		FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */; };
 		FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0E76C4299CDD4600E4818C /* SignUpViewController.xib */; };
@@ -58,6 +60,8 @@
 		2282B38029C6E7CA002C4125 /* NewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewModel.swift; sourceTree = "<group>"; };
 		22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Ext.swift"; sourceTree = "<group>"; };
+		22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFilterResultTableViewCell.swift; sourceTree = "<group>"; };
+		22EC390229C9D2AC00174D65 /* ProjectFilterResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectFilterResultTableViewCell.xib; sourceTree = "<group>"; };
 		29605AC57F7499D1B086D28D /* Pods_HuTi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuTi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		620668C98BB036879901C46F /* Pods-HuTi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuTi.debug.xcconfig"; path = "Target Support Files/Pods-HuTi/Pods-HuTi.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		22EC390029C9D24400174D65 /* ProjectFilterResultTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */,
+				22EC390229C9D2AC00174D65 /* ProjectFilterResultTableViewCell.xib */,
+			);
+			path = ProjectFilterResultTableViewCell;
+			sourceTree = "<group>";
+		};
 		4EDACB083F25C42C5C30435E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +192,7 @@
 		FC2E2C1329B71A7F00DADA16 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				22EC390029C9D24400174D65 /* ProjectFilterResultTableViewCell */,
 				FC2E2C1929B71B7300DADA16 /* FilterResultTableViewCell */,
 				FC2E2C1429B71A8D00DADA16 /* AddressCollectionViewCell */,
 			);
@@ -451,6 +465,7 @@
 				FCBF7322299CC33A00BF327A /* LaunchScreen.storyboard in Resources */,
 				FCBF7330299CC4E500BF327A /* SignInViewController.xib in Resources */,
 				FC2E2C1829B71ABB00DADA16 /* AddressCollectionViewCell.xib in Resources */,
+				22EC390429C9D2AC00174D65 /* ProjectFilterResultTableViewCell.xib in Resources */,
 				FCC3AD4829C2F8C60050B58B /* PostDetailViewController.xib in Resources */,
 				FCEE1A1F29B9DAD700AEF380 /* AccountViewController.xib in Resources */,
 				FCC3AD4329C1C2220050B58B /* ProjectDetailViewController.xib in Resources */,
@@ -514,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */,
 				FCC3AD3D29C1722F0050B58B /* FilterViewController.swift in Sources */,
 				FCC3AD4229C1C2220050B58B /* ProjectDetailViewController.swift in Sources */,
 				FCC3AD4729C2F8C60050B58B /* PostDetailViewController.swift in Sources */,
