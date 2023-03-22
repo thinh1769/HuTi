@@ -104,3 +104,16 @@ struct TypeRealEstate {
     static let wareHouseFactory = "Kho, nhà xưởng"
     static let otherRealEstate = "Bất động sản khác"
 }
+
+enum AdministrativeURLType: String {
+    case getAllProvinces
+    case getDistrictsByProvince
+    case getWardsByDistrict
+}
+
+struct AdministrativeURL {
+    static let getAllProvinces = "https://vn-public-apis.fpo.vn/provinces/getAll?limit=-1"
+    static let getDistrictsByProvince = "https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode="
+    static let getWardsByDistrict = "https://vn-public-apis.fpo.vn/wards/getByDistrict?districtCode="
+    static let urlTail = "&limit=-1"
+}
