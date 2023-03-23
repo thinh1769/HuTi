@@ -76,7 +76,7 @@ class FilterResultViewController: BaseViewController {
     }
     
     @IBAction func onClickedFilterBtn(_ sender: UIButton) {
-        let vc = FilterViewController()
+        let vc = FilterViewController.instance(tabBarItemTitle: viewModel.tabBarItemTitle)
         navigateTo(vc)
     }
     

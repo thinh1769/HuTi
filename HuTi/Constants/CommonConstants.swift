@@ -75,6 +75,7 @@ struct TabBarItemTitle {
     
 struct ClassNibName {
     static let FilterResultViewController = "FilterResultViewController"
+    static let FilterViewController = "FilterViewController"
     static let PostedViewController = "PostedViewController"
 }
 

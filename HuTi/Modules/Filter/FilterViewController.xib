@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -52,7 +52,7 @@
                     <rect key="frame" x="0.0" y="117" width="390" height="613"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PG5-ST-P6Y">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="779"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="639"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1n-7a-TUC" userLabel="typeView">
                                     <rect key="frame" x="40" y="5" width="310" height="50"/>
@@ -186,47 +186,8 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIV-fK-Q63" userLabel="streetView">
-                                    <rect key="frame" x="40" y="245" width="310" height="50"/>
-                                    <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Đường, phố" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EKQ-aa-L4N">
-                                            <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qb1-hO-kyn">
-                                            <rect key="frame" x="275" y="18.000000000000018" width="25" height="14.999999999999996"/>
-                                            <color key="tintColor" name="themeText"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="JoM-zy-rcF"/>
-                                                <constraint firstAttribute="width" constant="25" id="XxF-kK-oVj"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" name="white"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="5qV-VH-CN5"/>
-                                        <constraint firstItem="Qb1-hO-kyn" firstAttribute="centerY" secondItem="KIV-fK-Q63" secondAttribute="centerY" id="7Lv-VD-BBz"/>
-                                        <constraint firstItem="EKQ-aa-L4N" firstAttribute="top" secondItem="KIV-fK-Q63" secondAttribute="top" id="8gB-4f-f3k"/>
-                                        <constraint firstItem="EKQ-aa-L4N" firstAttribute="leading" secondItem="KIV-fK-Q63" secondAttribute="leading" id="Q7R-MI-Ndp"/>
-                                        <constraint firstAttribute="bottom" secondItem="EKQ-aa-L4N" secondAttribute="bottom" id="pHB-zf-YxB"/>
-                                        <constraint firstAttribute="trailing" secondItem="Qb1-hO-kyn" secondAttribute="trailing" constant="10" id="q9B-Ha-uA2"/>
-                                        <constraint firstAttribute="trailing" secondItem="EKQ-aa-L4N" secondAttribute="trailing" id="ulf-8T-pLz"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <integer key="value" value="10"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh mục lọc thêm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="az9-bf-8lj" userLabel="extraTitleLabel">
-                                    <rect key="frame" x="40" y="305" width="310" height="24"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                    <color key="textColor" name="themeText"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gX-0G-M8d" userLabel="priceView">
-                                    <rect key="frame" x="40" y="339" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="245" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mức giá" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4hh-TV-Cpc">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -259,7 +220,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCt-9n-yKy" userLabel="acreageView">
-                                    <rect key="frame" x="40" y="399" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="305" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Diện tích" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FmC-cQ-4JL">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -267,7 +228,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gCl-c8-53Y">
-                                            <rect key="frame" x="275" y="17.999999999999961" width="25" height="14.999999999999996"/>
+                                            <rect key="frame" x="275" y="18.000000000000018" width="25" height="14.999999999999996"/>
                                             <color key="tintColor" name="themeText"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="uV6-Ae-fYw"/>
@@ -291,8 +252,80 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQd-lK-SSr" userLabel="legalView">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh mục lọc thêm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="az9-bf-8lj" userLabel="extraTitleLabel">
+                                    <rect key="frame" x="40" y="365" width="310" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                    <color key="textColor" name="themeText"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lY7-2A-Dam" userLabel="bathroomView">
+                                    <rect key="frame" x="40" y="399" width="310" height="50"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số phòng tắm" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LbS-H6-3LC">
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Auf-lC-hn9">
+                                            <rect key="frame" x="275" y="17.999999999999961" width="25" height="14.999999999999996"/>
+                                            <color key="tintColor" name="themeText"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="8YI-Sg-C2f"/>
+                                                <constraint firstAttribute="height" constant="25" id="Tbi-mh-mRh"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="white"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="LbS-H6-3LC" secondAttribute="trailing" id="0dE-L4-4s2"/>
+                                        <constraint firstItem="LbS-H6-3LC" firstAttribute="leading" secondItem="lY7-2A-Dam" secondAttribute="leading" id="QIE-Of-jbd"/>
+                                        <constraint firstItem="LbS-H6-3LC" firstAttribute="top" secondItem="lY7-2A-Dam" secondAttribute="top" id="VGK-uj-7uz"/>
+                                        <constraint firstAttribute="height" constant="50" id="aZz-mv-fAR"/>
+                                        <constraint firstAttribute="bottom" secondItem="LbS-H6-3LC" secondAttribute="bottom" id="brT-Oh-CAC"/>
+                                        <constraint firstAttribute="trailing" secondItem="Auf-lC-hn9" secondAttribute="trailing" constant="10" id="cd0-lM-JmD"/>
+                                        <constraint firstItem="Auf-lC-hn9" firstAttribute="centerY" secondItem="lY7-2A-Dam" secondAttribute="centerY" id="xS7-Lq-CbK"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22R-4K-fSd" userLabel="houseDirectionView">
                                     <rect key="frame" x="40" y="459" width="310" height="50"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hướng nhà" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="txm-On-osT">
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xzq-no-w1W">
+                                            <rect key="frame" x="275" y="17.999999999999961" width="25" height="14.999999999999996"/>
+                                            <color key="tintColor" name="themeText"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="mE2-c3-bjb"/>
+                                                <constraint firstAttribute="width" constant="25" id="t3R-8s-4Br"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="white"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="txm-On-osT" secondAttribute="trailing" id="297-4g-Woq"/>
+                                        <constraint firstItem="txm-On-osT" firstAttribute="top" secondItem="22R-4K-fSd" secondAttribute="top" id="4X3-gR-xjb"/>
+                                        <constraint firstAttribute="trailing" secondItem="xzq-no-w1W" secondAttribute="trailing" constant="10" id="gWh-wR-4ea"/>
+                                        <constraint firstAttribute="bottom" secondItem="txm-On-osT" secondAttribute="bottom" id="ipo-wz-Fkf"/>
+                                        <constraint firstAttribute="height" constant="50" id="mfM-PD-Z8Y"/>
+                                        <constraint firstItem="xzq-no-w1W" firstAttribute="centerY" secondItem="22R-4K-fSd" secondAttribute="centerY" id="sPD-Qv-KOS"/>
+                                        <constraint firstItem="txm-On-osT" firstAttribute="leading" secondItem="22R-4K-fSd" secondAttribute="leading" id="uzX-Qn-jXt"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQd-lK-SSr" userLabel="legalView">
+                                    <rect key="frame" x="40" y="519" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Giấy tờ pháp lý" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uF2-SD-fAg">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -325,7 +358,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhy-l3-dHn" userLabel="funitureView">
-                                    <rect key="frame" x="40" y="519" width="310" height="50"/>
+                                    <rect key="frame" x="40" y="579" width="310" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nội thất" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ka4-4c-eK6">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -350,174 +383,6 @@
                                         <constraint firstItem="ka4-4c-eK6" firstAttribute="top" secondItem="Vhy-l3-dHn" secondAttribute="top" id="nKf-cq-zYL"/>
                                         <constraint firstAttribute="trailing" secondItem="SAQ-tS-Eyj" secondAttribute="trailing" constant="10" id="p0a-RY-XoC"/>
                                         <constraint firstItem="ka4-4c-eK6" firstAttribute="leading" secondItem="Vhy-l3-dHn" secondAttribute="leading" id="uB2-Pp-cbx"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <integer key="value" value="10"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HxE-sv-h5l" userLabel="bathroomView">
-                                    <rect key="frame" x="40" y="579" width="310" height="30"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số phòng tắm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxi-vc-e7Q">
-                                            <rect key="frame" x="19.999999999999993" y="5" width="122.33333333333331" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="KQt-UE-hLA"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" name="black"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1SC-nX-Nwu">
-                                            <rect key="frame" x="203" y="-2.3333333333333712" width="97" height="35"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsV-yo-jdW">
-                                                    <rect key="frame" x="0.0" y="0.0" width="35.333333333333336" height="35"/>
-                                                    <color key="tintColor" name="themeText"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="minus.circle" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
-                                                    </state>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCb-Pz-TEg">
-                                                    <rect key="frame" x="40.333333333333314" y="0.0" width="16.333333333333329" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                                    <color key="textColor" name="black"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azE-ej-axe">
-                                                    <rect key="frame" x="61.666666666666686" y="0.0" width="35.333333333333343" height="35"/>
-                                                    <color key="tintColor" name="themeText"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="plus.circle" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
-                                                    </state>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="vw2-Cw-eoX"/>
-                                            </constraints>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="gxi-vc-e7Q" firstAttribute="leading" secondItem="HxE-sv-h5l" secondAttribute="leading" constant="20" id="HDi-Da-p2Y"/>
-                                        <constraint firstAttribute="trailing" secondItem="1SC-nX-Nwu" secondAttribute="trailing" constant="10" id="K5f-Ep-yYW"/>
-                                        <constraint firstItem="1SC-nX-Nwu" firstAttribute="centerY" secondItem="HxE-sv-h5l" secondAttribute="centerY" id="P9o-Di-eoL"/>
-                                        <constraint firstAttribute="height" constant="30" id="e64-Kl-wv3"/>
-                                        <constraint firstItem="gxi-vc-e7Q" firstAttribute="centerY" secondItem="HxE-sv-h5l" secondAttribute="centerY" id="kGK-oH-thC"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1X-DH-HXw" userLabel="bedroomView">
-                                    <rect key="frame" x="40" y="619" width="310" height="30"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số phòng ngủ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG2-Hu-7Qh">
-                                            <rect key="frame" x="19.999999999999993" y="5" width="122.33333333333331" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="1CQ-hX-au0"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" name="black"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CbD-qi-std">
-                                            <rect key="frame" x="203" y="-2.3333333333333712" width="97" height="35"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKI-3r-XfA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="35.333333333333336" height="35"/>
-                                                    <color key="tintColor" name="themeText"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="minus.circle" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
-                                                    </state>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgF-nB-abW">
-                                                    <rect key="frame" x="40.333333333333314" y="0.0" width="16.333333333333329" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                                    <color key="textColor" name="black"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pag-PO-G6X">
-                                                    <rect key="frame" x="61.666666666666686" y="0.0" width="35.333333333333343" height="35"/>
-                                                    <color key="tintColor" name="themeText"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="plus.circle" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
-                                                    </state>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="LrJ-5a-GyG"/>
-                                            </constraints>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="AG2-Hu-7Qh" firstAttribute="leading" secondItem="F1X-DH-HXw" secondAttribute="leading" constant="20" id="Bzg-Y6-CXR"/>
-                                        <constraint firstAttribute="trailing" secondItem="CbD-qi-std" secondAttribute="trailing" constant="10" id="EK4-oJ-Ndh"/>
-                                        <constraint firstItem="CbD-qi-std" firstAttribute="centerY" secondItem="F1X-DH-HXw" secondAttribute="centerY" id="Ojk-cy-zba"/>
-                                        <constraint firstItem="AG2-Hu-7Qh" firstAttribute="centerY" secondItem="F1X-DH-HXw" secondAttribute="centerY" id="PNb-0U-PF4"/>
-                                        <constraint firstAttribute="height" constant="30" id="cog-Ld-xzP"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22R-4K-fSd" userLabel="houseDirectionView">
-                                    <rect key="frame" x="40" y="659" width="310" height="50"/>
-                                    <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hướng nhà" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="txm-On-osT">
-                                            <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xzq-no-w1W">
-                                            <rect key="frame" x="275" y="17.999999999999961" width="25" height="14.999999999999996"/>
-                                            <color key="tintColor" name="themeText"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="mE2-c3-bjb"/>
-                                                <constraint firstAttribute="width" constant="25" id="t3R-8s-4Br"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" name="white"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="txm-On-osT" secondAttribute="trailing" id="297-4g-Woq"/>
-                                        <constraint firstItem="txm-On-osT" firstAttribute="top" secondItem="22R-4K-fSd" secondAttribute="top" id="4X3-gR-xjb"/>
-                                        <constraint firstAttribute="trailing" secondItem="xzq-no-w1W" secondAttribute="trailing" constant="10" id="gWh-wR-4ea"/>
-                                        <constraint firstAttribute="bottom" secondItem="txm-On-osT" secondAttribute="bottom" id="ipo-wz-Fkf"/>
-                                        <constraint firstAttribute="height" constant="50" id="mfM-PD-Z8Y"/>
-                                        <constraint firstItem="xzq-no-w1W" firstAttribute="centerY" secondItem="22R-4K-fSd" secondAttribute="centerY" id="sPD-Qv-KOS"/>
-                                        <constraint firstItem="txm-On-osT" firstAttribute="leading" secondItem="22R-4K-fSd" secondAttribute="leading" id="uzX-Qn-jXt"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <integer key="value" value="10"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1b9-JV-ljM" userLabel="balconyDirectionView">
-                                    <rect key="frame" x="40" y="719" width="310" height="50"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HeU-bF-Cx8">
-                                            <rect key="frame" x="275" y="17.999999999999961" width="25" height="14.999999999999996"/>
-                                            <color key="tintColor" name="themeText"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="f7a-JC-aUQ"/>
-                                                <constraint firstAttribute="width" constant="25" id="kMk-m0-mMs"/>
-                                            </constraints>
-                                        </imageView>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hướng ban công" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="853-Q7-N7G">
-                                            <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                    <color key="backgroundColor" name="white"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="HeU-bF-Cx8" secondAttribute="trailing" constant="10" id="1ss-4c-76G"/>
-                                        <constraint firstAttribute="bottom" secondItem="853-Q7-N7G" secondAttribute="bottom" id="5sk-ff-kxd"/>
-                                        <constraint firstItem="HeU-bF-Cx8" firstAttribute="centerY" secondItem="1b9-JV-ljM" secondAttribute="centerY" id="JNg-Pu-4P3"/>
-                                        <constraint firstAttribute="trailing" secondItem="853-Q7-N7G" secondAttribute="trailing" id="Wcu-pp-L0p"/>
-                                        <constraint firstItem="853-Q7-N7G" firstAttribute="top" secondItem="1b9-JV-ljM" secondAttribute="top" id="cfz-Wu-SIy"/>
-                                        <constraint firstAttribute="height" constant="50" id="d1w-qW-Tdw"/>
-                                        <constraint firstItem="853-Q7-N7G" firstAttribute="leading" secondItem="1b9-JV-ljM" secondAttribute="leading" id="vAn-Ec-Sfr"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -587,20 +452,15 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NhC-Jx-0oi" secondAttribute="trailing" constant="20" id="gox-13-jXT"/>
                 <constraint firstItem="BfX-zI-9Lh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="znI-yN-WU1"/>
             </constraints>
-            <point key="canvasLocation" x="334" y="-9"/>
+            <point key="canvasLocation" x="337" y="31"/>
         </view>
     </objects>
     <resources>
         <image name="arrow.2.circlepath" catalog="system" width="128" height="104"/>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
-        <image name="minus.circle" catalog="system" width="128" height="123"/>
-        <image name="plus.circle" catalog="system" width="128" height="123"/>
         <namedColor name="background">
             <color red="0.98000001907348633" green="0.92900002002716064" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="black">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="themeText">
             <color red="0.75300002098083496" green="0.32600000500679016" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -9,6 +9,8 @@ import UIKit
 
 class FilterViewController: BaseViewController {
 
+    var viewModel = FilterViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -31,3 +33,11 @@ class FilterViewController: BaseViewController {
     }
 }
 
+// MARK: - Instance.
+extension FilterViewController {
+    class func instance(tabBarItemTitle: String) -> FilterViewController {
+        let controller = FilterViewController(nibName: ClassNibName.FilterViewController, bundle: Bundle.main)
+        controller.viewModel.tabBarItemTitle = tabBarItemTitle
+        return controller
+    }
+}

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2282B38129C6E7CA002C4125 /* NewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2282B38029C6E7CA002C4125 /* NewPostViewModel.swift */; };
 		228D5FD029CB298700439D78 /* AdministrativeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D5FCF29CB298700439D78 /* AdministrativeService.swift */; };
-		228D5FD229CB321500439D78 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D5FD129CB321500439D78 /* String+Ext.swift */; };
+		228D5FD429CBE84B00439D78 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D5FD329CBE84B00439D78 /* FilterViewModel.swift */; };
 		22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */; };
 		22D2E25329C6C11600E46CAF /* UserDefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */; };
 		22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */; };
@@ -63,7 +63,7 @@
 		202975FB1ABBB5219A59709D /* Pods-HuTi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuTi.release.xcconfig"; path = "Target Support Files/Pods-HuTi/Pods-HuTi.release.xcconfig"; sourceTree = "<group>"; };
 		2282B38029C6E7CA002C4125 /* NewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewModel.swift; sourceTree = "<group>"; };
 		228D5FCF29CB298700439D78 /* AdministrativeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdministrativeService.swift; sourceTree = "<group>"; };
-		228D5FD129CB321500439D78 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		228D5FD329CBE84B00439D78 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Ext.swift"; sourceTree = "<group>"; };
 		22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFilterResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -140,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */,
-				228D5FD129CB321500439D78 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -353,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				FCC3AD3B29C1722F0050B58B /* FilterViewController.swift */,
+				228D5FD329CBE84B00439D78 /* FilterViewModel.swift */,
 				FCC3AD3C29C1722F0050B58B /* FilterViewController.xib */,
 			);
 			path = Filter;
@@ -543,6 +543,7 @@
 			files = (
 				22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */,
 				FCC3AD3D29C1722F0050B58B /* FilterViewController.swift in Sources */,
+				228D5FD429CBE84B00439D78 /* FilterViewModel.swift in Sources */,
 				FCC3AD4229C1C2220050B58B /* ProjectDetailViewController.swift in Sources */,
 				22EC390829CA968F00174D65 /* ResponseMain.swift in Sources */,
 				FCC3AD4729C2F8C60050B58B /* PostDetailViewController.swift in Sources */,
@@ -571,7 +572,6 @@
 				2282B38129C6E7CA002C4125 /* NewPostViewModel.swift in Sources */,
 				FCBF732F299CC4E500BF327A /* SignInViewController.swift in Sources */,
 				FC0E76D1299F2B5D00E4818C /* BaseViewController.swift in Sources */,
-				228D5FD229CB321500439D78 /* String+Ext.swift in Sources */,
 				FC2E2C1729B71ABB00DADA16 /* AddressCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
