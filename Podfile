@@ -11,5 +11,6 @@ pod 'IQKeyboardManagerSwift'
 pod 'RxSwift'
 pod 'RxCocoa'
 pod 'Alamofire'
+pod 'AFNetworking', '~> 2.5'
 
 end

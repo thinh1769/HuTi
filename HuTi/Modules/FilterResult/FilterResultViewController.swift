@@ -20,9 +20,13 @@ class FilterResultViewController: BaseViewController {
     @IBOutlet private weak var mapView: MKMapView!
     
     var viewModel = FilterResultViewModel()
+    var service = AdministrativeService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        service.getAllCities { [weak self] city in
+//            print("\(city)\n")
+//        }
         setupUI()
     }
     

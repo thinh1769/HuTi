@@ -1,42 +1,57 @@
 //
-//  BaseService.swift
+//  AdministrativeService.swift
 //  HuTi
 //
-//  Created by Nguyễn Thịnh on 21/03/2023.
+//  Created by Nguyễn Thịnh on 22/03/2023.
 //
 
 import Foundation
-import Alamofire
+import AFNetworking
+import RxCocoa
 import RxSwift
 
 class AdministrativeService {
-    func request<Response: Codable>(administrativeURL: String, id: String? = nil, method: HTTPMethod = .get) -> Observable<Response> {
-        var url = administrativeURL
-        if let id = id {
-            url += id + AdministrativeURL.urlTail
-        }
-
-        return performRequest(request: AF.request(url, method: method, encoding: JSONEncoding.default))
-    }
-
-    private func performRequest<Response: Codable>(request: DataRequest) -> Observable<Response> {
-        AF.sessionConfiguration.timeoutIntervalForRequest = 30
-        AF.sessionConfiguration.timeoutIntervalForResource = 60
-        return Observable.create { observer in
-            request.responseDecodable(of: ResponseMain<Response>.self) { response in
-                if response.error != nil {
-                    print("Gọi api hành chính thất bại")
-                } else if let data = response.value {
-                    print("data hành chính gọi được = \(data)")
-                } else {
-                    print("Gọi api hành chính thất bại")
+    let manager = AFHTTPRequestOperationManager()
+    
+    func getAllCities(completion: @escaping([City]) -> Void) {
+        var listData = [NSDictionary]()
+        var result = [City]()
+        
+        manager.get(AdministrativeURL.getAllProvinces, parameters: nil) { operation, responseObject in
+            DispatchQueue.main.async {
+                let data = responseObject as! NSDictionary
+                let data1 = data["data"] as! NSDictionary
+                listData = data1["data"] as! [NSDictionary]
+                for index in listData {
+                    let administrativeIndex = index
+                    let name = (administrativeIndex["name"]) as! String
+                    let id = (administrativeIndex["code"]) as! String
+                    result.append(City(id: id, name: name))
                 }
+                completion(result)
             }
-            return Disposables.create {
-                request.cancel()
+        } failure: { _, _ in
             }
-        }
+    }
+    
+    func getDistrictsByCityId(completion: @escaping([City]) -> Void) {
+        var listData = [NSDictionary]()
+        var result = [City]()
+        
+        manager.get(AdministrativeURL.getAllProvinces, parameters: nil) { operation, responseObject in
+            DispatchQueue.main.async {
+                let data = responseObject as! NSDictionary
+                let data1 = data["data"] as! NSDictionary
+                listData = data1["data"] as! [NSDictionary]
+                for index in listData {
+                    let administrativeIndex = index
+                    let name = (administrativeIndex["name"]) as! String
+                    let id = (administrativeIndex["code"]) as! String
+                    result.append(City(id: id, name: name))
+                }
+                completion(result)
+            }
+        } failure: { _, _ in
+            }
     }
 }
-
-
