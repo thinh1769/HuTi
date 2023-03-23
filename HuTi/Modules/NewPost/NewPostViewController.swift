@@ -45,6 +45,7 @@ class NewPostViewController: BaseViewController {
     
     private func setupUI() {
         setupPickerView()
+        
         sellView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedSellView)))
         forRentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedForRentView)))
     }

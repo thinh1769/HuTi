@@ -77,6 +77,10 @@ class FilterResultViewController: BaseViewController {
     
     @IBAction func onClickedFilterBtn(_ sender: UIButton) {
         let vc = FilterViewController.instance(tabBarItemTitle: viewModel.tabBarItemTitle)
+        vc.delegate = self
+        if viewModel.address.value.count > 1 {
+            
+        }
         navigateTo(vc)
     }
     
@@ -88,6 +92,13 @@ class FilterResultViewController: BaseViewController {
         } else {
             mapButton.setImage(UIImage(systemName: ImageName.map), for: .normal)
         }
+    }
+}
+
+extension FilterResultViewController: FilterViewControllerDelegate {
+    func didTapApplyButton(listOptions: [String]) {
+        viewModel.address.accept(listOptions)
+        print(listOptions)
     }
 }
 

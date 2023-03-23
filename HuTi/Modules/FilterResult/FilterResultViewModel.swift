@@ -26,6 +26,6 @@ class FilterResultViewModel {
     
     func initData() {
         post.accept(postTemp)
-        address.accept(addressTemp)
+//        address.accept(addressTemp)
     }
 }

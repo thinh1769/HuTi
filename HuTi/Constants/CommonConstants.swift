@@ -18,7 +18,8 @@ struct CommonConstants {
 }
 
 struct TextFieldPlaceHolder {
-    static let typeRealEstate = "Loại bất động sản"
+    static let typeRealEstate = "Loại nhà đất"
+    static let typeProject = "Loại dự án"
     static let city = "Tỉnh, thành phố"
     static let district = "Quận, huyện"
     static let ward = "Phường, xã"
@@ -43,6 +44,8 @@ struct PickerTag {
     static let funiture = 8
     static let houseDirection = 9
     static let balconyDirection = 10
+    static let bedroom = 11
+    static let status = 12
 }
 
 struct ImageName {

@@ -10,20 +10,7 @@ import UIKit
 class AccountViewController: BaseViewController {
     
     @IBOutlet weak var accountNameLabel: UILabel!
-    @IBOutlet weak var signInBtn: UIButton!
     @IBOutlet weak var signedInStackView: UIStackView!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        guard let isLogin = UserDefaults.isSignIn else { return }
-        if isLogin {
-            signInBtn.isHidden = true
-            signedInStackView.isHidden = false
-        } else {
-            accountNameLabel.text = CommonConstants.notSignIn
-            signInBtn.isHidden = false
-            signedInStackView.isHidden = true
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

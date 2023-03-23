@@ -14,11 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let mainTabBar = MainTabBarController()
+        let vc = SignInViewController()
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = mainTabBar
+        window?.rootViewController = vc
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
     }
