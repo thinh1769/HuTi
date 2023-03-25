@@ -10,7 +10,9 @@ import RxSwift
 import RxCocoa
 
 protocol FilterViewControllerDelegate: AnyObject {
-    func didTapApplyButton(listOptions: [String])
+    func didTapApplyButton(listOptions: [(Int, String)])
+    
+    func didTapResetButton()
 }
 
 class FilterViewController: BaseViewController {
@@ -44,6 +46,10 @@ class FilterViewController: BaseViewController {
     var viewModel = FilterViewModel()
     weak var delegate: FilterViewControllerDelegate?
     
+    func configSelectedOptions(optionsList: [(key: Int, value: String)]) {
+        viewModel.optionsList = optionsList
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -62,6 +68,7 @@ class FilterViewController: BaseViewController {
             typeTextField.placeholder = TextFieldPlaceHolder.typeRealEstate
             statusView.isHidden = true
         }
+        reloadPreviousOptions()
         isHiddenMainTabBar = true
         isTouchDismissKeyboardEnabled = true
     }
@@ -76,6 +83,20 @@ class FilterViewController: BaseViewController {
         setupBedroomPickerView()
         setupHouseDirectionPickerView()
         setupStatusPickerView()
+    }
+    
+    @IBAction func onClickedResetBtn(_ sender: UIButton) {
+        typeTextField.text = ""
+        cityTextField.text = ""
+        districtTextField.text = ""
+        wardTextField.text = ""
+        priceTextField.text = ""
+        acreageTextField.text = ""
+        bedroomTextField.text = ""
+        houseDirectionTextField.text = ""
+        statusTextField.text = ""
+        viewModel.optionsList = [(key: Int, value: String)]()
+        delegate?.didTapResetButton()
     }
     
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
@@ -95,6 +116,33 @@ class FilterViewController: BaseViewController {
  }
 
 extension FilterViewController {
+    private func reloadPreviousOptions() {
+        for (_, element) in viewModel.optionsList.enumerated() {
+            switch element.key {
+            case PickerTag.type:
+                typeTextField.text = element.value
+            case PickerTag.city:
+                cityTextField.text = element.value
+            case PickerTag.district:
+                districtTextField.text = element.value
+            case PickerTag.ward:
+                wardTextField.text = element.value
+            case PickerTag.price:
+                priceTextField.text = element.value
+            case PickerTag.acreage:
+                acreageTextField.text = element.value
+            case PickerTag.bedroom:
+                bedroomTextField.text = element.value
+            case PickerTag.houseDirection:
+                houseDirectionTextField.text = element.value
+            case PickerTag.status:
+                statusTextField.text = element.value
+            default:
+                return
+            }
+        }
+    }
+    
     private func setupTypePickerView() {
         typeTextField.inputView = typePicker
         typeTextField.tintColor = .clear
@@ -310,33 +358,33 @@ extension FilterViewController {
 }
 
 extension FilterViewController {
-    private func getApplyOptions() -> [String] {
+    private func getApplyOptions() -> [(Int, String)] {
         guard let type = typeTextField.text,
               let city = cityTextField.text,
               type != "",
               city != ""
-        else { return [String]() }
-        var listOptions = [type, city]
+        else { return [(Int, String)]() }
+        var listOptions: [(Int, String)] = [(PickerTag.type, type), (PickerTag.city, city)]
         if let district = districtTextField.text, district != "" {
-            listOptions.append(district)
+            listOptions += [(PickerTag.district, district)]
         }
         if let ward = wardTextField.text, ward != "" {
-            listOptions.append(ward)
+            listOptions += [(PickerTag.ward, ward)]
         }
         if let price = priceTextField.text, price != "" {
-            listOptions.append(price)
+            listOptions += [(PickerTag.price, price)]
         }
         if let acreage = acreageTextField.text, acreage != "" {
-            listOptions.append(acreage)
+            listOptions += [(PickerTag.acreage, acreage)]
         }
         if let bedroom = bedroomTextField.text, bedroom != "" {
-            listOptions.append(bedroom)
+            listOptions += [(PickerTag.bedroom, bedroom)]
         }
         if let houseDirection = houseDirectionTextField.text, houseDirection != "" {
-            listOptions.append(houseDirection)
+            listOptions += [(PickerTag.houseDirection, houseDirection)]
         }
         if let status = statusTextField.text, status != "" {
-            listOptions.append(status)
+            listOptions += [(PickerTag.status, status)]
         }
         return listOptions
     }

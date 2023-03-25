@@ -30,6 +30,7 @@ class FilterViewModel {
     var selectedBedroom = 0
     var selectedHouseDirection = 0
     var selectedStatus = 0
+    var optionsList = [(key: Int, value: String)]()
     
     func pickItem(pickerTag: Int) -> String? {
         switch pickerTag{

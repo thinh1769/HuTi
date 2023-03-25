@@ -17,11 +17,13 @@
                 <outlet property="balconyDirectionTextField" destination="fQ4-NX-kpg" id="SmO-JR-qEh"/>
                 <outlet property="cityTextField" destination="OZd-cE-pdO" id="Oxz-Pm-195"/>
                 <outlet property="districtTextField" destination="Q93-6u-N9E" id="xRB-VU-hYt"/>
+                <outlet property="editLocationBtn" destination="Wjp-qj-C97" id="LrZ-II-8J7"/>
                 <outlet property="forRentCheckmarkImage" destination="c0v-wB-U9h" id="Lbc-9b-XJr"/>
                 <outlet property="forRentView" destination="QFB-zJ-zsU" id="ga5-sF-a3t"/>
                 <outlet property="funitureTextField" destination="NWH-Ua-zbS" id="eZP-LS-VjN"/>
                 <outlet property="houseDirectionTextField" destination="Lfc-ao-yQr" id="Jte-PN-DCL"/>
                 <outlet property="legalTextField" destination="CXv-or-2P6" id="YFg-tK-Zwa"/>
+                <outlet property="mapView" destination="bwD-1l-kiM" id="tUh-Rh-IWG"/>
                 <outlet property="projectTextField" destination="Uph-BF-TtB" id="KzK-Cp-eTa"/>
                 <outlet property="sellCheckmarkImage" destination="ESq-lg-euA" id="XGW-Zg-TUn"/>
                 <outlet property="sellView" destination="mh8-7W-GRT" id="3hV-0X-4NY"/>
@@ -464,28 +466,63 @@
                                                             <color key="textColor" name="black"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwD-1l-kiM" userLabel="MapView">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="So4-Io-yNm">
                                                             <rect key="frame" x="0.0" y="30" width="295" height="250"/>
+                                                            <subviews>
+                                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwD-1l-kiM" userLabel="MapView">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="250"/>
+                                                                    <standardMapConfiguration key="preferredConfiguration"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <integer key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </mapView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Vy3-da-dQz">
+                                                                    <rect key="frame" x="132.5" y="94.5" width="30" height="30"/>
+                                                                    <color key="tintColor" name="themeText"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="GE2-CY-1vB"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="HjP-SV-P1m"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="250" id="giz-aM-gMW"/>
+                                                                <constraint firstAttribute="trailing" secondItem="bwD-1l-kiM" secondAttribute="trailing" id="3mJ-z9-DLT"/>
+                                                                <constraint firstAttribute="height" constant="250" id="Cm7-cm-7u1"/>
+                                                                <constraint firstAttribute="bottom" secondItem="bwD-1l-kiM" secondAttribute="bottom" id="Fic-zc-pIP"/>
+                                                                <constraint firstItem="bwD-1l-kiM" firstAttribute="top" secondItem="So4-Io-yNm" secondAttribute="top" id="Jca-3c-Eut"/>
+                                                                <constraint firstItem="bwD-1l-kiM" firstAttribute="leading" secondItem="So4-Io-yNm" secondAttribute="leading" id="Ry3-JY-I7Q"/>
+                                                                <constraint firstItem="Vy3-da-dQz" firstAttribute="centerY" secondItem="So4-Io-yNm" secondAttribute="centerY" constant="-15" id="arF-yL-ni7"/>
+                                                                <constraint firstItem="Vy3-da-dQz" firstAttribute="centerX" secondItem="So4-Io-yNm" secondAttribute="centerX" id="osD-i1-4wn"/>
                                                             </constraints>
-                                                            <standardMapConfiguration key="preferredConfiguration"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <integer key="value" value="10"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </mapView>
+                                                        </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjp-qj-C97">
+                                                            <rect key="frame" x="255" y="0.0" width="40" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="qJQ-Wq-hPK"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                            <color key="tintColor" name="themeText"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" title="Sửa"/>
+                                                            <connections>
+                                                                <action selector="onClickedEditLocationBtn:" destination="-1" eventType="touchUpInside" id="uDU-31-EhZ"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="wG8-fX-1kk" firstAttribute="leading" secondItem="4bb-AC-gKk" secondAttribute="leading" id="6Xl-9A-EvC"/>
-                                                        <constraint firstAttribute="trailing" secondItem="bwD-1l-kiM" secondAttribute="trailing" id="Dir-rq-8yu"/>
                                                         <constraint firstItem="wG8-fX-1kk" firstAttribute="top" secondItem="4bb-AC-gKk" secondAttribute="top" id="MBS-nD-3bA"/>
-                                                        <constraint firstItem="bwD-1l-kiM" firstAttribute="leading" secondItem="4bb-AC-gKk" secondAttribute="leading" id="SqN-Pa-nP5"/>
+                                                        <constraint firstItem="So4-Io-yNm" firstAttribute="top" secondItem="Wjp-qj-C97" secondAttribute="bottom" id="Nww-dR-PBg"/>
                                                         <constraint firstAttribute="trailing" secondItem="wG8-fX-1kk" secondAttribute="trailing" id="Xpc-fz-hKZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="So4-Io-yNm" secondAttribute="trailing" id="bUx-h2-8Bh"/>
+                                                        <constraint firstItem="So4-Io-yNm" firstAttribute="leading" secondItem="4bb-AC-gKk" secondAttribute="leading" id="dE4-Fq-aKH"/>
+                                                        <constraint firstItem="Wjp-qj-C97" firstAttribute="top" secondItem="4bb-AC-gKk" secondAttribute="top" id="gV5-GK-4wI"/>
                                                         <constraint firstAttribute="height" constant="300" id="iYi-yP-C1t"/>
-                                                        <constraint firstItem="bwD-1l-kiM" firstAttribute="top" secondItem="wG8-fX-1kk" secondAttribute="bottom" constant="10" id="zwV-hG-lbZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Wjp-qj-C97" secondAttribute="trailing" id="jrS-bA-TrP"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -1461,7 +1498,7 @@
                 <constraint firstItem="eFB-9t-KvU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="sZn-zJ-Jda"/>
                 <constraint firstItem="D44-Un-bLi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zO7-qh-kwn"/>
             </constraints>
-            <point key="canvasLocation" x="265" y="36"/>
+            <point key="canvasLocation" x="-233" y="64"/>
         </view>
     </objects>
     <resources>
@@ -1470,6 +1507,7 @@
         <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="mappin" catalog="system" width="106" height="128"/>
         <image name="minus.circle" catalog="system" width="128" height="123"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>
         <namedColor name="background">

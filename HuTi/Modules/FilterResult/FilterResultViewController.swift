@@ -42,7 +42,7 @@ class FilterResultViewController: BaseViewController {
     private func setupCollectionView() {
         addressCollectionView.register(AddressCollectionViewCell.nib, forCellWithReuseIdentifier: AddressCollectionViewCell.reusableIdentifier)
         
-        viewModel.address.asObservable()
+        viewModel.options.asObservable()
             .bind(to: addressCollectionView.rx.items(cellIdentifier: AddressCollectionViewCell.reusableIdentifier, cellType: AddressCollectionViewCell.self)) { (index, element, cell) in
                 cell.config(content: element)
             }.disposed(by: viewModel.bag)
@@ -78,8 +78,8 @@ class FilterResultViewController: BaseViewController {
     @IBAction func onClickedFilterBtn(_ sender: UIButton) {
         let vc = FilterViewController.instance(tabBarItemTitle: viewModel.tabBarItemTitle)
         vc.delegate = self
-        if viewModel.address.value.count > 1 {
-            
+        if viewModel.options.value.count > 1 {
+            vc.configSelectedOptions(optionsList: viewModel.tuppleOptionsList)
         }
         navigateTo(vc)
     }
@@ -96,9 +96,14 @@ class FilterResultViewController: BaseViewController {
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {
-    func didTapApplyButton(listOptions: [String]) {
-        viewModel.address.accept(listOptions)
-        print(listOptions)
+    func didTapApplyButton(listOptions: [(Int, String)]) {
+        viewModel.tuppleOptionsList = listOptions
+        viewModel.parseTuppleToArray()
+    }
+    
+    func didTapResetButton() {
+        viewModel.optionsList = []
+        viewModel.options.accept(viewModel.optionsList)
     }
 }
 
@@ -115,7 +120,7 @@ extension FilterResultViewController {
 extension FilterResultViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cell = addressCollectionView.dequeueReusableCell(withReuseIdentifier: AddressCollectionViewCell.reusableIdentifier, for: indexPath) as! AddressCollectionViewCell
-        let item = viewModel.address.value[indexPath.row]
+        let item = viewModel.options.value[indexPath.row]
         cell.config(content: item)
         let width = cell.contentLabel.intrinsicContentSize.width + 20
         return CGSize(width: width, height: 40)

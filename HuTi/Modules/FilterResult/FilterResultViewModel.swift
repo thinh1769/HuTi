@@ -19,13 +19,21 @@ class FilterResultViewModel {
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu"),
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu"),
                     Post(title: "Bán gấp nhà mặt tiền Nguyễn Huệ", address: "69 Nguyễn Huệ, Bến Thành, Quận 1", price: "60 tỷ", authorName: "đăng bởi Ngọc Châu")]
-    let addressTemp = ["TP. Hồ Chí Minh", "Quận Tân Phú", "Tân Sơn Nhì"]
+    var optionsList = [String]()
     let post = BehaviorRelay<[Post]>(value: [])
-    let address = BehaviorRelay<[String]>(value: [])
+    let options = BehaviorRelay<[String]>(value: [])
     var tabBarItemTitle = TabBarItemTitle.sell
+    var tuppleOptionsList = [(key: Int, value: String)]()
     
     func initData() {
         post.accept(postTemp)
-//        address.accept(addressTemp)
+    }
+    
+    func parseTuppleToArray() {
+        optionsList = []
+        for (_, element) in tuppleOptionsList.enumerated() {
+            optionsList.append(element.value)
+        }
+        options.accept(optionsList)
     }
 }

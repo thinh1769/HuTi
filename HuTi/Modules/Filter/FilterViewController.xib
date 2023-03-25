@@ -415,6 +415,9 @@
                     <state key="normal" image="arrow.2.circlepath" catalog="system">
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="29"/>
                     </state>
+                    <connections>
+                        <action selector="onClickedResetBtn:" destination="-1" eventType="touchUpInside" id="P4o-fN-KBe"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxRelay
+import MapKit
 
 class NewPostViewController: BaseViewController {
 
@@ -25,6 +26,8 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var balconyDirectionTextField: UITextField!
     @IBOutlet weak var sellView: UIView!
     @IBOutlet weak var forRentView: UIView!
+    @IBOutlet weak var editLocationBtn: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
     
     let typePicker = UIPickerView()
     let cityPicker = UIPickerView()
@@ -36,6 +39,7 @@ class NewPostViewController: BaseViewController {
     let houseDirectionPicker = UIPickerView()
     let balconyDirectionPicker = UIPickerView()
     
+    
     var viewModel = NewPostViewModel()
     
     override func viewDidLoad() {
@@ -45,6 +49,7 @@ class NewPostViewController: BaseViewController {
     
     private func setupUI() {
         setupPickerView()
+        mapView.isUserInteractionEnabled = false
         
         sellView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedSellView)))
         forRentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedForRentView)))
@@ -77,6 +82,16 @@ class NewPostViewController: BaseViewController {
         }
     }
     
+    @IBAction func onClickedEditLocationBtn(_ sender: UIButton) {
+        if !viewModel.isEditBtnClicked {
+            editLocationBtn.setTitle(CommonConstants.done, for: .normal)
+            mapView.isUserInteractionEnabled = true
+        } else {
+            editLocationBtn.setTitle(CommonConstants.edit, for: .normal)
+            mapView.isUserInteractionEnabled = false
+        }
+        viewModel.isEditBtnClicked = !viewModel.isEditBtnClicked
+    }
     private func chooseSell(_ isChooseSell: Bool) {
         viewModel.isSelectedSell = isChooseSell
         typeTextField.text = ""

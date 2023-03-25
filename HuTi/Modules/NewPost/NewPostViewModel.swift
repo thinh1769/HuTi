@@ -30,6 +30,7 @@ class NewPostViewModel {
     var selectedHouseDirection = 0
     var selectedBalconyDirection = 0
     var isSelectedSell = true
+    var isEditBtnClicked = false
     
     func pickItem(pickerTag: Int) -> String? {
         switch pickerTag{

@@ -15,6 +15,7 @@ struct CommonConstants {
     static let notSignIn = "Bạn chưa đăng nhập hoặc đăng ký?"
     static let done = "Xong"
     static let cancel = "Thoát"
+    static let edit = "Sửa"
 }
 
 struct TextFieldPlaceHolder {
