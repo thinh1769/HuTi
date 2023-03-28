@@ -15,13 +15,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPostViewController" customModule="HuTi" customModuleProvider="target">
             <connections>
                 <outlet property="balconyDirectionTextField" destination="fQ4-NX-kpg" id="SmO-JR-qEh"/>
+                <outlet property="bathroomNumberLabel" destination="9Ob-I6-xij" id="yz7-59-6cH"/>
+                <outlet property="bedroomNumberLabel" destination="jCe-Op-3AM" id="Eiv-B9-xiC"/>
                 <outlet property="cityTextField" destination="OZd-cE-pdO" id="Oxz-Pm-195"/>
+                <outlet property="decreaseBathroomBtn" destination="CXJ-TP-u93" id="Wan-5h-fdZ"/>
+                <outlet property="decreaseBedroomBtn" destination="Xd7-hq-9Ma" id="lmW-G6-knt"/>
+                <outlet property="decreaseFloorBtn" destination="3zE-OD-C22" id="1nA-4X-uLJ"/>
                 <outlet property="districtTextField" destination="Q93-6u-N9E" id="xRB-VU-hYt"/>
                 <outlet property="editLocationBtn" destination="Wjp-qj-C97" id="LrZ-II-8J7"/>
+                <outlet property="floorNumberLabel" destination="KUx-nr-6No" id="M6V-uC-LGq"/>
                 <outlet property="forRentCheckmarkImage" destination="c0v-wB-U9h" id="Lbc-9b-XJr"/>
                 <outlet property="forRentView" destination="QFB-zJ-zsU" id="ga5-sF-a3t"/>
                 <outlet property="funitureTextField" destination="NWH-Ua-zbS" id="eZP-LS-VjN"/>
                 <outlet property="houseDirectionTextField" destination="Lfc-ao-yQr" id="Jte-PN-DCL"/>
+                <outlet property="increaseBathroomBtn" destination="dTS-za-H85" id="hzX-vg-LGm"/>
+                <outlet property="increaseBedroomBtn" destination="azg-DG-M9C" id="vnf-Co-G42"/>
+                <outlet property="increaseFloorBtn" destination="i84-vh-NxT" id="Wsf-51-C3U"/>
                 <outlet property="legalTextField" destination="CXv-or-2P6" id="YFg-tK-Zwa"/>
                 <outlet property="mapView" destination="bwD-1l-kiM" id="tUh-Rh-IWG"/>
                 <outlet property="projectTextField" destination="Uph-BF-TtB" id="KzK-Cp-eTa"/>
@@ -904,7 +913,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fpg-66-h0X">
-                                                            <rect key="frame" x="198.5" y="0.0" width="96.5" height="40"/>
+                                                            <rect key="frame" x="199" y="0.0" width="96" height="40"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xd7-hq-9Ma">
                                                                     <rect key="frame" x="0.0" y="0.0" width="35" height="40"/>
@@ -913,20 +922,29 @@
                                                                     <state key="normal" image="minus.circle" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="onClickedDecreaseBedroomBtn:" destination="-1" eventType="touchUpInside" id="aEx-iP-PqX"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCe-Op-3AM">
-                                                                    <rect key="frame" x="40" y="0.0" width="16.5" height="40"/>
+                                                                    <rect key="frame" x="40" y="0.0" width="16" height="40"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="16" id="LoP-1w-PcT"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                                     <color key="textColor" name="black"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azg-DG-M9C">
-                                                                    <rect key="frame" x="61.5" y="0.0" width="35" height="40"/>
+                                                                    <rect key="frame" x="61" y="0.0" width="35" height="40"/>
                                                                     <color key="tintColor" name="themeText"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" image="plus.circle" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="onClickedIncreaseBedroomBtn:" destination="-1" eventType="touchUpInside" id="jUB-99-tNW"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -966,7 +984,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6VN-bv-sfi">
-                                                            <rect key="frame" x="198.5" y="0.0" width="96.5" height="40"/>
+                                                            <rect key="frame" x="199" y="0.0" width="96" height="40"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXJ-TP-u93">
                                                                     <rect key="frame" x="0.0" y="0.0" width="35" height="40"/>
@@ -975,20 +993,29 @@
                                                                     <state key="normal" image="minus.circle" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="onClickedDecreaseBathroomBtn:" destination="-1" eventType="touchUpInside" id="Wrl-EU-xYm"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ob-I6-xij">
-                                                                    <rect key="frame" x="40" y="0.0" width="16.5" height="40"/>
+                                                                    <rect key="frame" x="40" y="0.0" width="16" height="40"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="16" id="5lv-wr-guI"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                                     <color key="textColor" name="black"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTS-za-H85">
-                                                                    <rect key="frame" x="61.5" y="0.0" width="35" height="40"/>
+                                                                    <rect key="frame" x="61" y="0.0" width="35" height="40"/>
                                                                     <color key="tintColor" name="themeText"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" image="plus.circle" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="onClickedIncreaseBathroomBtn:" destination="-1" eventType="touchUpInside" id="8WO-uK-VhS"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -1028,7 +1055,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gGq-Ka-chN">
-                                                            <rect key="frame" x="198.5" y="0.0" width="96.5" height="40"/>
+                                                            <rect key="frame" x="199" y="0.0" width="96" height="40"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zE-OD-C22">
                                                                     <rect key="frame" x="0.0" y="0.0" width="35" height="40"/>
@@ -1037,20 +1064,29 @@
                                                                     <state key="normal" image="minus.circle" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="onClickedDecreaseFloorBtn:" destination="-1" eventType="touchUpInside" id="FvK-0D-uJk"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-nr-6No">
-                                                                    <rect key="frame" x="40" y="0.0" width="16.5" height="40"/>
+                                                                    <rect key="frame" x="40" y="0.0" width="16" height="40"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="16" id="Udn-zQ-6ox"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                                     <color key="textColor" name="black"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i84-vh-NxT">
-                                                                    <rect key="frame" x="61.5" y="0.0" width="35" height="40"/>
+                                                                    <rect key="frame" x="61" y="0.0" width="35" height="40"/>
                                                                     <color key="tintColor" name="themeText"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" image="plus.circle" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="onClickedIncreaseFloorBtn:" destination="-1" eventType="touchUpInside" id="ZZO-He-2Hr"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>

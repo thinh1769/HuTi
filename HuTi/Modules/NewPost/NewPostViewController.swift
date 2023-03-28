@@ -10,9 +10,10 @@ import RxSwift
 import RxCocoa
 import RxRelay
 import MapKit
+import CoreLocation
 
 class NewPostViewController: BaseViewController {
-
+    
     @IBOutlet weak var sellCheckmarkImage: UIImageView!
     @IBOutlet weak var forRentCheckmarkImage: UIImageView!
     @IBOutlet weak var typeTextField: UITextField!
@@ -28,6 +29,15 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var forRentView: UIView!
     @IBOutlet weak var editLocationBtn: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var decreaseBedroomBtn: UIButton!
+    @IBOutlet weak var bedroomNumberLabel: UILabel!
+    @IBOutlet weak var increaseBedroomBtn: UIButton!
+    @IBOutlet weak var decreaseBathroomBtn: UIButton!
+    @IBOutlet weak var bathroomNumberLabel: UILabel!
+    @IBOutlet weak var increaseBathroomBtn: UIButton!
+    @IBOutlet weak var decreaseFloorBtn: UIButton!
+    @IBOutlet weak var increaseFloorBtn: UIButton!
+    @IBOutlet weak var floorNumberLabel: UILabel!
     
     let typePicker = UIPickerView()
     let cityPicker = UIPickerView()
@@ -39,8 +49,9 @@ class NewPostViewController: BaseViewController {
     let houseDirectionPicker = UIPickerView()
     let balconyDirectionPicker = UIPickerView()
     
-    
     var viewModel = NewPostViewModel()
+    private var locationManager = CLLocationManager()
+    private let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +60,23 @@ class NewPostViewController: BaseViewController {
     
     private func setupUI() {
         setupPickerView()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         mapView.isUserInteractionEnabled = false
         
         sellView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedSellView)))
         forRentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedForRentView)))
+        
+        cityTextField.rx.controlEvent([.editingDidEnd,.valueChanged])
+            .subscribe { [weak self] _ in
+            guard let self = self,
+                  let text = self.cityTextField.text
+                else { return }
+            if text.count > 0 {
+                self.moveCameraToLocation(21.0031177, 105.8201408)
+            }
+        }.disposed(by: viewModel.bag)
     }
     
     private func setupPickerView() {
@@ -106,6 +130,97 @@ class NewPostViewController: BaseViewController {
             viewModel.typeRealEstate.accept(TypeRealEstate.forRent)
         }
     }
+    @IBAction func onClickedDecreaseBedroomBtn(_ sender: UIButton) {
+        if let number = Int(bedroomNumberLabel.text ?? "") {
+            if number > 0 {
+                bedroomNumberLabel.text = "\(number - 1)"
+            }
+        }
+    }
+    
+    @IBAction func onClickedIncreaseBedroomBtn(_ sender: UIButton) {
+        if let number = Int(bedroomNumberLabel.text ?? "") {
+            bedroomNumberLabel.text = "\(number + 1)"
+        }
+    }
+    
+    @IBAction func onClickedDecreaseBathroomBtn(_ sender: UIButton) {
+        if let number = Int(bathroomNumberLabel.text ?? "") {
+            if number > 0 {
+                bathroomNumberLabel.text = "\(number - 1)"
+            }
+        }
+    }
+    @IBAction func onClickedIncreaseBathroomBtn(_ sender: UIButton) {
+        if let number = Int(bathroomNumberLabel.text ?? "") {
+            bathroomNumberLabel.text = "\(number + 1)"
+        }
+    }
+    @IBAction func onClickedDecreaseFloorBtn(_ sender: UIButton) {
+        if let number = Int(floorNumberLabel.text ?? "") {
+            if number > 0 {
+                floorNumberLabel.text = "\(number - 1)"
+            }
+        }
+    }
+    @IBAction func onClickedIncreaseFloorBtn(_ sender: UIButton) {
+        if let number = Int(floorNumberLabel.text ?? "") {
+            floorNumberLabel.text = "\(number + 1)"
+        }
+    }
+}
+
+extension NewPostViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            
+            locationManager.stopUpdatingLocation()
+            moveCameraToLocation(location.coordinate.latitude, location.coordinate.longitude)
+            let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            mapView.showsUserLocation = true
+//            pinUserLocation(coordinate)
+        }
+    }
+    
+    private func moveCameraToLocation(_ lat: Double, _ long: Double) {
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        mapView.setRegion(region, animated: false)
+    }
+    
+//    private func pinUserLocation(_ coordinate: CLLocationCoordinate2D) {
+//        removeAnnotation(isRemoveAll: false)
+//        let pin = MKPointAnnotation()
+//        pin.title = LocationTitle.userLocation.rawValue
+//        pin.coordinate = coordinate
+//        mapView.addAnnotation(pin)
+//    }
+    
+//    private func removeAnnotation(isRemoveAll: Bool) {
+//        let annotations = mapView.annotations
+//        for annotation in annotations {
+//            if let annotation = annotation as? MKAnnotation {
+//                if !isRemoveAll {
+//                    guard let locationTitle = annotation.title else { return }
+//                    if locationTitle == LocationTitle.userLocation.rawValue {
+//                        mapView.removeAnnotation(annotation)
+//                    }
+//                } else {
+//                    mapView.removeAnnotation(annotation)
+//                }
+//            }
+//        }
+//    }
+    
+//    private func pinLocation() {
+//        for location in viewModel.location.value {
+//            let coordinate = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
+//            let pin = MKPointAnnotation()
+//            pin.title = location.id
+//            pin.coordinate = coordinate
+//            mapView.addAnnotation(pin)
+//        }
+//    }
 }
 
 // MARK: - SetupPicker
@@ -207,7 +322,7 @@ extension NewPostViewController {
         legalPicker.tag = PickerTag.legal
         legalTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.legal)
 
-        viewModel.legal.accept(TypeRealEstate.sell)
+        viewModel.legal.accept(PickerData.legal)
 
         viewModel.legal.subscribe(on: MainScheduler.instance)
             .bind(to: legalPicker.rx.itemTitles) { (row, element) in
@@ -225,7 +340,7 @@ extension NewPostViewController {
         funiturePicker.tag = PickerTag.funiture
         funitureTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.funiture)
         
-        viewModel.funiture.accept(TypeRealEstate.sell)
+        viewModel.funiture.accept(PickerData.funiture)
 
         viewModel.funiture.subscribe(on: MainScheduler.instance)
             .bind(to: funiturePicker.rx.itemTitles) { (row, element) in
@@ -243,7 +358,7 @@ extension NewPostViewController {
         houseDirectionPicker.tag = PickerTag.houseDirection
         houseDirectionTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.houseDirection)
 
-        viewModel.houseDirection.accept(TypeRealEstate.sell)
+        viewModel.houseDirection.accept(PickerData.direction)
 
         viewModel.houseDirection.subscribe(on: MainScheduler.instance)
             .bind(to: houseDirectionPicker.rx.itemTitles) { (row, element) in
@@ -261,7 +376,7 @@ extension NewPostViewController {
         balconyDirectionPicker.tag = PickerTag.balconyDirection
         balconyDirectionTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.balconyDirection)
 
-        viewModel.balconyDirection.accept(TypeRealEstate.sell)
+        viewModel.balconyDirection.accept(PickerData.direction)
 
         viewModel.balconyDirection.subscribe(on: MainScheduler.instance)
             .bind(to: balconyDirectionPicker.rx.itemTitles) { (row, element) in

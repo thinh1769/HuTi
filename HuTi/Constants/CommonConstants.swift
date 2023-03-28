@@ -95,6 +95,8 @@ struct TypeRealEstate {
     static let sell = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort]
     static let forRent = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.motel, Self.office, Self.shopKiosk, Self.wareHouseFactory, Self.land, Self.otherRealEstate]
     
+    static let project = ["Tất cả dự án", Self.apartment, "Cao ốc văn phòng", "Trung tâm thương mại", "Khu đô thị mới", "Khu phức hợp", "Nhà ở xã hội", "Khu nghỉ dưỡng, Sinh thái", "Khu công nghiệp", "Biệt thự liền kề", "Shophouse", Self.streetHouse, "Dự án khác"]
+    
     static let apartment = "Căn hộ chung cư"
     static let home = "Nhà riêng"
     static let villa = "Nhà biệt thự, liền kề"
@@ -108,6 +110,16 @@ struct TypeRealEstate {
     static let shopKiosk = "Cửa hàng, kiot"
     static let wareHouseFactory = "Kho, nhà xưởng"
     static let otherRealEstate = "Bất động sản khác"
+}
+
+struct PickerData {
+    static let price = ["Tất cả mức giá", "Dưới 500 triệu", "500 - 800 triệu", "800 triệu - 1 tỷ", "1 - 2 tỷ", "2 - 3 tỷ", "3 - 5 tỷ", "5 - 7 tỷ", "7 - 10 tỷ", "10 - 20 tỷ", "20 - 30 tỷ", "30 - 40 tỷ", "40 - 60 tỷ", "Trên 60 tỷ"]
+    static let acreage = ["Tất cả diện tích", "Dưới 30 m²", "30 - 50 m²", "50 - 80 m²", "80 - 100 m²", "100 - 150 m²", "150 - 200 m²", "200 - 250 m²", "250 - 300 m²", "300 - 500 m²", "Trên 500 m²"]
+    static let bedroom = ["1 phòng ngủ", "2 phỏng ngủ", "3 phỏng ngủ", "4 phỏng ngủ", "Từ 5 phòng ngủ trở lên"]
+    static let direction = ["Đông", "Tây", "Nam", "Bắc", "Đông - Bắc", "Tây - Bắc", "Tây - Nam", "Đông - Nam"]
+    static let status = ["Sắp mở bán", "Đang mở bán", "Đã bàn giao"]
+    static let legal = ["Sổ đỏ/ Sổ hồng", "Hợp đồng mua bán", "Đang chờ sổ"]
+    static let funiture = ["Đầy đủ", "Cơ bản", "Không nội thất"]
 }
 
 enum AdministrativeURLType: String {

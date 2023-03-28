@@ -11,6 +11,8 @@ class SignUpViewController: BaseViewController {
 
     @IBOutlet private weak var phoneTextField: UITextField!
     
+    var viewModel = SignUpViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -29,7 +31,14 @@ class SignUpViewController: BaseViewController {
     }
     
     @IBAction func onClickedContinueBtn(_ sender: UIButton) {
-        let vc = OTPViewController()
-        navigateTo(vc)
+        guard let phoneNumber = phoneTextField.text,
+              phoneNumber.count == 10
+        else { return }
+        viewModel.register(phoneNumber: phoneNumber)
+            .subscribe { [weak self] _ in
+                guard let self = self else { return }
+                let vc = OTPViewController()
+                self.navigateTo(vc)
+            }.disposed(by: viewModel.bag)
     }
 }

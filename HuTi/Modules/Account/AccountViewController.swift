@@ -48,7 +48,7 @@ class AccountViewController: BaseViewController {
     }
     
     @IBAction func onClickedSignOutBtn(_ sender: UIButton) {
-        UserDefaults.isSignIn = false
+        UserDefaults.userInfo = nil
         let vc = SignInViewController()
         navigateTo(vc)
     }

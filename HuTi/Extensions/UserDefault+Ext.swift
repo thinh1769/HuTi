@@ -31,26 +31,26 @@ extension UserDefaults {
         }
     }
     
-//    static var userInfo: UserInfo? {
-//        get {
-//            let data = defs.object(forKey: Key.userInfo.rawValue) as? Data
-//            guard data != nil else { return nil }
-//            let info = try? JSONDecoder().decode(UserInfo.self, from: data!)
-//            return info
-//        }
-//
-//        set {
-//            guard let value = newValue else {
-//                defs.removeObject(forKey: Key.userInfo.rawValue)
-//                return
-//            }
-//
-//            let data = try? JSONEncoder().encode(value)
-//            if data != nil {
-//                defs.set(data, forKey: Key.userInfo.rawValue)
-//            }
-//        }
-//    }
+    static var userInfo: User? {
+        get {
+            let data = defs.object(forKey: Key.userInfo.rawValue) as? Data
+            guard data != nil else { return nil }
+            let info = try? JSONDecoder().decode(User.self, from: data!)
+            return info
+        }
+
+        set {
+            guard let value = newValue else {
+                defs.removeObject(forKey: Key.userInfo.rawValue)
+                return
+            }
+
+            let data = try? JSONEncoder().encode(value)
+            if data != nil {
+                defs.set(data, forKey: Key.userInfo.rawValue)
+            }
+        }
+    }
     
 //    static var token: String? {
 //        get {

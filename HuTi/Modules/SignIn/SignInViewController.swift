@@ -12,6 +12,8 @@ class SignInViewController: BaseViewController {
     @IBOutlet private weak var phoneTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
+    var viewModel = SignInViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +29,7 @@ class SignInViewController: BaseViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
         passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: CommonConstants.phoneNumber,
+            string: CommonConstants.password,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
     }
@@ -38,7 +40,17 @@ class SignInViewController: BaseViewController {
     }
     
     @IBAction func onClickedSignInBtn(_ sender: UIButton) {
-        UserDefaults.isSignIn = true
-        setRootTabBar()
+        guard let phoneNumber = phoneTextField.text,
+              phoneNumber.count == 10,
+              let password = passwordTextField.text,
+              password.count > 4
+        else { return }
+        viewModel.signIn(phoneNumber: phoneNumber, password: password)
+            .subscribe { [weak self] user in
+                guard let self = self else { return}
+                UserDefaults.userInfo = user
+                print(UserDefaults.userInfo?.token)
+                self.setRootTabBar()
+        }.disposed(by: viewModel.bag)
     }
 }

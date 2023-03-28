@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -107,7 +107,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="onClickedSignInBtn:" destination="-1" eventType="touchUpInside" id="eXf-c7-dRM"/>
+                        <action selector="onClickedSignInBtn:" destination="-1" eventType="touchUpInside" id="DSF-iu-rCz"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVM-fw-O9M" userLabel="google&amp;ForgotPassView">
@@ -181,7 +181,7 @@
                                 <color key="titleColor" red="0.75308537480000004" green="0.326120615" blue="0.26264229420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </state>
                             <connections>
-                                <action selector="onClickedSignUpBtn:" destination="-1" eventType="touchUpInside" id="l5N-p1-IuA"/>
+                                <action selector="onClickedSignUpBtn:" destination="-1" eventType="touchUpInside" id="yEm-lF-dOH"/>
                             </connections>
                         </button>
                     </subviews>
@@ -212,7 +212,7 @@
                 <constraint firstItem="XVM-fw-O9M" firstAttribute="top" secondItem="ysI-tY-DmG" secondAttribute="bottom" constant="20" id="pCV-ye-cRs"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="asv-jV-PFJ" secondAttribute="bottom" constant="20" id="rSw-ic-qXj"/>
             </constraints>
-            <point key="canvasLocation" x="280" y="-11"/>
+            <point key="canvasLocation" x="300" y="22"/>
         </view>
     </objects>
     <resources>

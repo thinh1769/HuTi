@@ -8,7 +8,7 @@
 import Foundation
 
 class ResponseMain<Payload: Codable>: Codable {
-    var statusCode: Int
+    var status: Int
     var message: String
     var payload: Payload? = nil
 }

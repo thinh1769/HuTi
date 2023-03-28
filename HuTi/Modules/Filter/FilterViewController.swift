@@ -148,9 +148,14 @@ extension FilterViewController {
         typeTextField.tintColor = .clear
         typePicker.tag = PickerTag.type
         typeTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.type)
-        
-        viewModel.type.accept(TypeRealEstate.sell)
-
+        switch viewModel.tabBarItemTitle {
+        case TabBarItemTitle.sell:
+            viewModel.type.accept(TypeRealEstate.sell)
+        case TabBarItemTitle.forRent:
+            viewModel.type.accept(TypeRealEstate.forRent)
+        default:
+            viewModel.type.accept(TypeRealEstate.project)
+        }
         viewModel.type.subscribe(on: MainScheduler.instance)
             .bind(to: typePicker.rx.itemTitles) { (row, element) in
                 return element
@@ -204,8 +209,7 @@ extension FilterViewController {
         wardTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.ward)
 
         viewModel.ward.accept(TypeRealEstate.sell)
-        
-
+    
         viewModel.ward.subscribe(on: MainScheduler.instance)
             .bind(to: wardPicker.rx.itemTitles) { (row, element) in
                 return element
@@ -222,7 +226,7 @@ extension FilterViewController {
         pricePicker.tag = PickerTag.price
         priceTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.price)
 
-        viewModel.price.accept(TypeRealEstate.sell)
+        viewModel.price.accept(PickerData.price)
 
         viewModel.price.subscribe(on: MainScheduler.instance)
             .bind(to: pricePicker.rx.itemTitles) { (row, element) in
@@ -240,7 +244,7 @@ extension FilterViewController {
         acreageTextField.tag = PickerTag.acreage
         acreageTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.acreage)
 
-        viewModel.acreage.accept(TypeRealEstate.sell)
+        viewModel.acreage.accept(PickerData.acreage)
 
         viewModel.acreage.subscribe(on: MainScheduler.instance)
             .bind(to: acreagePicker.rx.itemTitles) { (row, element) in
@@ -258,7 +262,7 @@ extension FilterViewController {
         bedroomPicker.tag = PickerTag.bedroom
         bedroomTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.bedroom)
         
-        viewModel.bedroom.accept(TypeRealEstate.sell)
+        viewModel.bedroom.accept(PickerData.bedroom)
 
         viewModel.bedroom.subscribe(on: MainScheduler.instance)
             .bind(to: bedroomPicker.rx.itemTitles) { (row, element) in
@@ -276,7 +280,7 @@ extension FilterViewController {
         houseDirectionPicker.tag = PickerTag.houseDirection
         houseDirectionTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.houseDirection)
 
-        viewModel.houseDirection.accept(TypeRealEstate.sell)
+        viewModel.houseDirection.accept(PickerData.direction)
 
         viewModel.houseDirection.subscribe(on: MainScheduler.instance)
             .bind(to: houseDirectionPicker.rx.itemTitles) { (row, element) in
@@ -294,7 +298,7 @@ extension FilterViewController {
         statusPicker.tag = PickerTag.status
         statusTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.status)
 
-        viewModel.status.accept(TypeRealEstate.sell)
+        viewModel.status.accept(PickerData.status)
 
         viewModel.status.subscribe(on: MainScheduler.instance)
             .bind(to: statusPicker.rx.itemTitles) { (row, element) in
