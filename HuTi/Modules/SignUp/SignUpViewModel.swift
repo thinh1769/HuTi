@@ -13,12 +13,7 @@ class SignUpViewModel {
     let authService = AuthService()
     let bag = DisposeBag()
     
-    func register(phoneNumber: String) -> Observable<User> {
-        return authService.register(phoneNumber: phoneNumber)
+    func sendOTP(phoneNumber: String) -> Observable<User> {
+        return authService.sendOTP(phoneNumber: phoneNumber)
     }
-    
-//    func register(phoneNumber: String, password: String, name: String) -> Observable<UserInfo> {
-//        let user = UserInfo(phoneNumber: phoneNumber, password: password, name: name)
-//        return service.register(user: user)
-//    }
 }

@@ -12,9 +12,18 @@ class AccountViewController: BaseViewController {
     @IBOutlet weak var accountNameLabel: UILabel!
     @IBOutlet weak var signedInStackView: UIStackView!
     
+    var viewModel = AccountViewModel()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let name = viewModel.name else {
+            accountNameLabel.text = CommonConstants.updateInfo
+            return
+        }
+        accountNameLabel.text = name
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     

@@ -12,10 +12,10 @@ struct CommonConstants {
     static let phoneNumber = "Số điện thoại"
     static let password = "Mật khẩu"
     static let confirmPassword = "Xác nhận mật khẩu"
-    static let notSignIn = "Bạn chưa đăng nhập hoặc đăng ký?"
     static let done = "Xong"
     static let cancel = "Thoát"
     static let edit = "Sửa"
+    static let updateInfo = "Vui lòng cập nhật thông tin tài khoản!"
 }
 
 struct TextFieldPlaceHolder {
@@ -81,6 +81,8 @@ struct ClassNibName {
     static let FilterResultViewController = "FilterResultViewController"
     static let FilterViewController = "FilterViewController"
     static let PostedViewController = "PostedViewController"
+    static let OTPViewController = "OTPViewController"
+    static let ConfirmPasswordViewController = "ConfirmPasswordViewController"
 }
 
 struct MainTitle {

@@ -15,6 +15,7 @@ class OTPViewController: BaseViewController {
     var arrayOTPLabel: [UILabel] = []
     let OTPStackView = UIStackView()
     let numberOfOTP = 6
+    var viewModel = OTPViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,15 @@ class OTPViewController: BaseViewController {
     }
     
     @IBAction func onClickedContinueBtn(_ sender: UIButton) {
-        let vc = ConfirmPasswordViewController()
-        navigateTo(vc)
+        guard let otp = OTPTextField.text,
+              otp.count == 6
+        else { return }
+        viewModel.confirmOTP(otp: otp).subscribe { [weak self] _ in
+            guard let self = self else { return }
+            let vc = ConfirmPasswordViewController.instance(phoneNumber: self.viewModel.phoneNumber, otp: otp)
+            self.navigateTo(vc)
+        }.disposed(by: viewModel.bag)
+        
     }
     
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
@@ -70,6 +78,14 @@ class OTPViewController: BaseViewController {
         label.clipsToBounds = true
         label.textAlignment = .center
         return label
+    }
+}
+
+extension OTPViewController {
+    class func instance(phoneNumber: String) -> OTPViewController {
+        let controller = OTPViewController(nibName: ClassNibName.OTPViewController, bundle: Bundle.main)
+        controller.viewModel.phoneNumber = phoneNumber
+        return controller
     }
 }
 

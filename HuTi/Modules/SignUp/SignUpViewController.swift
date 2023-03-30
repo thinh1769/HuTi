@@ -34,10 +34,10 @@ class SignUpViewController: BaseViewController {
         guard let phoneNumber = phoneTextField.text,
               phoneNumber.count == 10
         else { return }
-        viewModel.register(phoneNumber: phoneNumber)
+        viewModel.sendOTP(phoneNumber: phoneNumber)
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
-                let vc = OTPViewController()
+                let vc = OTPViewController.instance(phoneNumber: phoneNumber)
                 self.navigateTo(vc)
             }.disposed(by: viewModel.bag)
     }

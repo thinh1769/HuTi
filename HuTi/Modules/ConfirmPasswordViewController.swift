@@ -12,6 +12,8 @@ class ConfirmPasswordViewController: BaseViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
+    var viewModel = ConfirmPasswordViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -35,8 +37,25 @@ class ConfirmPasswordViewController: BaseViewController {
     }
     
     @IBAction func onClickedContinueBtn(_ sender: UIButton) {
-        UserDefaults.isSignIn = true
-        setRootTabBar()
+        guard let pass = passwordTextField.text,
+              let confirmPass = confirmPasswordTextField.text,
+              pass.count > 4,
+              pass == confirmPass
+        else { return }
+        viewModel.register(password: pass).subscribe { [weak self] user in
+            guard let self = self else { return }
+            UserDefaults.userInfo = user
+            self.setRootTabBar()
+        }.disposed(by: viewModel.bag)
+        
     }
 }
 
+extension ConfirmPasswordViewController {
+    class func instance(phoneNumber: String, otp: String) -> ConfirmPasswordViewController {
+        let controller = ConfirmPasswordViewController(nibName: ClassNibName.ConfirmPasswordViewController, bundle: Bundle.main)
+        controller.viewModel.phoneNumber = phoneNumber
+        controller.viewModel.otp = otp
+        return controller
+    }
+}

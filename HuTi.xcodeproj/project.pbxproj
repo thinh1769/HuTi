@@ -12,6 +12,9 @@
 		22A099A429D04749008BE7C7 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A099A329D04749008BE7C7 /* BaseService.swift */; };
 		22A099A629D047A8008BE7C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A099A529D047A8008BE7C7 /* User.swift */; };
 		22A099A829D0538F008BE7C7 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A099A729D0538F008BE7C7 /* ServiceConstants.swift */; };
+		22AEC96E29D5CF960076014A /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC96D29D5CF960076014A /* OTPViewModel.swift */; };
+		22AEC97029D5D4100076014A /* ConfirmPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC96F29D5D4100076014A /* ConfirmPasswordViewModel.swift */; };
+		22AEC97229D5DCA50076014A /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC97129D5DCA50076014A /* AccountDetailViewModel.swift */; };
 		22BDEFAA29D30BE9001C08CC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFA929D30BE8001C08CC /* AuthService.swift */; };
 		22BDEFAC29D30EA0001C08CC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFAB29D30EA0001C08CC /* SignInViewModel.swift */; };
 		22BDEFAE29D3249E001C08CC /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFAD29D3249E001C08CC /* SignUpViewModel.swift */; };
@@ -70,6 +73,9 @@
 		22A099A329D04749008BE7C7 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		22A099A529D047A8008BE7C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		22A099A729D0538F008BE7C7 /* ServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
+		22AEC96D29D5CF960076014A /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
+		22AEC96F29D5D4100076014A /* ConfirmPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewModel.swift; sourceTree = "<group>"; };
+		22AEC97129D5DCA50076014A /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
 		22BDEFA929D30BE8001C08CC /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		22BDEFAB29D30EA0001C08CC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		22BDEFAD29D3249E001C08CC /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				FC0E76C9299F254C00E4818C /* OTPViewController.swift */,
+				22AEC96D29D5CF960076014A /* OTPViewModel.swift */,
 				FC0E76CA299F254C00E4818C /* OTPViewController.xib */,
 			);
 			path = OTP;
@@ -210,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				FC0E76FC29B1A19400E4818C /* ConfirmPasswordViewController.swift */,
+				22AEC96F29D5D4100076014A /* ConfirmPasswordViewModel.swift */,
 				FC0E76FD29B1A19400E4818C /* ConfirmPasswordViewController.xib */,
 			);
 			name = ConfirmPassword;
@@ -418,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				FCEE1A2229BAD27500AEF380 /* AccountDetailViewController.swift */,
+				22AEC97129D5DCA50076014A /* AccountDetailViewModel.swift */,
 				FCEE1A2329BAD27500AEF380 /* AccountDetailViewController.xib */,
 			);
 			path = AccountDetail;
@@ -561,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AEC97229D5DCA50076014A /* AccountDetailViewModel.swift in Sources */,
 				22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */,
 				FCC3AD3D29C1722F0050B58B /* FilterViewController.swift in Sources */,
 				228D5FD429CBE84B00439D78 /* FilterViewModel.swift in Sources */,
@@ -573,6 +583,7 @@
 				22BDEFAC29D30EA0001C08CC /* SignInViewModel.swift in Sources */,
 				FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */,
 				22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */,
+				22AEC96E29D5CF960076014A /* OTPViewModel.swift in Sources */,
 				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
 				22A099A829D0538F008BE7C7 /* ServiceConstants.swift in Sources */,
 				FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */,
@@ -594,6 +605,7 @@
 				FCEE1A1E29B9DAD700AEF380 /* AccountViewController.swift in Sources */,
 				2282B38129C6E7CA002C4125 /* NewPostViewModel.swift in Sources */,
 				FCBF732F299CC4E500BF327A /* SignInViewController.swift in Sources */,
+				22AEC97029D5D4100076014A /* ConfirmPasswordViewModel.swift in Sources */,
 				FC0E76D1299F2B5D00E4818C /* BaseViewController.swift in Sources */,
 				FC2E2C1729B71ABB00DADA16 /* AddressCollectionViewCell.swift in Sources */,
 				22A099A429D04749008BE7C7 /* BaseService.swift in Sources */,

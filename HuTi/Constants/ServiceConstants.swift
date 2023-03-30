@@ -23,12 +23,15 @@ struct StatusCode {
 }
 
 struct Base {
-    static let URL = "http://172.20.10.3:3000/api/"
+    static let URL = "http://192.168.2.8:3000/api/"
 }
 
 enum APIConstants: String {
     case signIn = "user/signin"
+    case sendOTP = "user/send-otp"
     case register = "user/register"
+    case confirmOTP = "user/confirm-otp"
+    case updateInfo = "user/" /// { id }
     case getAllCities = "city"
     case getDistrictsByCityId = "district/" /// { id }
     case getWardsByDistrictId = "ward/" /// { id }
@@ -37,8 +40,14 @@ enum APIConstants: String {
         switch self {
         case .signIn:
             return .post
+        case .sendOTP:
+            return .post
         case .register:
             return .post
+        case .confirmOTP:
+            return .post
+        case .updateInfo:
+            return .put
         case .getAllCities:
             return .get
         case .getDistrictsByCityId:

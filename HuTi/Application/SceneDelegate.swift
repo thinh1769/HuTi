@@ -18,15 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-//        if (UserDefaults.userInfo?.token) != nil {
-//            let mainTabBar = MainTabBarController()
-//            window?.rootViewController = mainTabBar
-//        } else {
-//            let vc = SignInViewController()
-//            window?.rootViewController = vc
-//        }
-        let vc = SignInViewController()
-        window?.rootViewController = vc
+        if (UserDefaults.userInfo?.token) != nil {
+            let mainTabBar = MainTabBarController()
+            window?.rootViewController = mainTabBar
+        } else {
+            let vc = SignInViewController()
+            let navVC = UINavigationController(rootViewController: vc)
+            window?.rootViewController = navVC
+        }
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
     }

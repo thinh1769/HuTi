@@ -173,7 +173,7 @@
                             <color key="textColor" name="black"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T50-zV-y3j" userLabel="signUpLabel">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T50-zV-y3j" userLabel="signUpButton">
                             <rect key="frame" x="158" y="0.0" width="69" height="35"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>

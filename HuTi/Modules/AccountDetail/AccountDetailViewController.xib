@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,6 +12,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountDetailViewController" customModule="HuTi" customModuleProvider="target">
             <connections>
+                <outlet property="dobTextField" destination="Ujs-qG-mMm" id="71a-cE-NKU"/>
+                <outlet property="editButton" destination="M9i-b1-OsC" id="R86-To-8Nc"/>
+                <outlet property="emailTextField" destination="dH9-Zd-aic" id="iYJ-7D-Rn4"/>
+                <outlet property="genderTextField" destination="LKl-ba-r9R" id="ccF-bI-04R"/>
+                <outlet property="identityCardTextField" destination="QtJ-2S-2Mi" id="eq6-N7-8aX"/>
+                <outlet property="nameLabel" destination="Ept-iE-04R" id="xBN-PJ-8Xe"/>
+                <outlet property="nameTextField" destination="VYd-5U-ra5" id="5Qa-HE-wpW"/>
+                <outlet property="phoneTextField" destination="XIO-Ox-sso" id="Wei-Ge-LJB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -376,7 +384,7 @@
                 <constraint firstItem="bXn-mJ-nCx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wSM-ND-tlU"/>
                 <constraint firstItem="Ept-iE-04R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="zFu-ZN-Ve4"/>
             </constraints>
-            <point key="canvasLocation" x="279" y="-47"/>
+            <point key="canvasLocation" x="553" y="-93"/>
         </view>
     </objects>
     <resources>
