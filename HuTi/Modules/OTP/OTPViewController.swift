@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class OTPViewController: BaseViewController {
 
@@ -22,28 +24,47 @@ class OTPViewController: BaseViewController {
         setupUI()
     }
     
-    @IBAction func onClickedContinueBtn(_ sender: UIButton) {
-        guard let otp = OTPTextField.text,
-              otp.count == 6
-        else { return }
-        viewModel.confirmOTP(otp: otp).subscribe { [weak self] _ in
-            guard let self = self else { return }
-            let vc = ConfirmPasswordViewController.instance(phoneNumber: self.viewModel.phoneNumber, otp: otp)
-            self.navigateTo(vc)
-        }.disposed(by: viewModel.bag)
-        
-    }
-    
-    @IBAction func onClickedBackBtn(_ sender: UIButton) {
-        backToPreviousView()
-    }
-    
     private func setupUI() {
+        OTPTextField.becomeFirstResponder()
         OTPTextField.tintColor = .clear
         OTPTextField.textColor = .clear
         OTPTextField.delegate = self
         isTouchDismissKeyboardEnabled = true
         setupOTPStackView()
+        
+        OTPTextField.rx.controlEvent([.editingChanged]).subscribe { [weak self] _ in
+            guard let self = self,
+                  let otp = self.OTPTextField.text
+            else { return }
+            if otp.count == 6 {
+                self.confirmOTP()
+            }
+        }.disposed(by: viewModel.bag)
+    }
+    
+    @IBAction func onClickedContinueBtn(_ sender: UIButton) {
+        confirmOTP()
+    }
+    
+    private func confirmOTP() {
+        guard let otp = OTPTextField.text,
+              otp.count == 6
+        else { return }
+        showLoading()
+        viewModel.confirmOTP(otp: otp).subscribe { _ in
+        } onError: { error in
+            self.hideLoading()
+            print("---- Error: \(error.localizedDescription)----")
+        } onCompleted: { [weak self] in
+            guard let self = self else { return }
+            let vc = ConfirmPasswordViewController.instance(phoneNumber: self.viewModel.phoneNumber, otp: otp)
+            self.hideLoading()
+            self.navigateTo(vc)
+        }.disposed(by: viewModel.bag)
+    }
+    
+    @IBAction func onClickedBackBtn(_ sender: UIButton) {
+        backToPreviousView()
     }
     
     private func setupOTPStackView() {

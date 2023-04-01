@@ -11,5 +11,4 @@ import RxSwift
 
 class AccountViewModel {
     let bag = DisposeBag()
-    var name = UserDefaults.userInfo?.name
 }

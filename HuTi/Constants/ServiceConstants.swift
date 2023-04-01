@@ -19,6 +19,7 @@ struct StatusCode {
     static let OK = 200
     static let BAD_REQUEST = 400
     static let UNAUTHORIZED = 401
+    static let NOT_FOUND = 404
     static let SERVER_ERROR = 500
 }
 
@@ -32,7 +33,7 @@ enum APIConstants: String {
     case sendOTP = "user/send-otp"
     case register = "user/register"
     case confirmOTP = "user/confirm-otp"
-    case updateInfo = "user/" /// { id }
+    case updateInfo = "user/update-info" /// { id }
     case getAllCities = "city"
     case getDistrictsByCityId = "district/" /// { id }
     case getWardsByDistrictId = "ward/" /// { id }
@@ -55,6 +56,35 @@ enum APIConstants: String {
             return .get
         case .getWardsByDistrictId:
             return .get
+        }
+    }
+}
+
+enum ServiceError: Error {
+    case network
+    case badRequest(message: String)
+    case unauthorized(message: String)
+    case serverError(message: String)
+    case unknown(message: String)
+    case emptyResponse(message: String)
+    case invalidMethod
+    
+    func get() -> String {
+        switch self {
+        case .network:
+            return CommonConstants.networkError
+        case .badRequest(let message):
+            return message
+        case .unauthorized(let message):
+            return message
+        case .serverError(let message):
+            return message
+        case .unknown(let message):
+            return message
+        case .emptyResponse(let message):
+            return message
+        case .invalidMethod:
+            return CommonConstants.networkError
         }
     }
 }

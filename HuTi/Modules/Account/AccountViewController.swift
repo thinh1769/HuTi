@@ -15,7 +15,7 @@ class AccountViewController: BaseViewController {
     var viewModel = AccountViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let name = viewModel.name else {
+        guard let name = UserDefaults.userInfo?.name else {
             accountNameLabel.text = CommonConstants.updateInfo
             return
         }

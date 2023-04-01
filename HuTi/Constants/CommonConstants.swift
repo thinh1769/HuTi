@@ -16,6 +16,8 @@ struct CommonConstants {
     static let cancel = "Thoát"
     static let edit = "Sửa"
     static let updateInfo = "Vui lòng cập nhật thông tin tài khoản!"
+    static let DATE_FORMAT = "dd/MM/yyyy"
+    static let networkError = "Lỗi kết nối mạng"
 }
 
 struct TextFieldPlaceHolder {
@@ -48,6 +50,7 @@ struct PickerTag {
     static let bedroom = 11
     static let status = 12
     static let gender = 13
+    static let dob = 14
 }
 
 struct ImageName {
@@ -126,6 +129,7 @@ struct PickerData {
     static let legal = ["Sổ đỏ/ Sổ hồng", "Hợp đồng mua bán", "Đang chờ sổ"]
     static let funiture = ["Đầy đủ", "Cơ bản", "Không nội thất"]
     static let gender = ["Nam", "Nữ", "Khác"]
+    static let day = ["01", "02", "03"]
 }
 
 enum AdministrativeURLType: String {

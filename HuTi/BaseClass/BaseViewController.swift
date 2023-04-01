@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class BaseViewController: UIViewController {
  
+    var progressHUD = MBProgressHUD()
+    
     var mainTabBarController: MainTabBarController? {
         return tabBarController as? MainTabBarController
     }
@@ -62,5 +65,14 @@ class BaseViewController: UIViewController {
                           options: [.transitionCrossDissolve],
                           animations: {},
                           completion: nil)
+    }
+    
+    func showLoading() {
+        progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHUD.mode = MBProgressHUDMode.indeterminate
+    }
+    
+    func hideLoading() {
+        progressHUD.hide(animated: true)
     }
 }

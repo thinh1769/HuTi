@@ -16,11 +16,12 @@ class SignInViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     
     private func setupUI() {
+        phoneTextField.text = "0000099999"
+        passwordTextField.text = "11111"
         isHiddenMainTabBar = true
         isTouchDismissKeyboardEnabled = true
         
@@ -45,12 +46,18 @@ class SignInViewController: BaseViewController {
               let password = passwordTextField.text,
               password.count > 4
         else { return }
+        showLoading()
         viewModel.signIn(phoneNumber: phoneNumber, password: password)
             .subscribe { [weak self] user in
                 guard let self = self else { return}
                 UserDefaults.userInfo = user
-                print(UserDefaults.userInfo?.token)
+                UserDefaults.token = user.token
+                self.hideLoading()
                 self.setRootTabBar()
-        }.disposed(by: viewModel.bag)
+            } onError: { _ in
+                self.hideLoading()
+            } onCompleted: {
+                self.hideLoading()
+            }.disposed(by: viewModel.bag)
     }
 }

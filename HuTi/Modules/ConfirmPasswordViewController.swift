@@ -42,12 +42,14 @@ class ConfirmPasswordViewController: BaseViewController {
               pass.count > 4,
               pass == confirmPass
         else { return }
+        showLoading()
         viewModel.register(password: pass).subscribe { [weak self] user in
             guard let self = self else { return }
             UserDefaults.userInfo = user
+            UserDefaults.token = user.token
+            self.hideLoading()
             self.setRootTabBar()
         }.disposed(by: viewModel.bag)
-        
     }
 }
 

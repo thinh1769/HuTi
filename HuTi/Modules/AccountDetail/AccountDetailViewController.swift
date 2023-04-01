@@ -18,10 +18,12 @@ class AccountDetailViewController: BaseViewController {
     @IBOutlet weak var identityCardTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
+    @IBOutlet weak var editGenderIcon: UIImageView!
+    @IBOutlet weak var editDobIcon: UIImageView!
     @IBOutlet weak var editButton: UIButton!
     
     let genderPicker = UIPickerView()
+    let dobPicker = UIDatePicker()
     var viewModel = AccountDetailViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,7 @@ class AccountDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         setupGenderPickerView()
+        setupDobPickerView()
     }
     
     private func setupUI() {
@@ -58,7 +61,15 @@ class AccountDetailViewController: BaseViewController {
             editButton.setImage(UIImage(named: ImageName.edit), for: .normal)
             changeTextFieldStatus(false)
             updateUserInfoViewModel()
-            print("---------\(viewModel.isInfoUpdated())")
+            if viewModel.isInfoUpdated() {
+                showLoading()
+                viewModel.updateInfo().subscribe { [weak self] _ in
+                    guard let self = self else { return }
+                    UserDefaults.userInfo = self.viewModel.userUpdated
+                    self.nameLabel.text = UserDefaults.userInfo?.name ?? ""
+                    self.hideLoading()
+                }.disposed(by: viewModel.bag)
+            }
         }
         viewModel.isEditButtonClicked = !viewModel.isEditButtonClicked
     }
@@ -69,12 +80,13 @@ class AccountDetailViewController: BaseViewController {
         genderTextField.isUserInteractionEnabled = status
         identityCardTextField.isUserInteractionEnabled = status
         emailTextField.isUserInteractionEnabled = status
+        editDobIcon.isHidden = !status
+        editGenderIcon.isHidden = !status
     }
     
     private func updateUserInfoViewModel() {
         viewModel.name = nameTextField.text ?? ""
         viewModel.dob = dobTextField.text ?? ""
-//        viewModel.gender = genderTextField.text ?? nil
         viewModel.identityCard = identityCardTextField.text ?? ""
         viewModel.email = emailTextField.text ?? ""
     }
@@ -99,16 +111,29 @@ extension AccountDetailViewController {
         }.disposed(by: viewModel.bag)
     }
     
+    private func setupDobPickerView() {
+        dobTextField.inputView = dobPicker
+        dobTextField.tintColor = .clear
+        dobPicker.tag = PickerTag.dob
+        dobPicker.datePickerMode = .date
+        dobPicker.preferredDatePickerStyle = .wheels
+        dobTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.dob)
+    }
+    
     private func setupPickerToolBar(pickerTag: Int) -> UIToolbar {
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.isTranslucent = true
         toolBar.backgroundColor = .clear
         toolBar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(title: CommonConstants.done, style: .done, target: self, action: #selector(self.donePicker))
+       
+        var doneButton = UIBarButtonItem(title: CommonConstants.done, style: .done, target: self, action: #selector(self.donePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: CommonConstants.cancel, style: .plain, target: self, action: #selector(self.cancelPicker))
+        
+        if pickerTag == PickerTag.dob {
+            doneButton = UIBarButtonItem(title: CommonConstants.done, style: .done, target: self, action: #selector(self.doneDobPicker))
+        }
         
         cancelButton.tag = pickerTag
         doneButton.tag = pickerTag
@@ -117,6 +142,12 @@ extension AccountDetailViewController {
         toolBar.isUserInteractionEnabled = true
         
         return toolBar
+    }
+    
+    @objc private func doneDobPicker() {
+        let ddd = dobPicker.date
+        dobTextField.text = DateFormatter.instance(formatString: CommonConstants.DATE_FORMAT).string(from: dobPicker.date)
+        view.endEditing(true)
     }
     
     @objc private func donePicker(sender: UIBarButtonItem) {
