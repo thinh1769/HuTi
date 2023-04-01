@@ -47,6 +47,7 @@ struct PickerTag {
     static let balconyDirection = 10
     static let bedroom = 11
     static let status = 12
+    static let gender = 13
 }
 
 struct ImageName {
@@ -58,6 +59,8 @@ struct ImageName {
     static let backButton = "chevron.left"
     static let circle = "circle"
     static let checkmarkFill = "checkmark.circle.fill"
+    static let save = "save"
+    static let edit = "edit"
  }
 
 struct ColorName {
@@ -122,6 +125,7 @@ struct PickerData {
     static let status = ["Sắp mở bán", "Đang mở bán", "Đã bàn giao"]
     static let legal = ["Sổ đỏ/ Sổ hồng", "Hợp đồng mua bán", "Đang chờ sổ"]
     static let funiture = ["Đầy đủ", "Cơ bản", "Không nội thất"]
+    static let gender = ["Nam", "Nữ", "Khác"]
 }
 
 enum AdministrativeURLType: String {

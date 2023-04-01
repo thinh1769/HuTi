@@ -146,14 +146,24 @@
                                                         <constraint firstAttribute="height" constant="1" id="nFD-dr-YEM"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C60-Ii-uep">
+                                                    <rect key="frame" x="260" y="30" width="25" height="15.5"/>
+                                                    <color key="tintColor" name="themeText"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Csn-cv-mVz"/>
+                                                        <constraint firstAttribute="width" constant="25" id="GCk-zc-Q5T"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="5kM-6e-03s"/>
+                                                <constraint firstItem="x3N-IA-QbV" firstAttribute="top" secondItem="C60-Ii-uep" secondAttribute="bottom" constant="2" id="FcF-vg-tBZ"/>
                                                 <constraint firstItem="ePB-hP-jFR" firstAttribute="top" secondItem="kT0-3U-9UQ" secondAttribute="top" id="Ski-my-ni7"/>
                                                 <constraint firstItem="x3N-IA-QbV" firstAttribute="leading" secondItem="kT0-3U-9UQ" secondAttribute="leading" id="VPI-1W-Pqd"/>
                                                 <constraint firstItem="x3N-IA-QbV" firstAttribute="top" secondItem="Ujs-qG-mMm" secondAttribute="bottom" constant="2" id="XGu-0e-stU"/>
                                                 <constraint firstItem="Ujs-qG-mMm" firstAttribute="top" secondItem="ePB-hP-jFR" secondAttribute="bottom" id="aF2-nz-IyM"/>
                                                 <constraint firstAttribute="trailing" secondItem="ePB-hP-jFR" secondAttribute="trailing" id="f56-Cx-Z5U"/>
+                                                <constraint firstAttribute="trailing" secondItem="C60-Ii-uep" secondAttribute="trailing" constant="10" id="g2E-xX-Jbo"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ujs-qG-mMm" secondAttribute="trailing" id="gM0-sc-kCw"/>
                                                 <constraint firstItem="Ujs-qG-mMm" firstAttribute="leading" secondItem="kT0-3U-9UQ" secondAttribute="leading" id="s19-Jq-DTo"/>
                                                 <constraint firstAttribute="trailing" secondItem="x3N-IA-QbV" secondAttribute="trailing" id="vpH-tL-nzf"/>
@@ -181,6 +191,14 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7QU-oV-wyE">
+                                                    <rect key="frame" x="260" y="30" width="25" height="15.5"/>
+                                                    <color key="tintColor" name="themeText"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="1WA-9V-aB6"/>
+                                                        <constraint firstAttribute="width" constant="25" id="nRt-To-ozs"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qG0-eX-iFZ">
                                                     <rect key="frame" x="0.0" y="52" width="295" height="1"/>
                                                     <color key="backgroundColor" name="themeText"/>
@@ -190,8 +208,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="qG0-eX-iFZ" firstAttribute="top" secondItem="7QU-oV-wyE" secondAttribute="bottom" constant="2" id="04h-yd-gan"/>
                                                 <constraint firstItem="3hO-82-haG" firstAttribute="top" secondItem="I2j-As-bgD" secondAttribute="top" id="9oS-hI-HHW"/>
                                                 <constraint firstAttribute="height" constant="60" id="CJP-o3-fMC"/>
+                                                <constraint firstAttribute="trailing" secondItem="7QU-oV-wyE" secondAttribute="trailing" constant="10" id="Qr7-uh-AQG"/>
                                                 <constraint firstItem="LKl-ba-r9R" firstAttribute="leading" secondItem="I2j-As-bgD" secondAttribute="leading" id="WqS-0m-5cJ"/>
                                                 <constraint firstItem="3hO-82-haG" firstAttribute="leading" secondItem="I2j-As-bgD" secondAttribute="leading" id="YM8-cC-1h2"/>
                                                 <constraint firstAttribute="trailing" secondItem="qG0-eX-iFZ" secondAttribute="trailing" id="YcO-M7-XsD"/>
@@ -366,6 +386,9 @@
                     <state key="normal" image="edit">
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="16"/>
                     </state>
+                    <connections>
+                        <action selector="onClickedEditButton:" destination="-1" eventType="touchUpInside" id="o5Q-4z-YyG"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -384,10 +407,11 @@
                 <constraint firstItem="bXn-mJ-nCx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wSM-ND-tlU"/>
                 <constraint firstItem="Ept-iE-04R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="zFu-ZN-Ve4"/>
             </constraints>
-            <point key="canvasLocation" x="553" y="-93"/>
+            <point key="canvasLocation" x="678" y="-78"/>
         </view>
     </objects>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="edit" width="32" height="32"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>

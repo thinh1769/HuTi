@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AccountDetailViewController: BaseViewController {
 
@@ -19,13 +21,14 @@ class AccountDetailViewController: BaseViewController {
     
     @IBOutlet weak var editButton: UIButton!
     
+    let genderPicker = UIPickerView()
     var viewModel = AccountDetailViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
         nameLabel.text = UserDefaults.userInfo?.name ?? ""
         nameTextField.text = UserDefaults.userInfo?.name ?? ""
         dobTextField.text = UserDefaults.userInfo?.dateOfBirth ?? ""
-        genderTextField.text = "\(UserDefaults.userInfo?.gender)"
+        genderTextField.text = UserDefaults.userInfo?.gender ?? ""
         identityCardTextField.text = UserDefaults.userInfo?.identityCardNumber ?? ""
         phoneTextField.text = UserDefaults.userInfo?.phoneNumber ?? ""
         emailTextField.text = UserDefaults.userInfo?.email ?? ""
@@ -34,14 +37,99 @@ class AccountDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
+        setupGenderPickerView()
     }
     
     private func setupUI() {
+        changeTextFieldStatus(false)
+        phoneTextField.isUserInteractionEnabled = false
         isTouchDismissKeyboardEnabled = true
     }
 
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         backToPreviousView()
+    }
+    
+    @IBAction func onClickedEditButton(_ sender: UIButton) {
+        if !viewModel.isEditButtonClicked {
+            editButton.setImage(UIImage(named: ImageName.save), for: .normal)
+            changeTextFieldStatus(true)
+        } else {
+            editButton.setImage(UIImage(named: ImageName.edit), for: .normal)
+            changeTextFieldStatus(false)
+            updateUserInfoViewModel()
+            print("---------\(viewModel.isInfoUpdated())")
+        }
+        viewModel.isEditButtonClicked = !viewModel.isEditButtonClicked
+    }
+    
+    private func changeTextFieldStatus(_ status: Bool) {
+        nameTextField.isUserInteractionEnabled = status
+        dobTextField.isUserInteractionEnabled = status
+        genderTextField.isUserInteractionEnabled = status
+        identityCardTextField.isUserInteractionEnabled = status
+        emailTextField.isUserInteractionEnabled = status
+    }
+    
+    private func updateUserInfoViewModel() {
+        viewModel.name = nameTextField.text ?? ""
+        viewModel.dob = dobTextField.text ?? ""
+//        viewModel.gender = genderTextField.text ?? nil
+        viewModel.identityCard = identityCardTextField.text ?? ""
+        viewModel.email = emailTextField.text ?? ""
+    }
+}
+
+extension AccountDetailViewController {
+    private func setupGenderPickerView() {
+        genderTextField.inputView = genderPicker
+        genderTextField.tintColor = .clear
+        genderPicker.tag = PickerTag.gender
+        genderTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.gender)
+
+        viewModel.gender.accept(PickerData.gender)
+
+        viewModel.gender.subscribe(on: MainScheduler.instance)
+            .bind(to: genderPicker.rx.itemTitles) { (row, element) in
+                return element
+            }.disposed(by: viewModel.bag)
+
+        genderPicker.rx.itemSelected.bind { (row: Int, component: Int) in
+            self.viewModel.selectedGender = row
+        }.disposed(by: viewModel.bag)
+    }
+    
+    private func setupPickerToolBar(pickerTag: Int) -> UIToolbar {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.backgroundColor = .clear
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: CommonConstants.done, style: .done, target: self, action: #selector(self.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: CommonConstants.cancel, style: .plain, target: self, action: #selector(self.cancelPicker))
+        
+        cancelButton.tag = pickerTag
+        doneButton.tag = pickerTag
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        return toolBar
+    }
+    
+    @objc private func donePicker(sender: UIBarButtonItem) {
+        switch sender.tag {
+        case PickerTag.gender:
+            genderTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+        default:
+            return
+        }
+        view.endEditing(true)
+    }
+    
+    @objc private func cancelPicker() {
+        view.window?.endEditing(true)
     }
 }
