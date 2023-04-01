@@ -33,10 +33,10 @@ enum APIConstants: String {
     case sendOTP = "user/send-otp"
     case register = "user/register"
     case confirmOTP = "user/confirm-otp"
-    case updateInfo = "user/update-info" /// { id }
-    case getAllCities = "city"
-    case getDistrictsByCityId = "district/" /// { id }
-    case getWardsByDistrictId = "ward/" /// { id }
+    case updateInfo = "user/update-info" 
+    case getAllProvinces = "province"
+    case getDistrictsByProvinceId = "district/p"
+    case getWardsByDistrictId = "ward/d"
     
     var method: HTTPMethodSupport {
         switch self {
@@ -50,9 +50,9 @@ enum APIConstants: String {
             return .post
         case .updateInfo:
             return .put
-        case .getAllCities:
+        case .getAllProvinces:
             return .get
-        case .getDistrictsByCityId:
+        case .getDistrictsByProvinceId:
             return .get
         case .getWardsByDistrictId:
             return .get

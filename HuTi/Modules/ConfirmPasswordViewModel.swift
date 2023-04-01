@@ -9,9 +9,7 @@ import Foundation
 import RxRelay
 import RxSwift
 
-class ConfirmPasswordViewModel {
-    let bag = DisposeBag()
-    let authService = AuthService()
+class ConfirmPasswordViewModel: BaseViewModel {
     var otp = ""
     var phoneNumber = ""
     

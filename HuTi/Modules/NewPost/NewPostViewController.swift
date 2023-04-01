@@ -17,7 +17,7 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var sellCheckmarkImage: UIImageView!
     @IBOutlet weak var forRentCheckmarkImage: UIImageView!
     @IBOutlet weak var typeTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var provinceTextField: UITextField!
     @IBOutlet weak var districtTextField: UITextField!
     @IBOutlet weak var wardTextField: UITextField!
     @IBOutlet weak var projectTextField: UITextField!
@@ -40,7 +40,7 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var floorNumberLabel: UILabel!
     
     let typePicker = UIPickerView()
-    let cityPicker = UIPickerView()
+    let provincePicker = UIPickerView()
     let districtPicker = UIPickerView()
     let wardPicker = UIPickerView()
     let projectPicker = UIPickerView()
@@ -68,20 +68,21 @@ class NewPostViewController: BaseViewController {
         sellView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedSellView)))
         forRentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedForRentView)))
         
-        cityTextField.rx.controlEvent([.editingDidEnd,.valueChanged])
+        provinceTextField.rx.controlEvent([.editingDidEnd,.valueChanged])
             .subscribe { [weak self] _ in
             guard let self = self,
-                  let text = self.cityTextField.text
+                  let text = self.provinceTextField.text
                 else { return }
             if text.count > 0 {
                 self.moveCameraToLocation(21.0031177, 105.8201408)
             }
         }.disposed(by: viewModel.bag)
+    
     }
     
     private func setupPickerView() {
         setupTypePickerView()
-        setupCityPickerView()
+        setupProvincePickerView()
         setupDistrictPickerView()
         setupWardPickerView()
         setupProjectPickerView()
@@ -243,21 +244,26 @@ extension NewPostViewController {
         }.disposed(by: viewModel.bag)
     }
     
-    private func setupCityPickerView() {
-        cityTextField.inputView = cityPicker
-        cityTextField.tintColor = .clear
-        cityPicker.tag = PickerTag.city
-        cityTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.city)
+    private func setupProvincePickerView() {
+        provinceTextField.inputView = provincePicker
+        provinceTextField.tintColor = .clear
+        provincePicker.tag = PickerTag.province
+        provinceTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.province)
 
-        viewModel.city.accept(TypeRealEstate.sell)
+        viewModel.getAllProvinces().subscribe { [weak self] provinces in
+            guard let self = self else { return }
+            self.viewModel.province.accept(self.viewModel.parseProvincesArray(provinces: provinces))
+        } onError: { _ in
+        } onCompleted: {
+        } .disposed(by: viewModel.bag)
 
-        viewModel.city.subscribe(on: MainScheduler.instance)
-            .bind(to: cityPicker.rx.itemTitles) { (row, element) in
-                return element
+        viewModel.province.subscribe(on: MainScheduler.instance)
+            .bind(to: provincePicker.rx.itemTitles) { (row, element) in
+                return element.name
             }.disposed(by: viewModel.bag)
 
-        cityPicker.rx.itemSelected.bind { (row: Int, component: Int) in
-            self.viewModel.selectedCity = row
+        provincePicker.rx.itemSelected.bind { (row: Int, component: Int) in
+            self.viewModel.selectedProvince = row
         }.disposed(by: viewModel.bag)
     }
 
@@ -267,15 +273,25 @@ extension NewPostViewController {
         districtPicker.tag = PickerTag.district
         districtTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.district)
 
-        viewModel.district.accept(TypeRealEstate.sell)
-
         viewModel.district.subscribe(on: MainScheduler.instance)
             .bind(to: districtPicker.rx.itemTitles) { (row, element) in
-                return element
+                return element.name
             }.disposed(by: viewModel.bag)
 
         districtPicker.rx.itemSelected.bind { (row: Int, component: Int) in
             self.viewModel.selectedDistrict = row
+        }.disposed(by: viewModel.bag)
+    }
+    
+    private func setupDistrictDataPicker() {
+        districtTextField.text = ""
+        wardTextField.text = ""
+        
+        viewModel.getDistrictsByProvinceId().subscribe { [weak self] districts in
+            guard let self = self else { return }
+            self.viewModel.district.accept(self.viewModel.parseDistrictsArray(districts: districts))
+        } onError: { _ in
+        } onCompleted: {
         }.disposed(by: viewModel.bag)
     }
 
@@ -285,12 +301,9 @@ extension NewPostViewController {
         wardPicker.tag = PickerTag.ward
         wardTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.ward)
 
-        viewModel.ward.accept(TypeRealEstate.sell)
-        
-
         viewModel.ward.subscribe(on: MainScheduler.instance)
             .bind(to: wardPicker.rx.itemTitles) { (row, element) in
-                return element
+                return element.name
             }.disposed(by: viewModel.bag)
 
         wardPicker.rx.itemSelected.bind { (row: Int, component: Int) in
@@ -298,6 +311,17 @@ extension NewPostViewController {
         }.disposed(by: viewModel.bag)
     }
 
+    private func setupWardDataPicker() {
+        wardTextField.text = ""
+        
+        viewModel.getWardsByDistrictId().subscribe { [weak self] wards in
+            guard let self = self else { return }
+            self.viewModel.ward.accept(self.viewModel.parseWardsArray(wards: wards))
+        } onError: { _ in
+        } onCompleted: {
+        }.disposed(by: viewModel.bag)
+    }
+    
     private func setupProjectPickerView() {
         projectTextField.inputView = projectPicker
         projectTextField.tintColor = .clear
@@ -412,10 +436,12 @@ extension NewPostViewController {
         switch sender.tag {
         case PickerTag.type:
             typeTextField.text = viewModel.pickItem(pickerTag: sender.tag)
-        case PickerTag.city:
-            cityTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+        case PickerTag.province:
+            provinceTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+            setupDistrictDataPicker()
         case PickerTag.district:
             districtTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+            setupWardDataPicker()
         case PickerTag.ward:
             wardTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.project:

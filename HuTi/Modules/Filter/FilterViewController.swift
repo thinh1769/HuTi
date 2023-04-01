@@ -25,7 +25,7 @@ class FilterViewController: BaseViewController {
     @IBOutlet weak var statusView: UIView!
     
     @IBOutlet weak var typeTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var provinceTextField: UITextField!
     @IBOutlet weak var districtTextField: UITextField!
     @IBOutlet weak var wardTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
@@ -35,7 +35,7 @@ class FilterViewController: BaseViewController {
     @IBOutlet weak var statusTextField: UITextField!
     
     let typePicker = UIPickerView()
-    let cityPicker = UIPickerView()
+    let provincePicker = UIPickerView()
     let districtPicker = UIPickerView()
     let wardPicker = UIPickerView()
     let pricePicker = UIPickerView()
@@ -75,7 +75,7 @@ class FilterViewController: BaseViewController {
     
     private func setupPickerView() {
         setupTypePickerView()
-        setupCityPickerView()
+        setupProvincePickerView()
         setupDistrictPickerView()
         setupWardPickerView()
         setupPricePickerView()
@@ -87,7 +87,7 @@ class FilterViewController: BaseViewController {
     
     @IBAction func onClickedResetBtn(_ sender: UIButton) {
         typeTextField.text = ""
-        cityTextField.text = ""
+        provinceTextField.text = ""
         districtTextField.text = ""
         wardTextField.text = ""
         priceTextField.text = ""
@@ -121,8 +121,8 @@ extension FilterViewController {
             switch element.key {
             case PickerTag.type:
                 typeTextField.text = element.value
-            case PickerTag.city:
-                cityTextField.text = element.value
+            case PickerTag.province:
+                provinceTextField.text = element.value
             case PickerTag.district:
                 districtTextField.text = element.value
             case PickerTag.ward:
@@ -153,8 +153,10 @@ extension FilterViewController {
             viewModel.type.accept(TypeRealEstate.sell)
         case TabBarItemTitle.forRent:
             viewModel.type.accept(TypeRealEstate.forRent)
-        default:
+        case TabBarItemTitle.project:
             viewModel.type.accept(TypeRealEstate.project)
+        default:
+            return
         }
         viewModel.type.subscribe(on: MainScheduler.instance)
             .bind(to: typePicker.rx.itemTitles) { (row, element) in
@@ -166,21 +168,26 @@ extension FilterViewController {
         }.disposed(by: viewModel.bag)
     }
     
-    private func setupCityPickerView() {
-        cityTextField.inputView = cityPicker
-        cityTextField.tintColor = .clear
-        cityPicker.tag = PickerTag.city
-        cityTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.city)
+    private func setupProvincePickerView() {
+        provinceTextField.inputView = provincePicker
+        provinceTextField.tintColor = .clear
+        provincePicker.tag = PickerTag.province
+        provinceTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.province)
 
-        viewModel.city.accept(TypeRealEstate.sell)
+        viewModel.getAllProvinces().subscribe { [weak self] provinces in
+            guard let self = self else { return }
+            self.viewModel.province.accept(self.viewModel.parseProvincesArray(provinces: provinces))
+        } onError: { _ in
+        } onCompleted: {
+        } .disposed(by: viewModel.bag)
 
-        viewModel.city.subscribe(on: MainScheduler.instance)
-            .bind(to: cityPicker.rx.itemTitles) { (row, element) in
-                return element
+        viewModel.province.subscribe(on: MainScheduler.instance)
+            .bind(to: provincePicker.rx.itemTitles) { (row, element) in
+                return element.name
             }.disposed(by: viewModel.bag)
 
-        cityPicker.rx.itemSelected.bind { (row: Int, component: Int) in
-            self.viewModel.selectedCity = row
+        provincePicker.rx.itemSelected.bind { (row: Int, component: Int) in
+            self.viewModel.selectedProvince = row
         }.disposed(by: viewModel.bag)
     }
 
@@ -190,11 +197,11 @@ extension FilterViewController {
         districtPicker.tag = PickerTag.district
         districtTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.district)
 
-        viewModel.district.accept(TypeRealEstate.sell)
+//        viewModel.district.accept(TypeRealEstate.sell)
 
         viewModel.district.subscribe(on: MainScheduler.instance)
             .bind(to: districtPicker.rx.itemTitles) { (row, element) in
-                return element
+                return element.name
             }.disposed(by: viewModel.bag)
 
         districtPicker.rx.itemSelected.bind { (row: Int, component: Int) in
@@ -208,11 +215,11 @@ extension FilterViewController {
         wardPicker.tag = PickerTag.ward
         wardTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.ward)
 
-        viewModel.ward.accept(TypeRealEstate.sell)
+//        viewModel.ward.accept(TypeRealEstate.sell)
     
         viewModel.ward.subscribe(on: MainScheduler.instance)
             .bind(to: wardPicker.rx.itemTitles) { (row, element) in
-                return element
+                return element.name
             }.disposed(by: viewModel.bag)
 
         wardPicker.rx.itemSelected.bind { (row: Int, component: Int) in
@@ -334,8 +341,8 @@ extension FilterViewController {
         switch sender.tag {
         case PickerTag.type:
             typeTextField.text = viewModel.pickItem(pickerTag: sender.tag)
-        case PickerTag.city:
-            cityTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+        case PickerTag.province:
+            provinceTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.district:
             districtTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.ward:
@@ -364,11 +371,11 @@ extension FilterViewController {
 extension FilterViewController {
     private func getApplyOptions() -> [(Int, String)] {
         guard let type = typeTextField.text,
-              let city = cityTextField.text,
+              let city = provinceTextField.text,
               type != "",
               city != ""
         else { return [(Int, String)]() }
-        var listOptions: [(Int, String)] = [(PickerTag.type, type), (PickerTag.city, city)]
+        var listOptions: [(Int, String)] = [(PickerTag.type, type), (PickerTag.province, city)]
         if let district = districtTextField.text, district != "" {
             listOptions += [(PickerTag.district, district)]
         }

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -16,12 +14,12 @@
                 <outlet property="acreageView" destination="qCt-9n-yKy" id="ZbY-PF-tTA"/>
                 <outlet property="bedroomTextField" destination="LbS-H6-3LC" id="D7O-vK-lEW"/>
                 <outlet property="bedroomView" destination="lY7-2A-Dam" id="rRh-7f-NmL"/>
-                <outlet property="cityTextField" destination="2YW-7G-euG" id="c23-YR-8Lk"/>
                 <outlet property="districtTextField" destination="G3a-86-wIB" id="Rhe-Cl-MMX"/>
                 <outlet property="extraTitleLabel" destination="az9-bf-8lj" id="rI3-re-L7L"/>
                 <outlet property="houseDirectionTextField" destination="txm-On-osT" id="RJT-1a-f5t"/>
                 <outlet property="houseDirectionView" destination="22R-4K-fSd" id="wGP-se-4yB"/>
                 <outlet property="priceTextField" destination="4hh-TV-Cpc" id="quw-OE-Djs"/>
+                <outlet property="provinceTextField" destination="2YW-7G-euG" id="c23-YR-8Lk"/>
                 <outlet property="statusTextField" destination="ka4-4c-eK6" id="po3-Vg-1yF"/>
                 <outlet property="statusView" destination="Vhy-l3-dHn" id="lgU-Ca-qgP"/>
                 <outlet property="typeTextField" destination="GH5-dz-qOz" id="Rwn-gd-Nhk"/>
@@ -36,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FP-vd-c3c" userLabel="backBtn">
-                    <rect key="frame" x="20" y="57" width="40" height="40"/>
+                    <rect key="frame" x="20" y="10" width="40" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="AvI-PC-bgu"/>
@@ -58,13 +56,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chọn danh mục" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rne-Rp-Bjy" userLabel="title">
-                    <rect key="frame" x="106" y="67" width="178" height="30"/>
+                    <rect key="frame" x="106" y="20" width="178" height="30"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                     <color key="textColor" name="themeText"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZn-ih-k7y">
-                    <rect key="frame" x="0.0" y="117" width="390" height="613"/>
+                    <rect key="frame" x="0.0" y="70" width="390" height="694"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PG5-ST-P6Y">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="579"/>
@@ -78,7 +76,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1IX-Nh-fgx">
-                                            <rect key="frame" x="275" y="17.999999999999989" width="25" height="14.999999999999996"/>
+                                            <rect key="frame" x="275" y="18.000000000000004" width="25" height="14.999999999999996"/>
                                             <color key="tintColor" name="themeText"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="IAs-2Q-IlN"/>
@@ -282,7 +280,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Auf-lC-hn9">
-                                            <rect key="frame" x="275" y="17.999999999999961" width="25" height="14.999999999999996"/>
+                                            <rect key="frame" x="275" y="18.000000000000018" width="25" height="14.999999999999996"/>
                                             <color key="tintColor" name="themeText"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="8YI-Sg-C2f"/>
@@ -385,7 +383,7 @@
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfX-zI-9Lh" userLabel="applyButton">
-                    <rect key="frame" x="20" y="740" width="350" height="50"/>
+                    <rect key="frame" x="20" y="774" width="350" height="50"/>
                     <color key="backgroundColor" red="0.75308537480000004" green="0.326120615" blue="0.26264229420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Wfr-En-oWu"/>
@@ -405,7 +403,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhC-Jx-0oi" userLabel="resetButton">
-                    <rect key="frame" x="330" y="57" width="40" height="40"/>
+                    <rect key="frame" x="330" y="10" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="pZt-fu-naB"/>
                         <constraint firstAttribute="height" constant="40" id="q95-xr-c0l"/>

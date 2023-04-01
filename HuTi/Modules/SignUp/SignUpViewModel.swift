@@ -9,9 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class SignUpViewModel {
-    let authService = AuthService()
-    let bag = DisposeBag()
+class SignUpViewModel: BaseViewModel {
     
     func sendOTP(phoneNumber: String) -> Observable<User> {
         return authService.sendOTP(phoneNumber: phoneNumber)

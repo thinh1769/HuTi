@@ -9,9 +9,7 @@ import Foundation
 import RxRelay
 import RxSwift
 
-class OTPViewModel {
-    let bag = DisposeBag()
-    let authService = AuthService()
+class OTPViewModel: BaseViewModel {
     var phoneNumber = ""
     
     func confirmOTP(otp: String) -> Observable<User> {

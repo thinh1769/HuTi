@@ -19,6 +19,10 @@
 		22BDEFAC29D30EA0001C08CC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFAB29D30EA0001C08CC /* SignInViewModel.swift */; };
 		22BDEFAE29D3249E001C08CC /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFAD29D3249E001C08CC /* SignUpViewModel.swift */; };
 		22CB6A5E29D806DF009C4F4D /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A5D29D806DF009C4F4D /* DateFormatter+Ext.swift */; };
+		22CB6A6029D825AC009C4F4D /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A5F29D825AB009C4F4D /* AddressService.swift */; };
+		22CB6A6229D830CD009C4F4D /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6129D830CD009C4F4D /* BaseViewModel.swift */; };
+		22CB6A6429D832AC009C4F4D /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6329D832AC009C4F4D /* ProjectDetailViewModel.swift */; };
+		22CB6A6629D8330D009C4F4D /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6529D8330D009C4F4D /* PostDetailViewModel.swift */; };
 		22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */; };
 		22D2E25329C6C11600E46CAF /* UserDefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */; };
 		22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */; };
@@ -81,6 +85,10 @@
 		22BDEFAB29D30EA0001C08CC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		22BDEFAD29D3249E001C08CC /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		22CB6A5D29D806DF009C4F4D /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
+		22CB6A5F29D825AB009C4F4D /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
+		22CB6A6129D830CD009C4F4D /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		22CB6A6329D832AC009C4F4D /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
+		22CB6A6529D8330D009C4F4D /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Ext.swift"; sourceTree = "<group>"; };
 		22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFilterResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -157,6 +165,7 @@
 			children = (
 				22A099A329D04749008BE7C7 /* BaseService.swift */,
 				22BDEFA929D30BE8001C08CC /* AuthService.swift */,
+				22CB6A5F29D825AB009C4F4D /* AddressService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -212,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				FC0E76D0299F2B5D00E4818C /* BaseViewController.swift */,
+				22CB6A6129D830CD009C4F4D /* BaseViewModel.swift */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -393,6 +403,7 @@
 			children = (
 				FCC3AD4029C1C2220050B58B /* ProjectDetailViewController.swift */,
 				FCC3AD4129C1C2220050B58B /* ProjectDetailViewController.xib */,
+				22CB6A6329D832AC009C4F4D /* ProjectDetailViewModel.swift */,
 			);
 			path = ProjectDetail;
 			sourceTree = "<group>";
@@ -402,6 +413,7 @@
 			children = (
 				FCC3AD4529C2F8C60050B58B /* PostDetailViewController.swift */,
 				FCC3AD4629C2F8C60050B58B /* PostDetailViewController.xib */,
+				22CB6A6529D8330D009C4F4D /* PostDetailViewModel.swift */,
 			);
 			path = PostDetail;
 			sourceTree = "<group>";
@@ -576,7 +588,9 @@
 				22AEC97229D5DCA50076014A /* AccountDetailViewModel.swift in Sources */,
 				22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */,
 				FCC3AD3D29C1722F0050B58B /* FilterViewController.swift in Sources */,
+				22CB6A6429D832AC009C4F4D /* ProjectDetailViewModel.swift in Sources */,
 				228D5FD429CBE84B00439D78 /* FilterViewModel.swift in Sources */,
+				22CB6A6629D8330D009C4F4D /* PostDetailViewModel.swift in Sources */,
 				22BDEFAA29D30BE9001C08CC /* AuthService.swift in Sources */,
 				FCC3AD4229C1C2220050B58B /* ProjectDetailViewController.swift in Sources */,
 				22EC390829CA968F00174D65 /* ResponseMain.swift in Sources */,
@@ -590,6 +604,7 @@
 				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
 				22A099A829D0538F008BE7C7 /* ServiceConstants.swift in Sources */,
 				22CB6A5E29D806DF009C4F4D /* DateFormatter+Ext.swift in Sources */,
+				22CB6A6229D830CD009C4F4D /* BaseViewModel.swift in Sources */,
 				FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */,
 				FCC3AD4B29C4236E0050B58B /* BackButton.swift in Sources */,
 				FCC364FD29B6D91D001A9310 /* MainTabBarController.swift in Sources */,
@@ -602,6 +617,7 @@
 				FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */,
 				FCC3650429B6F164001A9310 /* FilterResultViewModel.swift in Sources */,
 				22BDEFAE29D3249E001C08CC /* SignUpViewModel.swift in Sources */,
+				22CB6A6029D825AC009C4F4D /* AddressService.swift in Sources */,
 				22A099A629D047A8008BE7C7 /* User.swift in Sources */,
 				FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */,
 				22D2E25329C6C11600E46CAF /* UserDefault+Ext.swift in Sources */,

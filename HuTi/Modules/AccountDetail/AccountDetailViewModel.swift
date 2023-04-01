@@ -9,9 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class AccountDetailViewModel {
-    let bag = DisposeBag()
-    let authService = AuthService()
+class AccountDetailViewModel: BaseViewModel {
     var name = UserDefaults.userInfo?.name ?? ""
     var phone = UserDefaults.userInfo?.phoneNumber ?? ""
     var dob = UserDefaults.userInfo?.dateOfBirth ?? ""

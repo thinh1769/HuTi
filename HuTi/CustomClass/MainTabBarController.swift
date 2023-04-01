@@ -12,13 +12,13 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let sellTab = FilterResultViewController.instance(tabBarItemTitle: MainTitle.sell)
+        let sellTab = FilterResultViewController.instance(mainTabBarItemTitle: MainTitle.sell, tabBarItemTitle: TabBarItemTitle.sell)
         let sellNaVC = UINavigationController(rootViewController: sellTab)
         
-        let forRentTab = FilterResultViewController.instance(tabBarItemTitle: MainTitle.forRent)
+        let forRentTab = FilterResultViewController.instance(mainTabBarItemTitle: MainTitle.forRent, tabBarItemTitle: TabBarItemTitle.forRent)
         let forRentNaVC = UINavigationController(rootViewController: forRentTab)
         
-        let projectTab = FilterResultViewController.instance(tabBarItemTitle: MainTitle.project)
+        let projectTab = FilterResultViewController.instance(mainTabBarItemTitle: MainTitle.project, tabBarItemTitle: TabBarItemTitle.project)
         let projectNaVC = UINavigationController(rootViewController: projectTab)
         
         let accountTab =  AccountViewController()

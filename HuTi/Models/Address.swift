@@ -7,25 +7,28 @@
 
 import Foundation
 
-struct City: Codable {
-    var id: String
+struct Province: Codable {
+    var code: String
     var name: String
+    var unit: String
 }
 
 struct District: Codable {
-    var id: String
+    var code: String
     var name: String
-    var cityId: String
+    var unit: String
+    var province_code: String
+    var province_name: String
+    var full_name: String
 }
 
 struct Ward: Codable {
-    var id: String
+    var code: String
     var name: String
-    var districtId: String
-}
-
-struct Street: Codable {
-    var id: String
-    var name: String
-    var wardId: String
+    var unit: String
+    var district_code: String
+    var district_name: String
+    var province_code: String
+    var province_name: String
+    var full_name: String
 }

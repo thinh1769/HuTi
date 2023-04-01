@@ -9,6 +9,5 @@ import Foundation
 import RxRelay
 import RxSwift
 
-class AccountViewModel {
-    let bag = DisposeBag()
+class AccountViewModel: BaseViewModel {
 }

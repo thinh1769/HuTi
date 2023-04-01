@@ -9,22 +9,15 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class FilterViewModel {
-    let bag = DisposeBag()
+class FilterViewModel: BaseViewModel {
     var tabBarItemTitle = TabBarItemTitle.sell
     let type = BehaviorRelay<[String]>(value: [])
-    let city = BehaviorRelay<[String]>(value: [])
-    let district = BehaviorRelay<[String]>(value: [])
-    let ward = BehaviorRelay<[String]>(value: [])
     let price = BehaviorRelay<[String]>(value: [])
     let acreage = BehaviorRelay<[String]>(value: [])
     let bedroom = BehaviorRelay<[String]>(value: [])
     let houseDirection = BehaviorRelay<[String]>(value: [])
     let status = BehaviorRelay<[String]>(value: [])
     var selectedType = 0
-    var selectedCity = 0
-    var selectedDistrict = 0
-    var selectedWard = 0
     var selectedPrice = 0
     var selectedAcreage = 0
     var selectedBedroom = 0
@@ -40,21 +33,21 @@ class FilterViewModel {
             } else {
                 return ""
             }
-        case PickerTag.city:
-            if city.value.count > 0 {
-                return city.value[selectedCity]
+        case PickerTag.province:
+            if province.value.count > 0 {
+                return province.value[selectedProvince].name
             } else {
                 return ""
             }
         case PickerTag.district:
             if district.value.count > 0 {
-                return district.value[selectedDistrict]
+                return district.value[selectedDistrict].name
             } else {
                 return ""
             }
         case PickerTag.ward:
             if ward.value.count > 0 {
-                return ward.value[selectedWard]
+                return ward.value[selectedWard].name
             } else {
                 return ""
             }

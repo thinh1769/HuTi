@@ -37,7 +37,7 @@ struct TextFieldPlaceHolder {
 
 struct PickerTag {
     static let type = 0
-    static let city = 1
+    static let province = 1
     static let district = 2
     static let ward = 3
     static let project = 4
@@ -100,11 +100,12 @@ struct MainTitle {
 }
 
 struct TypeRealEstate {
-    static let sell = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort]
-    static let forRent = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.motel, Self.office, Self.shopKiosk, Self.wareHouseFactory, Self.land, Self.otherRealEstate]
+    static let sell = [Self.all, Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort]
+    static let forRent = [Self.all, Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.motel, Self.office, Self.shopKiosk, Self.wareHouseFactory, Self.land, Self.otherRealEstate]
     
     static let project = ["Tất cả dự án", Self.apartment, "Cao ốc văn phòng", "Trung tâm thương mại", "Khu đô thị mới", "Khu phức hợp", "Nhà ở xã hội", "Khu nghỉ dưỡng, Sinh thái", "Khu công nghiệp", "Biệt thự liền kề", "Shophouse", Self.streetHouse, "Dự án khác"]
     
+    static let all = "Tất cả nhà đất"
     static let apartment = "Căn hộ chung cư"
     static let home = "Nhà riêng"
     static let villa = "Nhà biệt thự, liền kề"
@@ -130,17 +131,4 @@ struct PickerData {
     static let funiture = ["Đầy đủ", "Cơ bản", "Không nội thất"]
     static let gender = ["Nam", "Nữ", "Khác"]
     static let day = ["01", "02", "03"]
-}
-
-enum AdministrativeURLType: String {
-    case getAllProvinces
-    case getDistrictsByProvince
-    case getWardsByDistrict
-}
-
-struct AdministrativeURL {
-    static let getAllProvinces = "https://vn-public-apis.fpo.vn/provinces/getAll?limit=-1"
-    static let getDistrictsByProvince = "https://vn-public-apis.fpo.vn/districts/getByProvince?provinceCode="
-    static let getWardsByDistrict = "https://vn-public-apis.fpo.vn/wards/getByDistrict?districtCode="
-    static let urlTail = "&limit=-1"
 }

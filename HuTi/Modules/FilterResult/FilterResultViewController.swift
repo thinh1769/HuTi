@@ -30,7 +30,7 @@ class FilterResultViewController: BaseViewController {
         viewModel.initData()
         mapView.isHidden = true
     
-        titleLabel.text = viewModel.tabBarItemTitle
+        titleLabel.text = viewModel.mainTabBarItemTitle
         setupCollectionView()
         setupTableView()
     }
@@ -105,8 +105,9 @@ extension FilterResultViewController: FilterViewControllerDelegate {
 
 // MARK: - Instance.
 extension FilterResultViewController {
-    class func instance(tabBarItemTitle: String) -> FilterResultViewController {
+    class func instance(mainTabBarItemTitle: String, tabBarItemTitle: String) -> FilterResultViewController {
         let controller = FilterResultViewController(nibName: ClassNibName.FilterResultViewController, bundle: Bundle.main)
+        controller.viewModel.mainTabBarItemTitle = mainTabBarItemTitle
         controller.viewModel.tabBarItemTitle = tabBarItemTitle
         return controller
     }
