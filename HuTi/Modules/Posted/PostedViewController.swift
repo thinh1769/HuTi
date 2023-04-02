@@ -33,15 +33,15 @@ class PostedViewController: BaseViewController {
         
         postedTableView.register(FilterResultTableViewCell.nib, forCellReuseIdentifier: FilterResultTableViewCell.reusableIdentifier)
         
-        viewModel.post.asObservable()
-            .bind(to: postedTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { [weak self] (index, element, cell) in
-                guard let self = self else { return }
-                if self.viewModel.title == MainTitle.favoritePosts {
-                    cell.config(element, isHiddenAuthorAndHeart: false)
-                } else {
-                    cell.config(element, isHiddenAuthorAndHeart: true)
-                }
-            }.disposed(by: viewModel.bag)
+//        viewModel.post.asObservable()
+//            .bind(to: postedTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { [weak self] (index, element, cell) in
+//                guard let self = self else { return }
+//                if self.viewModel.title == MainTitle.favoritePosts {
+//                    cell.config(element, isHiddenAuthorAndHeart: false)
+//                } else {
+//                    cell.config(element, isHiddenAuthorAndHeart: true)
+//                }
+//            }.disposed(by: viewModel.bag)
         
         postedTableView.rx.modelSelected(Post.self)
             .subscribe { [weak self] element in

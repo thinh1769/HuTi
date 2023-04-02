@@ -23,6 +23,7 @@
 		22CB6A6229D830CD009C4F4D /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6129D830CD009C4F4D /* BaseViewModel.swift */; };
 		22CB6A6429D832AC009C4F4D /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6329D832AC009C4F4D /* ProjectDetailViewModel.swift */; };
 		22CB6A6629D8330D009C4F4D /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6529D8330D009C4F4D /* PostDetailViewModel.swift */; };
+		22CB6A6829D86B71009C4F4D /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6729D86B71009C4F4D /* PostService.swift */; };
 		22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */; };
 		22D2E25329C6C11600E46CAF /* UserDefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */; };
 		22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */; };
@@ -89,6 +90,7 @@
 		22CB6A6129D830CD009C4F4D /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		22CB6A6329D832AC009C4F4D /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
 		22CB6A6529D8330D009C4F4D /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		22CB6A6729D86B71009C4F4D /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Ext.swift"; sourceTree = "<group>"; };
 		22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFilterResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				22A099A329D04749008BE7C7 /* BaseService.swift */,
 				22BDEFA929D30BE8001C08CC /* AuthService.swift */,
 				22CB6A5F29D825AB009C4F4D /* AddressService.swift */,
+				22CB6A6729D86B71009C4F4D /* PostService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				FCC364FD29B6D91D001A9310 /* MainTabBarController.swift in Sources */,
 				FC2E2C2029B73B4400DADA16 /* Post.swift in Sources */,
 				FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */,
+				22CB6A6829D86B71009C4F4D /* PostService.swift in Sources */,
 				FCC3AD2729BB33010050B58B /* CommonConstants.swift in Sources */,
 				FCC3AD3829C01EC90050B58B /* NewPostViewController.swift in Sources */,
 				FC2E2C2229B73BD700DADA16 /* Address.swift in Sources */,

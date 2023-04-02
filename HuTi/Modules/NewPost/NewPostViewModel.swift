@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 class NewPostViewModel: BaseViewModel {
-    let typeRealEstate = BehaviorRelay<[String]>(value: [])
+    let realEstateType = BehaviorRelay<[String]>(value: [])
     let project = BehaviorRelay<[String]>(value: [])
     let legal = BehaviorRelay<[String]>(value: [])
     let funiture = BehaviorRelay<[String]>(value: [])
@@ -28,8 +28,8 @@ class NewPostViewModel: BaseViewModel {
     func pickItem(pickerTag: Int) -> String? {
         switch pickerTag{
         case PickerTag.type:
-            if typeRealEstate.value.count > 0 {
-                return typeRealEstate.value[selectedType]
+            if realEstateType.value.count > 0 {
+                return realEstateType.value[selectedType]
             } else {
                 return ""
             }
@@ -84,6 +84,39 @@ class NewPostViewModel: BaseViewModel {
         default:
             return ""
         }
+    }
+    
+    func addNewPost(address: String, long: Double, lat: Double, title: String, description: String, acreage: Double, price: Double, bedroom: Int, bathroom: Int, floor: Int, wayIn: Double, facade: Double, contactName: String, contactPhoneNumber: String) -> Observable<Post> {
+        return postService.addPost(post: Post(userId: UserDefaults.userInfo?.id ?? "",
+                    isSell: isSelectedSell,
+                    realEstateType: realEstateType.value[selectedType],
+                    provinceCode: province.value[selectedProvince].id,
+                    districtCode: district.value[selectedDistrict].id,
+                    wardCode: ward.value[selectedWard].id,
+                    provinceName: province.value[selectedProvince].name,
+                    districtName: district.value[selectedDistrict].name,
+                    wardName: ward.value[selectedWard].name,
+                    address: address,
+                    lat: lat,
+                    long: long,
+                    title: title,
+                    description: description,
+                    acreage: acreage,
+                    acreageRange: "50 - 70 m2",
+                    price: price,
+                    priceRange: "5 - 6 tỷ",
+                    legal: legal.value[selectedLegal],
+                    funiture: funiture.value[selectedFuniture],
+                    bedroom: bedroom,
+                    bathroom: bathroom,
+                    floor: floor,
+                    houseDirection: houseDirection.value[selectedHouseDirection],
+                    balconyDirection: balconyDirection.value[selectedBalconyDirection],
+                    wayIn: wayIn,
+                    facade: facade,
+                    images: ["hinh1", "hinh2"],
+                    contactName: contactName,
+                    contactPhoneNumber: contactPhoneNumber))
     }
 }
 

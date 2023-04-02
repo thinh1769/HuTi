@@ -20,6 +20,15 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var provinceTextField: UITextField!
     @IBOutlet weak var districtTextField: UITextField!
     @IBOutlet weak var wardTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var acreageTextField: UITextField!
+    @IBOutlet weak var priceTextField: UITextField!
+    @IBOutlet weak var wayInTextField: UITextField!
+    @IBOutlet weak var facadeTextField: UITextField!
+    @IBOutlet weak var contactNameTextField: UITextField!
+    @IBOutlet weak var contactPhoneTextField: UITextField!
     @IBOutlet weak var projectTextField: UITextField!
     @IBOutlet weak var legalTextField: UITextField!
     @IBOutlet weak var funitureTextField: UITextField!
@@ -38,6 +47,7 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var decreaseFloorBtn: UIButton!
     @IBOutlet weak var increaseFloorBtn: UIButton!
     @IBOutlet weak var floorNumberLabel: UILabel!
+    @IBOutlet weak var currentLocationButton: UIButton!
     
     let typePicker = UIPickerView()
     let provincePicker = UIPickerView()
@@ -51,7 +61,7 @@ class NewPostViewController: BaseViewController {
     
     var viewModel = NewPostViewModel()
     private var locationManager = CLLocationManager()
-    private let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+    private let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +74,7 @@ class NewPostViewController: BaseViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.isUserInteractionEnabled = false
-        
+        currentLocationButton.isUserInteractionEnabled = false
         sellView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedSellView)))
         forRentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedForRentView)))
         
@@ -111,9 +121,11 @@ class NewPostViewController: BaseViewController {
         if !viewModel.isEditBtnClicked {
             editLocationBtn.setTitle(CommonConstants.done, for: .normal)
             mapView.isUserInteractionEnabled = true
+            currentLocationButton.isUserInteractionEnabled = true
         } else {
             editLocationBtn.setTitle(CommonConstants.edit, for: .normal)
             mapView.isUserInteractionEnabled = false
+            currentLocationButton.isUserInteractionEnabled = false
         }
         viewModel.isEditBtnClicked = !viewModel.isEditBtnClicked
     }
@@ -124,11 +136,11 @@ class NewPostViewController: BaseViewController {
         if isChooseSell {
             sellCheckmarkImage.image = UIImage(systemName: ImageName.checkmarkFill)
             forRentCheckmarkImage.image = UIImage(systemName: ImageName.circle)
-            viewModel.typeRealEstate.accept(TypeRealEstate.sell)
+            viewModel.realEstateType.accept(TypeRealEstate.newPostSell)
         } else {
             sellCheckmarkImage.image = UIImage(systemName: ImageName.circle)
             forRentCheckmarkImage.image = UIImage(systemName: ImageName.checkmarkFill)
-            viewModel.typeRealEstate.accept(TypeRealEstate.forRent)
+            viewModel.realEstateType.accept(TypeRealEstate.newPostForRent)
         }
     }
     @IBAction func onClickedDecreaseBedroomBtn(_ sender: UIButton) {
@@ -141,7 +153,9 @@ class NewPostViewController: BaseViewController {
     
     @IBAction func onClickedIncreaseBedroomBtn(_ sender: UIButton) {
         if let number = Int(bedroomNumberLabel.text ?? "") {
-            bedroomNumberLabel.text = "\(number + 1)"
+            if number < 99 {
+                bedroomNumberLabel.text = "\(number + 1)"
+            }
         }
     }
     
@@ -154,7 +168,9 @@ class NewPostViewController: BaseViewController {
     }
     @IBAction func onClickedIncreaseBathroomBtn(_ sender: UIButton) {
         if let number = Int(bathroomNumberLabel.text ?? "") {
-            bathroomNumberLabel.text = "\(number + 1)"
+            if number < 99 {
+                bathroomNumberLabel.text = "\(number + 1)"
+            }
         }
     }
     @IBAction func onClickedDecreaseFloorBtn(_ sender: UIButton) {
@@ -166,20 +182,46 @@ class NewPostViewController: BaseViewController {
     }
     @IBAction func onClickedIncreaseFloorBtn(_ sender: UIButton) {
         if let number = Int(floorNumberLabel.text ?? "") {
-            floorNumberLabel.text = "\(number + 1)"
+            if number < 99 {
+                floorNumberLabel.text = "\(number + 1)"
+            }
         }
+    }
+    
+    @IBAction func onClickedCurrentLocationButton(_ sender: UIButton) {
+        locationManager.startUpdatingLocation()
+    }
+    
+    @IBAction func onClickedPostBtn(_ sender: UIButton) {
+        viewModel.addNewPost(address: addressTextField.text ?? ""
+                             , long: mapView.centerCoordinate.longitude
+                             , lat: mapView.centerCoordinate.latitude
+                             , title: titleTextField.text ?? ""
+                             , description: descriptionTextView.text ?? ""
+                             , acreage: Double(acreageTextField.text ?? "") ?? 0
+                             , price: Double(priceTextField.text ?? "") ?? 0
+                             , bedroom: Int(bedroomNumberLabel.text ?? "") ?? 0
+                             , bathroom: Int(bathroomNumberLabel.text ?? "") ?? 0
+                             , floor: Int(floorNumberLabel.text ?? "") ?? 0
+                             , wayIn: Double(wayInTextField.text ?? "") ?? 0
+                             , facade: Double(facadeTextField.text ?? "") ?? 0
+                             , contactName: contactNameTextField.text ?? ""
+                             , contactPhoneNumber: contactPhoneTextField.text ?? "")
+        .subscribe { [weak self] _ in
+            guard let self = self else { return }
+            print("=---add Post thành công---")
+            self.backToPreviousView()
+        }.disposed(by: viewModel.bag)
     }
 }
 
 extension NewPostViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            
             locationManager.stopUpdatingLocation()
             moveCameraToLocation(location.coordinate.latitude, location.coordinate.longitude)
             let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             mapView.showsUserLocation = true
-//            pinUserLocation(coordinate)
         }
     }
     
@@ -188,40 +230,6 @@ extension NewPostViewController: CLLocationManagerDelegate {
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapView.setRegion(region, animated: false)
     }
-    
-//    private func pinUserLocation(_ coordinate: CLLocationCoordinate2D) {
-//        removeAnnotation(isRemoveAll: false)
-//        let pin = MKPointAnnotation()
-//        pin.title = LocationTitle.userLocation.rawValue
-//        pin.coordinate = coordinate
-//        mapView.addAnnotation(pin)
-//    }
-    
-//    private func removeAnnotation(isRemoveAll: Bool) {
-//        let annotations = mapView.annotations
-//        for annotation in annotations {
-//            if let annotation = annotation as? MKAnnotation {
-//                if !isRemoveAll {
-//                    guard let locationTitle = annotation.title else { return }
-//                    if locationTitle == LocationTitle.userLocation.rawValue {
-//                        mapView.removeAnnotation(annotation)
-//                    }
-//                } else {
-//                    mapView.removeAnnotation(annotation)
-//                }
-//            }
-//        }
-//    }
-    
-//    private func pinLocation() {
-//        for location in viewModel.location.value {
-//            let coordinate = CLLocationCoordinate2D(latitude: location.lat, longitude: location.long)
-//            let pin = MKPointAnnotation()
-//            pin.title = location.id
-//            pin.coordinate = coordinate
-//            mapView.addAnnotation(pin)
-//        }
-//    }
 }
 
 // MARK: - SetupPicker
@@ -232,9 +240,9 @@ extension NewPostViewController {
         typePicker.tag = PickerTag.type
         typeTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.type)
         
-        viewModel.typeRealEstate.accept(TypeRealEstate.sell)
+        viewModel.realEstateType.accept(TypeRealEstate.newPostSell)
 
-        viewModel.typeRealEstate.subscribe(on: MainScheduler.instance)
+        viewModel.realEstateType.subscribe(on: MainScheduler.instance)
             .bind(to: typePicker.rx.itemTitles) { (row, element) in
                 return element
             }.disposed(by: viewModel.bag)

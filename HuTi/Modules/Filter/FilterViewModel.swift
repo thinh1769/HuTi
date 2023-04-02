@@ -17,11 +17,11 @@ class FilterViewModel: BaseViewModel {
     let bedroom = BehaviorRelay<[String]>(value: [])
     let houseDirection = BehaviorRelay<[String]>(value: [])
     let status = BehaviorRelay<[String]>(value: [])
-    var selectedType = 0
+    var selectedFilterType = 0
     var selectedPrice = 0
     var selectedAcreage = 0
     var selectedBedroom = 0
-    var selectedHouseDirection = 0
+    var selectedFilterHouseDirection = 0
     var selectedStatus = 0
     var optionsList = [(key: Int, value: String)]()
     
@@ -29,7 +29,7 @@ class FilterViewModel: BaseViewModel {
         switch pickerTag{
         case PickerTag.type:
             if type.value.count > 0 {
-                return type.value[selectedType]
+                return type.value[selectedFilterType]
             } else {
                 return ""
             }
@@ -71,7 +71,7 @@ class FilterViewModel: BaseViewModel {
             }
         case PickerTag.houseDirection:
             if houseDirection.value.count > 0 {
-                return houseDirection.value[selectedHouseDirection]
+                return houseDirection.value[selectedFilterHouseDirection]
             } else {
                 return ""
             }

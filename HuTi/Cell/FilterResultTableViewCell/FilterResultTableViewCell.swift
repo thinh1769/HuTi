@@ -43,9 +43,9 @@ class FilterResultTableViewCell: UITableViewCell {
     
     func config(_  post: Post, isHiddenAuthorAndHeart: Bool) {
         postTitleLabel.text = post.title
-        priceLabel.text = post.price
+//        priceLabel.text = post.price
         addressLabel.text = post.address
-        authorLabel.text = post.authorName
+//        authorLabel.text = post.authorName
         
         if isHiddenAuthorAndHeart {
             bottomView.isHidden = true

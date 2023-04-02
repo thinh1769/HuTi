@@ -100,7 +100,9 @@ struct MainTitle {
 }
 
 struct TypeRealEstate {
+    static let newPostSell = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort]
     static let sell = [Self.all, Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort]
+    static let newPostForRent = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.motel, Self.office, Self.shopKiosk, Self.wareHouseFactory, Self.land, Self.otherRealEstate]
     static let forRent = [Self.all, Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.motel, Self.office, Self.shopKiosk, Self.wareHouseFactory, Self.land, Self.otherRealEstate]
     
     static let project = ["Tất cả dự án", Self.apartment, "Cao ốc văn phòng", "Trung tâm thương mại", "Khu đô thị mới", "Khu phức hợp", "Nhà ở xã hội", "Khu nghỉ dưỡng, Sinh thái", "Khu công nghiệp", "Biệt thự liền kề", "Shophouse", Self.streetHouse, "Dự án khác"]

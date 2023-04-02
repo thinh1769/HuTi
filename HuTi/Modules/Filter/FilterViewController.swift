@@ -164,7 +164,7 @@ extension FilterViewController {
             }.disposed(by: viewModel.bag)
 
         typePicker.rx.itemSelected.bind { (row: Int, component: Int) in
-            self.viewModel.selectedType = row
+            self.viewModel.selectedFilterType = row
         }.disposed(by: viewModel.bag)
     }
     
@@ -295,7 +295,7 @@ extension FilterViewController {
             }.disposed(by: viewModel.bag)
 
         houseDirectionPicker.rx.itemSelected.bind { (row: Int, component: Int) in
-            self.viewModel.selectedHouseDirection = row
+            self.viewModel.selectedFilterHouseDirection = row
         }.disposed(by: viewModel.bag)
     }
 
