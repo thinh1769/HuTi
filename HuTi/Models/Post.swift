@@ -9,7 +9,7 @@ import Foundation
 
 struct Post: Codable {
     var id: String?
-    var userId: String
+    var userId: String?
     var isSell: Bool
     var realEstateType: String
     var provinceCode: String
@@ -25,9 +25,9 @@ struct Post: Codable {
     var title: String
     var description: String
     var acreage: Double
-    var acreageRange: String
+    var acreageRange: String?
     var price: Double
-    var priceRange: String
+    var priceRange: String?
     var legal: String
     var funiture: String
     var bedroom: Int
@@ -38,6 +38,7 @@ struct Post: Codable {
     var wayIn: Double
     var facade: Double
     var images: [String]
-    var contactName: String
-    var contactPhoneNumber: String
+    var username: String?
+    var contactName: String?
+    var contactPhoneNumber: String?
 }

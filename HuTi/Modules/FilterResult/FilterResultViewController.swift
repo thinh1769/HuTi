@@ -27,7 +27,10 @@ class FilterResultViewController: BaseViewController {
     }
     
     private func setupUI() {
-        viewModel.initData()
+        viewModel.getPost().subscribe { [weak self] posts in
+            guard let self = self else { return}
+            self.viewModel.post.accept(posts)
+        }.disposed(by: viewModel.bag)
         mapView.isHidden = true
     
         titleLabel.text = viewModel.mainTabBarItemTitle
@@ -94,7 +97,7 @@ class FilterResultViewController: BaseViewController {
 extension FilterResultViewController: FilterViewControllerDelegate {
     func didTapApplyButton(listOptions: [(Int, String)]) {
         viewModel.tuppleOptionsList = listOptions
-        viewModel.parseTuppleToArray()
+        viewModel.parseOptionTuppleToArray()
     }
     
     func didTapResetButton() {
