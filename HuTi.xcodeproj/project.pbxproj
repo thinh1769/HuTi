@@ -24,6 +24,13 @@
 		22CB6A6429D832AC009C4F4D /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6329D832AC009C4F4D /* ProjectDetailViewModel.swift */; };
 		22CB6A6629D8330D009C4F4D /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6529D8330D009C4F4D /* PostDetailViewModel.swift */; };
 		22CB6A6829D86B71009C4F4D /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6729D86B71009C4F4D /* PostService.swift */; };
+		22CF839729D9884D00683B98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22CF839629D9884D00683B98 /* GoogleService-Info.plist */; };
+		22CF839929D9B10900683B98 /* AWSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF839829D9B10900683B98 /* AWSService.swift */; };
+		22CF839B29D9B13200683B98 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF839A29D9B13200683B98 /* Asset.swift */; };
+		22CF839D29D9B14C00683B98 /* AssetDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF839C29D9B14C00683B98 /* AssetDataModel.swift */; };
+		22CF839F29D9B20600683B98 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF839E29D9B20600683B98 /* ImageCache.swift */; };
+		22CF83A329D9B34600683B98 /* NewPostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF83A129D9B34600683B98 /* NewPostImageCell.swift */; };
+		22CF83A429D9B34600683B98 /* NewPostImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CF83A229D9B34600683B98 /* NewPostImageCell.xib */; };
 		22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */; };
 		22D2E25329C6C11600E46CAF /* UserDefault+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */; };
 		22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */; };
@@ -91,6 +98,13 @@
 		22CB6A6329D832AC009C4F4D /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
 		22CB6A6529D8330D009C4F4D /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		22CB6A6729D86B71009C4F4D /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		22CF839629D9884D00683B98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22CF839829D9B10900683B98 /* AWSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSService.swift; sourceTree = "<group>"; };
+		22CF839A29D9B13200683B98 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		22CF839C29D9B14C00683B98 /* AssetDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDataModel.swift; sourceTree = "<group>"; };
+		22CF839E29D9B20600683B98 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		22CF83A129D9B34600683B98 /* NewPostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostImageCell.swift; sourceTree = "<group>"; };
+		22CF83A229D9B34600683B98 /* NewPostImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPostImageCell.xib; sourceTree = "<group>"; };
 		22D2E24F29C6C09900E46CAF /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Ext.swift"; sourceTree = "<group>"; };
 		22EC390129C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectFilterResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -169,8 +183,18 @@
 				22BDEFA929D30BE8001C08CC /* AuthService.swift */,
 				22CB6A5F29D825AB009C4F4D /* AddressService.swift */,
 				22CB6A6729D86B71009C4F4D /* PostService.swift */,
+				22CF839829D9B10900683B98 /* AWSService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		22CF83A029D9B31500683B98 /* NewPostImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				22CF83A129D9B34600683B98 /* NewPostImageCell.swift */,
+				22CF83A229D9B34600683B98 /* NewPostImageCell.xib */,
+			);
+			path = NewPostImageCell;
 			sourceTree = "<group>";
 		};
 		22D2E25129C6C0FA00E46CAF /* Extensions */ = {
@@ -178,6 +202,7 @@
 			children = (
 				22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */,
 				22CB6A5D29D806DF009C4F4D /* DateFormatter+Ext.swift */,
+				22CF839E29D9B20600683B98 /* ImageCache.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -242,6 +267,7 @@
 		FC2E2C1329B71A7F00DADA16 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				22CF83A029D9B31500683B98 /* NewPostImageCell */,
 				22EC390029C9D24400174D65 /* ProjectFilterResultTableViewCell */,
 				FC2E2C1929B71B7300DADA16 /* FilterResultTableViewCell */,
 				FC2E2C1429B71A8D00DADA16 /* AddressCollectionViewCell */,
@@ -271,9 +297,11 @@
 			isa = PBXGroup;
 			children = (
 				FC2E2C1F29B73B4400DADA16 /* Post.swift */,
-				FC2E2C2129B73BD700DADA16 /* Address.swift */,
 				22EC390729CA968E00174D65 /* ResponseMain.swift */,
 				22A099A529D047A8008BE7C7 /* User.swift */,
+				22CF839A29D9B13200683B98 /* Asset.swift */,
+				FC2E2C2129B73BD700DADA16 /* Address.swift */,
+				22CF839C29D9B14C00683B98 /* AssetDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -347,6 +375,7 @@
 			children = (
 				FCBF7320299CC33A00BF327A /* LaunchScreen.storyboard */,
 				FCBF731E299CC33A00BF327A /* Assets.xcassets */,
+				22CF839629D9884D00683B98 /* GoogleService-Info.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -520,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCC3AD3E29C1722F0050B58B /* FilterViewController.xib in Resources */,
+				22CF83A429D9B34600683B98 /* NewPostImageCell.xib in Resources */,
 				FC0E76FF29B1A19500E4818C /* ConfirmPasswordViewController.xib in Resources */,
 				FCBF7322299CC33A00BF327A /* LaunchScreen.storyboard in Resources */,
 				FCBF7330299CC4E500BF327A /* SignInViewController.xib in Resources */,
@@ -530,6 +560,7 @@
 				FCC3AD4329C1C2220050B58B /* ProjectDetailViewController.xib in Resources */,
 				FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */,
 				FCBF731F299CC33A00BF327A /* Assets.xcassets in Resources */,
+				22CF839729D9884D00683B98 /* GoogleService-Info.plist in Resources */,
 				FCC3AD3929C01EC90050B58B /* NewPostViewController.xib in Resources */,
 				FCC3650229B6D9A5001A9310 /* FilterResultViewController.xib in Resources */,
 				FCEE1A2529BAD27500AEF380 /* AccountDetailViewController.xib in Resources */,
@@ -591,11 +622,14 @@
 				22AEC97229D5DCA50076014A /* AccountDetailViewModel.swift in Sources */,
 				22EC390329C9D2AC00174D65 /* ProjectFilterResultTableViewCell.swift in Sources */,
 				FCC3AD3D29C1722F0050B58B /* FilterViewController.swift in Sources */,
+				22CF839929D9B10900683B98 /* AWSService.swift in Sources */,
 				22CB6A6429D832AC009C4F4D /* ProjectDetailViewModel.swift in Sources */,
 				228D5FD429CBE84B00439D78 /* FilterViewModel.swift in Sources */,
 				22CB6A6629D8330D009C4F4D /* PostDetailViewModel.swift in Sources */,
+				22CF839B29D9B13200683B98 /* Asset.swift in Sources */,
 				22BDEFAA29D30BE9001C08CC /* AuthService.swift in Sources */,
 				FCC3AD4229C1C2220050B58B /* ProjectDetailViewController.swift in Sources */,
+				22CF839D29D9B14C00683B98 /* AssetDataModel.swift in Sources */,
 				22EC390829CA968F00174D65 /* ResponseMain.swift in Sources */,
 				FCC3AD4729C2F8C60050B58B /* PostDetailViewController.swift in Sources */,
 				FC0E76CB299F254C00E4818C /* OTPViewController.swift in Sources */,
@@ -604,12 +638,14 @@
 				FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */,
 				22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */,
 				22AEC96E29D5CF960076014A /* OTPViewModel.swift in Sources */,
+				22CF839F29D9B20600683B98 /* ImageCache.swift in Sources */,
 				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
 				22A099A829D0538F008BE7C7 /* ServiceConstants.swift in Sources */,
 				22CB6A5E29D806DF009C4F4D /* DateFormatter+Ext.swift in Sources */,
 				22CB6A6229D830CD009C4F4D /* BaseViewModel.swift in Sources */,
 				FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */,
 				FCC3AD4B29C4236E0050B58B /* BackButton.swift in Sources */,
+				22CF83A329D9B34600683B98 /* NewPostImageCell.swift in Sources */,
 				FCC364FD29B6D91D001A9310 /* MainTabBarController.swift in Sources */,
 				FC2E2C2029B73B4400DADA16 /* Post.swift in Sources */,
 				FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */,

@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (5.6.2)
+  - AWSCore (2.28.4)
+  - AWSS3 (2.28.4):
+    - AWSCore (= 2.28.4)
   - IQKeyboardManagerSwift (6.5.10)
   - MBProgressHUD (1.2.0)
   - RxCocoa (6.5.0):
@@ -11,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AWSS3
   - IQKeyboardManagerSwift
   - MBProgressHUD
   - RxCocoa
@@ -19,6 +23,8 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AWSCore
+    - AWSS3
     - IQKeyboardManagerSwift
     - MBProgressHUD
     - RxCocoa
@@ -27,12 +33,14 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  AWSCore: 4f8c2d79f9071c80e4c5211672db389334370eae
+  AWSS3: 602ed66809165ba45cfeef728b7577e35786873d
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
 
-PODFILE CHECKSUM: 4c2b4dc74ce05055f2b859f2f07c1015cc59dde0
+PODFILE CHECKSUM: 0d1f1262bb42264ac8d8e07193bba693eb15bbf8
 
 COCOAPODS: 1.11.3

@@ -12,5 +12,6 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'Alamofire'
 pod 'MBProgressHUD'
+pod 'AWSS3'
 
 end

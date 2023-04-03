@@ -67,7 +67,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWU-29-Zgc" userLabel="authorLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="255" height="25"/>
-                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="8"/>
                                                 <color key="textColor" name="black"/>
                                                 <nil key="highlightedColor"/>
                                             </label>

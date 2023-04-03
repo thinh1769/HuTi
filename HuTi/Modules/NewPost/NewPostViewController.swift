@@ -11,6 +11,7 @@ import RxCocoa
 import RxRelay
 import MapKit
 import CoreLocation
+import PhotosUI
 
 class NewPostViewController: BaseViewController {
     
@@ -48,6 +49,7 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var increaseFloorBtn: UIButton!
     @IBOutlet weak var floorNumberLabel: UILabel!
     @IBOutlet weak var currentLocationButton: UIButton!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     
     let typePicker = UIPickerView()
     let provincePicker = UIPickerView()
@@ -58,10 +60,10 @@ class NewPostViewController: BaseViewController {
     let funiturePicker = UIPickerView()
     let houseDirectionPicker = UIPickerView()
     let balconyDirectionPicker = UIPickerView()
-    
     var viewModel = NewPostViewModel()
     private var locationManager = CLLocationManager()
     private let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+    var config = PHPickerConfiguration()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +72,7 @@ class NewPostViewController: BaseViewController {
     
     private func setupUI() {
         setupPickerView()
+        setupImageCollectionView()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -213,6 +216,33 @@ class NewPostViewController: BaseViewController {
             self.backToPreviousView()
         }.disposed(by: viewModel.bag)
     }
+    
+    @IBAction func onClickedImageButton(_ sender: UIButton) {
+        config.filter = .images
+        config.selectionLimit = 10
+        
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
+    }
+    
+    private func setupImageCollectionView() {
+        imageCollectionView.register(NewPostImageCell.nib, forCellWithReuseIdentifier: NewPostImageCell.reusableIdentifier)
+        
+        viewModel.selectedImage.asObservable()
+            .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { (index, element, cell) in
+                cell.config(image: element)
+            }.disposed(by: viewModel.bag)
+        
+        imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
+    }
+    
+}
+
+extension NewPostViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: imageCollectionView.bounds.width / 2, height: imageCollectionView.bounds.height)
+    }
 }
 
 extension NewPostViewController: CLLocationManagerDelegate {
@@ -229,6 +259,26 @@ extension NewPostViewController: CLLocationManagerDelegate {
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapView.setRegion(region, animated: false)
+    }
+}
+
+extension NewPostViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true)
+        for item in results {
+            item.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                if let image = image {
+                    self.viewModel.imageSelected = image as! UIImage
+                    self.viewModel.images.append(self.viewModel.imageSelected)
+                    self.viewModel.setupDataImageCollectionView()
+                    self.viewModel.uploadImage {
+                        DispatchQueue.main.async {
+                            print("---upload image thành công")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

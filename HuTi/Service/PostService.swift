@@ -10,11 +10,11 @@ import RxSwift
 import RxRelay
 
 class PostService: BaseService {
-    func addPost(post: Post) -> Observable<Post> {
+    func addPost(post: PostDetail) -> Observable<PostDetail> {
         return request(api: APIConstants.addNewPost.rawValue, method: .post, params: post)
     }
     
-    func getPosts() -> Observable<[Post]> {
+    func getPosts() -> Observable<[PostDetail]> {
         return request(api: .getPosts)
     }
 }

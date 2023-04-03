@@ -17,6 +17,7 @@ struct CommonConstants {
     static let edit = "Sửa"
     static let updateInfo = "Vui lòng cập nhật thông tin tài khoản!"
     static let DATE_FORMAT = "dd/MM/yyyy"
+    static let dateFormatAWSS3 = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     static let networkError = "Lỗi kết nối mạng"
 }
 

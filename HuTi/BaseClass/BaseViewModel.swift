@@ -14,6 +14,7 @@ class BaseViewModel {
     let authService = AuthService()
     let addressService = AddressService()
     let postService = PostService()
+    let awsService = AWSService()
     let province = BehaviorRelay<[(id: String, name: String)]>(value: [])
     let district = BehaviorRelay<[(id: String, name: String)]>(value: [])
     let ward = BehaviorRelay<[(id: String, name: String)]>(value: [])

@@ -61,7 +61,7 @@ class FilterResultViewController: BaseViewController {
             }.disposed(by: viewModel.bag)
         
         filterResultTableView.rx
-            .modelSelected(Post.self)
+            .modelSelected(PostDetail.self)
             .subscribe { [weak self] element in
                 guard let self = self else { return }
                 if self.viewModel.tabBarItemTitle == TabBarItemTitle.project {

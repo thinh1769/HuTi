@@ -24,7 +24,8 @@ struct StatusCode {
 }
 
 struct Base {
-    static let URL = "http://192.168.2.8:3000/api/"
+//    static let URL = "http://192.168.2.8:3000/api/"
+    static let URL = "http://172.20.10.3:3000/api/"
 //    static let URL = "http://localhost:3000/api/"
 }
 
@@ -37,7 +38,7 @@ enum APIConstants: String {
     case getAllProvinces = "province"
     case getDistrictsByProvinceId = "district/p"
     case getWardsByDistrictId = "ward/d"
-    case addNewPost = "post"
+    case addNewPost = "post/add-post"
     case getPosts = "post/get-post"
     
     var method: HTTPMethodSupport {
@@ -93,4 +94,10 @@ enum ServiceError: Error {
             return CommonConstants.networkError
         }
     }
+}
+
+struct AWSConstants {
+    static let accessKey = "AKIA4SZBYIUOX2L46WOP"
+    static let secretKey = "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"
+    static let s3Bucket = "huti-kltn"
 }

@@ -43,7 +43,7 @@ class PostedViewController: BaseViewController {
 //                }
 //            }.disposed(by: viewModel.bag)
         
-        postedTableView.rx.modelSelected(Post.self)
+        postedTableView.rx.modelSelected(PostDetail.self)
             .subscribe { [weak self] element in
                 guard let self = self else { return }
                 print("table cell selected")

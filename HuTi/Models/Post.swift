@@ -9,6 +9,26 @@ import Foundation
 
 struct Post: Codable {
     var id: String?
+    var title: String
+    var price: Double
+    var acreage: Double
+    var address: String
+    var provinceCode: String
+    var provinceName: String
+    var districtCode: String
+    var districtName: String
+    var wardCode: String
+    var wardName: String
+    var lat: Double
+    var long: Double
+    var userId: String
+    var userName: String
+    var createdAt: Double
+    var thumbnail: String /// lấy image đầu tiên trong mảng images
+}
+
+struct PostDetail: Codable {
+    var id: String?
     var userId: String?
     var isSell: Bool
     var realEstateType: String
@@ -42,3 +62,5 @@ struct Post: Codable {
     var contactName: String?
     var contactPhoneNumber: String?
 }
+/// API GetPosts trả về list Post như này
+

@@ -41,7 +41,7 @@ class FilterResultTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func config(_  post: Post, isHiddenAuthorAndHeart: Bool) {
+    func config(_  post: PostDetail, isHiddenAuthorAndHeart: Bool) {
         postTitleLabel.text = post.title
         priceLabel.text = String(post.price)
         addressLabel.text = "\(post.address), \(post.wardName), \(post.districtName), \(post.provinceName)"
