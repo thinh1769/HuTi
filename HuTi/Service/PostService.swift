@@ -14,7 +14,8 @@ class PostService: BaseService {
         return request(api: APIConstants.addNewPost.rawValue, method: .post, params: post)
     }
     
-    func getPosts() -> Observable<[PostDetail]> {
-        return request(api: .getPosts)
+    func getPosts(isSell: Bool) -> Observable<[Post]> {
+        let param = ["isSell": isSell]
+        return request(api: APIConstants.getPosts.rawValue, method: .post, params: param)
     }
 }

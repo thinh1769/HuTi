@@ -27,15 +27,22 @@ class FilterResultViewController: BaseViewController {
     }
     
     private func setupUI() {
-        viewModel.getPost().subscribe { [weak self] posts in
-            guard let self = self else { return}
-            self.viewModel.post.accept(posts)
-        }.disposed(by: viewModel.bag)
+        loadData()
         mapView.isHidden = true
-    
         titleLabel.text = viewModel.mainTabBarItemTitle
         setupCollectionView()
         setupTableView()
+    }
+    
+    private func loadData() {
+        var isSell = true
+        if viewModel.tabBarItemTitle == TabBarItemTitle.forRent {
+            isSell = false
+        }
+        viewModel.getPost(isSell: isSell).subscribe { [weak self] posts in
+            guard let self = self else { return}
+            self.viewModel.post.accept(posts)
+        }.disposed(by: viewModel.bag)
     }
     
     private func setupCollectionView() {
@@ -57,11 +64,17 @@ class FilterResultViewController: BaseViewController {
         
         viewModel.post.asObservable()
             .bind(to: filterResultTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { (index, element, cell) in
-                cell.config(element, isHiddenAuthorAndHeart: false)
+                cell.configInfo(element, isHiddenAuthorAndHeart: false)
+                self.viewModel.getImage(remoteName: element.thumbnail) { [weak self] thumbnail in
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        cell.loadThumbnail(thumbnail: thumbnail)
+                    }
+                }
             }.disposed(by: viewModel.bag)
         
         filterResultTableView.rx
-            .modelSelected(PostDetail.self)
+            .modelSelected(Post.self)
             .subscribe { [weak self] element in
                 guard let self = self else { return }
                 if self.viewModel.tabBarItemTitle == TabBarItemTitle.project {

@@ -31,14 +31,13 @@ class AccountViewController: BaseViewController {
         
     }
     
-    @IBAction func onClickedSignInBtn(_ sender: UIButton) {
-        let vc = SignInViewController()
-        navigateTo(vc)
-    }
-    
     @IBAction func onClickedNewPostBtn(_ sender: UIButton) {
-        let vc = NewPostViewController()
-        navigateTo(vc)
+        if viewModel.checkUpdateInfo() {
+            let vc = NewPostViewController()
+            navigateTo(vc)
+        } else {
+            print("Vui lòng cập nhật thông tin tài khoản")
+        }
     }
     
     @IBAction func onClickedPostedBtn(_ sender: UIButton) {

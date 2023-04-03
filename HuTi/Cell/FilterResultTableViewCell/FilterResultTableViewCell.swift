@@ -9,7 +9,7 @@ import UIKit
 
 class FilterResultTableViewCell: UITableViewCell {
 
-    @IBOutlet private weak var postImage: UIImageView!
+    @IBOutlet private weak var thumbnail: UIImageView!
     @IBOutlet private weak var postTitleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!
@@ -41,16 +41,20 @@ class FilterResultTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func config(_  post: PostDetail, isHiddenAuthorAndHeart: Bool) {
+    func configInfo(_  post: Post, isHiddenAuthorAndHeart: Bool) {
         postTitleLabel.text = post.title
         priceLabel.text = String(post.price)
         addressLabel.text = "\(post.address), \(post.wardName), \(post.districtName), \(post.provinceName)"
-        authorLabel.text = "Đăng bởi \(post.username!.getName())"
+        authorLabel.text = "Đăng bởi \(post.userName.getName())"
         
         if isHiddenAuthorAndHeart {
             bottomView.isHidden = true
             addressLabel.numberOfLines = 0
         }
+    }
+    
+    func loadThumbnail(thumbnail: UIImage) {
+        self.thumbnail.image = thumbnail
     }
     
 }

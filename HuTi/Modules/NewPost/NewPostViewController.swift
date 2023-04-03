@@ -268,7 +268,7 @@ extension NewPostViewController: PHPickerViewControllerDelegate {
         for item in results {
             item.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 if let image = image {
-                    self.viewModel.imageSelected = image as! UIImage
+                    self.viewModel.imageSelected = (image as! UIImage).rotate()
                     self.viewModel.images.append(self.viewModel.imageSelected)
                     self.viewModel.setupDataImageCollectionView()
                     self.viewModel.uploadImage {
