@@ -444,8 +444,8 @@
 			isa = PBXGroup;
 			children = (
 				FCC3AD4529C2F8C60050B58B /* PostDetailViewController.swift */,
-				FCC3AD4629C2F8C60050B58B /* PostDetailViewController.xib */,
 				22CB6A6529D8330D009C4F4D /* PostDetailViewModel.swift */,
+				FCC3AD4629C2F8C60050B58B /* PostDetailViewController.xib */,
 			);
 			path = PostDetail;
 			sourceTree = "<group>";

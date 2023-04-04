@@ -150,11 +150,11 @@ extension FilterViewController {
         typeTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.type)
         switch viewModel.tabBarItemTitle {
         case TabBarItemTitle.sell:
-            viewModel.type.accept(TypeRealEstate.sell)
+            viewModel.type.accept(RealEstateType.sell)
         case TabBarItemTitle.forRent:
-            viewModel.type.accept(TypeRealEstate.forRent)
+            viewModel.type.accept(RealEstateType.forRent)
         case TabBarItemTitle.project:
-            viewModel.type.accept(TypeRealEstate.project)
+            viewModel.type.accept(RealEstateType.project)
         default:
             return
         }

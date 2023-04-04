@@ -17,8 +17,11 @@
                 <outlet property="acreageTextField" destination="Uyh-Tb-3OW" id="aJF-HC-Xzb"/>
                 <outlet property="addressTextField" destination="KR2-kh-aGz" id="hQw-YA-RDd"/>
                 <outlet property="balconyDirectionTextField" destination="fQ4-NX-kpg" id="SmO-JR-qEh"/>
+                <outlet property="balconyView" destination="O3b-JY-sXR" id="LJO-rg-VP1"/>
                 <outlet property="bathroomNumberLabel" destination="9Ob-I6-xij" id="yz7-59-6cH"/>
+                <outlet property="bathroomView" destination="zL3-Qh-BYb" id="sI2-H3-9tO"/>
                 <outlet property="bedroomNumberLabel" destination="jCe-Op-3AM" id="Eiv-B9-xiC"/>
+                <outlet property="bedroomView" destination="xyF-A7-fNH" id="hJo-qh-MTM"/>
                 <outlet property="contactNameTextField" destination="Z6a-GL-z4a" id="bum-aO-f5Y"/>
                 <outlet property="contactPhoneTextField" destination="l9i-V3-GMk" id="Vsc-gc-cZd"/>
                 <outlet property="currentLocationButton" destination="VKh-CF-1xd" id="TFU-MN-Sd6"/>
@@ -29,10 +32,13 @@
                 <outlet property="districtTextField" destination="Q93-6u-N9E" id="xRB-VU-hYt"/>
                 <outlet property="editLocationBtn" destination="Wjp-qj-C97" id="LrZ-II-8J7"/>
                 <outlet property="facadeTextField" destination="HyY-k1-dyA" id="2MQ-bc-zOM"/>
+                <outlet property="facadeView" destination="EPZ-8D-NTJ" id="kGA-a0-zlG"/>
                 <outlet property="floorNumberLabel" destination="KUx-nr-6No" id="M6V-uC-LGq"/>
+                <outlet property="floorView" destination="nTn-bg-wXy" id="11p-0D-lMl"/>
                 <outlet property="forRentCheckmarkImage" destination="c0v-wB-U9h" id="Lbc-9b-XJr"/>
                 <outlet property="forRentView" destination="QFB-zJ-zsU" id="ga5-sF-a3t"/>
                 <outlet property="funitureTextField" destination="NWH-Ua-zbS" id="eZP-LS-VjN"/>
+                <outlet property="funitureView" destination="kpz-2T-gOV" id="dTU-ea-DYV"/>
                 <outlet property="houseDirectionTextField" destination="Lfc-ao-yQr" id="Jte-PN-DCL"/>
                 <outlet property="imageCollectionView" destination="2s3-6U-ehq" id="Oyh-O5-UCb"/>
                 <outlet property="increaseBathroomBtn" destination="dTS-za-H85" id="hzX-vg-LGm"/>
@@ -50,6 +56,7 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wardTextField" destination="u5v-hG-nj1" id="NNq-uu-98T"/>
                 <outlet property="wayInTextField" destination="Z6a-GL-z4a" id="A8f-k9-gNB"/>
+                <outlet property="wayInView" destination="RvH-8v-OBu" id="CFq-Rx-Cb2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

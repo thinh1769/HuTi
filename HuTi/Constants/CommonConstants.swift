@@ -90,6 +90,7 @@ struct ClassNibName {
     static let PostedViewController = "PostedViewController"
     static let OTPViewController = "OTPViewController"
     static let ConfirmPasswordViewController = "ConfirmPasswordViewController"
+    static let PostDetailViewController = "PostDetailViewController"
 }
 
 struct MainTitle {
@@ -100,9 +101,9 @@ struct MainTitle {
     static let favoritePosts = "Tin đăng yêu thích"
 }
 
-struct TypeRealEstate {
-    static let newPostSell = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort]
-    static let sell = [Self.all, Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort]
+struct RealEstateType {
+    static let newPostSell = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort, Self.codontel, Self.wareHouseFactory, Self.otherRealEstate]
+    static let sell = [Self.all, Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.projectLand, Self.land, Self.farmResort, Self.codontel, Self.wareHouseFactory, Self.otherRealEstate]
     static let newPostForRent = [Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.motel, Self.office, Self.shopKiosk, Self.wareHouseFactory, Self.land, Self.otherRealEstate]
     static let forRent = [Self.all, Self.apartment, Self.home, Self.villa, Self.streetHouse, Self.shopHouse, Self.motel, Self.office, Self.shopKiosk, Self.wareHouseFactory, Self.land, Self.otherRealEstate]
     
@@ -117,6 +118,7 @@ struct TypeRealEstate {
     static let projectLand = "Đất nền dự án"
     static let land = "Đất"
     static let farmResort = "Trang trại, khu nghỉ dưỡng"
+    static let codontel = "Codontel"
     static let motel = "Nhà trọ, phòng trọ"
     static let office = "Văn phòng"
     static let shopKiosk = "Cửa hàng, kiot"

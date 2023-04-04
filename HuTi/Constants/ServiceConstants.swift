@@ -40,6 +40,7 @@ enum APIConstants: String {
     case getWardsByDistrictId = "ward/d"
     case addNewPost = "post/add-post"
     case getPosts = "post/get-post"
+    case getPostById = "post/get-post-by-id/"
     
     var method: HTTPMethodSupport {
         switch self {
@@ -62,6 +63,8 @@ enum APIConstants: String {
         case .addNewPost:
             return .post
         case .getPosts:
+            return .post
+        case .getPostById:
             return .get
         }
     }

@@ -28,13 +28,4 @@ class FilterResultViewModel: BaseViewModel {
         }
         options.accept(optionsList)
     }
-    
-    func getImage(remoteName: String, completion: @escaping(UIImage) -> Void) {
-        awsService.getImage(remoteName: remoteName) { data in
-            guard let data = data else { return }
-            guard let image = UIImage(data: data) else { return }
-            print("download image successfully")
-            completion(image)
-        }
-    }
 }

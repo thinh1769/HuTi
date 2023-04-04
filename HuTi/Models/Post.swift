@@ -62,5 +62,4 @@ struct PostDetail: Codable {
     var contactName: String?
     var contactPhoneNumber: String?
 }
-/// API GetPosts trả về list Post như này
 

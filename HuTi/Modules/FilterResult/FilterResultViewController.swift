@@ -65,8 +65,7 @@ class FilterResultViewController: BaseViewController {
         viewModel.post.asObservable()
             .bind(to: filterResultTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { (index, element, cell) in
                 cell.configInfo(element, isHiddenAuthorAndHeart: false)
-                self.viewModel.getImage(remoteName: element.thumbnail) { [weak self] thumbnail in
-                    guard let self = self else { return }
+                self.viewModel.getImage(remoteName: element.thumbnail) { thumbnail in
                     DispatchQueue.main.async {
                         cell.loadThumbnail(thumbnail: thumbnail)
                     }
@@ -81,7 +80,7 @@ class FilterResultViewController: BaseViewController {
                     let vc = ProjectDetailViewController()
                     self.navigateTo(vc)
                 } else {
-                    let vc = PostDetailViewController()
+                    let vc = PostDetailViewController.instance(postId: element.id ?? "")
                     self.navigateTo(vc)
                 }
             }.disposed(by: viewModel.bag)

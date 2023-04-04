@@ -50,6 +50,13 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var floorNumberLabel: UILabel!
     @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var floorView: UIView!
+    @IBOutlet weak var wayInView: UIView!
+    @IBOutlet weak var facadeView: UIView!
+    @IBOutlet weak var funitureView: UIView!
+    @IBOutlet weak var bathroomView: UIView!
+    @IBOutlet weak var bedroomView: UIView!
+    @IBOutlet weak var balconyView: UIView!
     
     let typePicker = UIPickerView()
     let provincePicker = UIPickerView()
@@ -88,6 +95,48 @@ class NewPostViewController: BaseViewController {
                 else { return }
             if text.count > 0 {
                 self.moveCameraToLocation(21.0031177, 105.8201408)
+            }
+        }.disposed(by: viewModel.bag)
+        
+        typeTextField.rx.controlEvent([.editingDidEnd,.valueChanged])
+            .subscribe { [weak self] _ in
+            guard let self = self,
+                  let text = self.typeTextField.text
+                else { return }
+            if text.count > 0 {
+                self.unhiddenAllView()
+                switch text {
+                case RealEstateType.apartment:
+                    self.floorView.isHidden = true
+                    self.wayInView.isHidden = true
+                    self.facadeView.isHidden = true
+                case RealEstateType.projectLand:
+                    self.funitureView.isHidden = true
+                    self.bedroomView.isHidden = true
+                    self.bathroomView.isHidden = true
+                    self.floorView.isHidden = true
+                    self.balconyView.isHidden = true
+                case RealEstateType.land:
+                    self.funitureView.isHidden = true
+                    self.bedroomView.isHidden = true
+                    self.bathroomView.isHidden = true
+                    self.floorView.isHidden = true
+                    self.balconyView.isHidden = true
+                case RealEstateType.codontel:
+                    self.floorView.isHidden = true
+                    self.wayInView.isHidden = true
+                    self.facadeView.isHidden = true
+                case RealEstateType.wareHouseFactory:
+                    self.bedroomView.isHidden = true
+                    self.floorView.isHidden = true
+                    self.balconyView.isHidden = true
+                case RealEstateType.office:
+                    self.floorView.isHidden = true
+                case RealEstateType.shopKiosk:
+                    self.bedroomView.isHidden = true
+                default:
+                    return
+                }
             }
         }.disposed(by: viewModel.bag)
     
@@ -139,11 +188,11 @@ class NewPostViewController: BaseViewController {
         if isChooseSell {
             sellCheckmarkImage.image = UIImage(systemName: ImageName.checkmarkFill)
             forRentCheckmarkImage.image = UIImage(systemName: ImageName.circle)
-            viewModel.realEstateType.accept(TypeRealEstate.newPostSell)
+            viewModel.realEstateType.accept(RealEstateType.newPostSell)
         } else {
             sellCheckmarkImage.image = UIImage(systemName: ImageName.circle)
             forRentCheckmarkImage.image = UIImage(systemName: ImageName.checkmarkFill)
-            viewModel.realEstateType.accept(TypeRealEstate.newPostForRent)
+            viewModel.realEstateType.accept(RealEstateType.newPostForRent)
         }
     }
     @IBAction func onClickedDecreaseBedroomBtn(_ sender: UIButton) {
@@ -237,6 +286,15 @@ class NewPostViewController: BaseViewController {
         imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
     }
     
+    private func unhiddenAllView() {
+        funitureView.isHidden = false
+        bedroomView.isHidden = false
+        bathroomView.isHidden = false
+        floorView.isHidden = false
+        balconyView.isHidden = false
+        wayInView.isHidden = false
+        facadeView.isHidden = false
+    }
 }
 
 extension NewPostViewController: UICollectionViewDelegateFlowLayout {
@@ -290,7 +348,7 @@ extension NewPostViewController {
         typePicker.tag = PickerTag.type
         typeTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.type)
         
-        viewModel.realEstateType.accept(TypeRealEstate.newPostSell)
+        viewModel.realEstateType.accept(RealEstateType.newPostSell)
 
         viewModel.realEstateType.subscribe(on: MainScheduler.instance)
             .bind(to: typePicker.rx.itemTitles) { (row, element) in
@@ -386,7 +444,7 @@ extension NewPostViewController {
         projectPicker.tag = PickerTag.project
         projectTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.project)
 
-        viewModel.project.accept(TypeRealEstate.sell)
+        viewModel.project.accept(RealEstateType.sell)
 
         viewModel.project.subscribe(on: MainScheduler.instance)
             .bind(to: projectPicker.rx.itemTitles) { (row, element) in
