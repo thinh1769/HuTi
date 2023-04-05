@@ -107,9 +107,10 @@ class FilterResultViewController: BaseViewController {
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {
-    func didTapApplyButton(listOptions: [(Int, String)]) {
+    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]) {
         viewModel.tuppleOptionsList = listOptions
         viewModel.parseOptionTuppleToArray()
+        viewModel.post.accept(postResult)
     }
     
     func didTapResetButton() {

@@ -34,6 +34,7 @@
                 <outlet property="investorLabel" destination="qHF-FA-9Zz" id="is1-1r-k6u"/>
                 <outlet property="legelLabel" destination="CK8-FM-J2O" id="l5h-Hv-GZ5"/>
                 <outlet property="likeButton" destination="CWJ-ca-EhD" id="CYR-5x-NVR"/>
+                <outlet property="mapView" destination="yz6-hc-BGI" id="h9X-Os-DLJ"/>
                 <outlet property="priceLabel" destination="j80-Ll-PQR" id="Zns-Gb-Wll"/>
                 <outlet property="projectImage" destination="6cg-fa-cFC" id="kcs-fg-fRm"/>
                 <outlet property="projectInfoView" destination="5xD-DW-7Iy" id="0wZ-rb-FEs"/>
@@ -316,18 +317,51 @@
                                             <color key="textColor" name="themeText"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yz6-hc-BGI">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEc-Da-Wb4">
                                             <rect key="frame" x="20" y="787.5" width="315" height="250"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yz6-hc-BGI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="315" height="250"/>
+                                                    <standardMapConfiguration key="preferredConfiguration"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </mapView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGn-xT-DRS">
+                                                    <rect key="frame" x="277" y="212" width="30" height="30"/>
+                                                    <color key="backgroundColor" name="white"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="0rh-4V-M5t"/>
+                                                        <constraint firstAttribute="height" constant="30" id="9W8-dL-sHm"/>
+                                                    </constraints>
+                                                    <color key="tintColor" name="themeText"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="mappin" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onClickedRealEstateLocationButton:" destination="-1" eventType="touchUpInside" id="Bnw-iU-T1Q"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="250" id="FfJ-AY-VAJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="yz6-hc-BGI" secondAttribute="bottom" id="7ZK-Ex-Bt4"/>
+                                                <constraint firstItem="yz6-hc-BGI" firstAttribute="leading" secondItem="aEc-Da-Wb4" secondAttribute="leading" id="Aw9-Up-6p0"/>
+                                                <constraint firstAttribute="bottom" secondItem="SGn-xT-DRS" secondAttribute="bottom" constant="8" id="H9E-Cx-VYY"/>
+                                                <constraint firstItem="yz6-hc-BGI" firstAttribute="top" secondItem="aEc-Da-Wb4" secondAttribute="top" id="OhA-JU-T8q"/>
+                                                <constraint firstAttribute="height" constant="250" id="WP1-tO-CUm"/>
+                                                <constraint firstAttribute="trailing" secondItem="yz6-hc-BGI" secondAttribute="trailing" id="fKJ-YK-TT0"/>
+                                                <constraint firstAttribute="trailing" secondItem="SGn-xT-DRS" secondAttribute="trailing" constant="8" id="yg6-DM-rLk"/>
                                             </constraints>
-                                            <standardMapConfiguration key="preferredConfiguration"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <integer key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </mapView>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin dự án" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysb-B9-1E6" userLabel="projectInfoLabel">
                                             <rect key="frame" x="20" y="1047.5" width="315" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
@@ -470,6 +504,7 @@
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="mappin" catalog="system" width="106" height="128"/>
         <namedColor name="background">
             <color red="0.98000001907348633" green="0.92900002002716064" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

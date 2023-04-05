@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class PostDetailViewController: BaseViewController {
 
@@ -36,9 +38,13 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet weak var projectImage: UIImageView!
     @IBOutlet weak var projectNameLabel: UILabel!
     @IBOutlet weak var investorLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
+    
     
     lazy var viewModel = PostDetailViewModel()
     var isLiked = false
+    private var locationManager = CLLocationManager()
+    private let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,24 +61,29 @@ class PostDetailViewController: BaseViewController {
             self.loadPostDetail()
             self.viewModel.images.accept(postDetail.images)
         }.disposed(by: viewModel.bag)
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     private func loadPostDetail() {
         let post = viewModel.postDetail
         titleLabel.text = post?.title
-        addressLabel.text = "\(post?.address) ,\(post?.wardName), \(post?.districtName), \(post?.provinceName)"
-        acreageLabel.text = "\(post?.acreage)"
-        priceLabel.text = "\(post?.price)"
+        addressLabel.text = "\(post?.address ?? "") ,\(post?.wardName ?? ""), \(post?.districtName ?? ""), \(post?.provinceName ?? "")"
+        acreageLabel.text = "\(post?.acreage ?? 0) m2"
+        priceLabel.text = "\(post?.price ?? 0) VNĐ"
         legelLabel.text = post?.legal
         funitureLabel.text = post?.funiture
-        bedroomLabel.text = "\(post?.bedroom)"
-        bathroomLabel.text = "\(post?.bathroom)"
-        floorLabel.text = "\(post?.floor)"
+        bedroomLabel.text = "\(post?.bedroom ?? 0)"
+        bathroomLabel.text = "\(post?.bathroom ?? 0)"
+        floorLabel.text = "\(post?.floor ?? 0)"
         houseDirectionLabel.text = post?.houseDirection
         balconyLabel.text = post?.balconyDirection
-        wayInLabel.text = "\(post?.wayIn)"
-        facadeLabel.text = "\(post?.facade)"
+        wayInLabel.text = "\(post?.wayIn ?? 0) m"
+        facadeLabel.text = "\(post?.facade ?? 0) m"
         descriptionLabel.text = post?.description
+        self.pinRealEstateLocation()
         
         unhiddenAllView()
         switch viewModel.postDetail?.realEstateType {
@@ -124,6 +135,11 @@ class PostDetailViewController: BaseViewController {
         isLiked = !isLiked
     }
     
+    @IBAction func onClickedRealEstateLocationButton(_ sender: UIButton) {
+        pinRealEstateLocation()
+    }
+    
+    
     @objc private func goToProjectDetailView() {
         let vc = ProjectDetailViewController()
         navigateTo(vc)
@@ -152,6 +168,30 @@ class PostDetailViewController: BaseViewController {
         balconyView.isHidden = false
         wayInView.isHidden = false
         facadeView.isHidden = false
+    }
+}
+
+extension PostDetailViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locationManager.stopUpdatingLocation()
+        mapView.showsUserLocation = true
+    }
+    
+    private func moveCameraToLocation(_ lat: Double, _ long: Double) {
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        mapView.setRegion(region, animated: false)
+    }
+    
+    private func pinRealEstateLocation() {
+        guard let lat = viewModel.postDetail?.lat,
+              let long = viewModel.postDetail?.long
+        else { return }
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        moveCameraToLocation(lat, long)
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        mapView.addAnnotation(pin)
     }
 }
 

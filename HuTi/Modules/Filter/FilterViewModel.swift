@@ -24,6 +24,7 @@ class FilterViewModel: BaseViewModel {
     var selectedFilterHouseDirection = 0
     var selectedStatus = 0
     var optionsList = [(key: Int, value: String)]()
+    var searchParams = [String: Any]()
     
     func pickItem(pickerTag: Int) -> String? {
         switch pickerTag{
@@ -84,5 +85,9 @@ class FilterViewModel: BaseViewModel {
         default:
             return ""
         }
+    }
+    
+    func findPost() -> Observable<[Post]> {
+        return postService.findPost(param: searchParams)
     }
 }

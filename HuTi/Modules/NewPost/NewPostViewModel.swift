@@ -110,9 +110,9 @@ class NewPostViewModel: BaseViewModel {
                     title: title,
                     description: description,
                     acreage: acreage,
-                    acreageRange: "50 - 70 m2",
+                    acreageRange: getAcreageRange(acreage: acreage),
                     price: price,
-                    priceRange: "5 - 6 tỷ",
+                    priceRange: getPriceRange(price: price),
                     legal: legal.value[selectedLegal],
                     funiture: funiture.value[selectedFuniture],
                     bedroom: bedroom,
@@ -125,6 +125,60 @@ class NewPostViewModel: BaseViewModel {
                     images: imagesName,
                     contactName: contactName,
                     contactPhoneNumber: contactPhoneNumber))
+    }
+    
+    private func getPriceRange(price: Double) -> String {
+        if price < 500000000 {
+            return PickerData.price[1]
+        } else if price < 800000000 {
+            return PickerData.price[2]
+        } else if price < 1000000000 {
+            return PickerData.price[3]
+        } else if price < 2000000000 {
+            return PickerData.price[4]
+        } else if price < 3000000000 {
+            return PickerData.price[5]
+        } else if price < 5000000000 {
+            return PickerData.price[6]
+        } else if price < 7000000000 {
+            return PickerData.price[7]
+        } else if price < 10000000000 {
+            return PickerData.price[8]
+        } else if price < 20000000000 {
+            return PickerData.price[9]
+        } else if price < 30000000000 {
+            return PickerData.price[10]
+        } else if price < 40000000000 {
+            return PickerData.price[11]
+        } else if price < 60000000000 {
+            return PickerData.price[12]
+        } else {
+            return PickerData.price[13]
+        }
+    }
+    
+    private func getAcreageRange(acreage: Double) -> String {
+        if acreage < 30 {
+            return PickerData.acreage[1]
+        } else if acreage < 50 {
+            return PickerData.acreage[2]
+        } else if acreage < 80 {
+            return PickerData.acreage[3]
+        } else if acreage < 100 {
+            return PickerData.acreage[4]
+        } else if acreage < 150 {
+            return PickerData.acreage[5]
+        } else if acreage < 200 {
+            return PickerData.acreage[6]
+        } else if acreage < 250 {
+            return PickerData.acreage[7]
+        } else if acreage < 300 {
+            return PickerData.acreage[8]
+        } else if acreage < 500 {
+            return PickerData.acreage[9]
+        } else {
+            return PickerData.acreage[10]
+        }
     }
     
     func uploadImage(completion: @escaping() -> Void) {

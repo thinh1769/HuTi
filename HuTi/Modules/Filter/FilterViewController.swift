@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol FilterViewControllerDelegate: AnyObject {
-    func didTapApplyButton(listOptions: [(Int, String)])
+    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post])
     
     func didTapResetButton()
 }
@@ -106,11 +106,66 @@ class FilterViewController: BaseViewController {
     
     @IBAction func onClickedApplyBtn(_ sender: UIButton) {
         if getApplyOptions().count > 1 {
-            isHiddenMainTabBar = false
-            delegate?.didTapApplyButton(listOptions: getApplyOptions())
-            backToPreviousView()
+            prepareRealEstateParam()
+            viewModel.findPost().subscribe { [weak self] posts in
+                guard let self = self else { return }
+                self.isHiddenMainTabBar = false
+                self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: posts)
+                self.backToPreviousView()
+            }.disposed(by: viewModel.bag)
+            
         } else {
             print("vui long chọn loại và tỉnh thành phố")
+        }
+    }
+    
+    private func prepareRealEstateParam() {
+        if viewModel.tabBarItemTitle == TabBarItemTitle.sell {
+            viewModel.searchParams.updateValue(true, forKey: "isSell")
+        } else {
+            viewModel.searchParams.updateValue(false, forKey: "isSell")
+        }
+        
+        if let type = typeTextField.text,
+           type != "" {
+            viewModel.searchParams.updateValue(type, forKey: "realEstateType")
+        }
+        
+        if let province = provinceTextField.text,
+           province != "" {
+            viewModel.searchParams.updateValue(province, forKey: "provinceName")
+        }
+        
+        if let district = districtTextField.text,
+           district != "" {
+            viewModel.searchParams.updateValue(district, forKey: "districtName")
+        }
+        
+        if let ward = wardTextField.text,
+           ward != "" {
+            viewModel.searchParams.updateValue(ward, forKey: "wardName")
+        }
+        
+        if let price = priceTextField.text,
+           price != PickerData.price[0],
+           price != "" {
+            viewModel.searchParams.updateValue(price, forKey: "priceRange")
+        }
+        
+        if let acreage = acreageTextField.text,
+           acreage != PickerData.acreage[0],
+           acreage != "" {
+            viewModel.searchParams.updateValue(acreage, forKey: "acreageRange")
+        }
+        
+        if let bedroom = bedroomTextField.text,
+           bedroom != "" {
+            viewModel.searchParams.updateValue(bedroom, forKey: "bedroom")
+        }
+        
+        if let houseDirection = houseDirectionTextField.text,
+           houseDirection != "" {
+            viewModel.searchParams.updateValue(houseDirection, forKey: "houseDirection")
         }
     }
  }
