@@ -35,13 +35,28 @@ class FilterResultViewController: BaseViewController {
     }
     
     private func loadData() {
+        if viewModel.tabBarItemTitle != TabBarItemTitle.project {
+            getListPosts()
+        } else {
+            getListProjects()
+        }
+    }
+    
+    private func getListPosts() {
         var isSell = true
         if viewModel.tabBarItemTitle == TabBarItemTitle.forRent {
             isSell = false
         }
-        viewModel.getPost(isSell: isSell).subscribe { [weak self] posts in
+        viewModel.getListPosts(isSell: isSell).subscribe { [weak self] posts in
             guard let self = self else { return}
             self.viewModel.post.accept(posts)
+        }.disposed(by: viewModel.bag)
+    }
+    
+    private func getListProjects() {
+        viewModel.getListProjects().subscribe { [weak self] projects in
+            guard let self = self else { return }
+            self.viewModel.project.accept(projects)
         }.disposed(by: viewModel.bag)
     }
     
@@ -107,15 +122,25 @@ class FilterResultViewController: BaseViewController {
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {
-    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]) {
+    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]?, projectResult: [Project]?) {
         viewModel.tuppleOptionsList = listOptions
         viewModel.parseOptionTuppleToArray()
-        viewModel.post.accept(postResult)
+        if let filterPost = postResult {
+            viewModel.post.accept(filterPost)
+        }
+        if let filterProject = projectResult {
+            viewModel.project.accept(filterProject)
+        }
     }
     
     func didTapResetButton() {
         viewModel.optionsList = []
         viewModel.options.accept(viewModel.optionsList)
+        if viewModel.tabBarItemTitle == TabBarItemTitle.project {
+            getListProjects()
+        } else {
+            getListPosts()
+        }
     }
 }
 

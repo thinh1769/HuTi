@@ -51,6 +51,7 @@ class FilterResultTableViewCell: UITableViewCell {
             bottomView.isHidden = true
             addressLabel.numberOfLines = 0
         }
+        self.thumbnail.image = nil
     }
     
     func loadThumbnail(thumbnail: UIImage) {

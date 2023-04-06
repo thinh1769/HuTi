@@ -24,8 +24,8 @@ struct StatusCode {
 }
 
 struct Base {
-    static let URL = "http://192.168.2.12:3000/api/"
-//    static let URL = "http://172.20.10.3:3000/api/"
+//    static let URL = "http://192.168.2.12:3000/api/"
+    static let URL = "http://172.20.10.3:3000/api/"
 //    static let URL = "http://localhost:3000/api/"
 }
 
@@ -42,6 +42,9 @@ enum APIConstants: String {
     case getPosts = "post/get-post"
     case getPostById = "post/get-post-by-id/"
     case findPost = "post/find"
+    case findProject = "project/find"
+    case getProject = "project"
+    case getProjectById = "project/"
     
     var method: HTTPMethodSupport {
         switch self {
@@ -69,6 +72,12 @@ enum APIConstants: String {
             return .get
         case .findPost:
             return .post
+        case .findProject:
+            return .post
+        case .getProject:
+            return .get
+        case .getProjectById:
+            return .get
         }
     }
 }

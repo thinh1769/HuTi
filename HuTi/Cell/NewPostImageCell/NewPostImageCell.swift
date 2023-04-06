@@ -26,6 +26,7 @@ class NewPostImageCell: UICollectionViewCell {
 
     private func setupUI() {
         imageView.layer.cornerRadius = 5
+        imageView.image = nil
     }
     
     func config(image: UIImage) {

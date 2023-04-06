@@ -140,6 +140,8 @@ class NewPostViewController: BaseViewController {
             }
         }.disposed(by: viewModel.bag)
     
+        contactNameTextField.text = UserDefaults.userInfo?.name ?? ""
+        contactPhoneTextField.text = UserDefaults.userInfo?.phoneNumber ?? ""
     }
     
     private func setupPickerView() {

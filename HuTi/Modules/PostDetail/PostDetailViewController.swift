@@ -57,7 +57,6 @@ class PostDetailViewController: BaseViewController {
         viewModel.getPostDetail(postId: viewModel.postId).subscribe { [weak self] postDetail in
             guard let self = self else { return }
             self.viewModel.postDetail = postDetail
-            print("---postDetail = \(postDetail)")
             self.loadPostDetail()
             self.viewModel.images.accept(postDetail.images)
         }.disposed(by: viewModel.bag)

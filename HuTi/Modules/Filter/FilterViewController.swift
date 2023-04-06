@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol FilterViewControllerDelegate: AnyObject {
-    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post])
+    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]?, projectResult: [Project]?)
     
     func didTapResetButton()
 }
@@ -106,66 +106,111 @@ class FilterViewController: BaseViewController {
     
     @IBAction func onClickedApplyBtn(_ sender: UIButton) {
         if getApplyOptions().count > 1 {
-            prepareRealEstateParam()
-            viewModel.findPost().subscribe { [weak self] posts in
-                guard let self = self else { return }
-                self.isHiddenMainTabBar = false
-                self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: posts)
-                self.backToPreviousView()
-            }.disposed(by: viewModel.bag)
-            
+            if viewModel.tabBarItemTitle == TabBarItemTitle.project {
+                searchProject()
+            } else {
+                searchPost()
+            }
         } else {
             print("vui long chọn loại và tỉnh thành phố")
         }
     }
     
-    private func prepareRealEstateParam() {
+    private func searchPost() {
+        preparePostParam()
+        viewModel.findPost().subscribe { [weak self] posts in
+            guard let self = self else { return }
+            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: posts, projectResult: nil)
+            self.isHiddenMainTabBar = false
+            self.backToPreviousView()
+        }.disposed(by: viewModel.bag)
+    }
+    
+    private func searchProject() {
+        prepareProjectParam()
+        viewModel.findProject().subscribe { [weak self] projects in
+            guard let self = self else { return }
+            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: nil, projectResult: projects)
+            self.isHiddenMainTabBar = false
+            self.backToPreviousView()
+        }.disposed(by: viewModel.bag)
+    }
+    
+    private func preparePostParam() {
         if viewModel.tabBarItemTitle == TabBarItemTitle.sell {
-            viewModel.searchParams.updateValue(true, forKey: "isSell")
+            viewModel.searchPostParams.updateValue(true, forKey: "isSell")
         } else {
-            viewModel.searchParams.updateValue(false, forKey: "isSell")
+            viewModel.searchPostParams.updateValue(false, forKey: "isSell")
         }
         
         if let type = typeTextField.text,
            type != "" {
-            viewModel.searchParams.updateValue(type, forKey: "realEstateType")
+            viewModel.searchPostParams.updateValue(type, forKey: "realEstateType")
         }
         
         if let province = provinceTextField.text,
            province != "" {
-            viewModel.searchParams.updateValue(province, forKey: "provinceName")
+            viewModel.searchPostParams.updateValue(province, forKey: "provinceName")
         }
         
         if let district = districtTextField.text,
            district != "" {
-            viewModel.searchParams.updateValue(district, forKey: "districtName")
+            viewModel.searchPostParams.updateValue(district, forKey: "districtName")
         }
         
         if let ward = wardTextField.text,
            ward != "" {
-            viewModel.searchParams.updateValue(ward, forKey: "wardName")
+            viewModel.searchPostParams.updateValue(ward, forKey: "wardName")
         }
         
         if let price = priceTextField.text,
            price != PickerData.price[0],
            price != "" {
-            viewModel.searchParams.updateValue(price, forKey: "priceRange")
+            viewModel.searchPostParams.updateValue(price, forKey: "priceRange")
         }
         
         if let acreage = acreageTextField.text,
            acreage != PickerData.acreage[0],
            acreage != "" {
-            viewModel.searchParams.updateValue(acreage, forKey: "acreageRange")
+            viewModel.searchPostParams.updateValue(acreage, forKey: "acreageRange")
         }
         
         if let bedroom = bedroomTextField.text,
            bedroom != "" {
-            viewModel.searchParams.updateValue(bedroom, forKey: "bedroom")
+            viewModel.searchPostParams.updateValue(bedroom, forKey: "bedroom")
         }
         
         if let houseDirection = houseDirectionTextField.text,
            houseDirection != "" {
-            viewModel.searchParams.updateValue(houseDirection, forKey: "houseDirection")
+            viewModel.searchPostParams.updateValue(houseDirection, forKey: "houseDirection")
+        }
+    }
+    
+    private func prepareProjectParam() {
+        if let type = typeTextField.text,
+           type != "" {
+            viewModel.searchProjectParams.updateValue(type, forKey: "projectType")
+        }
+        
+        if let province = provinceTextField.text,
+           province != "" {
+            viewModel.searchProjectParams.updateValue(province, forKey: "provinceName")
+        }
+        
+        if let district = districtTextField.text,
+           district != "" {
+            viewModel.searchProjectParams.updateValue(district, forKey: "districtName")
+        }
+        
+        if let price = priceTextField.text,
+           price != PickerData.price[0],
+           price != "" {
+            viewModel.searchProjectParams.updateValue(price, forKey: "priceRange")
+        }
+        
+        if let status = statusTextField.text,
+           status != "" {
+            viewModel.searchProjectParams.updateValue(status, forKey: "status")
         }
     }
  }
@@ -251,8 +296,6 @@ extension FilterViewController {
         districtTextField.tintColor = .clear
         districtPicker.tag = PickerTag.district
         districtTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.district)
-
-//        viewModel.district.accept(TypeRealEstate.sell)
 
         viewModel.district.subscribe(on: MainScheduler.instance)
             .bind(to: districtPicker.rx.itemTitles) { (row, element) in
