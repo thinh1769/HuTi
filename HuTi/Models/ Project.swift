@@ -16,15 +16,17 @@ struct Project: Codable {
     var wardCode: String
     var wardName: String
     var name: String
-    var price: String
+    var price: String?
+    var priceRange: String?
     var status: String
+    var openForSaleTime: String?
     var lat: Double
     var long: Double
     var projectType: String
-    var apartment: String
-    var acreage: String
-    var building: String
-    var legal: String
+    var apartment: Int?
+    var acreage: Double
+    var building: Int?
+    var legal: String?
     var investor: String
     var description: String
     var images: [String]

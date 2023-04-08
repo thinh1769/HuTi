@@ -126,7 +126,7 @@ class PostDetailViewController: BaseViewController {
     @IBAction func onClickedLikeButton(_ sender: UIButton) {
         if !isLiked {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            likeButton.tintColor = UIColor(named: ColorName.red)
+            likeButton.tintColor = UIColor(named: ColorName.redStatusText)
         } else {
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
             likeButton.tintColor = UIColor(named: ColorName.gray)

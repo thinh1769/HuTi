@@ -312,8 +312,6 @@ extension FilterViewController {
         wardTextField.tintColor = .clear
         wardPicker.tag = PickerTag.ward
         wardTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.ward)
-
-//        viewModel.ward.accept(TypeRealEstate.sell)
     
         viewModel.ward.subscribe(on: MainScheduler.instance)
             .bind(to: wardPicker.rx.itemTitles) { (row, element) in
@@ -331,7 +329,11 @@ extension FilterViewController {
         pricePicker.tag = PickerTag.price
         priceTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.price)
 
-        viewModel.price.accept(PickerData.price)
+        if viewModel.tabBarItemTitle == TabBarItemTitle.project {
+            viewModel.price.accept(PickerData.projectPrice)
+        } else {
+            viewModel.price.accept(PickerData.price)
+        }
 
         viewModel.price.subscribe(on: MainScheduler.instance)
             .bind(to: pricePicker.rx.itemTitles) { (row, element) in

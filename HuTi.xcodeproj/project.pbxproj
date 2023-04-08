@@ -302,13 +302,13 @@
 		FC2E2C1E29B73B1500DADA16 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FC2E2C1F29B73B4400DADA16 /* Post.swift */,
-				22EC390729CA968E00174D65 /* ResponseMain.swift */,
 				22A099A529D047A8008BE7C7 /* User.swift */,
-				22CF839A29D9B13200683B98 /* Asset.swift */,
-				FC2E2C2129B73BD700DADA16 /* Address.swift */,
-				22CF839C29D9B14C00683B98 /* AssetDataModel.swift */,
+				FC2E2C1F29B73B4400DADA16 /* Post.swift */,
 				22FC682329DE65130091CB4C /*  Project.swift */,
+				FC2E2C2129B73BD700DADA16 /* Address.swift */,
+				22CF839A29D9B13200683B98 /* Asset.swift */,
+				22CF839C29D9B14C00683B98 /* AssetDataModel.swift */,
+				22EC390729CA968E00174D65 /* ResponseMain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

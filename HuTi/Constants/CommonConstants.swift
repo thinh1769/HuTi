@@ -74,7 +74,6 @@ struct ColorName {
     static let gray = "gray"
     static let white = "white"
     static let black = "black"
-    static let red = "red"
     static let redStatusBackground = "redStatusBackground"
     static let greenStatusBackground = "greenStatusBackground"
     static let purpleStatusBackground = "purpleStatusBackground"
@@ -143,4 +142,5 @@ struct PickerData {
     static let funiture = ["Đầy đủ", "Cơ bản", "Không nội thất"]
     static let gender = ["Nam", "Nữ", "Khác"]
     static let day = ["01", "02", "03"]
+    static let projectPrice = ["Tất cả mức giá", "Dưới 5 triệu/m2", "5 - 10 triệu/m2", "10 - 20 triệu/m2", "20 - 35 triệu/m2", "35 - 50 triệu/m2", "50 - 80 triệu/m2", "Trên 80 triệu/m2"]
 }

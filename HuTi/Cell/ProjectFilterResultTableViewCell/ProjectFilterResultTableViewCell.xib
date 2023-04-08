@@ -47,29 +47,41 @@
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ea3-rx-doT">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsb-qo-39G">
                                         <rect key="frame" x="0.0" y="27" width="263" height="25"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sắp mở bán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb9-OW-ThX">
-                                                <rect key="frame" x="89.666666666666657" y="3.6666666666666643" width="84" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                <color key="textColor" name="purpleStatusText"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ea3-rx-doT">
+                                                <rect key="frame" x="30" y="0.0" width="203" height="25"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sắp mở bán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb9-OW-ThX">
+                                                        <rect key="frame" x="59.666666666666657" y="3.6666666666666643" width="84" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <color key="textColor" name="purpleStatusText"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="purpleStatusBackground"/>
+                                                <constraints>
+                                                    <constraint firstItem="Kb9-OW-ThX" firstAttribute="centerX" secondItem="Ea3-rx-doT" secondAttribute="centerX" id="hmN-KM-VtH"/>
+                                                    <constraint firstItem="Kb9-OW-ThX" firstAttribute="centerY" secondItem="Ea3-rx-doT" secondAttribute="centerY" id="x8Y-KO-qsb"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" name="purpleStatusBackground"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="Kb9-OW-ThX" firstAttribute="centerX" secondItem="Ea3-rx-doT" secondAttribute="centerX" id="RML-GG-l6F"/>
-                                            <constraint firstItem="Kb9-OW-ThX" firstAttribute="centerY" secondItem="Ea3-rx-doT" secondAttribute="centerY" id="fdw-Mt-qb1"/>
-                                            <constraint firstAttribute="height" constant="25" id="mWU-T6-9FD"/>
+                                            <constraint firstItem="Ea3-rx-doT" firstAttribute="leading" secondItem="fsb-qo-39G" secondAttribute="leading" constant="30" id="2vt-Jb-ELt"/>
+                                            <constraint firstAttribute="height" constant="25" id="3R3-cs-sPf"/>
+                                            <constraint firstItem="Ea3-rx-doT" firstAttribute="top" secondItem="fsb-qo-39G" secondAttribute="top" id="M3h-NA-0nQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ea3-rx-doT" secondAttribute="trailing" constant="30" id="tdh-dU-9Lg"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ea3-rx-doT" secondAttribute="bottom" id="xQR-6G-NRN"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xã Long Hòa, Huyện Cần Giờ, TP. Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgV-dN-mSk">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xã Long Hòa, Huyện Cần Giờ, TP. Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgV-dN-mSk">
                                         <rect key="frame" x="0.0" y="59" width="263" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="1cr-ej-1NC"/>
@@ -91,9 +103,9 @@
                                     <constraint firstAttribute="trailing" secondItem="A80-O4-vII" secondAttribute="trailing" id="Kt4-JM-FEs"/>
                                     <constraint firstItem="13X-Lp-Gft" firstAttribute="leading" secondItem="o6E-pP-IMX" secondAttribute="leading" id="W11-Uh-fRU"/>
                                     <constraint firstAttribute="trailing" secondItem="CgV-dN-mSk" secondAttribute="trailing" id="dQa-Gp-zIW"/>
-                                    <constraint firstItem="Ea3-rx-doT" firstAttribute="leading" secondItem="o6E-pP-IMX" secondAttribute="leading" id="eX4-56-fs3"/>
+                                    <constraint firstItem="fsb-qo-39G" firstAttribute="leading" secondItem="o6E-pP-IMX" secondAttribute="leading" id="gUy-IZ-eey"/>
+                                    <constraint firstAttribute="trailing" secondItem="fsb-qo-39G" secondAttribute="trailing" id="qbw-rl-KGh"/>
                                     <constraint firstAttribute="trailing" secondItem="13X-Lp-Gft" secondAttribute="trailing" id="tc5-MF-zrC"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ea3-rx-doT" secondAttribute="trailing" id="yvj-47-Vhy"/>
                                 </constraints>
                             </stackView>
                         </subviews>

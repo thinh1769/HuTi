@@ -61,10 +61,10 @@ class ProjectDetailViewController: BaseViewController {
         statusLabel.text = project.status
         configStatusView(project.status)
         projectTypeLabel.text = project.projectType
-        acreageLabel.text = project.acreage
+        acreageLabel.text = "\(project.acreage)"
         priceLabel.text = project.price
-        buildingLabel.text = project.building
-        apartmentLabel.text = project.apartment
+        buildingLabel.text = "\(project.building)"
+        apartmentLabel.text = "\(project.apartment)"
         legalLabel.text = project.legal
         investorLabel.text = project.investor
         descriptionLabel.text = project.description
