@@ -440,8 +440,8 @@
 			isa = PBXGroup;
 			children = (
 				FCC3AD4029C1C2220050B58B /* ProjectDetailViewController.swift */,
-				FCC3AD4129C1C2220050B58B /* ProjectDetailViewController.xib */,
 				22CB6A6329D832AC009C4F4D /* ProjectDetailViewModel.swift */,
+				FCC3AD4129C1C2220050B58B /* ProjectDetailViewController.xib */,
 			);
 			path = ProjectDetail;
 			sourceTree = "<group>";

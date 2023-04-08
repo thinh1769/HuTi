@@ -13,92 +13,148 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="KGk-i7-Jjw" customClass="ProjectFilterResultTableViewCell" customModule="HuTi" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PW2-Yg-IEW">
-                        <rect key="frame" x="10" y="10" width="100" height="100"/>
-                        <color key="backgroundColor" systemColor="systemMintColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="100" id="97U-Hj-1RV"/>
-                            <constraint firstAttribute="height" constant="100" id="Lq2-HC-MDY"/>
-                        </constraints>
-                    </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="o6E-pP-IMX">
-                        <rect key="frame" x="120" y="10" width="190" height="100"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yw1-uU-bhc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avatar Thủ Đức" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13X-Lp-Gft">
-                                <rect key="frame" x="0.0" y="0.0" width="190" height="20"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PW2-Yg-IEW">
+                                <rect key="frame" x="10" y="10" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="PBc-96-vx2"/>
+                                    <constraint firstAttribute="width" constant="100" id="IPv-JP-F8x"/>
+                                    <constraint firstAttribute="height" constant="100" id="cy2-r8-GVO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <color key="textColor" name="black"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ea3-rx-doT">
-                                <rect key="frame" x="0.0" y="27" width="190" height="25"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="o6E-pP-IMX">
+                                <rect key="frame" x="120" y="10" width="263" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sắp mở bán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb9-OW-ThX">
-                                        <rect key="frame" x="53" y="3.6666666666666643" width="84" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <color key="textColor" red="1" green="0.04677283753" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avatar Thủ Đức" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13X-Lp-Gft">
+                                        <rect key="frame" x="0.0" y="0.0" width="263" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="PBc-96-vx2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" name="black"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ea3-rx-doT">
+                                        <rect key="frame" x="0.0" y="27" width="263" height="25"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sắp mở bán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb9-OW-ThX">
+                                                <rect key="frame" x="89.666666666666657" y="3.6666666666666643" width="84" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <color key="textColor" name="purpleStatusText"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" name="purpleStatusBackground"/>
+                                        <constraints>
+                                            <constraint firstItem="Kb9-OW-ThX" firstAttribute="centerX" secondItem="Ea3-rx-doT" secondAttribute="centerX" id="RML-GG-l6F"/>
+                                            <constraint firstItem="Kb9-OW-ThX" firstAttribute="centerY" secondItem="Ea3-rx-doT" secondAttribute="centerY" id="fdw-Mt-qb1"/>
+                                            <constraint firstAttribute="height" constant="25" id="mWU-T6-9FD"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xã Long Hòa, Huyện Cần Giờ, TP. Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgV-dN-mSk">
+                                        <rect key="frame" x="0.0" y="59" width="263" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="1cr-ej-1NC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tập đoàn Vingroup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A80-O4-vII">
+                                        <rect key="frame" x="0.0" y="81" width="263" height="9"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
+                                        <color key="textColor" name="gray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.19607843137254899" blue="0.19607843137254899" alpha="0.19737041549177359" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="Kb9-OW-ThX" firstAttribute="centerY" secondItem="Ea3-rx-doT" secondAttribute="centerY" id="KZr-su-iOB"/>
-                                    <constraint firstAttribute="height" constant="25" id="L1g-tP-ZQL"/>
-                                    <constraint firstItem="Kb9-OW-ThX" firstAttribute="centerX" secondItem="Ea3-rx-doT" secondAttribute="centerX" id="UKQ-oN-gxM"/>
+                                    <constraint firstItem="A80-O4-vII" firstAttribute="leading" secondItem="o6E-pP-IMX" secondAttribute="leading" id="0c4-KQ-wcb"/>
+                                    <constraint firstItem="CgV-dN-mSk" firstAttribute="leading" secondItem="o6E-pP-IMX" secondAttribute="leading" id="ADV-jE-tIW"/>
+                                    <constraint firstAttribute="trailing" secondItem="A80-O4-vII" secondAttribute="trailing" id="Kt4-JM-FEs"/>
+                                    <constraint firstItem="13X-Lp-Gft" firstAttribute="leading" secondItem="o6E-pP-IMX" secondAttribute="leading" id="W11-Uh-fRU"/>
+                                    <constraint firstAttribute="trailing" secondItem="CgV-dN-mSk" secondAttribute="trailing" id="dQa-Gp-zIW"/>
+                                    <constraint firstItem="Ea3-rx-doT" firstAttribute="leading" secondItem="o6E-pP-IMX" secondAttribute="leading" id="eX4-56-fs3"/>
+                                    <constraint firstAttribute="trailing" secondItem="13X-Lp-Gft" secondAttribute="trailing" id="tc5-MF-zrC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ea3-rx-doT" secondAttribute="trailing" id="yvj-47-Vhy"/>
                                 </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xã Long Hòa, Huyện Cần Giờ, TP. Hồ Chí Minh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgV-dN-mSk">
-                                <rect key="frame" x="0.0" y="59" width="190" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="1cr-ej-1NC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tập đoàn Vingroup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A80-O4-vII">
-                                <rect key="frame" x="0.0" y="81" width="135" height="19"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <color key="textColor" name="black"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="13X-Lp-Gft" firstAttribute="leading" secondItem="o6E-pP-IMX" secondAttribute="leading" id="AFb-So-u3w"/>
-                            <constraint firstAttribute="trailing" secondItem="13X-Lp-Gft" secondAttribute="trailing" id="m6I-Lf-YRB"/>
-                            <constraint firstAttribute="trailing" secondItem="Ea3-rx-doT" secondAttribute="trailing" id="qES-gL-AdA"/>
-                            <constraint firstItem="Ea3-rx-doT" firstAttribute="leading" secondItem="o6E-pP-IMX" secondAttribute="leading" id="rOA-fN-ADS"/>
+                            <constraint firstItem="o6E-pP-IMX" firstAttribute="top" secondItem="Yw1-uU-bhc" secondAttribute="top" constant="10" id="MWP-WE-g5F"/>
+                            <constraint firstItem="o6E-pP-IMX" firstAttribute="leading" secondItem="PW2-Yg-IEW" secondAttribute="trailing" constant="10" id="RfX-1K-jn3"/>
+                            <constraint firstItem="PW2-Yg-IEW" firstAttribute="top" secondItem="Yw1-uU-bhc" secondAttribute="top" constant="10" id="irW-UU-emV"/>
+                            <constraint firstAttribute="bottom" secondItem="o6E-pP-IMX" secondAttribute="bottom" constant="10" id="rAh-PI-Rzo"/>
+                            <constraint firstAttribute="trailing" secondItem="o6E-pP-IMX" secondAttribute="trailing" constant="10" id="xQc-BM-5lI"/>
+                            <constraint firstItem="PW2-Yg-IEW" firstAttribute="leading" secondItem="Yw1-uU-bhc" secondAttribute="leading" constant="10" id="zPb-VL-nJr"/>
                         </constraints>
-                    </stackView>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" name="background"/>
                 <constraints>
-                    <constraint firstItem="PW2-Yg-IEW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8ia-CN-MTb"/>
-                    <constraint firstAttribute="trailing" secondItem="o6E-pP-IMX" secondAttribute="trailing" constant="10" id="FPJ-y4-RMG"/>
-                    <constraint firstAttribute="bottom" secondItem="o6E-pP-IMX" secondAttribute="bottom" constant="10" id="I7L-Hf-JxA"/>
-                    <constraint firstItem="o6E-pP-IMX" firstAttribute="leading" secondItem="PW2-Yg-IEW" secondAttribute="trailing" constant="10" id="Jqo-uD-W38"/>
-                    <constraint firstItem="o6E-pP-IMX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="XU2-V2-H5a"/>
-                    <constraint firstItem="PW2-Yg-IEW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="bO3-jA-11H"/>
+                    <constraint firstItem="Yw1-uU-bhc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mUB-Er-YqL"/>
+                    <constraint firstItem="Yw1-uU-bhc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qXM-Mf-5CR"/>
+                    <constraint firstAttribute="trailing" secondItem="Yw1-uU-bhc" secondAttribute="trailing" id="qyq-Pc-x5R"/>
+                    <constraint firstAttribute="bottom" secondItem="Yw1-uU-bhc" secondAttribute="bottom" constant="10" id="uMY-UY-S78"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="99.236641221374043" y="-27.464788732394368"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <integer key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="addressLabel" destination="CgV-dN-mSk" id="T9X-Xu-ORb"/>
+                <outlet property="cellView" destination="Yw1-uU-bhc" id="upP-pN-piF"/>
+                <outlet property="investorLabel" destination="A80-O4-vII" id="rqO-nj-EBD"/>
+                <outlet property="name" destination="13X-Lp-Gft" id="Q07-G4-xRI"/>
+                <outlet property="statusLabel" destination="Kb9-OW-ThX" id="Rrn-fj-YdL"/>
+                <outlet property="statusView" destination="Ea3-rx-doT" id="5ue-HW-gSB"/>
+                <outlet property="thumbnail" destination="PW2-Yg-IEW" id="Tmu-Nq-7ET"/>
+            </connections>
+            <point key="canvasLocation" x="80" y="-85"/>
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="background">
+            <color red="0.98000001907348633" green="0.92900002002716064" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="black">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="gray">
+            <color red="0.66299998760223389" green="0.65499997138977051" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="purpleStatusBackground">
+            <color red="0.94117647058823528" green="0.91764705882352937" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="purpleStatusText">
+            <color red="0.5607843137254902" green="0.41960784313725491" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

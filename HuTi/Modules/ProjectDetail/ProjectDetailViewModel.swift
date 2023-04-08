@@ -10,5 +10,6 @@ import RxSwift
 import RxRelay
 
 class ProjectDetailViewModel: BaseViewModel {
-    
+    var project : Project?
+    let images = BehaviorRelay<[String]>(value: [])
 }

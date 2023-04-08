@@ -75,6 +75,12 @@ struct ColorName {
     static let white = "white"
     static let black = "black"
     static let red = "red"
+    static let redStatusBackground = "redStatusBackground"
+    static let greenStatusBackground = "greenStatusBackground"
+    static let purpleStatusBackground = "purpleStatusBackground"
+    static let redStatusText = "redStatusText"
+    static let greenStatusText = "greenStatusText"
+    static let purpleStatusText = "purpleStatusText"
 }
 
 struct TabBarItemTitle {
@@ -91,6 +97,7 @@ struct ClassNibName {
     static let OTPViewController = "OTPViewController"
     static let ConfirmPasswordViewController = "ConfirmPasswordViewController"
     static let PostDetailViewController = "PostDetailViewController"
+    static let ProjectDetailViewController = "ProjectDetailViewController"
 }
 
 struct MainTitle {

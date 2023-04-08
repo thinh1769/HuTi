@@ -21,12 +21,12 @@ struct Project: Codable {
     var lat: Double
     var long: Double
     var projectType: String
-    var apartment: Int
-    var acreage: Double
-    var building: Int
+    var apartment: String
+    var acreage: String
+    var building: String
     var legal: String
     var investor: String
     var description: String
     var images: [String]
-    var posts: [String]
+    var posts: [String]?
 }

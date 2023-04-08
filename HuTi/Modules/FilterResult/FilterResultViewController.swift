@@ -12,8 +12,9 @@ import MapKit
 
 class FilterResultViewController: BaseViewController {
     
+    @IBOutlet private weak var optionView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var addressCollectionView: UICollectionView!
+    @IBOutlet private weak var optionCollectionView: UICollectionView!
     @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet private weak var mapButton: UIButton!
     @IBOutlet private weak var filterResultTableView: UITableView!
@@ -29,6 +30,7 @@ class FilterResultViewController: BaseViewController {
     private func setupUI() {
         loadData()
         mapView.isHidden = true
+        optionView.isHidden = true
         titleLabel.text = viewModel.mainTabBarItemTitle
         setupCollectionView()
         setupTableView()
@@ -61,20 +63,28 @@ class FilterResultViewController: BaseViewController {
     }
     
     private func setupCollectionView() {
-        addressCollectionView.register(AddressCollectionViewCell.nib, forCellWithReuseIdentifier: AddressCollectionViewCell.reusableIdentifier)
+        optionCollectionView.register(AddressCollectionViewCell.nib, forCellWithReuseIdentifier: AddressCollectionViewCell.reusableIdentifier)
         
         viewModel.options.asObservable()
-            .bind(to: addressCollectionView.rx.items(cellIdentifier: AddressCollectionViewCell.reusableIdentifier, cellType: AddressCollectionViewCell.self)) { (index, element, cell) in
+            .bind(to: optionCollectionView.rx.items(cellIdentifier: AddressCollectionViewCell.reusableIdentifier, cellType: AddressCollectionViewCell.self)) { (index, element, cell) in
                 cell.config(content: element)
             }.disposed(by: viewModel.bag)
         
-        addressCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
+        optionCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
     }
     
     private func setupTableView() {
         filterResultTableView.rowHeight = CommonConstants.tableRowHeight
         filterResultTableView.separatorStyle = .none
         
+        if viewModel.tabBarItemTitle == TabBarItemTitle.project {
+            setupProjectTableView()
+        } else {
+            setupPostTableView()
+        }
+    }
+    
+    private func setupPostTableView() {
         filterResultTableView.register(FilterResultTableViewCell.nib, forCellReuseIdentifier: FilterResultTableViewCell.reusableIdentifier)
         
         viewModel.post.asObservable()
@@ -91,13 +101,30 @@ class FilterResultViewController: BaseViewController {
             .modelSelected(Post.self)
             .subscribe { [weak self] element in
                 guard let self = self else { return }
-                if self.viewModel.tabBarItemTitle == TabBarItemTitle.project {
-                    let vc = ProjectDetailViewController()
-                    self.navigateTo(vc)
-                } else {
-                    let vc = PostDetailViewController.instance(postId: element.id ?? "")
-                    self.navigateTo(vc)
+                let vc = PostDetailViewController.instance(postId: element.id ?? "")
+                self.navigateTo(vc)
+            }.disposed(by: viewModel.bag)
+    }
+    
+    private func setupProjectTableView() {
+        filterResultTableView.register(ProjectFilterResultTableViewCell.nib, forCellReuseIdentifier: ProjectFilterResultTableViewCell.reusableIdentifier)
+        
+        viewModel.project.asObservable()
+            .bind(to: filterResultTableView.rx.items(cellIdentifier: ProjectFilterResultTableViewCell.reusableIdentifier, cellType: ProjectFilterResultTableViewCell.self)) { (index, element, cell) in
+                cell.config(project: element)
+                self.viewModel.getImage(remoteName: element.images[0]) { thumbnail in
+                    DispatchQueue.main.async {
+                        cell.loadThumbnail(thumbnail: thumbnail)
+                    }
                 }
+            }.disposed(by: viewModel.bag)
+        
+        filterResultTableView.rx
+            .modelSelected(Project.self)
+            .subscribe { [weak self] element in
+                guard let self = self else { return }
+                let vc = ProjectDetailViewController.instance(project: element)
+                self.navigateTo(vc)
             }.disposed(by: viewModel.bag)
     }
     
@@ -131,6 +158,7 @@ extension FilterResultViewController: FilterViewControllerDelegate {
         if let filterProject = projectResult {
             viewModel.project.accept(filterProject)
         }
+        optionView.isHidden = false
     }
     
     func didTapResetButton() {
@@ -141,6 +169,8 @@ extension FilterResultViewController: FilterViewControllerDelegate {
         } else {
             getListPosts()
         }
+        
+        optionView.isHidden = true
     }
 }
 
@@ -157,7 +187,7 @@ extension FilterResultViewController {
 // MARK: - Kích thước collectionView cell.
 extension FilterResultViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cell = addressCollectionView.dequeueReusableCell(withReuseIdentifier: AddressCollectionViewCell.reusableIdentifier, for: indexPath) as! AddressCollectionViewCell
+        let cell = optionCollectionView.dequeueReusableCell(withReuseIdentifier: AddressCollectionViewCell.reusableIdentifier, for: indexPath) as! AddressCollectionViewCell
         let item = viewModel.options.value[indexPath.row]
         cell.config(content: item)
         let width = cell.contentLabel.intrinsicContentSize.width + 20

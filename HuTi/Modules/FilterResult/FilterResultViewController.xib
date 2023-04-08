@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,10 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterResultViewController" customModule="HuTi" customModuleProvider="target">
             <connections>
-                <outlet property="addressCollectionView" destination="0id-pZ-wd4" id="93Q-6F-nYd"/>
                 <outlet property="filterResultTableView" destination="UPl-U2-856" id="sMz-U3-FMD"/>
                 <outlet property="mapButton" destination="eiy-dx-C6t" id="Q0c-p4-2d4"/>
                 <outlet property="mapView" destination="PvB-YN-gVZ" id="6Rl-Ix-xAo"/>
+                <outlet property="optionCollectionView" destination="0id-pZ-wd4" id="93Q-6F-nYd"/>
+                <outlet property="optionView" destination="VT0-sV-kCD" id="fYq-AJ-f65"/>
                 <outlet property="subtitleLabel" destination="yvh-9K-Cv8" id="ZkJ-PH-dl8"/>
                 <outlet property="titleLabel" destination="lEM-Uz-LPX" id="Zyn-qB-hXO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhà đất bán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEM-Uz-LPX" userLabel="titleLabel">
-                    <rect key="frame" x="20" y="62" width="265" height="30"/>
+                    <rect key="frame" x="20" y="62" width="265" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                     <color key="textColor" name="themeText"/>
                     <nil key="highlightedColor"/>
@@ -72,60 +73,88 @@
                         <action selector="onClickedFilterBtn:" destination="-1" eventType="touchUpInside" id="yHO-Ei-Pms"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0id-pZ-wd4">
-                    <rect key="frame" x="10" y="130" width="370" height="40"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kSU-Ch-f5g">
+                    <rect key="frame" x="0.0" y="82" width="390" height="728"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VT0-sV-kCD">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0id-pZ-wd4">
+                                    <rect key="frame" x="10" y="0.0" width="370" height="50"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GBE-mB-3c9">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="0id-pZ-wd4" secondAttribute="trailing" constant="10" id="845-XQ-9Uj"/>
+                                <constraint firstAttribute="height" constant="50" id="9qI-nL-WNJ"/>
+                                <constraint firstItem="0id-pZ-wd4" firstAttribute="leading" secondItem="VT0-sV-kCD" secondAttribute="leading" constant="10" id="FPO-qL-AtC"/>
+                                <constraint firstAttribute="bottom" secondItem="0id-pZ-wd4" secondAttribute="bottom" id="aud-Gq-4L7"/>
+                                <constraint firstItem="0id-pZ-wd4" firstAttribute="top" secondItem="VT0-sV-kCD" secondAttribute="top" id="fm9-ca-TiL"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAJ-i7-jSo">
+                            <rect key="frame" x="0.0" y="60" width="390" height="668"/>
+                            <subviews>
+                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvB-YN-gVZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="668"/>
+                                    <standardMapConfiguration key="preferredConfiguration"/>
+                                </mapView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-U2-856">
+                                    <rect key="frame" x="10" y="0.0" width="370" height="668"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="UPl-U2-856" firstAttribute="leading" secondItem="YAJ-i7-jSo" secondAttribute="leading" constant="10" id="0px-tJ-eXS"/>
+                                <constraint firstAttribute="trailing" secondItem="PvB-YN-gVZ" secondAttribute="trailing" id="4C5-ky-hxe"/>
+                                <constraint firstItem="PvB-YN-gVZ" firstAttribute="leading" secondItem="YAJ-i7-jSo" secondAttribute="leading" id="5Wt-8j-fDp"/>
+                                <constraint firstAttribute="bottom" secondItem="PvB-YN-gVZ" secondAttribute="bottom" id="Kcr-xg-TBH"/>
+                                <constraint firstAttribute="trailing" secondItem="UPl-U2-856" secondAttribute="trailing" constant="10" id="Pbp-Cw-nWF"/>
+                                <constraint firstItem="PvB-YN-gVZ" firstAttribute="top" secondItem="YAJ-i7-jSo" secondAttribute="top" id="W2e-iw-n6d"/>
+                                <constraint firstItem="UPl-U2-856" firstAttribute="top" secondItem="YAJ-i7-jSo" secondAttribute="top" id="jRl-jt-Mao"/>
+                                <constraint firstAttribute="bottom" secondItem="UPl-U2-856" secondAttribute="bottom" id="qr4-10-7Xz"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="iAS-B9-azn"/>
+                        <constraint firstAttribute="trailing" secondItem="YAJ-i7-jSo" secondAttribute="trailing" id="0Yu-SH-vR6"/>
+                        <constraint firstItem="YAJ-i7-jSo" firstAttribute="leading" secondItem="kSU-Ch-f5g" secondAttribute="leading" id="cYu-iv-cTj"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GBE-mB-3c9">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-U2-856">
-                    <rect key="frame" x="10" y="180" width="370" height="630"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
+                </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hiện đang có 124 nhà đất đang bán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvh-9K-Cv8" userLabel="subtitleLabel">
-                    <rect key="frame" x="20" y="102" width="350" height="18"/>
+                    <rect key="frame" x="20" y="72" width="350" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                     <color key="textColor" name="black"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvB-YN-gVZ">
-                    <rect key="frame" x="0.0" y="180" width="390" height="630"/>
-                    <standardMapConfiguration key="preferredConfiguration"/>
-                </mapView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
+                <constraint firstItem="kSU-Ch-f5g" firstAttribute="top" secondItem="yvh-9K-Cv8" secondAttribute="bottom" constant="10" id="5Jv-IB-nBV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hMd-JW-JRY" secondAttribute="trailing" constant="10" id="7uV-dc-MoZ"/>
                 <constraint firstItem="lEM-Uz-LPX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="8X7-o9-oA1"/>
-                <constraint firstItem="0id-pZ-wd4" firstAttribute="top" secondItem="yvh-9K-Cv8" secondAttribute="bottom" constant="10" id="9L2-Dy-S8y"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yvh-9K-Cv8" secondAttribute="trailing" constant="20" id="CM9-ty-j7I"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0id-pZ-wd4" secondAttribute="trailing" constant="10" id="IBB-On-Gwp"/>
-                <constraint firstItem="PvB-YN-gVZ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="UZe-Uc-GSn"/>
+                <constraint firstItem="kSU-Ch-f5g" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="FSf-X4-xrd"/>
                 <constraint firstItem="eiy-dx-C6t" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="W2N-wS-ChT"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UPl-U2-856" secondAttribute="bottom" id="Y7X-zh-cZ0"/>
-                <constraint firstItem="UPl-U2-856" firstAttribute="top" secondItem="0id-pZ-wd4" secondAttribute="bottom" constant="10" id="a6V-Jm-1GE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kSU-Ch-f5g" secondAttribute="trailing" id="XzC-sn-ebc"/>
                 <constraint firstItem="lEM-Uz-LPX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="crJ-Jt-lFE"/>
                 <constraint firstItem="eiy-dx-C6t" firstAttribute="leading" secondItem="lEM-Uz-LPX" secondAttribute="trailing" constant="10" id="eYk-ef-rus"/>
                 <constraint firstItem="yvh-9K-Cv8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="frG-zt-wmm"/>
                 <constraint firstItem="hMd-JW-JRY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ix7-qy-Oq6"/>
-                <constraint firstItem="PvB-YN-gVZ" firstAttribute="top" secondItem="0id-pZ-wd4" secondAttribute="bottom" constant="10" id="kNS-ME-mvF"/>
-                <constraint firstItem="UPl-U2-856" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="mob-NA-pQO"/>
                 <constraint firstItem="hMd-JW-JRY" firstAttribute="leading" secondItem="eiy-dx-C6t" secondAttribute="trailing" constant="5" id="sN7-bg-DrH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UPl-U2-856" secondAttribute="trailing" constant="10" id="vlk-M8-FJy"/>
-                <constraint firstItem="PvB-YN-gVZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="wIt-9g-QKv"/>
-                <constraint firstItem="PvB-YN-gVZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xIe-vf-7oT"/>
-                <constraint firstItem="0id-pZ-wd4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="zMK-oA-YZh"/>
+                <constraint firstItem="kSU-Ch-f5g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="u0E-py-R0T"/>
                 <constraint firstItem="yvh-9K-Cv8" firstAttribute="top" secondItem="lEM-Uz-LPX" secondAttribute="bottom" constant="10" id="zw3-W0-tet"/>
             </constraints>
-            <point key="canvasLocation" x="-911" y="-37"/>
+            <point key="canvasLocation" x="-1463" y="-602"/>
         </view>
     </objects>
     <resources>
