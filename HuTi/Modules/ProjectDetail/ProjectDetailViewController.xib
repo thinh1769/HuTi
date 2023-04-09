@@ -28,6 +28,7 @@
                 <outlet property="mapView" destination="L6O-jh-ptY" id="hei-tP-qx4"/>
                 <outlet property="nameLabel" destination="ipn-Jb-lBI" id="HZO-NW-9C5"/>
                 <outlet property="priceLabel" destination="gx3-FM-ejs" id="0Km-iT-hYk"/>
+                <outlet property="priceView" destination="p0P-HZ-twg" id="R7W-s5-bBI"/>
                 <outlet property="projectTypeLabel" destination="6mu-tO-Liz" id="vf0-bN-Z2N"/>
                 <outlet property="relatedPostCollectionView" destination="L4U-p9-5Vo" id="Tq5-mS-MNP"/>
                 <outlet property="statusLabel" destination="Aqa-Da-9XA" id="CwB-Yi-WKE"/>

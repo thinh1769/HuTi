@@ -43,10 +43,13 @@ enum APIConstants: String {
     case addNewPost = "post/add-post"
     case getPosts = "post/get-post"
     case getPostById = "post/get-post-by-id/"
+    case getPostByUserId = "post/get-post-by-user"
     case findPost = "post/find"
     case findProject = "project/find"
     case getProject = "project"
     case getProjectById = "project/"
+    case likePost = "user/like-post/"
+    case dislikePost = "user/dislike-post/"
     
     var method: HTTPMethodSupport {
         switch self {
@@ -76,6 +79,8 @@ enum APIConstants: String {
             return .post
         case .getPostById:
             return .get
+        case .getPostByUserId:
+            return .get
         case .findPost:
             return .post
         case .findProject:
@@ -84,6 +89,10 @@ enum APIConstants: String {
             return .get
         case .getProjectById:
             return .get
+        case .likePost:
+            return .put
+        case .dislikePost:
+            return .put
         }
     }
 }

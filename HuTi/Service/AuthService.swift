@@ -44,6 +44,14 @@ class AuthService: BaseService {
         let params = ["phoneNumber" : phoneNumber, "otp" : otp, "password": password]
         return authRequest(api: APIConstants.resetPassword, method: .put, parameters: params)
     }
+    
+    func likePost(postId: String) -> Observable<String> {
+        return request(api: APIConstants.likePost.rawValue + postId, method: .put)
+    }
+    
+    func dislikePost(postId: String) -> Observable<String> {
+        return request(api: APIConstants.dislikePost.rawValue + postId, method: .put)
+    }
 //    func logOut() -> Observable<String> {
 //        return request(api: .logout)
 //    }

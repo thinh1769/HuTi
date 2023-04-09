@@ -75,4 +75,17 @@ class BaseViewController: UIViewController {
     func hideLoading() {
         progressHUD.hide(animated: true)
     }
+    
+    func isFavoritePost(postId: String?) -> Bool {
+        guard let likePosts = UserDefaults.userInfo?.likePosts,
+              likePosts.count > 0,
+              let postId = postId
+        else { return false }
+        for (_, element) in likePosts.enumerated() {
+            if element == postId {
+                return true
+            }
+        }
+        return false
+    }
 }

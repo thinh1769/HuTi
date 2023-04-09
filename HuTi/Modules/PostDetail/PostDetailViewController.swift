@@ -9,6 +9,10 @@ import UIKit
 import MapKit
 import CoreLocation
 
+protocol PostDetailViewControllerDelegate: AnyObject {
+    func didTappedLikeButton()
+}
+
 class PostDetailViewController: BaseViewController {
 
     @IBOutlet private weak var titleLabel: UILabel!
@@ -42,9 +46,9 @@ class PostDetailViewController: BaseViewController {
     
     
     lazy var viewModel = PostDetailViewModel()
-    var isLiked = false
     private var locationManager = CLLocationManager()
     private let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+    weak var delegate: PostDetailViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +87,23 @@ class PostDetailViewController: BaseViewController {
         facadeLabel.text = "\(post?.facade ?? 0) m"
         descriptionLabel.text = post?.description
         self.pinRealEstateLocation()
+        
+        
+        if let postUserId = post?.userId,
+           let userId = UserDefaults.userInfo?.id,
+           postUserId == userId {
+                likeButton.isHidden = true
+            } else {
+                likeButton.isHidden = false
+                if isFavoritePost(postId: post?.id) {
+                    likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    likeButton.tintColor = UIColor(named: ColorName.redStatusText)
+                } else {
+                    likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                    likeButton.tintColor = UIColor(named: ColorName.gray)
+                }
+            }
+        
         
         unhiddenAllView()
         switch viewModel.postDetail?.realEstateType {
@@ -124,14 +145,29 @@ class PostDetailViewController: BaseViewController {
     }
     
     @IBAction func onClickedLikeButton(_ sender: UIButton) {
-        if !isLiked {
+        if !viewModel.isFavorite {
+            viewModel.likePost().subscribe { _ in
+            } onError: { _ in
+            } onCompleted: { [weak self] in
+                guard let self = self else { return }
+                UserDefaults.userInfo?.likePosts?.append(self.viewModel.postId)
+                print("like post thành công")
+            }.disposed(by: viewModel.bag)
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             likeButton.tintColor = UIColor(named: ColorName.redStatusText)
         } else {
+            viewModel.dislikePost().subscribe { _ in
+            } onError: { _ in
+            } onCompleted: { [weak self] in
+                guard let self = self else { return }
+                self.removeFavoritePost(postId: self.viewModel.postId)
+                print("dislike post thành công")
+            }.disposed(by: viewModel.bag)
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
             likeButton.tintColor = UIColor(named: ColorName.gray)
         }
-        isLiked = !isLiked
+        viewModel.isFavorite = !viewModel.isFavorite
+        delegate?.didTappedLikeButton()
     }
     
     @IBAction func onClickedRealEstateLocationButton(_ sender: UIButton) {
@@ -142,6 +178,19 @@ class PostDetailViewController: BaseViewController {
     @objc private func goToProjectDetailView() {
         let vc = ProjectDetailViewController()
         navigateTo(vc)
+    }
+    
+    private func removeFavoritePost(postId: String?) {
+        guard let id = postId,
+              let likedPost = UserDefaults.userInfo?.likePosts
+        else { return }
+        var removeIndex = -1
+        for (index, element) in likedPost.enumerated() {
+            if id == element {
+                removeIndex = index
+            }
+        }
+        UserDefaults.userInfo?.likePosts?.remove(at: removeIndex)
     }
     
     private func setupImageCollectionView() {
@@ -201,9 +250,10 @@ extension PostDetailViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension PostDetailViewController {
-    class func instance(postId: String) -> PostDetailViewController {
+    class func instance(postId: String, isFavorite: Bool) -> PostDetailViewController {
         let controller = PostDetailViewController(nibName: ClassNibName.PostDetailViewController, bundle: Bundle.main)
         controller.viewModel.postId = postId
+        controller.viewModel.isFavorite = isFavorite
         return controller
     }
 }

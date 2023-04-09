@@ -22,9 +22,16 @@ class PostedViewController: BaseViewController {
     }
     
     private func setupUI() {
-        viewModel.initData()
+        getPostedPost()
         titleLabel.text = viewModel.title
         setupTableView()
+    }
+    
+    private func getPostedPost() {
+        viewModel.getPostedPost().subscribe { [weak self] postedPost in
+            guard let self = self else { return }
+            self.viewModel.post.accept(postedPost)
+        }.disposed(by: viewModel.bag)
     }
     
     private func setupTableView() {
@@ -33,20 +40,26 @@ class PostedViewController: BaseViewController {
         
         postedTableView.register(FilterResultTableViewCell.nib, forCellReuseIdentifier: FilterResultTableViewCell.reusableIdentifier)
         
-//        viewModel.post.asObservable()
-//            .bind(to: postedTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { [weak self] (index, element, cell) in
-//                guard let self = self else { return }
-//                if self.viewModel.title == MainTitle.favoritePosts {
-//                    cell.config(element, isHiddenAuthorAndHeart: false)
-//                } else {
-//                    cell.config(element, isHiddenAuthorAndHeart: true)
-//                }
-//            }.disposed(by: viewModel.bag)
+        viewModel.post.asObservable()
+            .bind(to: postedTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { [weak self] (index, element, cell) in
+                guard let self = self else { return }
+                self.viewModel.getImage(remoteName: element.thumbnail) { thumbnail in
+                    DispatchQueue.main.async {
+                        cell.loadThumbnail(thumbnail: thumbnail)
+                    }
+                }
+                if self.viewModel.title == MainTitle.favoritePosts {
+                    cell.configInfo(element, isHiddenAuthorAndHeart: false, isFavorite: self.isFavoritePost(postId: element.id))
+                } else {
+                    cell.configInfo(element, isHiddenAuthorAndHeart: true, isFavorite: self.isFavoritePost(postId: element.id))
+                }
+            }.disposed(by: viewModel.bag)
         
-        postedTableView.rx.modelSelected(PostDetail.self)
+        postedTableView.rx.modelSelected(Post.self)
             .subscribe { [weak self] element in
                 guard let self = self else { return }
-                print("table cell selected")
+                let vc = PostDetailViewController.instance(postId: element.id ?? "", isFavorite: self.isFavoritePost(postId: element.id))
+                self.navigateTo(vc)
             }.disposed(by: viewModel.bag)
     }
     

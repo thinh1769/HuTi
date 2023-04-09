@@ -23,6 +23,10 @@ class PostService: BaseService {
         return request(api: APIConstants.getPostById.rawValue + postId, method: .get)
     }
     
+    func getPostByUserId() -> Observable<[Post]> {
+        return request(api: .getPostByUserId)
+    }
+    
     func findPost(param: [String: Any]) -> Observable<[Post]> {
         return request(api: APIConstants.findPost.rawValue, method: .post, params: param)
     }

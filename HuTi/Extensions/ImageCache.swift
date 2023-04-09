@@ -8,7 +8,7 @@
 import Foundation
 
 class ImageCache {
-    static let MAX_IMAGE = 50
+    static let MAX_IMAGE = 15
     
     static private var fileManager = FileManager.default
     

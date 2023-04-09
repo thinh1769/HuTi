@@ -17,6 +17,7 @@ class ProjectDetailViewController: BaseViewController {
     @IBOutlet weak var projectTypeLabel: UILabel!
     @IBOutlet weak var acreageLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceView: UIStackView!
     @IBOutlet weak var buildingView: UIStackView!
     @IBOutlet weak var buildingLabel: UILabel!
     @IBOutlet weak var apartmentView: UIStackView!
@@ -62,10 +63,30 @@ class ProjectDetailViewController: BaseViewController {
         configStatusView(project.status)
         projectTypeLabel.text = project.projectType
         acreageLabel.text = "\(project.acreage)"
-        priceLabel.text = project.price
-        buildingLabel.text = "\(project.building)"
-        apartmentLabel.text = "\(project.apartment)"
-        legalLabel.text = project.legal
+        if let price = project.price {
+            priceLabel.text = price
+        } else {
+            priceView.isHidden = true
+        }
+        
+        if let building = project.building {
+            buildingLabel.text = "\(building)"
+        } else {
+            buildingView.isHidden = true
+        }
+        
+        if let apartment = project.apartment {
+            apartmentLabel.text = "\(apartment)"
+        } else {
+            apartmentView.isHidden = true
+        }
+        
+        if let legal = project.legal {
+            legalLabel.text = legal
+        } else {
+            legalView.isHidden = true
+        }
+        
         investorLabel.text = project.investor
         descriptionLabel.text = project.description
         self.pinProjectLocation()

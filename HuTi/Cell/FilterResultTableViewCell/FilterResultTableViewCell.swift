@@ -35,13 +35,15 @@ class FilterResultTableViewCell: UITableViewCell {
     private func setupUI() {
         self.selectionStyle = .none
         cellView.layer.cornerRadius = 10
+        heartBtn.image = UIImage(systemName: "heart")
+        heartBtn.tintColor = UIColor(named: ColorName.gray)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func configInfo(_  post: Post, isHiddenAuthorAndHeart: Bool) {
+    func configInfo(_  post: Post, isHiddenAuthorAndHeart: Bool, isFavorite: Bool?) {
         postTitleLabel.text = post.title
         priceLabel.text = String(post.price)
         addressLabel.text = "\(post.address), \(post.wardName), \(post.districtName), \(post.provinceName)"
@@ -51,6 +53,17 @@ class FilterResultTableViewCell: UITableViewCell {
             bottomView.isHidden = true
             addressLabel.numberOfLines = 0
         }
+        
+        if let isFavorite = isFavorite {
+            if !isFavorite  {
+                heartBtn.image = UIImage(systemName: "heart")
+                heartBtn.tintColor = UIColor(named: ColorName.gray)
+            } else {
+                heartBtn.image = UIImage(systemName: "heart.fill")
+                heartBtn.tintColor = UIColor(named: ColorName.redStatusText)
+            }
+        }
+        
         self.thumbnail.image = nil
     }
     

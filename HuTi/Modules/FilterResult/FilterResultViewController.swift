@@ -89,19 +89,20 @@ class FilterResultViewController: BaseViewController {
         
         viewModel.post.asObservable()
             .bind(to: filterResultTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { (index, element, cell) in
-                cell.configInfo(element, isHiddenAuthorAndHeart: false)
                 self.viewModel.getImage(remoteName: element.thumbnail) { thumbnail in
                     DispatchQueue.main.async {
                         cell.loadThumbnail(thumbnail: thumbnail)
                     }
                 }
+                cell.configInfo(element, isHiddenAuthorAndHeart: false, isFavorite: self.isFavoritePost(postId: element.id))
             }.disposed(by: viewModel.bag)
         
         filterResultTableView.rx
             .modelSelected(Post.self)
             .subscribe { [weak self] element in
                 guard let self = self else { return }
-                let vc = PostDetailViewController.instance(postId: element.id ?? "")
+                let vc = PostDetailViewController.instance(postId: element.id ?? "", isFavorite: self.isFavoritePost(postId: element.id))
+                vc.delegate = self
                 self.navigateTo(vc)
             }.disposed(by: viewModel.bag)
     }
@@ -111,12 +112,12 @@ class FilterResultViewController: BaseViewController {
         
         viewModel.project.asObservable()
             .bind(to: filterResultTableView.rx.items(cellIdentifier: ProjectFilterResultTableViewCell.reusableIdentifier, cellType: ProjectFilterResultTableViewCell.self)) { (index, element, cell) in
-                cell.config(project: element)
                 self.viewModel.getImage(remoteName: element.images[0]) { thumbnail in
                     DispatchQueue.main.async {
                         cell.loadThumbnail(thumbnail: thumbnail)
                     }
                 }
+                cell.config(project: element)
             }.disposed(by: viewModel.bag)
         
         filterResultTableView.rx
@@ -171,6 +172,12 @@ extension FilterResultViewController: FilterViewControllerDelegate {
         }
         
         optionView.isHidden = true
+    }
+}
+
+extension FilterResultViewController: PostDetailViewControllerDelegate {
+    func didTappedLikeButton() {
+        filterResultTableView.reloadData()
     }
 }
 
