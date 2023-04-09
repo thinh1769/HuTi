@@ -22,7 +22,11 @@ class PostedViewController: BaseViewController {
     }
     
     private func setupUI() {
-        getPostedPost()
+        if viewModel.title == MainTitle.postedPosts {
+            getPostedPost()
+        } else {
+            getFavoritePost()
+        }
         titleLabel.text = viewModel.title
         setupTableView()
     }
@@ -31,6 +35,13 @@ class PostedViewController: BaseViewController {
         viewModel.getPostedPost().subscribe { [weak self] postedPost in
             guard let self = self else { return }
             self.viewModel.post.accept(postedPost)
+        }.disposed(by: viewModel.bag)
+    }
+    
+    private func getFavoritePost() {
+        viewModel.getFavoritePost().subscribe { [weak self] favoritePost in
+            guard let self = self else { return }
+            self.viewModel.post.accept(favoritePost)
         }.disposed(by: viewModel.bag)
     }
     
@@ -59,12 +70,19 @@ class PostedViewController: BaseViewController {
             .subscribe { [weak self] element in
                 guard let self = self else { return }
                 let vc = PostDetailViewController.instance(postId: element.id ?? "", isFavorite: self.isFavoritePost(postId: element.id))
+                vc.delegate = self
                 self.navigateTo(vc)
             }.disposed(by: viewModel.bag)
     }
     
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         backToPreviousView()
+    }
+}
+
+extension PostedViewController: PostDetailViewControllerDelegate {
+    func didTappedLikeButton() {
+        postedTableView.reloadData()
     }
 }
 

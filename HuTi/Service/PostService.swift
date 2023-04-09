@@ -27,6 +27,10 @@ class PostService: BaseService {
         return request(api: .getPostByUserId)
     }
     
+    func getFavoritePost() -> Observable<[Post]> {
+        return request(api: .getFavoritePost)
+    }
+    
     func findPost(param: [String: Any]) -> Observable<[Post]> {
         return request(api: APIConstants.findPost.rawValue, method: .post, params: param)
     }

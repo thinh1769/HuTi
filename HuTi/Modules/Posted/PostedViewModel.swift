@@ -16,4 +16,8 @@ class PostedViewModel: BaseViewModel {
     func getPostedPost() -> Observable<[Post]> {
         return postService.getPostByUserId()
     }
+    
+    func getFavoritePost() -> Observable<[Post]> {
+        return postService.getFavoritePost()
+    }
 }
