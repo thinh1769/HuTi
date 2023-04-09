@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="HuTi" customModuleProvider="target">
             <connections>
+                <outlet property="bottomStackView" destination="OpV-1p-H79" id="9LK-eE-awA"/>
                 <outlet property="phoneTextField" destination="WK2-Hq-MyD" id="05w-E2-t9H"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -101,6 +103,28 @@
                         <constraint firstAttribute="height" constant="30" id="Akq-db-pBB"/>
                     </constraints>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73I-HT-2fS" userLabel="backBtn">
+                    <rect key="frame" x="20" y="69" width="40" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="HR7-Up-wcG"/>
+                        <constraint firstAttribute="width" constant="40" id="zh8-eF-1ap"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal">
+                        <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large" variableValue="1"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onClickedBackBtn:" destination="-1" eventType="touchUpInside" id="ou3-XW-cXr"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.97974282499999998" green="0.92949610949999995" blue="0.92156225439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -109,19 +133,22 @@
                 <constraint firstItem="cK4-XA-tPy" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ArK-hh-XtP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5js-Fn-cSt" secondAttribute="trailing" constant="40" id="DGS-pV-9P4"/>
                 <constraint firstItem="nnb-tm-0r8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="Dlf-vu-IQJ"/>
+                <constraint firstItem="73I-HT-2fS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="It3-RE-u7D"/>
                 <constraint firstItem="nnb-tm-0r8" firstAttribute="top" secondItem="5js-Fn-cSt" secondAttribute="bottom" constant="30" id="Omo-pq-2bB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OpV-1p-H79" secondAttribute="bottom" constant="20" id="PXQ-6C-A2H"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nnb-tm-0r8" secondAttribute="trailing" constant="40" id="Q8a-mF-Wgj"/>
                 <constraint firstItem="5js-Fn-cSt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="UgQ-9r-uBf"/>
                 <constraint firstItem="OpV-1p-H79" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dYr-zg-aEk"/>
+                <constraint firstItem="73I-HT-2fS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="kCr-nz-rnR"/>
                 <constraint firstItem="cK4-XA-tPy" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="pyq-dI-SNh"/>
                 <constraint firstItem="5js-Fn-cSt" firstAttribute="top" secondItem="cK4-XA-tPy" secondAttribute="bottom" constant="20" id="sDr-lm-qFJ"/>
                 <constraint firstItem="cK4-XA-tPy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tMg-dB-BTu"/>
             </constraints>
-            <point key="canvasLocation" x="200" y="-324"/>
+            <point key="canvasLocation" x="137" y="-371"/>
         </view>
     </objects>
     <resources>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="topImage" width="300" height="252"/>
         <namedColor name="black">

@@ -36,7 +36,7 @@ class SignInViewController: BaseViewController {
     }
     
     @IBAction func onClickedSignUpBtn(_ sender: UIButton) {
-        let vc = SignUpViewController()
+        let vc = SignUpViewController.instance(isRegister: true)
         navigateTo(vc)
     }
     
@@ -59,5 +59,11 @@ class SignInViewController: BaseViewController {
             } onCompleted: {
                 self.hideLoading()
             }.disposed(by: viewModel.bag)
+    }
+    
+    
+    @IBAction func onClickedForgotPasswordButton(_ sender: UIButton) {
+        let vc = SignUpViewController.instance(isRegister: false)
+        navigateTo(vc)
     }
 }

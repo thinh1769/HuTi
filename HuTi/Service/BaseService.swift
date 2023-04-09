@@ -117,15 +117,15 @@ class BaseService: NSObject {
                             observer.onNext(payload)
                         }
                         observer.onCompleted()
-                    case StatusCode.BAD_REQUEST:
-                        error = ServiceError.badRequest(message: data.message)
-                        observer.onError(error!)
-                    case StatusCode.UNAUTHORIZED:
-                        error = ServiceError.unauthorized(message: data.message)
-                        observer.onError(error!)
-                    case StatusCode.SERVER_ERROR:
-                        error = ServiceError.unauthorized(message: data.message)
-                        observer.onError(error!)
+//                    case StatusCode.BAD_REQUEST:
+//                        error = ServiceError.badRequest(message: data.message)
+//                        observer.onError(error!)
+//                    case StatusCode.UNAUTHORIZED:
+//                        error = ServiceError.unauthorized(message: data.message)
+//                        observer.onError(error!)
+//                    case StatusCode.SERVER_ERROR:
+//                        error = ServiceError.unauthorized(message: data.message)
+//                        observer.onError(error!)
                     default:
                         error = ServiceError.unknown(message: data.message)
                         observer.onError(error!)

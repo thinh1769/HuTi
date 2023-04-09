@@ -57,7 +57,7 @@ class OTPViewController: BaseViewController {
             print("---- Error: \(error.localizedDescription)----")
         } onCompleted: { [weak self] in
             guard let self = self else { return }
-            let vc = ConfirmPasswordViewController.instance(phoneNumber: self.viewModel.phoneNumber, otp: otp)
+            let vc = ConfirmPasswordViewController.instance(phoneNumber: self.viewModel.phoneNumber, otp: otp, isRegister: self.viewModel.isRegister)
             self.hideLoading()
             self.navigateTo(vc)
         }.disposed(by: viewModel.bag)
@@ -103,9 +103,10 @@ class OTPViewController: BaseViewController {
 }
 
 extension OTPViewController {
-    class func instance(phoneNumber: String) -> OTPViewController {
+    class func instance(phoneNumber: String, isRegister: Bool) -> OTPViewController {
         let controller = OTPViewController(nibName: ClassNibName.OTPViewController, bundle: Bundle.main)
         controller.viewModel.phoneNumber = phoneNumber
+        controller.viewModel.isRegister = isRegister
         return controller
     }
 }

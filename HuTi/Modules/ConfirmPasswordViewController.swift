@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ConfirmPasswordViewController: BaseViewController {
     
@@ -43,21 +45,33 @@ class ConfirmPasswordViewController: BaseViewController {
               pass == confirmPass
         else { return }
         showLoading()
-        viewModel.register(password: pass).subscribe { [weak self] user in
-            guard let self = self else { return }
-            UserDefaults.userInfo = user
-            UserDefaults.token = user.token
-            self.hideLoading()
-            self.setRootTabBar()
-        }.disposed(by: viewModel.bag)
+        if viewModel.isRegister {
+            viewModel.register(password: pass).subscribe { [weak self] user in
+                guard let self = self else { return }
+                UserDefaults.userInfo = user
+                UserDefaults.token = user.token
+                self.hideLoading()
+                self.setRootTabBar()
+            }.disposed(by: viewModel.bag)
+        } else {
+            viewModel.resetPassword(password: pass).subscribe { _ in
+            } onError: { _ in
+            } onCompleted: { [weak self] in
+                guard let self = self else { return }
+                let vc = SignInViewController()
+                self.hideLoading()
+                self.navigateTo(vc)
+            }.disposed(by: viewModel.bag)
+        }
     }
 }
 
 extension ConfirmPasswordViewController {
-    class func instance(phoneNumber: String, otp: String) -> ConfirmPasswordViewController {
+    class func instance(phoneNumber: String, otp: String, isRegister: Bool) -> ConfirmPasswordViewController {
         let controller = ConfirmPasswordViewController(nibName: ClassNibName.ConfirmPasswordViewController, bundle: Bundle.main)
         controller.viewModel.phoneNumber = phoneNumber
         controller.viewModel.otp = otp
+        controller.viewModel.isRegister = isRegister
         return controller
     }
 }

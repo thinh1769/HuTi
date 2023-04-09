@@ -11,15 +11,15 @@ import RxSwift
 
 class AccountViewModel: BaseViewModel {
     func checkUpdateInfo() -> Bool {
-        if UserDefaults.userInfo?.name == "" &&
-           UserDefaults.userInfo?.dateOfBirth == "" &&
-           UserDefaults.userInfo?.gender == "" &&
-           UserDefaults.userInfo?.identityCardNumber == "" &&
-           UserDefaults.userInfo?.email == ""
+        if UserDefaults.userInfo?.name != nil ||
+           UserDefaults.userInfo?.dateOfBirth != nil ||
+           UserDefaults.userInfo?.gender != nil ||
+           UserDefaults.userInfo?.identityCardNumber != nil ||
+           UserDefaults.userInfo?.email != nil
         {
             return false
         } else {
-            return true
+            return true 
         }
     }
 }

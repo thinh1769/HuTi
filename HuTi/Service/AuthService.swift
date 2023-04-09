@@ -35,6 +35,15 @@ class AuthService: BaseService {
         return authRequest(api: APIConstants.updateInfo, method: .put, parameters: user)
     }
     
+    func sendOTPResetPassword(phoneNumber: String) -> Observable<User> {
+        let param = ["phoneNumber" : phoneNumber]
+        return authRequest(api: APIConstants.sendOTPResetPassword, method: .post, parameters: param)
+    }
+    
+    func resetPassword(phoneNumber: String, otp: String, password: String) -> Observable<User> {
+        let params = ["phoneNumber" : phoneNumber, "otp" : otp, "password": password]
+        return authRequest(api: APIConstants.resetPassword, method: .put, parameters: params)
+    }
 //    func logOut() -> Observable<String> {
 //        return request(api: .logout)
 //    }

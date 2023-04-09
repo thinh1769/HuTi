@@ -97,6 +97,7 @@ struct ClassNibName {
     static let ConfirmPasswordViewController = "ConfirmPasswordViewController"
     static let PostDetailViewController = "PostDetailViewController"
     static let ProjectDetailViewController = "ProjectDetailViewController"
+    static let SignUpViewController = "SignUpViewController"
 }
 
 struct MainTitle {

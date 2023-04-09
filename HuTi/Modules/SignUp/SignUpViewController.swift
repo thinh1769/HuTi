@@ -10,6 +10,7 @@ import UIKit
 class SignUpViewController: BaseViewController {
 
     @IBOutlet private weak var phoneTextField: UITextField!
+    @IBOutlet weak var bottomStackView: UIStackView!
     
     var viewModel = SignUpViewModel()
     
@@ -23,6 +24,12 @@ class SignUpViewController: BaseViewController {
             string: CommonConstants.phoneNumber,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
+        
+        if !viewModel.isRegister {
+            bottomStackView.isHidden = true
+        } else {
+            bottomStackView.isHidden = false
+        }
     }
     
     @IBAction func onClickedSignInBtn(_ sender: UIButton) {
@@ -30,17 +37,46 @@ class SignUpViewController: BaseViewController {
         navigateTo(vc)
     }
     
+    @IBAction func onClickedBackBtn(_ sender: UIButton) {
+        backToPreviousView()
+    }
+    
     @IBAction func onClickedContinueBtn(_ sender: UIButton) {
         guard let phoneNumber = phoneTextField.text,
               phoneNumber.count == 10
         else { return }
         showLoading()
-        viewModel.sendOTP(phoneNumber: phoneNumber)
-            .subscribe { [weak self] _ in
-                guard let self = self else { return }
-                let vc = OTPViewController.instance(phoneNumber: phoneNumber)
-                self.hideLoading()
-                self.navigateTo(vc)
-            }.disposed(by: viewModel.bag)
+        if viewModel.isRegister {
+            viewModel.sendOTP(phoneNumber: phoneNumber)
+                .subscribe { _ in
+                } onError: { _ in
+                    self.hideLoading()
+                } onCompleted: { [weak self] in
+                    guard let self = self else { return }
+                    let vc = OTPViewController.instance(phoneNumber: phoneNumber, isRegister: true)
+                    self.hideLoading()
+                    self.navigateTo(vc)
+                }.disposed(by: viewModel.bag)
+        } else {
+            viewModel.sendOTPResetPassword(phoneNumber: phoneNumber)
+                .subscribe { _ in
+                } onError: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.hideLoading()
+                } onCompleted: { [weak self] in
+                    guard let self = self else { return }
+                    let vc = OTPViewController.instance(phoneNumber: phoneNumber, isRegister: false)
+                    self.hideLoading()
+                    self.navigateTo(vc)
+                }.disposed(by: viewModel.bag)
+        }
+    }
+}
+
+extension SignUpViewController {
+    class func instance(isRegister: Bool) -> SignUpViewController {
+        let controller = SignUpViewController(nibName: ClassNibName.SignUpViewController, bundle: Bundle.main)
+        controller.viewModel.isRegister = isRegister
+        return controller
     }
 }

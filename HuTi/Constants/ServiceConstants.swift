@@ -31,8 +31,10 @@ struct Base {
 
 enum APIConstants: String {
     case signIn = "user/signin"
-    case sendOTP = "user/send-otp"
+    case sendOTP = "user/send-otp-for-register"
+    case sendOTPResetPassword = "user/send-otp-for-reset-password"
     case register = "user/register"
+    case resetPassword = "user/reset-password"
     case confirmOTP = "user/confirm-otp"
     case updateInfo = "user/update-info" 
     case getAllProvinces = "province"
@@ -52,8 +54,12 @@ enum APIConstants: String {
             return .post
         case .sendOTP:
             return .post
+        case .sendOTPResetPassword:
+            return .post
         case .register:
             return .post
+        case .resetPassword:
+            return .put
         case .confirmOTP:
             return .post
         case .updateInfo:
