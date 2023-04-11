@@ -136,7 +136,7 @@ class FilterViewController: BaseViewController {
         }.disposed(by: viewModel.bag)
     }
     
-    private func preparePostParam() {
+    private func preparePostParam() { 
         if viewModel.tabBarItemTitle == TabBarItemTitle.sell {
             viewModel.searchPostParams.updateValue(true, forKey: "isSell")
         } else {
@@ -144,7 +144,8 @@ class FilterViewController: BaseViewController {
         }
         
         if let type = typeTextField.text,
-           type != "" {
+           type != "",
+           type != RealEstateType.all {
             viewModel.searchPostParams.updateValue(type, forKey: "realEstateType")
         }
         
@@ -188,7 +189,8 @@ class FilterViewController: BaseViewController {
     
     private func prepareProjectParam() {
         if let type = typeTextField.text,
-           type != "" {
+           type != "",
+           type != RealEstateType.project[0] {
             viewModel.searchProjectParams.updateValue(type, forKey: "projectType")
         }
         
@@ -291,6 +293,18 @@ extension FilterViewController {
         }.disposed(by: viewModel.bag)
     }
 
+    private func setupDistrictDataPicker() {
+        districtTextField.text = ""
+        wardTextField.text = ""
+        
+        viewModel.getDistrictsByProvinceId().subscribe { [weak self] districts in
+            guard let self = self else { return }
+            self.viewModel.district.accept(self.viewModel.parseDistrictsArray(districts: districts))
+        } onError: { _ in
+        } onCompleted: {
+        }.disposed(by: viewModel.bag)
+    }
+    
     private func setupDistrictPickerView() {
         districtTextField.inputView = districtPicker
         districtTextField.tintColor = .clear
@@ -307,6 +321,17 @@ extension FilterViewController {
         }.disposed(by: viewModel.bag)
     }
 
+    private func setupWardDataPicker() {
+        wardTextField.text = ""
+        
+        viewModel.getWardsByDistrictId().subscribe { [weak self] wards in
+            guard let self = self else { return }
+            self.viewModel.ward.accept(self.viewModel.parseWardsArray(wards: wards))
+        } onError: { _ in
+        } onCompleted: {
+        }.disposed(by: viewModel.bag)
+    }
+    
     private func setupWardPickerView() {
         wardTextField.inputView = wardPicker
         wardTextField.tintColor = .clear
@@ -442,8 +467,10 @@ extension FilterViewController {
         case PickerTag.type:
             typeTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.province:
+            setupDistrictDataPicker()
             provinceTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.district:
+            setupWardDataPicker()
             districtTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.ward:
             wardTextField.text = viewModel.pickItem(pickerTag: sender.tag)

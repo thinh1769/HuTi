@@ -145,7 +145,6 @@ extension AccountDetailViewController {
     }
     
     @objc private func doneDobPicker() {
-        let ddd = dobPicker.date
         dobTextField.text = DateFormatter.instance(formatString: CommonConstants.DATE_FORMAT).string(from: dobPicker.date)
         view.endEditing(true)
     }

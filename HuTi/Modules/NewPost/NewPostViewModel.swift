@@ -116,6 +116,7 @@ class NewPostViewModel: BaseViewModel {
                     legal: legal.value[selectedLegal],
                     funiture: funiture.value[selectedFuniture],
                     bedroom: bedroom,
+                    bedroomRange: getBedroomRange(bedroom: bedroom),
                     bathroom: bathroom,
                     floor: floor,
                     houseDirection: houseDirection.value[selectedHouseDirection],
@@ -178,6 +179,20 @@ class NewPostViewModel: BaseViewModel {
             return PickerData.acreage[9]
         } else {
             return PickerData.acreage[10]
+        }
+    }
+    
+    private func getBedroomRange(bedroom: Int) -> String {
+        if bedroom == 1 {
+            return PickerData.bedroom[0]
+        } else if bedroom == 2{
+            return PickerData.bedroom[1]
+        } else if bedroom == 3 {
+            return PickerData.bedroom[2]
+        } else if bedroom == 4 {
+            return PickerData.bedroom[3]
+        } else {
+            return PickerData.bedroom[4]
         }
     }
     

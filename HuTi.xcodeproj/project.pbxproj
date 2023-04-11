@@ -15,6 +15,9 @@
 		22AEC96E29D5CF960076014A /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC96D29D5CF960076014A /* OTPViewModel.swift */; };
 		22AEC97029D5D4100076014A /* ConfirmPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC96F29D5D4100076014A /* ConfirmPasswordViewModel.swift */; };
 		22AEC97229D5DCA50076014A /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC97129D5DCA50076014A /* AccountDetailViewModel.swift */; };
+		22AF527C29E2E80D00A7FB75 /* DetailPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF527B29E2E80D00A7FB75 /* DetailPopupView.swift */; };
+		22AF527E29E2E8FF00A7FB75 /* DetailPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22AF527D29E2E8FF00A7FB75 /* DetailPopupView.xib */; };
+		22AF528029E2E99300A7FB75 /* DetailPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF527F29E2E99300A7FB75 /* DetailPopupViewModel.swift */; };
 		22BDEFAA29D30BE9001C08CC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFA929D30BE8001C08CC /* AuthService.swift */; };
 		22BDEFAC29D30EA0001C08CC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFAB29D30EA0001C08CC /* SignInViewModel.swift */; };
 		22BDEFAE29D3249E001C08CC /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFAD29D3249E001C08CC /* SignUpViewModel.swift */; };
@@ -91,6 +94,9 @@
 		22AEC96D29D5CF960076014A /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
 		22AEC96F29D5D4100076014A /* ConfirmPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewModel.swift; sourceTree = "<group>"; };
 		22AEC97129D5DCA50076014A /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
+		22AF527B29E2E80D00A7FB75 /* DetailPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPopupView.swift; sourceTree = "<group>"; };
+		22AF527D29E2E8FF00A7FB75 /* DetailPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPopupView.xib; sourceTree = "<group>"; };
+		22AF527F29E2E99300A7FB75 /* DetailPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPopupViewModel.swift; sourceTree = "<group>"; };
 		22BDEFA929D30BE8001C08CC /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		22BDEFAB29D30EA0001C08CC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		22BDEFAD29D3249E001C08CC /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -191,6 +197,16 @@
 				22CF839829D9B10900683B98 /* AWSService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		22AF527A29E2E7D400A7FB75 /* DetailPopup */ = {
+			isa = PBXGroup;
+			children = (
+				22AF527B29E2E80D00A7FB75 /* DetailPopupView.swift */,
+				22AF527F29E2E99300A7FB75 /* DetailPopupViewModel.swift */,
+				22AF527D29E2E8FF00A7FB75 /* DetailPopupView.xib */,
+			);
+			path = DetailPopup;
 			sourceTree = "<group>";
 		};
 		22CF83A029D9B31500683B98 /* NewPostImageCell */ = {
@@ -364,6 +380,7 @@
 				FCC3AD3529C01EA50050B58B /* NewPost */,
 				FCEE1A2129BAD25900AEF380 /* AccountDetail */,
 				FCC3AD2829BEF9380050B58B /* Posted */,
+				22AF527A29E2E7D400A7FB75 /* DetailPopup */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -566,6 +583,7 @@
 				FCC3AD4329C1C2220050B58B /* ProjectDetailViewController.xib in Resources */,
 				FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */,
 				FCBF731F299CC33A00BF327A /* Assets.xcassets in Resources */,
+				22AF527E29E2E8FF00A7FB75 /* DetailPopupView.xib in Resources */,
 				FCC3AD3929C01EC90050B58B /* NewPostViewController.xib in Resources */,
 				FCC3650229B6D9A5001A9310 /* FilterResultViewController.xib in Resources */,
 				FCEE1A2529BAD27500AEF380 /* AccountDetailViewController.xib in Resources */,
@@ -632,6 +650,7 @@
 				228D5FD429CBE84B00439D78 /* FilterViewModel.swift in Sources */,
 				22CB6A6629D8330D009C4F4D /* PostDetailViewModel.swift in Sources */,
 				22CF839B29D9B13200683B98 /* Asset.swift in Sources */,
+				22AF528029E2E99300A7FB75 /* DetailPopupViewModel.swift in Sources */,
 				22BDEFAA29D30BE9001C08CC /* AuthService.swift in Sources */,
 				FCC3AD4229C1C2220050B58B /* ProjectDetailViewController.swift in Sources */,
 				22CF839D29D9B14C00683B98 /* AssetDataModel.swift in Sources */,
@@ -648,6 +667,7 @@
 				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
 				22A099A829D0538F008BE7C7 /* ServiceConstants.swift in Sources */,
 				22CB6A5E29D806DF009C4F4D /* DateFormatter+Ext.swift in Sources */,
+				22AF527C29E2E80D00A7FB75 /* DetailPopupView.swift in Sources */,
 				22CB6A6229D830CD009C4F4D /* BaseViewModel.swift in Sources */,
 				22FC682429DE65130091CB4C /*  Project.swift in Sources */,
 				FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */,

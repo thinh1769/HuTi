@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MapKit
+import CoreLocation
 
 class FilterResultViewController: BaseViewController {
     
@@ -21,6 +22,9 @@ class FilterResultViewController: BaseViewController {
     @IBOutlet private weak var mapView: MKMapView!
     
     var viewModel = FilterResultViewModel()
+    private var locationManager = CLLocationManager()
+    private let provinceSpan = MKCoordinateSpan(latitudeDelta: 0.7, longitudeDelta: 0.7)
+    private let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,10 @@ class FilterResultViewController: BaseViewController {
         titleLabel.text = viewModel.mainTabBarItemTitle
         setupCollectionView()
         setupTableView()
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     private func loadData() {
@@ -52,6 +60,7 @@ class FilterResultViewController: BaseViewController {
         viewModel.getListPosts(isSell: isSell).subscribe { [weak self] posts in
             guard let self = self else { return}
             self.viewModel.post.accept(posts)
+            self.pinRealEstateLocation()
         }.disposed(by: viewModel.bag)
     }
     
@@ -172,6 +181,34 @@ extension FilterResultViewController: FilterViewControllerDelegate {
         }
         
         optionView.isHidden = true
+    }
+}
+
+extension FilterResultViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            locationManager.stopUpdatingLocation()
+            mapView.showsUserLocation = true
+            moveCameraToLocation(location.coordinate.latitude, location.coordinate.longitude)
+        }
+    }
+    
+    private func moveCameraToLocation(_ lat: Double, _ long: Double) {
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        mapView.setRegion(region, animated: false)
+    }
+    
+    private func pinRealEstateLocation() {
+        let posts = viewModel.post.value
+        if posts.count > 0 {
+            for post in posts {
+                let coordinate = CLLocationCoordinate2D(latitude: post.lat, longitude: post.long)
+                let pin = MKPointAnnotation()
+                pin.coordinate = coordinate
+                mapView.addAnnotation(pin)
+            }
+        }
     }
 }
 

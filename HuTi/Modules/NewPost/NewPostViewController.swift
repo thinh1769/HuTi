@@ -263,7 +263,7 @@ class NewPostViewController: BaseViewController {
                              , contactPhoneNumber: contactPhoneTextField.text ?? "")
         .subscribe { [weak self] _ in
             guard let self = self else { return }
-            print("=---add Post thành công---")
+            print("------add Post thành công---")
             self.backToPreviousView()
         }.disposed(by: viewModel.bag)
     }

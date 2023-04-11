@@ -50,6 +50,7 @@ struct PostDetail: Codable {
     var legal: String
     var funiture: String
     var bedroom: Int
+    var bedroomRange: String?
     var bathroom: Int
     var floor: Int
     var houseDirection: String
