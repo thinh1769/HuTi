@@ -33,4 +33,14 @@ class FilterResultViewModel: BaseViewModel {
         }
         options.accept(optionsList)
     }
+    
+    func getIndexOfSelectedPost(postId: String) -> Int {
+        let posts = post.value
+        for (index, element) in posts.enumerated() {
+            if element.id == postId {
+                return index
+            }
+        }
+        return -1
+    }
 }

@@ -58,7 +58,7 @@ class ProjectDetailViewController: BaseViewController {
         guard let project = viewModel.project else { return }
         viewModel.images.accept(project.images)
         nameLabel.text = project.name
-        addressLabel.text = "\(project.wardName), \(project.districtName), \(project.provinceName)"
+        addressLabel.text = project.getFullAddress()
         statusLabel.text = project.status
         configStatusView(project.status)
         projectTypeLabel.text = project.projectType

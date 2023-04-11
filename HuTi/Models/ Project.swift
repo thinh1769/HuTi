@@ -31,4 +31,8 @@ struct Project: Codable {
     var description: String
     var images: [String]
     var posts: [String]?
+    
+    func getFullAddress() -> String {
+        return "\(wardName), \(districtName), \(provinceName)"
+    }
 }

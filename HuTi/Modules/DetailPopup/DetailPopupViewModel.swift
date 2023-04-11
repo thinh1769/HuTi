@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+class DetailPopupViewModel: BaseViewModel {
+    var post: Post?
+}

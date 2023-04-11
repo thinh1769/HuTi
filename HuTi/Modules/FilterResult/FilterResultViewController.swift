@@ -33,6 +33,7 @@ class FilterResultViewController: BaseViewController {
     
     private func setupUI() {
         loadData()
+        mapView.delegate = self
         mapView.isHidden = true
         optionView.isHidden = true
         titleLabel.text = viewModel.mainTabBarItemTitle
@@ -205,6 +206,7 @@ extension FilterResultViewController: CLLocationManagerDelegate {
             for post in posts {
                 let coordinate = CLLocationCoordinate2D(latitude: post.lat, longitude: post.long)
                 let pin = MKPointAnnotation()
+                pin.title = post.id
                 pin.coordinate = coordinate
                 mapView.addAnnotation(pin)
             }
@@ -212,9 +214,78 @@ extension FilterResultViewController: CLLocationManagerDelegate {
     }
 }
 
+extension FilterResultViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else { return nil }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "location")
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "location")
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        let image = UIImage(named: "location")
+        let resizedSize = CGSize(width: 30, height: 30)
+        
+        UIGraphicsBeginImageContext(resizedSize)
+        image?.draw(in: CGRect(origin: .zero, size: resizedSize))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        annotationView?.image = resizedImage
+        
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation else { return }
+        print("did tap pin")
+        let coordinate = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+        
+        guard let tempId = annotation.title,
+              let id = tempId
+        else { return }
+        addDetailView(id)
+    }
+    
+    private func addDetailView(_ id: String) {
+        for subview in view.subviews{
+            if subview.tag == SubviewTag.detailView.rawValue {
+                subview.removeFromSuperview()
+            }
+        }
+        let detailView = DetailPopupView()
+        detailView.delegate = self
+        detailView.loadData(viewModel.post.value[viewModel.getIndexOfSelectedPost(postId: id)])
+        detailView.tag = SubviewTag.detailView.rawValue
+
+        if detailView.superview == nil {
+            self.view.addSubview(detailView)
+            
+            detailView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                detailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                detailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                detailView.heightAnchor.constraint(equalToConstant: 215)
+            ])
+        }
+    }
+}
+
 extension FilterResultViewController: PostDetailViewControllerDelegate {
     func didTappedLikeButton() {
         filterResultTableView.reloadData()
+    }
+}
+
+extension FilterResultViewController: DetailPopupViewDelegate {
+    func onClickedEditLocationButton(_ postId: String) {
+        let vc = PostDetailViewController.instance(postId: postId, isFavorite: isFavoritePost(postId: postId))
+        navigateTo(vc)
     }
 }
 

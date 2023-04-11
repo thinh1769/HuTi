@@ -8,19 +8,21 @@
 import UIKit
 
 protocol DetailPopupViewDelegate: AnyObject {
-    func deselectedAnnotationWhenDismissDetailPopup()
+//    func deselectedAnnotationWhenDismissDetailPopup()
     
-//    func onClickedEditLocationButton(_ location: Location)
+    func onClickedEditLocationButton(_ postId: String)
 }
 
 class DetailPopupView: UIView {
     
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var typeLabel: UILabel!
-    @IBOutlet private weak var addressLabel: UILabel!
-    @IBOutlet private weak var noteTextView: UITextView!
+    @IBOutlet weak var thumbnail: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var heartImage: UIImageView!
     
-//    private let viewModel = DetailPopupViewModel()
+    private let viewModel = DetailPopupViewModel()
     weak var delegate: DetailPopupViewDelegate?
     
     var nibName: String {
@@ -40,30 +42,22 @@ class DetailPopupView: UIView {
     }
     
     private func setupSubView() {
-        noteTextView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         addPanGestureToDetailPopup()
+        self.layer.cornerRadius = 10
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        thumbnail.image = nil
     }
     
-    func fetchData(_ locationId: String) {
-//        viewModel.getLocationById(locationId).subscribe { [weak self] location in
-//            guard let self = self else { return }
-//            self.viewModel.locationDetail = location
-//            self.setupData()
-//        } onCompleted: {
-//        } .disposed(by: viewModel.bag)
-        
+    func loadData(_ post: Post) {
+        viewModel.post = post
+        viewModel.getImage(remoteName: post.thumbnail) { thumbnail in
+            self.thumbnail.image = thumbnail
+        }
+        titleLabel.text = post.title
+        priceLabel.text = "\(post.price)"
+        addressLabel.text = post.getFullAddress()
+        authorLabel.text = "Đăng bởi \(post.userName)"
     }
-    
-    private func setupData() {
-//        nameLabel.text = viewModel.locationDetail?.name
-//        typeLabel.text = viewModel.locationDetail?.type
-//        addressLabel.text = parsingAddress()
-//        noteTextView.text = viewModel.locationDetail?.note
-    }
-    
-//    private func parsingAddress() -> String {
-//        return "\(viewModel.locationDetail?.address ?? ""), \(viewModel.locationDetail?.ward?.name ?? ""), \(viewModel.locationDetail?.district?.name ?? ""), \(viewModel.locationDetail?.city?.name ?? "")"
-//    }
     
     private func addPanGestureToDetailPopup() {
         let swipeDown = UIPanGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -86,7 +80,7 @@ class DetailPopupView: UIView {
                     self.transform = CGAffineTransform(translationX: 0, y: 260)
                 } completion: { _ in
                     self.removeFromSuperview()
-                    self.delegate?.deselectedAnnotationWhenDismissDetailPopup()
+//                    self.delegate?.deselectedAnnotationWhenDismissDetailPopup()
                 }
             } else {
                 UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 100, initialSpringVelocity: 1) {
@@ -105,9 +99,8 @@ class DetailPopupView: UIView {
         }
     }
     
-    @IBAction func onClickedEditLocationBtn(_ sender: UIButton) {
-//        guard let location = viewModel.locationDetail else { return }
-//        self.delegate?.onClickedEditLocationButton(location)
+    @IBAction func onClickedDetailButton(_ sender: UIButton) {
+        delegate?.onClickedEditLocationButton(viewModel.post?.id ?? "")
     }
     
     func nibSetup() {

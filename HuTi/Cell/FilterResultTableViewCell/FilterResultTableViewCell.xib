@@ -43,7 +43,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="gTe-4U-zbK"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>

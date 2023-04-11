@@ -24,6 +24,10 @@ struct Post: Codable {
     var userName: String
     var createdAt: Double
     var thumbnail: String /// lấy image đầu tiên trong mảng images
+    
+    func getFullAddress() -> String {
+        return "\(address), \(wardName), \(districtName), \(provinceName)"
+    }
 }
 
 struct PostDetail: Codable {

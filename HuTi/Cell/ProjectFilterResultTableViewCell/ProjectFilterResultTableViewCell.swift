@@ -42,7 +42,7 @@ class ProjectFilterResultTableViewCell: UITableViewCell {
     
     func config(project: Project) {
         name.text = project.name
-        addressLabel.text = "\(project.wardName), \(project.districtName), \(project.provinceName)"
+        addressLabel.text = project.getFullAddress()
         statusLabel.text = project.status
         self.configStatusView(project.status)
         investorLabel.text = project.investor

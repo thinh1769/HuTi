@@ -145,3 +145,8 @@ struct PickerData {
     static let day = ["01", "02", "03"]
     static let projectPrice = ["Tất cả mức giá", "Dưới 5 triệu/m2", "5 - 10 triệu/m2", "10 - 20 triệu/m2", "20 - 35 triệu/m2", "35 - 50 triệu/m2", "50 - 80 triệu/m2", "Trên 80 triệu/m2"]
 }
+
+enum SubviewTag: Int {
+    case otherView
+    case detailView
+}

@@ -43,7 +43,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="PBc-96-vx2"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -157,10 +157,10 @@
             <color red="0.66299998760223389" green="0.65499997138977051" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="purpleStatusBackground">
-            <color red="0.94117647058823528" green="0.91764705882352937" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94099998474121094" green="0.9179999828338623" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="purpleStatusText">
-            <color red="0.5607843137254902" green="0.41960784313725491" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.56099998950958252" green="0.41999998688697815" blue="0.6470000147819519" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
