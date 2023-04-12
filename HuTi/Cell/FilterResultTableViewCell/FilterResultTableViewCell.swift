@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FilterResultTableViewCell: UITableViewCell {
 
@@ -48,6 +49,10 @@ class FilterResultTableViewCell: UITableViewCell {
         priceLabel.text = String(post.price)
         addressLabel.text = post.getFullAddress()
         authorLabel.text = "Đăng bởi \(post.userName.getName())"
+        
+        if let url = URL(string: "\(AWSConstants.objectURL)\(post.thumbnail)") {
+            thumbnail.sd_setImage(with: url, completed: nil)
+        }
         
         if isHiddenAuthorAndHeart {
             bottomView.isHidden = true

@@ -25,24 +25,24 @@ class AWSService {
         AWSServiceManager.default().defaultServiceConfiguration = configuration
     }
     
-    func getImage(remoteName: String, completion: @escaping (Data?) -> Void) {
-        if ImageCache.isCached(title: remoteName) {
-            completion(ImageCache.getImageCache(title: remoteName))
-        } else {
-            guard let request = request else { return }
-            request.bucket = AWSConstants.s3Bucket
-            request.key = remoteName
-            aws.getObject(request).continueWith(executor: AWSExecutor.mainThread()) { (task) -> Void in
-                if task.error == nil {
-                    let data = task.result?.body as? Data
-                    ImageCache.cacheImage(title: remoteName, data: data ?? Data())
-                    completion(data)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-    }
+//    func getImage(remoteName: String, completion: @escaping (Data?) -> Void) {
+////        if ImageCache.isCached(title: remoteName) {
+////            completion(ImageCache.getImageCache(title: remoteName))
+////        } else {
+//            guard let request = request else { return }
+//            request.bucket = AWSConstants.s3Bucket
+//            request.key = remoteName
+//            aws.getObject(request).continueWith(executor: AWSExecutor.mainThread()) { (task) -> Void in
+//                if task.error == nil {
+//                    let data = task.result?.body as? Data
+////                    ImageCache.cacheImage(title: remoteName, data: data ?? Data())
+//                    completion(data)
+//                } else {
+//                    completion(nil)
+//                }
+//            }
+////        }
+//    }
 
     func removeImage(remoteName: String) {
         let deleteRequest = AWSS3DeleteObjectRequest()

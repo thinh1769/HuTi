@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol DetailPopupViewDelegate: AnyObject {
     func deselectedAnnotationWhenDismissDetailPopup()
@@ -58,9 +59,9 @@ class DetailPopupView: UIView {
     
     func loadData(_ post: Post) {
         viewModel.post = post
-        viewModel.getImage(remoteName: post.thumbnail) { thumbnail in
-            self.thumbnail.image = thumbnail
-        }
+//        viewModel.getImage(remoteName: post.thumbnail) { thumbnail in
+//            self.thumbnail.image = thumbnail
+//        }
         titleLabel.text = post.title
         priceLabel.text = "\(post.price)"
         addressLabel.text = post.getFullAddress()

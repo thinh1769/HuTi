@@ -106,11 +106,11 @@ class ProjectDetailViewController: BaseViewController {
         
         viewModel.images.asObservable()
             .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { (index, element, cell) in
-                self.viewModel.getImage(remoteName: element) { image in
-                    DispatchQueue.main.async {
-                        cell.config(image: image)
-                    }
-                }
+//                self.viewModel.getImage(remoteName: element) { image in
+//                    DispatchQueue.main.async {
+//                        cell.config(image: image)
+//                    }
+//                }
             }.disposed(by: viewModel.bag)
         
         imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
@@ -121,11 +121,11 @@ class ProjectDetailViewController: BaseViewController {
         
         viewModel.relatedPost.asObservable()
             .bind(to: relatedPostCollectionView.rx.items(cellIdentifier: RelatedPostCell.reusableIdentifier, cellType: RelatedPostCell.self)) { (index, element, cell) in
-                self.viewModel.getImage(remoteName: element.thumbnail) { image in
-                    DispatchQueue.main.async {
-                        cell.loadThumbnail(image)
-                    }
-                }
+//                self.viewModel.getImage(remoteName: element.thumbnail) { image in
+//                    DispatchQueue.main.async {
+//                        cell.loadThumbnail(image)
+//                    }
+//                }
                 cell.config(element)
             }.disposed(by: viewModel.bag)
         

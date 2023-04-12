@@ -24,9 +24,9 @@ struct StatusCode {
 }
 
 struct Base {
-//    static let URL = "http://192.168.2.9:3000/api/"
+    static let URL = "http://192.168.2.9:3000/api/"
 //    static let URL = "http://192.168.12p.183:3000/api/"
-    static let URL = "http://172.20.10.3:3000/api/"
+//    static let URL = "http://172.20.10.3:3000/api/"
 //    static let URL = "http://localhost:3000/api/"
 }
 
@@ -134,4 +134,5 @@ struct AWSConstants {
     static let accessKey = "AKIA4SZBYIUOX2L46WOP"
     static let secretKey = "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"
     static let s3Bucket = "huti-kltn"
+    static let objectURL = "https://huti-kltn.s3.ap-southeast-1.amazonaws.com/"
 }

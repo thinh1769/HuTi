@@ -199,13 +199,13 @@ class NewPostViewModel: BaseViewModel {
     func uploadImage(completion: @escaping() -> Void) {
         guard let data = imageSelected.pngData() else { return }
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = CommonConstants.dateFormatAWSS3
+        let now = Date()
+        let timeInterval = now.timeIntervalSince1970
         
         let assetDataModel = AssetDataModel(data: data, pathFile: "", thumbnail: imageSelected)
         assetDataModel.compressed = true
         assetDataModel.compressData()
-        assetDataModel.remoteName = "\(UserDefaults.userInfo?.id ?? "")_" + formatter.string(from: Date())
+        assetDataModel.remoteName = "\(UserDefaults.userInfo?.id ?? "")_\(timeInterval)"
         imagesName.append(assetDataModel.remoteName)
         
         awsService.uploadImage(data: assetDataModel, completionHandler:  { [weak self] _, error in
