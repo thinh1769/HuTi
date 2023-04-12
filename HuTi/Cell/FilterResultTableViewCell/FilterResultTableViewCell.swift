@@ -54,14 +54,17 @@ class FilterResultTableViewCell: UITableViewCell {
             addressLabel.numberOfLines = 0
         }
         
-        if let isFavorite = isFavorite {
-            if !isFavorite  {
-                heartBtn.image = UIImage(systemName: "heart")
-                heartBtn.tintColor = UIColor(named: ColorName.gray)
-            } else {
-                heartBtn.image = UIImage(systemName: "heart.fill")
-                heartBtn.tintColor = UIColor(named: ColorName.redStatusText)
-            }
+        if let userId = UserDefaults.userInfo?.id,
+           userId == post.userId {
+            heartBtn.isHidden = true
+        } else if let isFavorite = isFavorite {
+                if !isFavorite  {
+                    heartBtn.image = UIImage(systemName: "heart")
+                    heartBtn.tintColor = UIColor(named: ColorName.gray)
+                } else {
+                    heartBtn.image = UIImage(systemName: "heart.fill")
+                    heartBtn.tintColor = UIColor(named: ColorName.redStatusText)
+                }
         }
         
         self.thumbnail.image = nil

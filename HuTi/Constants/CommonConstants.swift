@@ -136,7 +136,7 @@ struct RealEstateType {
 struct PickerData {
     static let price = ["Tất cả mức giá", "Dưới 500 triệu", "500 - 800 triệu", "800 triệu - 1 tỷ", "1 - 2 tỷ", "2 - 3 tỷ", "3 - 5 tỷ", "5 - 7 tỷ", "7 - 10 tỷ", "10 - 20 tỷ", "20 - 30 tỷ", "30 - 40 tỷ", "40 - 60 tỷ", "Trên 60 tỷ"]
     static let acreage = ["Tất cả diện tích", "Dưới 30 m²", "30 - 50 m²", "50 - 80 m²", "80 - 100 m²", "100 - 150 m²", "150 - 200 m²", "200 - 250 m²", "250 - 300 m²", "300 - 500 m²", "Trên 500 m²"]
-    static let bedroom = ["1 phòng ngủ", "2 phỏng ngủ", "3 phỏng ngủ", "4 phỏng ngủ", "Từ 5 phòng ngủ trở lên"]
+    static let bedroom = ["1 phòng ngủ", "2 phòng ngủ", "3 phòng ngủ", "4 phòng ngủ", "Từ 5 phòng ngủ trở lên"]
     static let direction = ["Đông", "Tây", "Nam", "Bắc", "Đông - Bắc", "Tây - Bắc", "Tây - Nam", "Đông - Nam"]
     static let status = ["Sắp mở bán", "Đang mở bán", "Đã bàn giao"]
     static let legal = ["Sổ đỏ/ Sổ hồng", "Hợp đồng mua bán", "Đang chờ sổ"]

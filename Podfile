@@ -13,5 +13,6 @@ pod 'RxCocoa'
 pod 'Alamofire'
 pod 'MBProgressHUD'
 pod 'AWSS3'
+pod 'SDWebImage'
 
 end

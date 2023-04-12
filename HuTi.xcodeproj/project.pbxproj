@@ -21,6 +21,8 @@
 		22BDEFAA29D30BE9001C08CC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFA929D30BE8001C08CC /* AuthService.swift */; };
 		22BDEFAC29D30EA0001C08CC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFAB29D30EA0001C08CC /* SignInViewModel.swift */; };
 		22BDEFAE29D3249E001C08CC /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDEFAD29D3249E001C08CC /* SignUpViewModel.swift */; };
+		22CA076329E6E55900CE1900 /* RelatedPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA076129E6E55900CE1900 /* RelatedPostCell.swift */; };
+		22CA076429E6E55900CE1900 /* RelatedPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CA076229E6E55900CE1900 /* RelatedPostCell.xib */; };
 		22CB6A5E29D806DF009C4F4D /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A5D29D806DF009C4F4D /* DateFormatter+Ext.swift */; };
 		22CB6A6029D825AC009C4F4D /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A5F29D825AB009C4F4D /* AddressService.swift */; };
 		22CB6A6229D830CD009C4F4D /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB6A6129D830CD009C4F4D /* BaseViewModel.swift */; };
@@ -40,7 +42,7 @@
 		22EC390429C9D2AC00174D65 /* ProjectFilterResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22EC390229C9D2AC00174D65 /* ProjectFilterResultTableViewCell.xib */; };
 		22EC390829CA968F00174D65 /* ResponseMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC390729CA968E00174D65 /* ResponseMain.swift */; };
 		22FC682229DE64860091CB4C /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC682129DE64860091CB4C /* ProjectService.swift */; };
-		22FC682429DE65130091CB4C /*  Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC682329DE65130091CB4C /*  Project.swift */; };
+		22FC682429DE65130091CB4C /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC682329DE65130091CB4C /* Project.swift */; };
 		8E04D744477EEFCB514E8B28 /* Pods_HuTi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29605AC57F7499D1B086D28D /* Pods_HuTi.framework */; };
 		FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */; };
 		FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0E76C4299CDD4600E4818C /* SignUpViewController.xib */; };
@@ -100,6 +102,8 @@
 		22BDEFA929D30BE8001C08CC /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		22BDEFAB29D30EA0001C08CC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		22BDEFAD29D3249E001C08CC /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		22CA076129E6E55900CE1900 /* RelatedPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedPostCell.swift; sourceTree = "<group>"; };
+		22CA076229E6E55900CE1900 /* RelatedPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelatedPostCell.xib; sourceTree = "<group>"; };
 		22CB6A5D29D806DF009C4F4D /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
 		22CB6A5F29D825AB009C4F4D /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
 		22CB6A6129D830CD009C4F4D /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -119,7 +123,7 @@
 		22EC390229C9D2AC00174D65 /* ProjectFilterResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectFilterResultTableViewCell.xib; sourceTree = "<group>"; };
 		22EC390729CA968E00174D65 /* ResponseMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMain.swift; sourceTree = "<group>"; };
 		22FC682129DE64860091CB4C /* ProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
-		22FC682329DE65130091CB4C /*  Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Project.swift"; sourceTree = "<group>"; };
+		22FC682329DE65130091CB4C /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		29605AC57F7499D1B086D28D /* Pods_HuTi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuTi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		620668C98BB036879901C46F /* Pods-HuTi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuTi.debug.xcconfig"; path = "Target Support Files/Pods-HuTi/Pods-HuTi.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +213,15 @@
 			path = DetailPopup;
 			sourceTree = "<group>";
 		};
+		22CA076029E6E12100CE1900 /* RelatedPostCell */ = {
+			isa = PBXGroup;
+			children = (
+				22CA076129E6E55900CE1900 /* RelatedPostCell.swift */,
+				22CA076229E6E55900CE1900 /* RelatedPostCell.xib */,
+			);
+			path = RelatedPostCell;
+			sourceTree = "<group>";
+		};
 		22CF83A029D9B31500683B98 /* NewPostImageCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +302,7 @@
 		FC2E2C1329B71A7F00DADA16 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				22CA076029E6E12100CE1900 /* RelatedPostCell */,
 				22CF83A029D9B31500683B98 /* NewPostImageCell */,
 				22EC390029C9D24400174D65 /* ProjectFilterResultTableViewCell */,
 				FC2E2C1929B71B7300DADA16 /* FilterResultTableViewCell */,
@@ -320,7 +334,7 @@
 			children = (
 				22A099A529D047A8008BE7C7 /* User.swift */,
 				FC2E2C1F29B73B4400DADA16 /* Post.swift */,
-				22FC682329DE65130091CB4C /*  Project.swift */,
+				22FC682329DE65130091CB4C /* Project.swift */,
 				FC2E2C2129B73BD700DADA16 /* Address.swift */,
 				22CF839A29D9B13200683B98 /* Asset.swift */,
 				22CF839C29D9B14C00683B98 /* AssetDataModel.swift */,
@@ -579,6 +593,7 @@
 				FC2E2C1829B71ABB00DADA16 /* AddressCollectionViewCell.xib in Resources */,
 				22EC390429C9D2AC00174D65 /* ProjectFilterResultTableViewCell.xib in Resources */,
 				FCC3AD4829C2F8C60050B58B /* PostDetailViewController.xib in Resources */,
+				22CA076429E6E55900CE1900 /* RelatedPostCell.xib in Resources */,
 				FCEE1A1F29B9DAD700AEF380 /* AccountViewController.xib in Resources */,
 				FCC3AD4329C1C2220050B58B /* ProjectDetailViewController.xib in Resources */,
 				FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */,
@@ -669,7 +684,7 @@
 				22CB6A5E29D806DF009C4F4D /* DateFormatter+Ext.swift in Sources */,
 				22AF527C29E2E80D00A7FB75 /* DetailPopupView.swift in Sources */,
 				22CB6A6229D830CD009C4F4D /* BaseViewModel.swift in Sources */,
-				22FC682429DE65130091CB4C /*  Project.swift in Sources */,
+				22FC682429DE65130091CB4C /* Project.swift in Sources */,
 				FCC3AD3429BF04A60050B58B /* PostedViewModel.swift in Sources */,
 				FCC3AD4B29C4236E0050B58B /* BackButton.swift in Sources */,
 				22CF83A329D9B34600683B98 /* NewPostImageCell.swift in Sources */,
@@ -682,6 +697,7 @@
 				FC2E2C2229B73BD700DADA16 /* Address.swift in Sources */,
 				FCC3AD3129BF047B0050B58B /* PostedViewController.swift in Sources */,
 				FCBF7318299CC33500BF327A /* SceneDelegate.swift in Sources */,
+				22CA076329E6E55900CE1900 /* RelatedPostCell.swift in Sources */,
 				22CF83A629DB219400683B98 /* UIImage+Ext.swift in Sources */,
 				FCC3650429B6F164001A9310 /* FilterResultViewModel.swift in Sources */,
 				22BDEFAE29D3249E001C08CC /* SignUpViewModel.swift in Sources */,

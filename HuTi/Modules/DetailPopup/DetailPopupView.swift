@@ -8,9 +8,9 @@
 import UIKit
 
 protocol DetailPopupViewDelegate: AnyObject {
-//    func deselectedAnnotationWhenDismissDetailPopup()
+    func deselectedAnnotationWhenDismissDetailPopup()
     
-    func onClickedEditLocationButton(_ postId: String)
+    func onClickedPostDetailButton(_ postId: String)
 }
 
 class DetailPopupView: UIView {
@@ -24,6 +24,10 @@ class DetailPopupView: UIView {
     
     private let viewModel = DetailPopupViewModel()
     weak var delegate: DetailPopupViewDelegate?
+    
+    func configHeartIcon(_ isFavorite: Bool) {
+        viewModel.isFavorite = isFavorite
+    }
     
     var nibName: String {
         return String(describing: DetailPopupView.self)
@@ -43,8 +47,12 @@ class DetailPopupView: UIView {
     
     private func setupSubView() {
         addPanGestureToDetailPopup()
+        self.clipsToBounds = true
         self.layer.cornerRadius = 10
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.layer.masksToBounds = true
+        self.layer.borderColor = UIColor(named: ColorName.gray)?.cgColor
+        self.layer.borderWidth = 1
         thumbnail.image = nil
     }
     
@@ -57,6 +65,13 @@ class DetailPopupView: UIView {
         priceLabel.text = "\(post.price)"
         addressLabel.text = post.getFullAddress()
         authorLabel.text = "Đăng bởi \(post.userName)"
+        if viewModel.isFavorite {
+            heartImage.image = UIImage(systemName: "heart.fill")
+            heartImage.tintColor = UIColor(named: ColorName.redStatusText)
+        } else {
+            heartImage.image = UIImage(systemName: "heart")
+            heartImage.tintColor = UIColor(named: ColorName.gray)
+        }
     }
     
     private func addPanGestureToDetailPopup() {
@@ -80,7 +95,7 @@ class DetailPopupView: UIView {
                     self.transform = CGAffineTransform(translationX: 0, y: 260)
                 } completion: { _ in
                     self.removeFromSuperview()
-//                    self.delegate?.deselectedAnnotationWhenDismissDetailPopup()
+                    self.delegate?.deselectedAnnotationWhenDismissDetailPopup()
                 }
             } else {
                 UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 100, initialSpringVelocity: 1) {
@@ -100,7 +115,7 @@ class DetailPopupView: UIView {
     }
     
     @IBAction func onClickedDetailButton(_ sender: UIButton) {
-        delegate?.onClickedEditLocationButton(viewModel.post?.id ?? "")
+        delegate?.onClickedPostDetailButton(viewModel.post?.id ?? "")
     }
     
     func nibSetup() {

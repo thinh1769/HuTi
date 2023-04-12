@@ -9,4 +9,5 @@ import Foundation
 
 class DetailPopupViewModel: BaseViewModel {
     var post: Post?
+    var isFavorite = false
 }

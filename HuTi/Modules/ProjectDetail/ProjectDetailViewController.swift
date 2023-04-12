@@ -41,6 +41,8 @@ class ProjectDetailViewController: BaseViewController {
     private func setupUI() {
         loadProjectDetail()
         setupImageCollectionView()
+        getRelatedPost()
+        setupRelatedPostCollectionView()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -52,6 +54,13 @@ class ProjectDetailViewController: BaseViewController {
     
     @IBAction func onClickedProjectLocationButton(_ sender: UIButton) {
         pinProjectLocation()
+    }
+    
+    private func getRelatedPost() {
+        viewModel.getRelatedPost().subscribe { [weak self] relatedPosts in
+            guard let self = self else { return }
+            print("related post = \(relatedPosts)")
+        }.disposed(by: viewModel.bag)
     }
     
     private func loadProjectDetail() {
@@ -105,6 +114,22 @@ class ProjectDetailViewController: BaseViewController {
             }.disposed(by: viewModel.bag)
         
         imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
+    }
+    
+    private func setupRelatedPostCollectionView() {
+        relatedPostCollectionView.register(RelatedPostCell.nib, forCellWithReuseIdentifier: RelatedPostCell.reusableIdentifier)
+        
+        viewModel.relatedPost.asObservable()
+            .bind(to: relatedPostCollectionView.rx.items(cellIdentifier: RelatedPostCell.reusableIdentifier, cellType: RelatedPostCell.self)) { (index, element, cell) in
+                self.viewModel.getImage(remoteName: element.thumbnail) { image in
+                    DispatchQueue.main.async {
+                        cell.loadThumbnail(image)
+                    }
+                }
+                cell.config(element)
+            }.disposed(by: viewModel.bag)
+        
+        relatedPostCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
     }
 
     private func configStatusView(_ status: String) {

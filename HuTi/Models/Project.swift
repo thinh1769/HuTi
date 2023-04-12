@@ -24,7 +24,7 @@ struct Project: Codable {
     var long: Double
     var projectType: String
     var apartment: Int?
-    var acreage: Double
+    var acreage: String
     var building: Int?
     var legal: String?
     var investor: String

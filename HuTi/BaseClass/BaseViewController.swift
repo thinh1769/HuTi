@@ -7,6 +7,7 @@
 
 import UIKit
 import MBProgressHUD
+import SDWebImage
 
 class BaseViewController: UIViewController {
  

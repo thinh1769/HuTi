@@ -20,11 +20,13 @@ class FilterResultViewController: BaseViewController {
     @IBOutlet private weak var mapButton: UIButton!
     @IBOutlet private weak var filterResultTableView: UITableView!
     @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet weak var userLocationButton: UIButton!
     
     var viewModel = FilterResultViewModel()
     private var locationManager = CLLocationManager()
     private let provinceSpan = MKCoordinateSpan(latitudeDelta: 0.7, longitudeDelta: 0.7)
     private let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    private let postSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,7 @@ class FilterResultViewController: BaseViewController {
         loadData()
         mapView.delegate = self
         mapView.isHidden = true
+        userLocationButton.isHidden = true
         optionView.isHidden = true
         titleLabel.text = viewModel.mainTabBarItemTitle
         setupCollectionView()
@@ -43,6 +46,9 @@ class FilterResultViewController: BaseViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissDetailPopupView))
+        self.mapView.addGestureRecognizer(tapGesture)
     }
     
     private func loadData() {
@@ -150,11 +156,34 @@ class FilterResultViewController: BaseViewController {
     
     @IBAction func onClickedMapBtn(_ sender: UIButton) {
         mapView.isHidden = !mapView.isHidden
+        userLocationButton.isHidden = !userLocationButton.isHidden
         filterResultTableView.isHidden = !filterResultTableView.isHidden
         if !mapView.isHidden {
             mapButton.setImage(UIImage(named: ImageName.list), for: .normal)
         } else {
+            for subview in view.subviews{
+                if subview.tag == SubviewTag.detailView.rawValue {
+                    subview.removeFromSuperview()
+                }
+            }
+            deselectedAnnotationWhenDismissDetailPopup()
             mapButton.setImage(UIImage(systemName: ImageName.map), for: .normal)
+        }
+    }
+    
+    @IBAction func onClickedUserLocationButton(_ sender: UIButton) {
+        locationManager.startUpdatingLocation()
+    }
+    
+    @objc private func dismissDetailPopupView() {
+        for subview in view.subviews {
+            if subview.tag == SubviewTag.detailView.rawValue {
+                UIView.animateKeyframes(withDuration: 0.4, delay: 0) {
+                    subview.transform = CGAffineTransform(translationX: 0, y: 215)
+                } completion: { _ in
+                    subview.removeFromSuperview()
+                }
+            }
         }
     }
 }
@@ -242,7 +271,7 @@ extension FilterResultViewController: MKMapViewDelegate {
         guard let annotation = view.annotation else { return }
         print("did tap pin")
         let coordinate = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
+        let region = MKCoordinateRegion(center: coordinate, span: postSpan)
         mapView.setRegion(region, animated: true)
         
         guard let tempId = annotation.title,
@@ -259,6 +288,7 @@ extension FilterResultViewController: MKMapViewDelegate {
         }
         let detailView = DetailPopupView()
         detailView.delegate = self
+        detailView.configHeartIcon(isFavoritePost(postId: id))
         detailView.loadData(viewModel.post.value[viewModel.getIndexOfSelectedPost(postId: id)])
         detailView.tag = SubviewTag.detailView.rawValue
 
@@ -283,7 +313,16 @@ extension FilterResultViewController: PostDetailViewControllerDelegate {
 }
 
 extension FilterResultViewController: DetailPopupViewDelegate {
-    func onClickedEditLocationButton(_ postId: String) {
+    func deselectedAnnotationWhenDismissDetailPopup() {
+        let annotations = mapView.annotations
+        for annotation in annotations {
+            if let annotation = annotation as? MKAnnotation {
+                mapView.deselectAnnotation(annotation, animated: false)
+            }
+        }
+    }
+    
+    func onClickedPostDetailButton(_ postId: String) {
         let vc = PostDetailViewController.instance(postId: postId, isFavorite: isFavoritePost(postId: postId))
         navigateTo(vc)
     }

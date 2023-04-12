@@ -326,7 +326,8 @@ extension NewPostViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
         for item in results {
-            item.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+            item.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                guard let self = self else { return }
                 if let image = image {
                     self.viewModel.imageSelected = (image as! UIImage).rotate()
                     self.viewModel.images.append(self.viewModel.imageSelected)
