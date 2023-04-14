@@ -54,11 +54,6 @@ class PostedViewController: BaseViewController {
         viewModel.post.asObservable()
             .bind(to: postedTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { [weak self] (index, element, cell) in
                 guard let self = self else { return }
-//                self.viewModel.getImage(remoteName: element.thumbnail) { thumbnail in
-//                    DispatchQueue.main.async {
-//                        cell.loadThumbnail(thumbnail: thumbnail)
-//                    }
-//                }
                 if self.viewModel.title == MainTitle.favoritePosts {
                     cell.configInfo(element, isHiddenAuthorAndHeart: false, isFavorite: self.isFavoritePost(postId: element.id))
                 } else {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RelatedPostCell: UICollectionViewCell {
     @IBOutlet weak var thumbnail: UIImageView!
@@ -33,10 +34,10 @@ class RelatedPostCell: UICollectionViewCell {
     func config(_ post: Post) {
         titleLabel.text = post.title
         priceLabel.text = "\(post.price)VNĐ"
+        acreageLabel.text = "\(post.acreage)m2"
+        
+        if let url = URL(string: "\(AWSConstants.objectURL)\(post.thumbnail)") {
+            thumbnail.sd_setImage(with: url, placeholderImage: nil, options: [.retryFailed, .scaleDownLargeImages], context: [.imageThumbnailPixelSize: CGSize(width: thumbnail.bounds.width * UIScreen.main.scale, height: thumbnail.bounds.height * UIScreen.main.scale)])
+        }
     }
-    
-    func loadThumbnail(_ thumbnail: UIImage) {
-        self.thumbnail.image = thumbnail
-    }
-
 }

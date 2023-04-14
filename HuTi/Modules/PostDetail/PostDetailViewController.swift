@@ -198,11 +198,7 @@ class PostDetailViewController: BaseViewController {
         
         viewModel.images.asObservable()
             .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { (index, element, cell) in
-//                self.viewModel.getImage(remoteName: element) { image in
-//                    DispatchQueue.main.async {
-//                        cell.config(image: image)
-//                    }
-//                }
+                cell.configImage(imageName: element)
             }.disposed(by: viewModel.bag)
         
         imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)

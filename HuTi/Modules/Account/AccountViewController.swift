@@ -57,7 +57,6 @@ class AccountViewController: BaseViewController {
     
     @IBAction func onClickedSignOutBtn(_ sender: UIButton) {
         UserDefaults.userInfo = nil
-        ImageCache.clearAll()
         let vc = SignInViewController()
         navigateTo(vc)
     }

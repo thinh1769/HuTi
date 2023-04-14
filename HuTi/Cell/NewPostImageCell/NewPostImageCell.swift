@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class NewPostImageCell: UICollectionViewCell {
 
@@ -31,6 +32,12 @@ class NewPostImageCell: UICollectionViewCell {
     
     func config(image: UIImage) {
         imageView.image = image
+    }
+    
+    func configImage(imageName: String) {
+        if let url = URL(string: "\(AWSConstants.objectURL)\(imageName)") {
+            imageView.sd_setImage(with: url, placeholderImage: nil, options: [.retryFailed, .scaleDownLargeImages], context: [.imageThumbnailPixelSize: CGSize(width: imageView.bounds.width * UIScreen.main.scale, height: imageView.bounds.height * UIScreen.main.scale)])
+        }
     }
 
 }

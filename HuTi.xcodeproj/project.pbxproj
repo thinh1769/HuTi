@@ -32,7 +32,6 @@
 		22CF839929D9B10900683B98 /* AWSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF839829D9B10900683B98 /* AWSService.swift */; };
 		22CF839B29D9B13200683B98 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF839A29D9B13200683B98 /* Asset.swift */; };
 		22CF839D29D9B14C00683B98 /* AssetDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF839C29D9B14C00683B98 /* AssetDataModel.swift */; };
-		22CF839F29D9B20600683B98 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF839E29D9B20600683B98 /* ImageCache.swift */; };
 		22CF83A329D9B34600683B98 /* NewPostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF83A129D9B34600683B98 /* NewPostImageCell.swift */; };
 		22CF83A429D9B34600683B98 /* NewPostImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CF83A229D9B34600683B98 /* NewPostImageCell.xib */; };
 		22CF83A629DB219400683B98 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CF83A529DB219300683B98 /* UIImage+Ext.swift */; };
@@ -113,7 +112,6 @@
 		22CF839829D9B10900683B98 /* AWSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSService.swift; sourceTree = "<group>"; };
 		22CF839A29D9B13200683B98 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		22CF839C29D9B14C00683B98 /* AssetDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDataModel.swift; sourceTree = "<group>"; };
-		22CF839E29D9B20600683B98 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		22CF83A129D9B34600683B98 /* NewPostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostImageCell.swift; sourceTree = "<group>"; };
 		22CF83A229D9B34600683B98 /* NewPostImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPostImageCell.xib; sourceTree = "<group>"; };
 		22CF83A529DB219300683B98 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 			children = (
 				22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */,
 				22CB6A5D29D806DF009C4F4D /* DateFormatter+Ext.swift */,
-				22CF839E29D9B20600683B98 /* ImageCache.swift */,
 				22CF83A529DB219300683B98 /* UIImage+Ext.swift */,
 			);
 			path = Extensions;
@@ -678,7 +675,6 @@
 				FC0E76FE29B1A19500E4818C /* ConfirmPasswordViewController.swift in Sources */,
 				22D2E25029C6C09900E46CAF /* AccountViewModel.swift in Sources */,
 				22AEC96E29D5CF960076014A /* OTPViewModel.swift in Sources */,
-				22CF839F29D9B20600683B98 /* ImageCache.swift in Sources */,
 				FC2E2C1C29B71C2100DADA16 /* FilterResultTableViewCell.swift in Sources */,
 				22A099A829D0538F008BE7C7 /* ServiceConstants.swift in Sources */,
 				22CB6A5E29D806DF009C4F4D /* DateFormatter+Ext.swift in Sources */,

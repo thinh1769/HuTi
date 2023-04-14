@@ -51,7 +51,7 @@ class FilterResultTableViewCell: UITableViewCell {
         authorLabel.text = "Đăng bởi \(post.userName.getName())"
         
         if let url = URL(string: "\(AWSConstants.objectURL)\(post.thumbnail)") {
-            thumbnail.sd_setImage(with: url, completed: nil)
+            thumbnail.sd_setImage(with: url, placeholderImage: nil, options: [.retryFailed, .scaleDownLargeImages], context: [.imageThumbnailPixelSize: CGSize(width: thumbnail.bounds.width * UIScreen.main.scale, height: thumbnail.bounds.height * UIScreen.main.scale)])
         }
         
         if isHiddenAuthorAndHeart {

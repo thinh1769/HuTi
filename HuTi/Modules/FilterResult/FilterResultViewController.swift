@@ -105,11 +105,6 @@ class FilterResultViewController: BaseViewController {
         
         viewModel.post.asObservable()
             .bind(to: filterResultTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { (index, element, cell) in
-//                self.viewModel.getImage(remoteName: element.thumbnail) { thumbnail in
-//                    DispatchQueue.main.async {
-//                        cell.loadThumbnail(thumbnail: thumbnail)
-//                    }
-//                }
                 cell.configInfo(element, isHiddenAuthorAndHeart: false, isFavorite: self.isFavoritePost(postId: element.id))
             }.disposed(by: viewModel.bag)
         
@@ -128,11 +123,6 @@ class FilterResultViewController: BaseViewController {
         
         viewModel.project.asObservable()
             .bind(to: filterResultTableView.rx.items(cellIdentifier: ProjectFilterResultTableViewCell.reusableIdentifier, cellType: ProjectFilterResultTableViewCell.self)) { (index, element, cell) in
-//                self.viewModel.getImage(remoteName: element.images[0]) { thumbnail in
-//                    DispatchQueue.main.async {
-//                        cell.loadThumbnail(thumbnail: thumbnail)
-//                    }
-//                }
                 cell.config(project: element)
             }.disposed(by: viewModel.bag)
         

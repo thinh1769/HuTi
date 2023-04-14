@@ -59,9 +59,11 @@ class DetailPopupView: UIView {
     
     func loadData(_ post: Post) {
         viewModel.post = post
-//        viewModel.getImage(remoteName: post.thumbnail) { thumbnail in
-//            self.thumbnail.image = thumbnail
-//        }
+        
+        if let url = URL(string: "\(AWSConstants.objectURL)\(post.thumbnail)") {
+            thumbnail.sd_setImage(with: url, placeholderImage: nil, options: [.retryFailed, .scaleDownLargeImages], context: [.imageThumbnailPixelSize: CGSize(width: thumbnail.bounds.width * UIScreen.main.scale, height: thumbnail.bounds.height * UIScreen.main.scale)])
+        }
+        
         titleLabel.text = post.title
         priceLabel.text = "\(post.price)"
         addressLabel.text = post.getFullAddress()
@@ -93,7 +95,7 @@ class DetailPopupView: UIView {
         case .ended:
             if translation.y > 100 {
                 UIView.animateKeyframes(withDuration: 0.4, delay: 0) {
-                    self.transform = CGAffineTransform(translationX: 0, y: 260)
+                    self.transform = CGAffineTransform(translationX: 0, y: 215)
                 } completion: { _ in
                     self.removeFromSuperview()
                     self.delegate?.deselectedAnnotationWhenDismissDetailPopup()

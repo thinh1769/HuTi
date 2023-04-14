@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProjectFilterResultTableViewCell: UITableViewCell {
 
@@ -46,10 +47,10 @@ class ProjectFilterResultTableViewCell: UITableViewCell {
         statusLabel.text = project.status
         self.configStatusView(project.status)
         investorLabel.text = project.investor
-    }
-    
-    func loadThumbnail(thumbnail: UIImage) {
-        self.thumbnail.image = thumbnail
+        
+        if let url = URL(string: "\(AWSConstants.objectURL)\(project.images[0])") {
+            thumbnail.sd_setImage(with: url, placeholderImage: nil, options: [.retryFailed, .scaleDownLargeImages], context: [.imageThumbnailPixelSize: CGSize(width: thumbnail.bounds.width * UIScreen.main.scale, height: thumbnail.bounds.height * UIScreen.main.scale)])
+        }
     }
     
     private func configStatusView(_ status: String) {
