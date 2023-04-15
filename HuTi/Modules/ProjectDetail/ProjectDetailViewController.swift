@@ -39,9 +39,9 @@ class ProjectDetailViewController: BaseViewController {
     }
     
     private func setupUI() {
+        getProjectDetail()
         loadProjectDetail()
         setupImageCollectionView()
-        getRelatedPost()
         setupRelatedPostCollectionView()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -56,10 +56,19 @@ class ProjectDetailViewController: BaseViewController {
         pinProjectLocation()
     }
     
+    private func getProjectDetail() {
+        viewModel.getProjectById().subscribe { [weak self] project in
+            guard let self = self else { return }
+            self.viewModel.project = project
+            self.loadProjectDetail()
+            self.getRelatedPost()
+        }.disposed(by: viewModel.bag)
+    }
+    
     private func getRelatedPost() {
         viewModel.getRelatedPost().subscribe { [weak self] relatedPosts in
             guard let self = self else { return }
-            print("related post = \(relatedPosts)")
+            self.viewModel.relatedPost.accept(relatedPosts)
         }.disposed(by: viewModel.bag)
     }
     
@@ -120,6 +129,14 @@ class ProjectDetailViewController: BaseViewController {
                 cell.config(element)
             }.disposed(by: viewModel.bag)
         
+        relatedPostCollectionView.rx
+            .modelSelected(Post.self)
+            .subscribe { [weak self] element in
+                guard let self = self else { return }
+                let vc = PostDetailViewController.instance(postId: element.id ?? "", isFavorite: self.isFavoritePost(postId: element.id ?? ""))
+                self.navigateTo(vc)
+            }.disposed(by: viewModel.bag)
+        
         relatedPostCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
     }
 
@@ -143,7 +160,11 @@ class ProjectDetailViewController: BaseViewController {
 
 extension ProjectDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: imageCollectionView.bounds.width / 2, height: imageCollectionView.bounds.height)
+        if collectionView == imageCollectionView {
+            return CGSize(width: imageCollectionView.bounds.width / 2, height: imageCollectionView.bounds.height)
+        } else {
+            return CGSize(width: relatedPostCollectionView.bounds.width * 2 / 3, height: relatedPostCollectionView.bounds.height)
+        }
     }
 }
 
@@ -172,9 +193,9 @@ extension ProjectDetailViewController: CLLocationManagerDelegate {
 }
 
 extension ProjectDetailViewController {
-    class func instance(project: Project) -> ProjectDetailViewController {
+    class func instance(projectId: String) -> ProjectDetailViewController {
         let controller = ProjectDetailViewController(nibName: ClassNibName.ProjectDetailViewController, bundle: Bundle.main)
-        controller.viewModel.project = project
+        controller.viewModel.projectId = projectId
         return controller
     }
 }

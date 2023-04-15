@@ -28,7 +28,8 @@ class BaseViewModel {
         for (_, element) in provinces.enumerated() {
             provinceArray.append((id: element.code, name: element.name))
         }
-        return provinceArray
+        let sortedProvince = provinceArray.sorted { $0.name < $1.name }
+        return sortedProvince
     }
     
     func parseDistrictsArray(districts: [District]) -> [(id: String, name: String)] {
@@ -36,7 +37,8 @@ class BaseViewModel {
         for (_, element) in districts.enumerated() {
             districtArray.append((id: element.code, name: element.name))
         }
-        return districtArray
+        let sortedDistrict = districtArray.sorted { $0.name < $1.name }
+        return sortedDistrict
     }
     
     func parseWardsArray(wards: [Ward]) -> [(id: String, name: String)] {
@@ -44,7 +46,8 @@ class BaseViewModel {
         for (_, element) in wards.enumerated() {
             wardArray.append((id: element.code, name: element.name))
         }
-        return wardArray
+        let sortedWard = wardArray.sorted { $0.name < $1.name }
+        return sortedWard
     }
     
     func getAllProvinces() -> Observable<[Province]> {

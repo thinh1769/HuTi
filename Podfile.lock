@@ -14,6 +14,7 @@ PODS:
   - SDWebImage (5.14.2):
     - SDWebImage/Core (= 5.14.2)
   - SDWebImage/Core (5.14.2)
+  - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxSwift
   - SDWebImage
+  - SVPullToRefresh
 
 SPEC REPOS:
   trunk:
@@ -35,6 +37,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SVPullToRefresh
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
@@ -46,7 +49,8 @@ SPEC CHECKSUMS:
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SDWebImage: b9a731e1d6307f44ca703b3976d18c24ca561e84
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-PODFILE CHECKSUM: c24fd8cf2a2f47fb44344743e101868a0aa73de0
+PODFILE CHECKSUM: 006bfae5fbf94f8847b468ca6730df73a73745c2
 
 COCOAPODS: 1.11.3

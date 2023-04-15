@@ -13,10 +13,15 @@ class PostDetailViewModel: BaseViewModel {
     var postId = ""
     let images = BehaviorRelay<[String]>(value: [])
     var postDetail: PostDetail?
+    var project: Project?
     var isFavorite = false
     
     func getPostDetail(postId: String) -> Observable<PostDetail> {
         return postService.getPostById(postId: postId)
+    }
+    
+    func getProjectById(projectId: String) -> Observable<Project> {
+        return projectService.getProjectById(projectId: projectId)
     }
     
     func likePost() -> Observable<String> {

@@ -8,9 +8,11 @@
 import UIKit
 import MBProgressHUD
 import SDWebImage
+import SVPullToRefresh
 
 class BaseViewController: UIViewController {
  
+    let pullToRefresh = SVPullToRefreshView()
     var progressHUD = MBProgressHUD()
     
     var mainTabBarController: MainTabBarController? {

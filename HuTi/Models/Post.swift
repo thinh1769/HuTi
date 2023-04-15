@@ -43,7 +43,7 @@ struct PostDetail: Codable {
     var districtName : String
     var wardName: String
     var address: String
-    var projectId: String?
+    var project: String?
     var lat: Double
     var long: Double
     var title: String
@@ -53,15 +53,15 @@ struct PostDetail: Codable {
     var price: Double
     var priceRange: String?
     var legal: String
-    var funiture: String
-    var bedroom: Int
+    var funiture: String?
+    var bedroom: Int?
     var bedroomRange: String?
-    var bathroom: Int
-    var floor: Int
-    var houseDirection: String
-    var balconyDirection: String
-    var wayIn: Double
-    var facade: Double
+    var bathroom: Int?
+    var floor: Int?
+    var houseDirection: String?
+    var balconyDirection: String?
+    var wayIn: Double?
+    var facade: Double?
     var images: [String]
     var username: String?
     var contactName: String?

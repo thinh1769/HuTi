@@ -297,6 +297,13 @@ class NewPostViewController: BaseViewController {
         wayInView.isHidden = false
         facadeView.isHidden = false
     }
+    
+    private func prepareSearchProjectParam() {
+        if let province = provinceTextField.text,
+           province != "" {
+            viewModel.searchProjectParams.updateValue(province, forKey: "provinceName")
+        }
+    }
 }
 
 extension NewPostViewController: UICollectionViewDelegateFlowLayout {
@@ -447,16 +454,24 @@ extension NewPostViewController {
         projectPicker.tag = PickerTag.project
         projectTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.project)
 
-        viewModel.project.accept(RealEstateType.sell)
-
+//        viewModel.project.accept(RealEstateType.sell)
+        
         viewModel.project.subscribe(on: MainScheduler.instance)
             .bind(to: projectPicker.rx.itemTitles) { (row, element) in
-                return element
+                return element.name
             }.disposed(by: viewModel.bag)
 
         projectPicker.rx.itemSelected.bind { (row: Int, component: Int) in
             self.viewModel.selectedProject = row
         }.disposed(by: viewModel.bag)
+    }
+    
+    private func setupProjectData() {
+        prepareSearchProjectParam()
+        viewModel.getProjectByCityId().subscribe( onNext: { [weak self] project in
+            guard let self = self else { return }
+            self.viewModel.project.accept(self.viewModel.parseProjectArray(projects: project))
+        }).disposed(by: viewModel.bag)
     }
 
     private func setupLegalPickerView() {
@@ -558,6 +573,7 @@ extension NewPostViewController {
         case PickerTag.province:
             provinceTextField.text = viewModel.pickItem(pickerTag: sender.tag)
             setupDistrictDataPicker()
+            setupProjectData()
         case PickerTag.district:
             districtTextField.text = viewModel.pickItem(pickerTag: sender.tag)
             setupWardDataPicker()

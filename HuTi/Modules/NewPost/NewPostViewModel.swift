@@ -11,7 +11,7 @@ import RxRelay
 
 class NewPostViewModel: BaseViewModel {
     let realEstateType = BehaviorRelay<[String]>(value: [])
-    let project = BehaviorRelay<[String]>(value: [])
+    let project = BehaviorRelay<[(id: String, name: String)]>(value: [])
     let legal = BehaviorRelay<[String]>(value: [])
     let funiture = BehaviorRelay<[String]>(value: [])
     let houseDirection = BehaviorRelay<[String]>(value: [])
@@ -28,6 +28,7 @@ class NewPostViewModel: BaseViewModel {
     var imageSelected = UIImage()
     var images = [UIImage]()
     var imagesName = [String]()
+    var searchProjectParams = [String: Any]()
     
     func setupDataImageCollectionView() {
         selectedImage.accept(images)
@@ -61,7 +62,7 @@ class NewPostViewModel: BaseViewModel {
             }
         case PickerTag.project:
             if project.value.count > 0 {
-                return project.value[selectedProject]
+                return project.value[selectedProject].name
             } else {
                 return ""
             }
@@ -105,6 +106,7 @@ class NewPostViewModel: BaseViewModel {
                     districtName: district.value[selectedDistrict].name,
                     wardName: ward.value[selectedWard].name,
                     address: address,
+                    project: project.value[selectedProject].id,
                     lat: lat,
                     long: long,
                     title: title,
@@ -194,6 +196,20 @@ class NewPostViewModel: BaseViewModel {
         } else {
             return PickerData.bedroom[4]
         }
+    }
+    
+    func getProjectByCityId() -> Observable<[Project]> {
+        return projectService.findProject(params: searchProjectParams)
+    }
+    
+    func parseProjectArray(projects: [Project]) -> [(id: String, name: String)] {
+        var projectArray = [(id: String, name: String)]()
+        for (_, element) in projects.enumerated() {
+            projectArray.append((id: element.id ?? "", name: element.name))
+        }
+        
+        let sortedProject = projectArray.sorted { $0.name < $1.name }
+        return sortedProject
     }
     
     func uploadImage(completion: @escaping() -> Void) {

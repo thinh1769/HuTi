@@ -42,7 +42,7 @@ class FilterResultViewController: BaseViewController {
         titleLabel.text = viewModel.mainTabBarItemTitle
         setupCollectionView()
         setupTableView()
-        
+        filterResultAddPullToRefresh()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -56,6 +56,7 @@ class FilterResultViewController: BaseViewController {
             getListPosts()
         } else {
             getListProjects()
+            mapButton.isHidden = true
         }
     }
     
@@ -130,7 +131,7 @@ class FilterResultViewController: BaseViewController {
             .modelSelected(Project.self)
             .subscribe { [weak self] element in
                 guard let self = self else { return }
-                let vc = ProjectDetailViewController.instance(project: element)
+                let vc = ProjectDetailViewController.instance(projectId: element.id ?? "")
                 self.navigateTo(vc)
             }.disposed(by: viewModel.bag)
     }
@@ -176,6 +177,28 @@ class FilterResultViewController: BaseViewController {
             }
         }
     }
+    
+    private func filterResultAddPullToRefresh() {
+        filterResultTableView.addPullToRefresh { [weak self] in
+            guard let self = self else { return }
+            self.filterResultTableView.pullToRefreshView.stopAnimating()
+            self.loadData()
+//            self.showLoading()
+        }
+// self.newsCollectionView.pullToRefreshView.setTitle(LocalizedString("ms_release_to_refresh", nil), forState: UInt(SVPullToRefreshStateTriggered))
+//        self.newsCollectionView.pullToRefreshView.setTitle(LocalizedString("ms_pull_to_refresh", nil), forState: UInt(SVPullToRefreshStateStopped))
+//        self.newsCollectionView.pullToRefreshView
+//            .setTitle(LocalizedString("ms_loading", nil), forState: UInt(SVPullToRefreshStateLoading))
+    }
+//
+//    private func newsCollectionViewInfiniteScroll() {
+//        newsCollectionView.addInfiniteScrolling { [weak self] in
+//            guard let self = self else { return }
+//            self.viewModel.newsPaging += 1
+//            self.newsCollectionView.infiniteScrollingView.stopAnimating()
+//            self.loadNewsData(page: self.viewModel.newsPaging)
+//        }
+//    }
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {

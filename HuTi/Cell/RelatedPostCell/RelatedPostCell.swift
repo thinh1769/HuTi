@@ -29,12 +29,14 @@ class RelatedPostCell: UICollectionViewCell {
     
     private func setupUI() {
         thumbnail.image = nil
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 8
     }
     
     func config(_ post: Post) {
         titleLabel.text = post.title
         priceLabel.text = "\(post.price)VNĐ"
-        acreageLabel.text = "\(post.acreage)m2"
+        acreageLabel.text = "\(post.acreage ?? 0)m2"
         
         if let url = URL(string: "\(AWSConstants.objectURL)\(post.thumbnail)") {
             thumbnail.sd_setImage(with: url, placeholderImage: nil, options: [.retryFailed, .scaleDownLargeImages], context: [.imageThumbnailPixelSize: CGSize(width: thumbnail.bounds.width * UIScreen.main.scale, height: thumbnail.bounds.height * UIScreen.main.scale)])

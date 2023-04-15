@@ -63,11 +63,22 @@ class PostDetailViewController: BaseViewController {
             self.viewModel.postDetail = postDetail
             self.loadPostDetail()
             self.viewModel.images.accept(postDetail.images)
+            self.getProjectInfo()
         }.disposed(by: viewModel.bag)
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+    }
+    
+    private func getProjectInfo() {
+        if let projectId = viewModel.postDetail?.project {
+            viewModel.getProjectById(projectId: projectId).subscribe { [weak self] project in
+                guard let self = self else { return }
+                self.viewModel.project = project
+                self.loadProjectInfo()
+            }.disposed(by: viewModel.bag)
+        }
     }
     
     private func loadPostDetail() {
@@ -139,6 +150,16 @@ class PostDetailViewController: BaseViewController {
             return
         }
     }
+    
+    private func loadProjectInfo() {
+        guard let project = viewModel.project else { return }
+        projectNameLabel.text = project.name
+        investorLabel.text = project.investor
+        
+        if let url = URL(string: "\(AWSConstants.objectURL)\(project.images[0])") {
+            projectImage.sd_setImage(with: url, placeholderImage: nil, options: [.retryFailed, .scaleDownLargeImages], context: [.imageThumbnailPixelSize: CGSize(width: projectImage.bounds.width * UIScreen.main.scale, height: projectImage.bounds.height * UIScreen.main.scale)])
+        }
+    }
   
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         backToPreviousView()
@@ -176,7 +197,7 @@ class PostDetailViewController: BaseViewController {
     
     
     @objc private func goToProjectDetailView() {
-        let vc = ProjectDetailViewController()
+        let vc = ProjectDetailViewController.instance(projectId: viewModel.project?.id ?? "")
         navigateTo(vc)
     }
     
