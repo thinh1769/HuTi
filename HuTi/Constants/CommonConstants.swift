@@ -150,3 +150,20 @@ enum SubviewTag: Int {
     case otherView
     case detailView
 }
+
+struct RegexConstants {
+    static let PHONE_NUMBER = "^0\\d{9}$"
+    static let PASSWORD = "^\\S{5,20}$"
+    //static let NUMBER = "^\\d{1,}$"
+}
+
+struct Alert {
+    static let numberOfPhoneNumber = "Số điện thoại phải có 10 chữ số"
+    static let numberOfPass = "Mật khẩu phải có ít nhất 5 ký tự"
+    static let ok = "OK"
+    static let wrongSignInInfo = "Thông tin đăng nhập không đúng"
+    static let registedPhoneNumber = "Số điện thoại đã được đăng ký"
+    static let nonRegistedPhoneNumber = "Số điện thoại chưa được đăng ký"
+    static let wrongOTP = "OTP không đúng"
+    static let notTheSamePass = "Hai mật khẩu không giống nhau"
+}

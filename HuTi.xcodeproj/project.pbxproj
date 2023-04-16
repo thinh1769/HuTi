@@ -12,6 +12,7 @@
 		22A099A429D04749008BE7C7 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A099A329D04749008BE7C7 /* BaseService.swift */; };
 		22A099A629D047A8008BE7C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A099A529D047A8008BE7C7 /* User.swift */; };
 		22A099A829D0538F008BE7C7 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A099A729D0538F008BE7C7 /* ServiceConstants.swift */; };
+		22A3857E29EBCD9B00233908 /* String+Etx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3857D29EBCD9A00233908 /* String+Etx.swift */; };
 		22AEC96E29D5CF960076014A /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC96D29D5CF960076014A /* OTPViewModel.swift */; };
 		22AEC97029D5D4100076014A /* ConfirmPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC96F29D5D4100076014A /* ConfirmPasswordViewModel.swift */; };
 		22AEC97229D5DCA50076014A /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC97129D5DCA50076014A /* AccountDetailViewModel.swift */; };
@@ -92,6 +93,7 @@
 		22A099A329D04749008BE7C7 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		22A099A529D047A8008BE7C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		22A099A729D0538F008BE7C7 /* ServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
+		22A3857D29EBCD9A00233908 /* String+Etx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Etx.swift"; sourceTree = "<group>"; };
 		22AEC96D29D5CF960076014A /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
 		22AEC96F29D5D4100076014A /* ConfirmPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewModel.swift; sourceTree = "<group>"; };
 		22AEC97129D5DCA50076014A /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				22D2E25229C6C11600E46CAF /* UserDefault+Ext.swift */,
 				22CB6A5D29D806DF009C4F4D /* DateFormatter+Ext.swift */,
 				22CF83A529DB219300683B98 /* UIImage+Ext.swift */,
+				22A3857D29EBCD9A00233908 /* String+Etx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				22CF839929D9B10900683B98 /* AWSService.swift in Sources */,
 				22CB6A6429D832AC009C4F4D /* ProjectDetailViewModel.swift in Sources */,
 				228D5FD429CBE84B00439D78 /* FilterViewModel.swift in Sources */,
+				22A3857E29EBCD9B00233908 /* String+Etx.swift in Sources */,
 				22CB6A6629D8330D009C4F4D /* PostDetailViewModel.swift in Sources */,
 				22CF839B29D9B13200683B98 /* Asset.swift in Sources */,
 				22AF528029E2E99300A7FB75 /* DetailPopupViewModel.swift in Sources */,

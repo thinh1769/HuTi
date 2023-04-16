@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import RxRelay
-import RxSwift
 
 class AccountViewModel: BaseViewModel {
     func checkUpdateInfo() -> Bool {

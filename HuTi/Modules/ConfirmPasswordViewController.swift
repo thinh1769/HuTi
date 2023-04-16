@@ -23,6 +23,8 @@ class ConfirmPasswordViewController: BaseViewController {
     
     private func setupUI() {
         isTouchDismissKeyboardEnabled = true
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
 
         passwordTextField.attributedPlaceholder = NSAttributedString(
             string: CommonConstants.password,
@@ -42,8 +44,15 @@ class ConfirmPasswordViewController: BaseViewController {
         guard let pass = passwordTextField.text,
               let confirmPass = confirmPasswordTextField.text,
               pass.count > 4,
-              pass == confirmPass
-        else { return }
+              confirmPass.count > 4
+        else {
+            showAlert(title: Alert.numberOfPass)
+            return
+        }
+        if pass != confirmPass {
+            showAlert(title: Alert.notTheSamePass)
+            return
+        }
         showLoading()
         if viewModel.isRegister {
             viewModel.register(password: pass).subscribe { [weak self] user in
@@ -63,6 +72,14 @@ class ConfirmPasswordViewController: BaseViewController {
                 self.navigateTo(vc)
             }.disposed(by: viewModel.bag)
         }
+    }
+}
+
+extension ConfirmPasswordViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 20
     }
 }
 

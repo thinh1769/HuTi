@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 class OTPViewController: BaseViewController {
 
@@ -52,9 +50,10 @@ class OTPViewController: BaseViewController {
         else { return }
         showLoading()
         viewModel.confirmOTP(otp: otp).subscribe { _ in
-        } onError: { error in
+        } onError: { [weak self] error in
+            guard let self = self else { return }
             self.hideLoading()
-            print("---- Error: \(error.localizedDescription)----")
+            self.showAlert(title: Alert.wrongOTP)
         } onCompleted: { [weak self] in
             guard let self = self else { return }
             let vc = ConfirmPasswordViewController.instance(phoneNumber: self.viewModel.phoneNumber, otp: otp, isRegister: self.viewModel.isRegister)

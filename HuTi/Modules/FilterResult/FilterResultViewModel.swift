@@ -17,6 +17,8 @@ class FilterResultViewModel: BaseViewModel {
     var tabBarItemTitle = TabBarItemTitle.sell
     var mainTabBarItemTitle = MainTitle.sell
     var tuppleOptionsList = [(key: Int, value: String)]()
+    var searchPostParams = [String: Any]()
+    var searchProjectParams = [String: Any]()
     
     func getListPosts(isSell: Bool) -> Observable<[Post]> {
         return postService.getListPosts(isSell: isSell)
@@ -42,5 +44,13 @@ class FilterResultViewModel: BaseViewModel {
             }
         }
         return -1
+    }
+    
+    func findPost() -> Observable<[Post]> {
+        return postService.findPost(param: searchPostParams)
+    }
+    
+    func findProject() -> Observable<[Project]> {
+        return projectService.findProject(params: searchProjectParams)
     }
 }

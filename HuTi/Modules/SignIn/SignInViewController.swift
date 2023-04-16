@@ -22,6 +22,8 @@ class SignInViewController: BaseViewController {
     private func setupUI() {
         phoneTextField.text = "0000099999"
         passwordTextField.text = "11111"
+        passwordTextField.delegate = self
+        phoneTextField.delegate = self
         isHiddenMainTabBar = true
         isTouchDismissKeyboardEnabled = true
         
@@ -42,10 +44,18 @@ class SignInViewController: BaseViewController {
     
     @IBAction func onClickedSignInBtn(_ sender: UIButton) {
         guard let phoneNumber = phoneTextField.text,
-              phoneNumber.count == 10,
-              let password = passwordTextField.text,
-              password.count > 4
-        else { return }
+              phoneNumber.count == 10
+        else {
+            self.showAlert(title: Alert.numberOfPhoneNumber)
+            return
+        }
+        guard let password = passwordTextField.text,
+              password.count > 4,
+              password.count < 21
+        else {
+            self.showAlert(title: Alert.numberOfPass)
+            return
+        }
         showLoading()
         viewModel.signIn(phoneNumber: phoneNumber, password: password)
             .subscribe { [weak self] user in
@@ -54,8 +64,10 @@ class SignInViewController: BaseViewController {
                 UserDefaults.token = user.token
                 self.hideLoading()
                 self.setRootTabBar()
-            } onError: { _ in
+            } onError: { [weak self] _ in
+                guard let self = self else { return }
                 self.hideLoading()
+                self.showAlert(title: Alert.wrongSignInInfo)
             } onCompleted: {
                 self.hideLoading()
             }.disposed(by: viewModel.bag)
@@ -65,5 +77,17 @@ class SignInViewController: BaseViewController {
     @IBAction func onClickedForgotPasswordButton(_ sender: UIButton) {
         let vc = SignUpViewController.instance(isRegister: false)
         navigateTo(vc)
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        if textField == phoneTextField {
+            return newLength <= 10
+        } else {
+            return newLength <= 20
+        }
     }
 }

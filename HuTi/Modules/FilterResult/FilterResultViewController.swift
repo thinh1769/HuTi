@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 import MapKit
 import CoreLocation
 
@@ -182,13 +180,8 @@ class FilterResultViewController: BaseViewController {
         filterResultTableView.addPullToRefresh { [weak self] in
             guard let self = self else { return }
             self.filterResultTableView.pullToRefreshView.stopAnimating()
-            self.loadData()
-//            self.showLoading()
+            self.refreshData()
         }
-// self.newsCollectionView.pullToRefreshView.setTitle(LocalizedString("ms_release_to_refresh", nil), forState: UInt(SVPullToRefreshStateTriggered))
-//        self.newsCollectionView.pullToRefreshView.setTitle(LocalizedString("ms_pull_to_refresh", nil), forState: UInt(SVPullToRefreshStateStopped))
-//        self.newsCollectionView.pullToRefreshView
-//            .setTitle(LocalizedString("ms_loading", nil), forState: UInt(SVPullToRefreshStateLoading))
     }
 //
 //    private func newsCollectionViewInfiniteScroll() {
@@ -199,6 +192,17 @@ class FilterResultViewController: BaseViewController {
 //            self.loadNewsData(page: self.viewModel.newsPaging)
 //        }
 //    }
+    
+    private func refreshData() {
+        viewModel.optionsList = []
+        viewModel.options.accept(viewModel.optionsList)
+        if viewModel.tabBarItemTitle == TabBarItemTitle.project {
+            getListProjects()
+        } else {
+            getListPosts()
+        }
+        optionView.isHidden = true
+    }
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {
@@ -215,15 +219,7 @@ extension FilterResultViewController: FilterViewControllerDelegate {
     }
     
     func didTapResetButton() {
-        viewModel.optionsList = []
-        viewModel.options.accept(viewModel.optionsList)
-        if viewModel.tabBarItemTitle == TabBarItemTitle.project {
-            getListProjects()
-        } else {
-            getListPosts()
-        }
-        
-        optionView.isHidden = true
+        refreshData()
     }
 }
 

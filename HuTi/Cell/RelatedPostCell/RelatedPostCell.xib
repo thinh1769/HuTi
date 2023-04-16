@@ -38,23 +38,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="91P-PX-OmB">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="91P-PX-OmB">
                                 <rect key="frame" x="10" y="149.33333333333334" width="213" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfO-8q-AMS">
-                                        <rect key="frame" x="0.0" y="0.0" width="104" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="142" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFz-Qf-e1Y">
-                                        <rect key="frame" x="109" y="0.0" width="104" height="25"/>
+                                        <rect key="frame" x="147" y="0.0" width="66" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="mfO-8q-AMS" firstAttribute="width" secondItem="91P-PX-OmB" secondAttribute="width" multiplier="2/3" id="2IU-6B-FxQ"/>
                                     <constraint firstItem="mfO-8q-AMS" firstAttribute="top" secondItem="91P-PX-OmB" secondAttribute="top" id="4Xc-lb-aP2"/>
                                     <constraint firstItem="mfO-8q-AMS" firstAttribute="leading" secondItem="91P-PX-OmB" secondAttribute="leading" id="BnJ-cn-Lc4"/>
                                     <constraint firstAttribute="trailing" secondItem="fFz-Qf-e1Y" secondAttribute="trailing" id="L2k-sa-e9y"/>

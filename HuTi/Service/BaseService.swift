@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import RxSwift
+import RxRelay
 
 class BaseService: NSObject {
     var baseHeader = HTTPHeaders()
