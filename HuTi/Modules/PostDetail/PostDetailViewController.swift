@@ -103,7 +103,7 @@ class PostDetailViewController: BaseViewController {
         if let postUserId = post?.userId,
            let userId = UserDefaults.userInfo?.id,
            postUserId == userId {
-                likeButton.isHidden = true
+            likeButton.isHidden = true
             } else {
                 likeButton.isHidden = false
                 if isFavoritePost(postId: post?.id) {
@@ -114,7 +114,6 @@ class PostDetailViewController: BaseViewController {
                     likeButton.tintColor = UIColor(named: ColorName.gray)
                 }
             }
-        
         
         unhiddenAllView()
         switch viewModel.postDetail?.realEstateType {
@@ -190,6 +189,11 @@ class PostDetailViewController: BaseViewController {
         viewModel.isFavorite = !viewModel.isFavorite
         delegate?.didTappedLikeButton()
     }
+    
+//    @IBAction func onClickedEditButton(_ sender: UIButton) {
+//        let vc = NewPostViewController.instance(isEdit: true, postDetail: viewModel.postDetail)
+//        navigateTo(vc)
+//    }
     
     @IBAction func onClickedRealEstateLocationButton(_ sender: UIButton) {
         pinRealEstateLocation()

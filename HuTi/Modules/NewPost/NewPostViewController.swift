@@ -186,7 +186,7 @@ class NewPostViewController: BaseViewController {
     private func chooseSell(_ isChooseSell: Bool) {
         viewModel.isSelectedSell = isChooseSell
         typeTextField.text = ""
-        viewModel.selectedType = 0
+        viewModel.selectedType = -1
         if isChooseSell {
             sellCheckmarkImage.image = UIImage(systemName: ImageName.checkmarkFill)
             forRentCheckmarkImage.image = UIImage(systemName: ImageName.circle)
@@ -263,7 +263,7 @@ class NewPostViewController: BaseViewController {
                              , contactPhoneNumber: contactPhoneTextField.text ?? "")
         .subscribe { [weak self] _ in
             guard let self = self else { return }
-            print("------add Post thành công---")
+            self.showAlert(title: Alert.postSuccessfully)
             self.backToPreviousView()
         }.disposed(by: viewModel.bag)
     }
@@ -304,6 +304,17 @@ class NewPostViewController: BaseViewController {
             viewModel.searchProjectParams.updateValue(province, forKey: "provinceName")
         }
     }
+    
+//    private func loadPostDetailForEdit() {
+//        guard let post = viewModel.post else { return }
+//        chooseSell(post.isSell)
+//        typeTextField.text = post.realEstateType
+//        provinceTextField.text = post.provinceName
+//        districtTextField.text = post.districtName
+//        wardTextField.text = post.wardName
+//        addressTextField.text = post.address
+//        projectTextField.text = post.
+//    }
 }
 
 extension NewPostViewController: UICollectionViewDelegateFlowLayout {
@@ -453,8 +464,6 @@ extension NewPostViewController {
         projectTextField.tintColor = .clear
         projectPicker.tag = PickerTag.project
         projectTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.project)
-
-//        viewModel.project.accept(RealEstateType.sell)
         
         viewModel.project.subscribe(on: MainScheduler.instance)
             .bind(to: projectPicker.rx.itemTitles) { (row, element) in
@@ -597,5 +606,14 @@ extension NewPostViewController {
     
     @objc private func cancelPicker() {
         view.window?.endEditing(true)
+    }
+}
+
+extension NewPostViewController {
+    class func instance(isEdit: Bool, postDetail: PostDetail?) -> NewPostViewController {
+        let controller = NewPostViewController(nibName: ClassNibName.NewPostViewController, bundle: Bundle.main)
+        controller.viewModel.isEdit = isEdit
+        controller.viewModel.post = postDetail
+        return controller
     }
 }

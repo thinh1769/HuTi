@@ -47,34 +47,41 @@ class SignUpViewController: BaseViewController {
     @IBAction func onClickedContinueBtn(_ sender: UIButton) {
         guard let phoneNumber = phoneTextField.text,
               phoneNumber.count == 10
-        else { return }
-        showLoading()
-        if viewModel.isRegister {
-            viewModel.sendOTP(phoneNumber: phoneNumber)
-                .subscribe { _ in
-                } onError: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.hideLoading()
-                    self.showAlert(title: Alert.registedPhoneNumber)
-                } onCompleted: { [weak self] in
-                    guard let self = self else { return }
-                    let vc = OTPViewController.instance(phoneNumber: phoneNumber, isRegister: true)
-                    self.hideLoading()
-                    self.navigateTo(vc)
-                }.disposed(by: viewModel.bag)
+        else {
+            showAlert(title: Alert.numberOfPhoneNumber)
+            return
+        }
+        if !phoneNumber.isMatches(RegexConstants.PHONE_NUMBER) {
+            showAlert(title: Alert.phoneBeginByZero)
         } else {
-            viewModel.sendOTPResetPassword(phoneNumber: phoneNumber)
-                .subscribe { _ in
-                } onError: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.hideLoading()
-                    self.showAlert(title: Alert.nonRegistedPhoneNumber)
-                } onCompleted: { [weak self] in
-                    guard let self = self else { return }
-                    let vc = OTPViewController.instance(phoneNumber: phoneNumber, isRegister: false)
-                    self.hideLoading()
-                    self.navigateTo(vc)
-                }.disposed(by: viewModel.bag)
+            showLoading()
+            if viewModel.isRegister {
+                viewModel.sendOTP(phoneNumber: phoneNumber)
+                    .subscribe { _ in
+                    } onError: { [weak self] _ in
+                        guard let self = self else { return }
+                        self.hideLoading()
+                        self.showAlert(title: Alert.registedPhoneNumber)
+                    } onCompleted: { [weak self] in
+                        guard let self = self else { return }
+                        let vc = OTPViewController.instance(phoneNumber: phoneNumber, isRegister: true)
+                        self.hideLoading()
+                        self.navigateTo(vc)
+                    }.disposed(by: viewModel.bag)
+            } else {
+                viewModel.sendOTPResetPassword(phoneNumber: phoneNumber)
+                    .subscribe { _ in
+                    } onError: { [weak self] _ in
+                        guard let self = self else { return }
+                        self.hideLoading()
+                        self.showAlert(title: Alert.nonRegistedPhoneNumber)
+                    } onCompleted: { [weak self] in
+                        guard let self = self else { return }
+                        let vc = OTPViewController.instance(phoneNumber: phoneNumber, isRegister: false)
+                        self.hideLoading()
+                        self.navigateTo(vc)
+                    }.disposed(by: viewModel.bag)
+            }
         }
     }
 }

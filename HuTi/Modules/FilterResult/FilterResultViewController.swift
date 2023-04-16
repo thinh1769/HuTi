@@ -138,7 +138,7 @@ class FilterResultViewController: BaseViewController {
         let vc = FilterViewController.instance(tabBarItemTitle: viewModel.tabBarItemTitle)
         vc.delegate = self
         if viewModel.options.value.count > 1 {
-            vc.configSelectedOptions(optionsList: viewModel.tuppleOptionsList)
+            vc.configSelectedOptions(optionsList: viewModel.tuppleOptionsList, selectedProvince: viewModel.selectedProvince, selectedDistrict: viewModel.selectedDistrict)
         }
         navigateTo(vc)
     }
@@ -206,9 +206,11 @@ class FilterResultViewController: BaseViewController {
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {
-    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]?, projectResult: [Project]?) {
+    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]?, projectResult: [Project]?, selectedProvince: Int, selectedDistrict: Int) {
         viewModel.tuppleOptionsList = listOptions
         viewModel.parseOptionTuppleToArray()
+        viewModel.selectedProvince = selectedProvince
+        viewModel.selectedDistrict = selectedDistrict
         if let filterPost = postResult {
             viewModel.post.accept(filterPost)
         }

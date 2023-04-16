@@ -17,18 +17,20 @@ class NewPostViewModel: BaseViewModel {
     let houseDirection = BehaviorRelay<[String]>(value: [])
     let balconyDirection = BehaviorRelay<[String]>(value: [])
     let selectedImage = BehaviorRelay<[UIImage]>(value: [])
-    var selectedType = 0
-    var selectedProject = 0
-    var selectedLegal = 0
-    var selectedFuniture = 0
-    var selectedHouseDirection = 0
-    var selectedBalconyDirection = 0
+    var selectedType = -1
+    var selectedProject = -1
+    var selectedLegal = -1
+    var selectedFuniture = -1
+    var selectedHouseDirection = -1
+    var selectedBalconyDirection = -1
     var isSelectedSell = true
     var isEditBtnClicked = false
     var imageSelected = UIImage()
     var images = [UIImage]()
     var imagesName = [String]()
     var searchProjectParams = [String: Any]()
+    var isEdit = false
+    var post: PostDetail?
     
     func setupDataImageCollectionView() {
         selectedImage.accept(images)
@@ -37,56 +39,83 @@ class NewPostViewModel: BaseViewModel {
     func pickItem(pickerTag: Int) -> String? {
         switch pickerTag{
         case PickerTag.type:
-            if realEstateType.value.count > 0 {
+            if realEstateType.value.count > 0 && selectedType >= 0 {
                 return realEstateType.value[selectedType]
+            } else if selectedType == -1 {
+                selectedType = 0
+                return realEstateType.value[0]
             } else {
                 return ""
             }
         case PickerTag.province:
-            if province.value.count > 0 {
+            if province.value.count > 0 && selectedProvince >= 0 {
                 return province.value[selectedProvince].name
+            } else if selectedProvince == -1 {
+                selectedProvince = 0
+                return province.value[0].name
             } else {
                 return ""
             }
         case PickerTag.district:
-            if district.value.count > 0 {
+            if district.value.count > 0 && selectedDistrict >= 0 {
                 return district.value[selectedDistrict].name
+            } else if selectedDistrict == -1 {
+                selectedDistrict = 0
+                return district.value[0].name
             } else {
                 return ""
             }
         case PickerTag.ward:
-            if ward.value.count > 0 {
+            if ward.value.count > 0 && selectedWard >= 0 {
                 return ward.value[selectedWard].name
+            } else if selectedWard == -1 {
+                selectedWard = 0
+                return ward.value[0].name
             } else {
                 return ""
             }
         case PickerTag.project:
-            if project.value.count > 0 {
+            if project.value.count > 0 && selectedProject >= 0 {
                 return project.value[selectedProject].name
+            } else if selectedProject == -1 {
+                selectedProject = 0
+                return project.value[0].name
             } else {
                 return ""
             }
         case PickerTag.legal:
-            if legal.value.count > 0 {
+            if legal.value.count > 0 && selectedLegal >= 0 {
                 return legal.value[selectedLegal]
+            } else if selectedLegal == -1 {
+                selectedLegal = 0
+                return legal.value[0]
             } else {
                 return ""
             }
         case PickerTag.funiture:
-            if funiture.value.count > 0 {
+            if funiture.value.count > 0 && selectedFuniture >= 0 {
                 return funiture.value[selectedFuniture]
+            } else if selectedFuniture == -1 {
+                selectedFuniture = 0
+                return funiture.value[0]
             } else {
                 return ""
             }
         case PickerTag.houseDirection:
-            if houseDirection.value.count > 0 {
+            if houseDirection.value.count > 0 && selectedHouseDirection >= 0 {
                 return houseDirection.value[selectedHouseDirection]
+            } else if selectedHouseDirection == -1 {
+                selectedHouseDirection = 0
+                return houseDirection.value[0]
             } else {
                 return ""
             }
         case PickerTag.balconyDirection:
-            if balconyDirection.value.count > 0 {
+            if balconyDirection.value.count > 0 && selectedBalconyDirection >= 0 {
                 return balconyDirection.value[selectedBalconyDirection]
+            } else if selectedBalconyDirection == -1 {
+                selectedBalconyDirection = 0
+                return balconyDirection.value[0]
             } else {
                 return ""
             }

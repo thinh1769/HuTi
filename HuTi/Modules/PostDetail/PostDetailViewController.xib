@@ -498,7 +498,7 @@
                 <constraint firstItem="zPL-mi-YeD" firstAttribute="top" secondItem="LfY-01-Pzp" secondAttribute="bottom" constant="10" id="ptS-Hy-N3l"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zPL-mi-YeD" secondAttribute="trailing" constant="20" id="zEJ-CS-EEy"/>
             </constraints>
-            <point key="canvasLocation" x="-1025" y="-1182"/>
+            <point key="canvasLocation" x="-1092" y="-1516"/>
         </view>
     </objects>
     <resources>

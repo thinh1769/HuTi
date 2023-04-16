@@ -98,6 +98,7 @@ struct ClassNibName {
     static let PostDetailViewController = "PostDetailViewController"
     static let ProjectDetailViewController = "ProjectDetailViewController"
     static let SignUpViewController = "SignUpViewController"
+    static let NewPostViewController = "NewPostViewController"
 }
 
 struct MainTitle {
@@ -165,5 +166,9 @@ struct Alert {
     static let registedPhoneNumber = "Số điện thoại đã được đăng ký"
     static let nonRegistedPhoneNumber = "Số điện thoại chưa được đăng ký"
     static let wrongOTP = "OTP không đúng"
-    static let notTheSamePass = "Hai mật khẩu không giống nhau"
+    static let notTheSamePass = "Mật khẩu và xác nhận mật khẩu không giống nhau"
+    static let phoneBeginByZero = "Số điện thoại phải bắt đầu bằng số 0"
+    static let pleaseUpdateAccountInfo = "Vui lòng cập nhật thông tin tài khoản"
+    static let updatedAccountSuccessfully = "Cập nhật tài khoản thành công"
+    static let postSuccessfully = "Đăng tin thành công"
 }

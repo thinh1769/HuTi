@@ -91,4 +91,29 @@ class BaseViewController: UIViewController {
         }
         return false
     }
+    
+    func showAlert(title: String) {
+        let alert: UIAlertController = UIAlertController(
+            title: title,
+            message: nil,
+            preferredStyle: .alert
+        )
+        
+//        let okAction = UIAlertAction(title: LocalizedString("lbl_ok", nil), style: .default) { [weak self] (_) in
+//            guard let self = self else { return }
+//            self.loginManager.logout()
+//            self.navigationController?.popToRootViewController(animated: true)
+//        }
+        
+        let okAction = UIAlertAction(
+            title: Alert.ok,
+            style: .cancel,
+            handler: nil
+        )
+        
+//        alert.addAction(okAction)
+        alert.addAction(okAction)
+        
+        self.parent?.present(alert, animated: true, completion: nil)
+    }
 }

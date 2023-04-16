@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol FilterViewControllerDelegate: AnyObject {
-    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]?, projectResult: [Project]?)
+    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]?, projectResult: [Project]?, selectedProvince: Int, selectedDistrict: Int)
     
     func didTapResetButton()
 }
@@ -46,8 +46,10 @@ class FilterViewController: BaseViewController {
     var viewModel = FilterViewModel()
     weak var delegate: FilterViewControllerDelegate?
     
-    func configSelectedOptions(optionsList: [(key: Int, value: String)]) {
+    func configSelectedOptions(optionsList: [(key: Int, value: String)], selectedProvince: Int, selectedDistrict: Int) {
         viewModel.optionsList = optionsList
+//        viewModel.selectedProvince = selectedProvince
+//        viewModel.selectedDistrict = selectedDistrict
     }
     
     override func viewDidLoad() {
@@ -71,6 +73,24 @@ class FilterViewController: BaseViewController {
         reloadPreviousOptions()
         isHiddenMainTabBar = true
         isTouchDismissKeyboardEnabled = true
+        
+//        if viewModel.selectedProvince >= 0 {
+//            getAllProvince()
+//            setupDistrictDataPicker()
+//        }
+//
+//        if viewModel.selectedDistrict >= 0 {
+//            setupWardDataPicker()
+//        }
+    }
+    
+    private func getAllProvince() {
+        viewModel.getAllProvinces().subscribe { [weak self] provinces in
+            guard let self = self else { return }
+            self.viewModel.province.accept(self.viewModel.parseProvincesArray(provinces: provinces))
+        } onError: { _ in
+        } onCompleted: {
+        } .disposed(by: viewModel.bag)
     }
     
     private func setupPickerView() {
@@ -120,7 +140,7 @@ class FilterViewController: BaseViewController {
         preparePostParam()
         viewModel.findPost().subscribe { [weak self] posts in
             guard let self = self else { return }
-            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: posts, projectResult: nil)
+            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: posts, projectResult: nil, selectedProvince: self.viewModel.selectedProvince, selectedDistrict: self.viewModel.selectedDistrict)
             self.isHiddenMainTabBar = false
             self.backToPreviousView()
         }.disposed(by: viewModel.bag)
@@ -130,7 +150,7 @@ class FilterViewController: BaseViewController {
         prepareProjectParam()
         viewModel.findProject().subscribe { [weak self] projects in
             guard let self = self else { return }
-            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: nil, projectResult: projects)
+            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: nil, projectResult: projects, selectedProvince: self.viewModel.selectedProvince, selectedDistrict: self.viewModel.selectedDistrict)
             self.isHiddenMainTabBar = false
             self.backToPreviousView()
         }.disposed(by: viewModel.bag)
@@ -276,12 +296,7 @@ extension FilterViewController {
         provincePicker.tag = PickerTag.province
         provinceTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.province)
 
-        viewModel.getAllProvinces().subscribe { [weak self] provinces in
-            guard let self = self else { return }
-            self.viewModel.province.accept(self.viewModel.parseProvincesArray(provinces: provinces))
-        } onError: { _ in
-        } onCompleted: {
-        } .disposed(by: viewModel.bag)
+        getAllProvince()
 
         viewModel.province.subscribe(on: MainScheduler.instance)
             .bind(to: provincePicker.rx.itemTitles) { (row, element) in

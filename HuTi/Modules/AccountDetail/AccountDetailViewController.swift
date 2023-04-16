@@ -68,6 +68,7 @@ class AccountDetailViewController: BaseViewController {
                     UserDefaults.userInfo = self.viewModel.userUpdated
                     self.nameLabel.text = UserDefaults.userInfo?.name ?? ""
                     self.hideLoading()
+                    self.showAlert(title: Alert.updatedAccountSuccessfully)
                 }.disposed(by: viewModel.bag)
             }
         }

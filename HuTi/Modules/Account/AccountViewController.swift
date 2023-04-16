@@ -15,10 +15,7 @@ class AccountViewController: BaseViewController {
     var viewModel = AccountViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let name = UserDefaults.userInfo?.name else {
-            accountNameLabel.text = CommonConstants.updateInfo
-            return
-        }
+        guard let name = UserDefaults.userInfo?.name else { return }
         accountNameLabel.text = name
     }
     
@@ -33,10 +30,10 @@ class AccountViewController: BaseViewController {
     
     @IBAction func onClickedNewPostBtn(_ sender: UIButton) {
         if viewModel.checkUpdateInfo() {
-            let vc = NewPostViewController()
+            let vc = NewPostViewController.instance(isEdit: false, postDetail: nil)
             navigateTo(vc)
         } else {
-            print("Vui lòng cập nhật thông tin tài khoản")
+            showAlert(title: Alert.pleaseUpdateAccountInfo)
         }
     }
     
