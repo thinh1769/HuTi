@@ -8,6 +8,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import RxSwift
+import RxCocoa
 
 class FilterResultViewController: BaseViewController {
     
@@ -41,6 +43,7 @@ class FilterResultViewController: BaseViewController {
         setupCollectionView()
         setupTableView()
         filterResultAddPullToRefresh()
+        filterResultInfiniteScroll()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -64,16 +67,24 @@ class FilterResultViewController: BaseViewController {
             isSell = false
         }
         viewModel.getListPosts(isSell: isSell).subscribe { [weak self] posts in
-            guard let self = self else { return}
-            self.viewModel.post.accept(posts)
-            self.pinRealEstateLocation()
+            guard let self = self else { return }
+            if posts.count > 0 {
+                self.viewModel.appendPostToArray(posts: posts)
+                self.viewModel.post.accept(self.viewModel.postList)
+                self.pinRealEstateLocation()
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
+            }
         }.disposed(by: viewModel.bag)
     }
     
     private func getListProjects() {
         viewModel.getListProjects().subscribe { [weak self] projects in
             guard let self = self else { return }
-            self.viewModel.project.accept(projects)
+            if projects.count > 0 {
+                self.viewModel.appendProjectToArray(projects: projects)
+                self.viewModel.project.accept(self.viewModel.projectList)
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
+            }
         }.disposed(by: viewModel.bag)
     }
     
@@ -179,29 +190,34 @@ class FilterResultViewController: BaseViewController {
     private func filterResultAddPullToRefresh() {
         filterResultTableView.addPullToRefresh { [weak self] in
             guard let self = self else { return }
-            self.filterResultTableView.pullToRefreshView.stopAnimating()
+            self.filterResultTableView.backgroundView = nil
             self.refreshData()
+            self.filterResultTableView.pullToRefreshView.stopAnimating()
         }
     }
-//
-//    private func newsCollectionViewInfiniteScroll() {
-//        newsCollectionView.addInfiniteScrolling { [weak self] in
-//            guard let self = self else { return }
-//            self.viewModel.newsPaging += 1
-//            self.newsCollectionView.infiniteScrollingView.stopAnimating()
-//            self.loadNewsData(page: self.viewModel.newsPaging)
-//        }
-//    }
     
     private func refreshData() {
         viewModel.optionsList = []
         viewModel.options.accept(viewModel.optionsList)
         if viewModel.tabBarItemTitle == TabBarItemTitle.project {
+            viewModel.projectList.removeAll()
+            viewModel.page = 1
             getListProjects()
         } else {
+            viewModel.postList.removeAll()
+            viewModel.page = 1
             getListPosts()
         }
         optionView.isHidden = true
+    }
+    
+    private func filterResultInfiniteScroll() {
+        filterResultTableView.addInfiniteScrolling { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.page += 1
+            self.loadData()
+            self.filterResultTableView.infiniteScrollingView.stopAnimating()
+        }
     }
 }
 
@@ -213,9 +229,11 @@ extension FilterResultViewController: FilterViewControllerDelegate {
         viewModel.selectedDistrict = selectedDistrict
         if let filterPost = postResult {
             viewModel.post.accept(filterPost)
+            self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
         }
         if let filterProject = projectResult {
             viewModel.project.accept(filterProject)
+            self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
         }
         optionView.isHidden = false
     }

@@ -228,7 +228,7 @@ class NewPostViewModel: BaseViewModel {
     }
     
     func getProjectByCityId() -> Observable<[Project]> {
-        return projectService.findProject(params: searchProjectParams)
+        return projectService.findProject(params: searchProjectParams, page: nil)
     }
     
     func parseProjectArray(projects: [Project]) -> [(id: String, name: String)] {

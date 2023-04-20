@@ -150,7 +150,7 @@
                         <constraint firstItem="YAJ-i7-jSo" firstAttribute="leading" secondItem="kSU-Ch-f5g" secondAttribute="leading" id="cYu-iv-cTj"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hiện đang có 124 nhà đất đang bán" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvh-9K-Cv8" userLabel="subtitleLabel">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvh-9K-Cv8" userLabel="subtitleLabel">
                     <rect key="frame" x="20" y="72" width="350" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                     <color key="textColor" name="black"/>
@@ -175,7 +175,7 @@
                 <constraint firstItem="kSU-Ch-f5g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="u0E-py-R0T"/>
                 <constraint firstItem="yvh-9K-Cv8" firstAttribute="top" secondItem="lEM-Uz-LPX" secondAttribute="bottom" constant="10" id="zw3-W0-tet"/>
             </constraints>
-            <point key="canvasLocation" x="-1755" y="-604"/>
+            <point key="canvasLocation" x="-1828" y="-660"/>
         </view>
     </objects>
     <resources>

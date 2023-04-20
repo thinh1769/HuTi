@@ -14,10 +14,11 @@ class ProjectDetailViewModel: BaseViewModel {
     let images = BehaviorRelay<[String]>(value: [])
     let relatedPost = BehaviorRelay<[Post]>(value: [])
     var projectId = ""
+    var page = 1
     
     func getRelatedPost() -> Observable<[Post]> {
         let param = ["project": project?.id ?? ""]
-        return postService.findPost(param: param)
+        return postService.findPost(param: param, page: page)
     }
     
     func getProjectById() -> Observable<Project> {

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import SVPullToRefresh
 
 class PostedViewController: BaseViewController {
 
@@ -20,26 +23,38 @@ class PostedViewController: BaseViewController {
     }
     
     private func setupUI() {
+        loadData()
+        titleLabel.text = viewModel.title
+        setupTableView()
+        addPullToRefresh()
+        infiniteScroll()
+    }
+    
+    private func loadData() {
         if viewModel.title == MainTitle.postedPosts {
             getPostedPost()
         } else {
             getFavoritePost()
         }
-        titleLabel.text = viewModel.title
-        setupTableView()
     }
     
     private func getPostedPost() {
         viewModel.getPostedPost().subscribe { [weak self] postedPost in
             guard let self = self else { return }
-            self.viewModel.post.accept(postedPost)
+            if postedPost.count > 0 {
+                self.viewModel.appendPostToArray(posts: postedPost)
+                self.viewModel.post.accept(self.viewModel.postList)
+            }
         }.disposed(by: viewModel.bag)
     }
     
     private func getFavoritePost() {
         viewModel.getFavoritePost().subscribe { [weak self] favoritePost in
             guard let self = self else { return }
-            self.viewModel.post.accept(favoritePost)
+            if favoritePost.count > 0 {
+                self.viewModel.appendPostToArray(posts: favoritePost)
+                self.viewModel.post.accept(self.viewModel.postList)
+            }
         }.disposed(by: viewModel.bag)
     }
     
@@ -70,6 +85,25 @@ class PostedViewController: BaseViewController {
     
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         backToPreviousView()
+    }
+    
+    private func addPullToRefresh() {
+        postedTableView.addPullToRefresh { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.page = 1
+            self.viewModel.postList.removeAll()
+            self.loadData()
+            self.postedTableView.pullToRefreshView.stopAnimating()
+        }
+    }
+    
+    private func infiniteScroll() {
+        postedTableView.addInfiniteScrolling { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.page += 1
+            self.loadData()
+            self.postedTableView.infiniteScrollingView.stopAnimating()
+        }
     }
 }
 

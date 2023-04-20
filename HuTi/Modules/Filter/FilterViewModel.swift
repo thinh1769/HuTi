@@ -26,6 +26,7 @@ class FilterViewModel: BaseViewModel {
     var optionsList = [(key: Int, value: String)]()
     var searchPostParams = [String: Any]()
     var searchProjectParams = [String: Any]()
+    var page = 1
     
     func pickItem(pickerTag: Int) -> String? {
         switch pickerTag{
@@ -116,10 +117,10 @@ class FilterViewModel: BaseViewModel {
     }
     
     func findPost() -> Observable<[Post]> {
-        return postService.findPost(param: searchPostParams)
+        return postService.findPost(param: searchPostParams, page: page)
     }
     
     func findProject() -> Observable<[Project]> {
-        return projectService.findProject(params: searchProjectParams)
+        return projectService.findProject(params: searchProjectParams, page: page)
     }
 }

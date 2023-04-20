@@ -12,20 +12,35 @@ import RxSwift
 class FilterResultViewModel: BaseViewModel {
     var optionsList = [String]()
     let post = BehaviorRelay<[Post]>(value: [])
+    var postList = [Post]()
     let project = BehaviorRelay<[Project]>(value: [])
+    var projectList = [Project]()
     let options = BehaviorRelay<[String]>(value: [])
     var tabBarItemTitle = TabBarItemTitle.sell
     var mainTabBarItemTitle = MainTitle.sell
     var tuppleOptionsList = [(key: Int, value: String)]()
     var searchPostParams = [String: Any]()
     var searchProjectParams = [String: Any]()
+    var page = 1
     
     func getListPosts(isSell: Bool) -> Observable<[Post]> {
-        return postService.getListPosts(isSell: isSell)
+        return postService.getListPosts(isSell: isSell, page: page)
+    }
+    
+    func appendPostToArray(posts: [Post]) {
+        for post in posts {
+            postList.append(post)
+        }
     }
     
     func getListProjects() -> Observable<[Project]> {
-        return projectService.getListProjects()
+        return projectService.getListProjects(page: page)
+    }
+    
+    func appendProjectToArray(projects: [Project]) {
+        for project in projects {
+            projectList.append(project)
+        }
     }
     
     func parseOptionTuppleToArray() {
@@ -47,10 +62,10 @@ class FilterResultViewModel: BaseViewModel {
     }
     
     func findPost() -> Observable<[Post]> {
-        return postService.findPost(param: searchPostParams)
+        return postService.findPost(param: searchPostParams, page: page)
     }
     
     func findProject() -> Observable<[Project]> {
-        return projectService.findProject(params: searchProjectParams)
+        return projectService.findProject(params: searchProjectParams, page: page)
     }
 }

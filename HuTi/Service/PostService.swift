@@ -14,24 +14,24 @@ class PostService: BaseService {
         return request(api: APIConstants.addNewPost.rawValue, method: .post, params: post)
     }
     
-    func getListPosts(isSell: Bool) -> Observable<[Post]> {
+    func getListPosts(isSell: Bool, page: Int) -> Observable<[Post]> {
         let param = ["isSell": isSell]
-        return request(api: APIConstants.getPosts.rawValue, method: .post, params: param)
+        return request(api: "\(APIConstants.getPosts.rawValue)?page=\(page)" , method: .post, params: param)
     }
     
     func getPostById(postId: String) -> Observable<PostDetail> {
         return request(api: APIConstants.getPostById.rawValue + postId, method: .get)
     }
     
-    func getPostByUserId() -> Observable<[Post]> {
-        return request(api: .getPostByUserId)
+    func getPostByUserId(page: Int) -> Observable<[Post]> {
+        return request(api: "\(APIConstants.getPostByUserId.rawValue)?page=\(page)", method: .get)
     }
     
-    func getFavoritePost() -> Observable<[Post]> {
-        return request(api: .getFavoritePost)
+    func getFavoritePost(page: Int) -> Observable<[Post]> {
+        return request(api: "\(APIConstants.getFavoritePost.rawValue)?page=\(page)", method: .get)
     }
     
-    func findPost(param: [String: Any]) -> Observable<[Post]> {
-        return request(api: APIConstants.findPost.rawValue, method: .post, params: param)
+    func findPost(param: [String: Any], page: Int) -> Observable<[Post]> {
+        return request(api: "\(APIConstants.findPost.rawValue)?page=\(page)", method: .post, params: param)
     }
 }

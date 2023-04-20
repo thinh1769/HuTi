@@ -132,7 +132,7 @@ class FilterViewController: BaseViewController {
                 searchPost()
             }
         } else {
-            print("vui long chọn loại và tỉnh thành phố")
+            showAlert(title: Alert.pleaseChooseTypeProvince)
         }
     }
     
@@ -482,11 +482,15 @@ extension FilterViewController {
         case PickerTag.type:
             typeTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.province:
-            setupDistrictDataPicker()
             provinceTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+            if provinceTextField.text != "" {
+                setupDistrictDataPicker()
+            }
         case PickerTag.district:
-            setupWardDataPicker()
             districtTextField.text = viewModel.pickItem(pickerTag: sender.tag)
+            if districtTextField.text != "" {
+                setupWardDataPicker()
+            }
         case PickerTag.ward:
             wardTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.price:

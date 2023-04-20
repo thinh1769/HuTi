@@ -19,6 +19,11 @@ struct CommonConstants {
     static let DATE_FORMAT = "dd/MM/yyyy"
     static let dateFormatAWSS3 = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     static let networkError = "Lỗi kết nối mạng"
+    static let firstSubtitle = "Hiện tại có"
+    static let realEstate = "nhà đất"
+    static let sell = "đang bán"
+    static let forRent = "đang cho thuê"
+    static let project = "dự án"
 }
 
 struct TextFieldPlaceHolder {
@@ -171,4 +176,5 @@ struct Alert {
     static let pleaseUpdateAccountInfo = "Vui lòng cập nhật thông tin tài khoản"
     static let updatedAccountSuccessfully = "Cập nhật tài khoản thành công"
     static let postSuccessfully = "Đăng tin thành công"
+    static let pleaseChooseTypeProvince = "Vui lòng chọn loại và tỉnh thành"
 }
