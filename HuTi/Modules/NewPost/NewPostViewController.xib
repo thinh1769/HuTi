@@ -51,6 +51,8 @@
                 <outlet property="provinceTextField" destination="OZd-cE-pdO" id="Oxz-Pm-195"/>
                 <outlet property="sellCheckmarkImage" destination="ESq-lg-euA" id="XGW-Zg-TUn"/>
                 <outlet property="sellView" destination="mh8-7W-GRT" id="3hV-0X-4NY"/>
+                <outlet property="submitButton" destination="bFa-E5-qJe" id="Yl9-7U-E0v"/>
+                <outlet property="titleLabel" destination="D44-Un-bLi" id="q1T-m7-trD"/>
                 <outlet property="titleTextField" destination="tTD-Ed-xcB" id="ot7-ZD-0TG"/>
                 <outlet property="typeTextField" destination="vDW-yl-gnP" id="NBn-lD-5RC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -1592,17 +1594,17 @@
                 <constraint firstItem="eFB-9t-KvU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="sZn-zJ-Jda"/>
                 <constraint firstItem="D44-Un-bLi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zO7-qh-kwn"/>
             </constraints>
-            <point key="canvasLocation" x="-1478" y="-99"/>
+            <point key="canvasLocation" x="-1633" y="-201"/>
         </view>
     </objects>
     <resources>
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
-        <image name="chevron.left" catalog="system" width="32" height="32"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="location.fill" catalog="system" width="128" height="119"/>
-        <image name="mappin" catalog="system" width="32" height="32"/>
+        <image name="mappin" catalog="system" width="106" height="128"/>
         <image name="minus.circle" catalog="system" width="128" height="123"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>
         <namedColor name="background">

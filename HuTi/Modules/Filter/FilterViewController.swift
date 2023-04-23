@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol FilterViewControllerDelegate: AnyObject {
-    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]?, projectResult: [Project]?, selectedProvince: Int, selectedDistrict: Int)
+    func didTapApplyButton(listOptions: [(Int, String)], findPostParams: [String: Any]?, selectedProvince: Int, selectedDistrict: Int)
     
     func didTapResetButton()
 }
@@ -129,28 +129,31 @@ class FilterViewController: BaseViewController {
             if viewModel.tabBarItemTitle == TabBarItemTitle.project {
                 searchProject()
             } else {
-                searchPost()
+                preparePostParam()
+                delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), findPostParams: viewModel.searchPostParams, selectedProvince: viewModel.selectedProvince, selectedDistrict: viewModel.selectedDistrict)
+                self.isHiddenMainTabBar = false
+                self.backToPreviousView()
             }
         } else {
             showAlert(title: Alert.pleaseChooseTypeProvince)
         }
     }
     
-    private func searchPost() {
-        preparePostParam()
-        viewModel.findPost().subscribe { [weak self] posts in
-            guard let self = self else { return }
-            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: posts, projectResult: nil, selectedProvince: self.viewModel.selectedProvince, selectedDistrict: self.viewModel.selectedDistrict)
-            self.isHiddenMainTabBar = false
-            self.backToPreviousView()
-        }.disposed(by: viewModel.bag)
-    }
-    
+//    private func searchPost() {
+//        preparePostParam()
+//        viewModel.findPost().subscribe { [weak self] posts in
+//            guard let self = self else { return }
+//            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), selectedProvince: self.viewModel.selectedProvince, selectedDistrict: self.viewModel.selectedDistrict)
+//            self.isHiddenMainTabBar = false
+//            self.backToPreviousView()
+//        }.disposed(by: viewModel.bag)
+//    }
+//    
     private func searchProject() {
         prepareProjectParam()
         viewModel.findProject().subscribe { [weak self] projects in
             guard let self = self else { return }
-            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), postResult: nil, projectResult: projects, selectedProvince: self.viewModel.selectedProvince, selectedDistrict: self.viewModel.selectedDistrict)
+            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), findPostParams: nil, selectedProvince: self.viewModel.selectedProvince, selectedDistrict: self.viewModel.selectedDistrict)
             self.isHiddenMainTabBar = false
             self.backToPreviousView()
         }.disposed(by: viewModel.bag)

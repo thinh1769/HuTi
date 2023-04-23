@@ -31,6 +31,9 @@ class NewPostViewModel: BaseViewModel {
     var searchProjectParams = [String: Any]()
     var isEdit = false
     var post: PostDetail?
+    var projectDetail: Project?
+    var updatePostParams = [String: Any]()
+    var newPostParams = [String: Any]()
     
     func setupDataImageCollectionView() {
         selectedImage.accept(images)
@@ -124,42 +127,75 @@ class NewPostViewModel: BaseViewModel {
         }
     }
     
-    func addNewPost(address: String, long: Double, lat: Double, title: String, description: String, acreage: Double, price: Double, bedroom: Int, bathroom: Int, floor: Int, wayIn: Double, facade: Double, contactName: String, contactPhoneNumber: String) -> Observable<PostDetail> {
-        return postService.addPost(post: PostDetail(
-                    isSell: isSelectedSell,
-                    realEstateType: realEstateType.value[selectedType],
-                    provinceCode: province.value[selectedProvince].id,
-                    districtCode: district.value[selectedDistrict].id,
-                    wardCode: ward.value[selectedWard].id,
-                    provinceName: province.value[selectedProvince].name,
-                    districtName: district.value[selectedDistrict].name,
-                    wardName: ward.value[selectedWard].name,
-                    address: address,
-                    project: project.value[selectedProject].id,
-                    lat: lat,
-                    long: long,
-                    title: title,
-                    description: description,
-                    acreage: acreage,
-                    acreageRange: getAcreageRange(acreage: acreage),
-                    price: price,
-                    priceRange: getPriceRange(price: price),
-                    legal: legal.value[selectedLegal],
-                    funiture: funiture.value[selectedFuniture],
-                    bedroom: bedroom,
-                    bedroomRange: getBedroomRange(bedroom: bedroom),
-                    bathroom: bathroom,
-                    floor: floor,
-                    houseDirection: houseDirection.value[selectedHouseDirection],
-                    balconyDirection: balconyDirection.value[selectedBalconyDirection],
-                    wayIn: wayIn,
-                    facade: facade,
-                    images: imagesName,
-                    contactName: contactName,
-                    contactPhoneNumber: contactPhoneNumber))
+    func addNewPost(address: String, long: Double, lat: Double, title: String, description: String, acreage: Double, price: Int, bedroom: Int, bathroom: Int, floor: Int, wayIn: Double, facade: Double, contactName: String, contactPhoneNumber: String) -> Observable<PostDetail> {
+        
+        /// Required Field
+        newPostParams.updateValue(isSelectedSell, forKey: "isSell")
+        newPostParams.updateValue(self.realEstateType.value[selectedType], forKey: "realEstateType")
+        newPostParams.updateValue(self.province.value[selectedProvince].name, forKey: "provinceName")
+        newPostParams.updateValue(self.province.value[selectedProvince].id, forKey: "provinceCode")
+        newPostParams.updateValue(self.district.value[selectedDistrict].name, forKey: "districtName")
+        newPostParams.updateValue(self.district.value[selectedDistrict].id, forKey: "districtCode")
+        newPostParams.updateValue(self.ward.value[selectedWard].name, forKey: "wardName")
+        newPostParams.updateValue(self.ward.value[selectedWard].id, forKey: "wardCode")
+        newPostParams.updateValue(address, forKey: "address")
+        newPostParams.updateValue(lat, forKey: "lat")
+        newPostParams.updateValue(long, forKey: "long")
+        newPostParams.updateValue(title, forKey: "title")
+        newPostParams.updateValue(description, forKey: "description")
+        newPostParams.updateValue(acreage, forKey: "acreage")
+        newPostParams.updateValue(getAcreageRange(acreage: acreage), forKey: "acreageRange")
+        newPostParams.updateValue(price, forKey: "price")
+        newPostParams.updateValue(getPriceRange(price: price), forKey: "priceRange")
+        newPostParams.updateValue(self.legal.value[selectedLegal], forKey: "legal")
+        newPostParams.updateValue(imagesName, forKey: "images")
+        newPostParams.updateValue(contactName, forKey: "contactName")
+        newPostParams.updateValue(contactPhoneNumber, forKey: "contactPhoneNumber")
+        
+        if selectedProject > -1 {
+            newPostParams.updateValue(project.value[selectedProject].id, forKey: "project")
+            newPostParams.updateValue(project.value[selectedProject].name, forKey: "projectName")
+        }
+        
+        if selectedFuniture > -1 {
+            newPostParams.updateValue(funiture.value[selectedFuniture], forKey: "funiture")
+        }
+        
+        if bedroom > 0 {
+            newPostParams.updateValue(getBedroomRange(bedroom: bedroom), forKey: "bedroomRange")
+            newPostParams.updateValue(bedroom, forKey: "bedroom")
+        }
+        
+        if bathroom > 0 {
+            newPostParams.updateValue(bathroom, forKey: "bathroom")
+        }
+        
+        if floor > 0 {
+            newPostParams.updateValue(floor, forKey: "floor")
+        }
+        
+        if selectedHouseDirection > -1 {
+            newPostParams.updateValue(houseDirection.value[selectedHouseDirection], forKey: "houseDirection")
+        }
+        
+        if selectedBalconyDirection > -1 {
+            newPostParams.updateValue(balconyDirection.value[selectedBalconyDirection], forKey: "balconyDirection")
+        }
+        
+        if wayIn > 0 {
+            newPostParams.updateValue(wayIn, forKey: "wayIn")
+        }
+        
+        if facade > 0 {
+            newPostParams.updateValue(facade, forKey: "facade")
+        }
+        
+        print("------\(newPostParams)")
+        
+        return postService.addPost(params: newPostParams)
     }
     
-    private func getPriceRange(price: Double) -> String {
+    private func getPriceRange(price: Int) -> String {
         if price < 500000000 {
             return PickerData.price[1]
         } else if price < 800000000 {
@@ -241,6 +277,139 @@ class NewPostViewModel: BaseViewModel {
         return sortedProject
     }
     
+    func checkUpdatePost(_ realEstateType: String,
+                         _ province: String,
+                         _ district: String,
+                         _ ward: String,
+                         _ address: String,
+                         _ project: String,
+                         _ lat: Double,
+                         _ long: Double,
+                         _ title: String,
+                         _ description: String,
+                         _ acreage: String,
+                         _ price: String,
+                         _ legal: String,
+                         _ funiture: String,
+                         _ bedroom: String,
+                         _ bathroom: String,
+                         _ floor: String,
+                         _ houseDirection: String,
+                         _ balconyDirection: String,
+                         _ wayIn: String,
+                         _ facade: String,
+                         _ contactName: String,
+                         _ contactNumber: String) -> Bool {
+        guard let post = self.post else { return false }
+        var isUpdated = false
+        if isSelectedSell != post.isSell {
+            isUpdated = true
+            updatePostParams.updateValue(isSelectedSell, forKey: "isSell")
+        }
+        
+        if realEstateType != post.realEstateType {
+            isUpdated = true
+            updatePostParams.updateValue(realEstateType, forKey: "realEstateType")
+        }
+        
+        if province != post.provinceName {
+            isUpdated = true
+            updatePostParams.updateValue(self.province.value[selectedProvince].name, forKey: "provinceName")
+            updatePostParams.updateValue(self.province.value[selectedProvince].id, forKey: "provinceCode")
+        }
+        
+        if district != post.districtName {
+            isUpdated = true
+            updatePostParams.updateValue(district, forKey: "districtName")
+            updatePostParams.updateValue(self.district.value[selectedDistrict].id, forKey: "districtCode")
+        }
+        
+        if ward != post.wardName {
+            isUpdated = true
+            updatePostParams.updateValue(ward, forKey: "wardName")
+            updatePostParams.updateValue(self.ward.value[selectedWard].id, forKey: "wardCode")
+        }
+        
+        if address != post.address {
+            isUpdated = true
+            updatePostParams.updateValue(address, forKey: "address")
+        }
+        
+        if lat != post.lat {
+            isUpdated = true
+            updatePostParams.updateValue(lat, forKey: "lat")
+        }
+        
+        if long != post.long {
+            isUpdated = true
+            updatePostParams.updateValue(long, forKey: "long")
+        }
+        
+        if title != post.title {
+            isUpdated = true
+            updatePostParams.updateValue(title, forKey: "title")
+        }
+        
+        if description != post.description {
+            isUpdated = true
+            updatePostParams.updateValue(description, forKey: "description")
+        }
+        
+        
+        if let parseAcreage = Double(acreage),
+           parseAcreage != post.acreage {
+            isUpdated = true
+            updatePostParams.updateValue(parseAcreage, forKey: "acreage")
+        }
+        
+        if let parsePrice = Int(price),
+           parsePrice != post.price {
+            isUpdated = true
+            updatePostParams.updateValue(parsePrice, forKey: "price")
+        }
+        
+        if legal != post.legal {
+            isUpdated = true
+            updatePostParams.updateValue(self.legal.value[selectedLegal], forKey: "legal")
+        }
+        
+        if contactName != post.contactName {
+            isUpdated = true
+            updatePostParams.updateValue(contactName, forKey: "contactName")
+        }
+        
+        if contactNumber != post.contactPhoneNumber {
+            isUpdated = true
+            updatePostParams.updateValue(contactNumber, forKey: "contactNumber")
+        }
+        
+        if let postProject = post.projectName,
+           project != postProject {
+            isUpdated = true
+            updatePostParams.updateValue(self.project.value[selectedProject].name, forKey: "projectName")
+            updatePostParams.updateValue(self.project.value[selectedProject].id, forKey: "project")
+        }
+        
+        if let postFuniture = post.funiture,
+           funiture != postFuniture {
+            
+        }
+////                project == post.projectName &&
+////                funiture == post.funiture &&
+////                Int(bedroom) == post.bedroom &&
+////                Int(bathroom) == post.bathroom &&
+////                Int(floor) == post.floor &&
+////                houseDirection == post.houseDirection &&
+////                balconyDirection == post.balconyDirection &&
+////                Double(wayIn) == post.wayIn &&
+////                Double(facade) == post.facade &&
+//                contactName == post.contactName &&
+//                contactNumber == post.contactNumber {
+//            return isUpdated
+//        }
+        return isUpdated
+    }
+    
     func uploadImage(completion: @escaping() -> Void) {
         guard let data = imageSelected.pngData() else { return }
         
@@ -250,8 +419,8 @@ class NewPostViewModel: BaseViewModel {
         let assetDataModel = AssetDataModel(data: data, pathFile: "", thumbnail: imageSelected)
         assetDataModel.compressed = true
         assetDataModel.compressData()
-        assetDataModel.remoteName = "\(UserDefaults.userInfo?.id ?? "")_\(timeInterval)"
-        imagesName.append(assetDataModel.remoteName)
+        assetDataModel.remoteName = imagesName.last ?? ""
+//        imagesName.append(assetDataModel.remoteName)
         
         awsService.uploadImage(data: assetDataModel, completionHandler:  { [weak self] _, error in
             guard self != nil else { return }

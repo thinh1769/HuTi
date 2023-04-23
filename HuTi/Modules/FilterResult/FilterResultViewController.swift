@@ -56,8 +56,8 @@ class FilterResultViewController: BaseViewController {
         if viewModel.tabBarItemTitle != TabBarItemTitle.project {
             getListPosts()
         } else {
-            getListProjects()
-            mapButton.isHidden = true
+        getListProjects()
+        mapButton.isHidden = true
         }
     }
     
@@ -215,26 +215,45 @@ class FilterResultViewController: BaseViewController {
         filterResultTableView.addInfiniteScrolling { [weak self] in
             guard let self = self else { return }
             self.viewModel.page += 1
-            self.loadData()
+            if self.viewModel.options.value.count > 0 {
+                self.findPost()
+            } else {
+                self.loadData()
+            }
             self.filterResultTableView.infiniteScrollingView.stopAnimating()
         }
+    }
+    
+    private func findPost() {
+        viewModel.findPost().subscribe { [weak self] posts in
+            guard let self = self else { return }
+            if posts.count > 0 {
+                if self.viewModel.page == 1 {
+                    self.viewModel.post.accept(posts)
+                } else {
+                    self.viewModel.post.accept(self.viewModel.post.value + posts)
+                }
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
+            }
+        }.disposed(by: viewModel.bag)
     }
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {
-    func didTapApplyButton(listOptions: [(Int, String)], postResult: [Post]?, projectResult: [Project]?, selectedProvince: Int, selectedDistrict: Int) {
+    func didTapApplyButton(listOptions: [(Int, String)], findPostParams: [String: Any]?, selectedProvince: Int, selectedDistrict: Int) {
         viewModel.tuppleOptionsList = listOptions
+        if let param = findPostParams {
+            viewModel.searchPostParams = param
+        }
         viewModel.parseOptionTuppleToArray()
         viewModel.selectedProvince = selectedProvince
         viewModel.selectedDistrict = selectedDistrict
-        if let filterPost = postResult {
-            viewModel.post.accept(filterPost)
-            self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
-        }
-        if let filterProject = projectResult {
-            viewModel.project.accept(filterProject)
-            self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
-        }
+        viewModel.page = 1
+        findPost()
+//        if let filterProject = projectResult {
+//            viewModel.project.accept(filterProject)
+//            self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
+//        }
         optionView.isHidden = false
     }
     

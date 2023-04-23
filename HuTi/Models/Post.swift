@@ -44,13 +44,14 @@ struct PostDetail: Codable {
     var wardName: String
     var address: String
     var project: String?
+    var projectName: String?
     var lat: Double
     var long: Double
     var title: String
     var description: String
     var acreage: Double
     var acreageRange: String?
-    var price: Double
+    var price: Int
     var priceRange: String?
     var legal: String
     var funiture: String?
@@ -58,6 +59,8 @@ struct PostDetail: Codable {
     var bedroomRange: String?
     var bathroom: Int?
     var floor: Int?
+    var browseStatus: Int?
+    var status: Int?
     var houseDirection: String?
     var balconyDirection: String?
     var wayIn: Double?

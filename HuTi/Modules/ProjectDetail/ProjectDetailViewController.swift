@@ -7,6 +7,8 @@
 
 import UIKit
 import MapKit
+import RxCocoa
+import RxSwift
 
 class ProjectDetailViewController: BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
@@ -28,6 +30,7 @@ class ProjectDetailViewController: BaseViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var relatedPostCollectionView: UICollectionView!
+    @IBOutlet weak var relatedPostLabel: UILabel!
     
     private var viewModel = ProjectDetailViewModel()
     private var locationManager = CLLocationManager()
@@ -68,7 +71,12 @@ class ProjectDetailViewController: BaseViewController {
     private func getRelatedPost() {
         viewModel.getRelatedPost().subscribe { [weak self] relatedPosts in
             guard let self = self else { return }
-            self.viewModel.relatedPost.accept(relatedPosts)
+            if relatedPosts.count > 0 {
+                self.viewModel.relatedPost.accept(relatedPosts)
+            } else {
+                self.relatedPostLabel.isHidden = true
+                self.relatedPostCollectionView.isHidden = true
+            }
         }.disposed(by: viewModel.bag)
     }
     

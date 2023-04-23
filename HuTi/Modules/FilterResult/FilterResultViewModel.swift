@@ -27,6 +27,16 @@ class FilterResultViewModel: BaseViewModel {
         return postService.getListPosts(isSell: isSell, page: page)
     }
     
+//    func searchProject() {
+//        prepareProjectParam()
+//        viewModel.findProject().subscribe { [weak self] projects in
+//            guard let self = self else { return }
+//            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), selectedProvince: self.viewModel.selectedProvince, selectedDistrict: self.viewModel.selectedDistrict)
+//            self.isHiddenMainTabBar = false
+//            self.backToPreviousView()
+//        }.disposed(by: viewModel.bag)
+//    }
+    
     func appendPostToArray(posts: [Post]) {
         for post in posts {
             postList.append(post)

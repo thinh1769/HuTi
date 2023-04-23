@@ -31,6 +31,7 @@
                 <outlet property="priceView" destination="p0P-HZ-twg" id="R7W-s5-bBI"/>
                 <outlet property="projectTypeLabel" destination="6mu-tO-Liz" id="vf0-bN-Z2N"/>
                 <outlet property="relatedPostCollectionView" destination="L4U-p9-5Vo" id="Tq5-mS-MNP"/>
+                <outlet property="relatedPostLabel" destination="yNt-XC-aau" id="S6w-0w-Gyt"/>
                 <outlet property="statusLabel" destination="Aqa-Da-9XA" id="CwB-Yi-WKE"/>
                 <outlet property="statusView" destination="aVR-28-VKK" id="gt2-CF-mD8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -383,7 +384,7 @@
                 <constraint firstItem="2DU-kL-O51" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="vWe-9H-OSY"/>
                 <constraint firstItem="zyd-aB-YfV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wWp-aN-xYM"/>
             </constraints>
-            <point key="canvasLocation" x="197" y="29"/>
+            <point key="canvasLocation" x="-25" y="-47"/>
         </view>
     </objects>
     <resources>

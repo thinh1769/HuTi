@@ -77,8 +77,4 @@ class FilterResultTableViewCell: UITableViewCell {
         self.thumbnail.image = nil
     }
     
-    func loadThumbnail(thumbnail: UIImage) {
-        self.thumbnail.image = thumbnail
-    }
-    
 }

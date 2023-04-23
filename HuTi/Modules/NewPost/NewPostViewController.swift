@@ -15,6 +15,8 @@ import PhotosUI
 
 class NewPostViewController: BaseViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var sellCheckmarkImage: UIImageView!
     @IBOutlet weak var forRentCheckmarkImage: UIImageView!
     @IBOutlet weak var typeTextField: UITextField!
@@ -72,6 +74,21 @@ class NewPostViewController: BaseViewController {
     private let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
     var config = PHPickerConfiguration()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+        if viewModel.isEdit {
+            titleLabel.text = "Chỉnh sửa"
+            submitButton.setTitle("Lưu", for: .normal)
+        } else {
+            titleLabel.text = "Đăng tin mới"
+            submitButton.setTitle("Đăng tin", for: .normal)
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -80,9 +97,7 @@ class NewPostViewController: BaseViewController {
     private func setupUI() {
         setupPickerView()
         setupImageCollectionView()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        acreageTextField.delegate = self
         mapView.isUserInteractionEnabled = false
         currentLocationButton.isUserInteractionEnabled = false
         sellView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedSellView)))
@@ -141,7 +156,11 @@ class NewPostViewController: BaseViewController {
         }.disposed(by: viewModel.bag)
     
         contactNameTextField.text = UserDefaults.userInfo?.name ?? ""
-        contactPhoneTextField.text = UserDefaults.userInfo?.phoneNumber ?? ""
+        contactPhoneTextField.text = UserDefaults.userInfo?.phoneNumber
+        
+        if viewModel.isEdit {
+            loadPostDetailForEdit()
+        }
     }
     
     private func setupPickerView() {
@@ -247,25 +266,84 @@ class NewPostViewController: BaseViewController {
     }
     
     @IBAction func onClickedPostBtn(_ sender: UIButton) {
-        viewModel.addNewPost(address: addressTextField.text ?? ""
-                             , long: mapView.centerCoordinate.longitude
-                             , lat: mapView.centerCoordinate.latitude
-                             , title: titleTextField.text ?? ""
-                             , description: descriptionTextView.text ?? ""
-                             , acreage: Double(acreageTextField.text ?? "") ?? 0
-                             , price: Double(priceTextField.text ?? "") ?? 0
-                             , bedroom: Int(bedroomNumberLabel.text ?? "") ?? 0
-                             , bathroom: Int(bathroomNumberLabel.text ?? "") ?? 0
-                             , floor: Int(floorNumberLabel.text ?? "") ?? 0
-                             , wayIn: Double(wayInTextField.text ?? "") ?? 0
-                             , facade: Double(facadeTextField.text ?? "") ?? 0
-                             , contactName: contactNameTextField.text ?? ""
-                             , contactPhoneNumber: contactPhoneTextField.text ?? "")
-        .subscribe { [weak self] _ in
-            guard let self = self else { return }
-            self.showAlert(title: Alert.postSuccessfully)
-            self.backToPreviousView()
-        }.disposed(by: viewModel.bag)
+        if !viewModel.isEdit {
+            if validateForm(){
+                viewModel.addNewPost(address: addressTextField.text ?? ""
+                                     , long: mapView.centerCoordinate.longitude
+                                     , lat: mapView.centerCoordinate.latitude
+                                     , title: titleTextField.text ?? ""
+                                     , description: descriptionTextView.text ?? ""
+                                     , acreage: Double(acreageTextField.text ?? "") ?? 0
+                                     , price: Int(priceTextField.text ?? "") ?? 0
+                                     , bedroom: Int(bedroomNumberLabel.text ?? "") ?? 0
+                                     , bathroom: Int(bathroomNumberLabel.text ?? "") ?? 0
+                                     , floor: Int(floorNumberLabel.text ?? "") ?? 0
+                                     , wayIn: Double(wayInTextField.text ?? "") ?? 0
+                                     , facade: Double(facadeTextField.text ?? "") ?? 0
+                                     , contactName: contactNameTextField.text ?? ""
+                                     , contactPhoneNumber: contactPhoneTextField.text ?? "")
+                .subscribe { [weak self] _ in
+                    guard let self = self else { return }
+                    self.backToPreviousView()
+                    self.showAlert(title: Alert.postSuccessfully)
+                }.disposed(by: viewModel.bag)
+            }
+        } else if viewModel.checkUpdatePost(typeTextField.text ?? "",
+                                            provinceTextField.text ?? "",
+                                            districtTextField.text ?? "",
+                                            wardTextField.text ?? "",
+                                            addressTextField.text ?? "",
+                                            projectTextField.text ?? "",
+                                            mapView.centerCoordinate.latitude,
+                                            mapView.centerCoordinate.longitude,
+                                            titleTextField.text ?? "",
+                                            descriptionTextView.text ?? "",
+                                            acreageTextField.text ?? "",
+                                            priceTextField.text ?? "",
+                                            legalTextField.text ?? "",
+                                            funitureTextField.text ?? "",
+                                            bedroomNumberLabel.text ?? "",
+                                            bathroomNumberLabel.text ?? "",
+                                            floorNumberLabel.text ?? "",
+                                            houseDirectionTextField.text ?? "",
+                                            balconyDirectionTextField.text ?? "",
+                                            wayInTextField.text ?? "",
+                                            facadeTextField.text ?? "",
+                                            contactNameTextField.text ?? "",
+                                            contactPhoneTextField.text ?? "") {
+            print("=============Đã chỉnh sửa post============")
+            print("updatePostParams = \(viewModel.updatePostParams)")
+        } else {
+            print("=============Chưa chỉnh sửa post============")
+            print("updatePostParams = \(viewModel.updatePostParams)")
+        }
+    }
+    
+    private func validateForm() -> Bool {
+        if typeTextField.text == "" ||
+            provinceTextField.text == "" ||
+            districtTextField.text == "" ||
+            wardTextField.text == "" ||
+            addressTextField.text == "" ||
+            titleTextField.text == "" ||
+            descriptionTextView.text == "" ||
+            acreageTextField.text == "" ||
+            priceTextField.text == "" ||
+            legalTextField.text == "" ||
+            contactNameTextField.text == "" ||
+            contactPhoneTextField.text == "" ||
+            viewModel.imagesName.count == 0 {
+            self.showAlert(title: "Vui lòng nhập đủ những thông tin bắt buộc")
+            return false
+        }
+        
+        if let text = acreageTextField.text,
+            text.isMatches(RegexConstants.DOUBLE) {
+            print("is matched---------------")
+        } else {
+            print("not matched---------------")
+        }
+        return true
     }
     
     @IBAction func onClickedImageButton(_ sender: UIButton) {
@@ -305,16 +383,32 @@ class NewPostViewController: BaseViewController {
         }
     }
     
-//    private func loadPostDetailForEdit() {
-//        guard let post = viewModel.post else { return }
-//        chooseSell(post.isSell)
-//        typeTextField.text = post.realEstateType
-//        provinceTextField.text = post.provinceName
-//        districtTextField.text = post.districtName
-//        wardTextField.text = post.wardName
-//        addressTextField.text = post.address
-//        projectTextField.text = post.
-//    }
+    private func loadPostDetailForEdit() {
+        guard let post = viewModel.post else { return }
+        chooseSell(post.isSell)
+        typeTextField.text = post.realEstateType
+        provinceTextField.text = post.provinceName
+        districtTextField.text = post.districtName
+        wardTextField.text = post.wardName
+        addressTextField.text = post.address
+        projectTextField.text = post.projectName
+        moveCameraToLocation(post.lat, post.long)
+        titleTextField.text = post.title
+        descriptionTextView.text = post.description
+        acreageTextField.text = "\(post.acreage)"
+        priceTextField.text = "\(post.price)"
+        legalTextField.text = post.legal
+        funitureTextField.text = post.funiture
+        bedroomNumberLabel.text = "\(post.bedroom ?? 0)"
+        bathroomNumberLabel.text = "\(post.bathroom ?? 0)"
+        floorNumberLabel.text = "\(post.floor ?? 0)"
+        houseDirectionTextField.text = post.houseDirection
+        balconyDirectionTextField.text = post.balconyDirection
+        wayInTextField.text = "\(post.wayIn ?? 0)"
+        facadeTextField.text = "\(post.facade ?? 0)"
+        contactNameTextField.text = post.contactName
+        contactPhoneTextField.text = post.contactPhoneNumber
+    }
 }
 
 extension NewPostViewController: UICollectionViewDelegateFlowLayout {
@@ -328,7 +422,6 @@ extension NewPostViewController: CLLocationManagerDelegate {
         if let location = locations.first {
             locationManager.stopUpdatingLocation()
             moveCameraToLocation(location.coordinate.latitude, location.coordinate.longitude)
-            let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             mapView.showsUserLocation = true
         }
     }
@@ -347,9 +440,14 @@ extension NewPostViewController: PHPickerViewControllerDelegate {
             item.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
                 guard let self = self else { return }
                 if let image = image {
+                    print("---Đang tải hình ảnh lên")
                     self.viewModel.imageSelected = (image as! UIImage).rotate()
                     self.viewModel.images.append(self.viewModel.imageSelected)
                     self.viewModel.setupDataImageCollectionView()
+                    
+                    let now = Date()
+                    let timeInterval = now.timeIntervalSince1970
+                    self.viewModel.imagesName.append("\(UserDefaults.userInfo?.id ?? "")_\(timeInterval)")
                     self.viewModel.uploadImage {
                         DispatchQueue.main.async {
                             print("---upload image thành công")
@@ -358,6 +456,16 @@ extension NewPostViewController: PHPickerViewControllerDelegate {
                 }
             }
         }
+    }
+}
+
+extension NewPostViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "," {
+            textField.text = (textField.text ?? "") + "."
+            return false
+        }
+        return true
     }
 }
 

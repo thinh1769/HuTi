@@ -16,7 +16,7 @@ class PostedViewModel: BaseViewModel {
     var postList = [Post]()
     
     func getPostedPost() -> Observable<[Post]> {
-        return postService.getPostByUserId(page: page)
+        return postService.getPostByUserId(page: page, userId: UserDefaults.userInfo?.id ?? "")
     }
     
     func appendPostToArray(posts: [Post]) {

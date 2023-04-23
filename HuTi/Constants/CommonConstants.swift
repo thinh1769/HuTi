@@ -160,6 +160,7 @@ enum SubviewTag: Int {
 struct RegexConstants {
     static let PHONE_NUMBER = "^0\\d{9}$"
     static let PASSWORD = "^\\S{5,20}$"
+    static let DOUBLE = #"^\d+(\.\d+)?$"#
     //static let NUMBER = "^\\d{1,}$"
 }
 

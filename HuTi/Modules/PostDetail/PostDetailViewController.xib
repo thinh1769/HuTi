@@ -23,6 +23,7 @@
                 <outlet property="bedroomLabel" destination="Jpb-wz-kll" id="Xlf-1u-Xsm"/>
                 <outlet property="bedroomView" destination="WND-ZQ-2Lq" id="IKd-2s-7H7"/>
                 <outlet property="descriptionLabel" destination="ZeK-L5-2mU" id="P8L-kt-R9f"/>
+                <outlet property="editButton" destination="a6u-u1-eGi" id="3OY-KI-j9b"/>
                 <outlet property="facadeLabel" destination="Emg-cq-8Fg" id="VHD-eB-dQ3"/>
                 <outlet property="facadeView" destination="4HN-mF-KQ4" id="rMn-9E-44t"/>
                 <outlet property="floorLabel" destination="uAB-jG-Zmu" id="CxW-Wj-12B"/>
@@ -37,7 +38,8 @@
                 <outlet property="mapView" destination="yz6-hc-BGI" id="h9X-Os-DLJ"/>
                 <outlet property="priceLabel" destination="j80-Ll-PQR" id="Zns-Gb-Wll"/>
                 <outlet property="projectImage" destination="6cg-fa-cFC" id="kcs-fg-fRm"/>
-                <outlet property="projectInfoView" destination="5xD-DW-7Iy" id="0wZ-rb-FEs"/>
+                <outlet property="projectInfoLabel" destination="ysb-B9-1E6" id="5Ro-Np-b3a"/>
+                <outlet property="projectInfoView" destination="5xD-DW-7Iy" id="Cwk-DC-BSM"/>
                 <outlet property="projectNameLabel" destination="aFY-Ds-VRz" id="sZ9-Ev-26b"/>
                 <outlet property="titleLabel" destination="7Zs-Cm-OWA" id="43K-Qj-J4E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -476,6 +478,19 @@
                         <action selector="onClickedLikeButton:" destination="-1" eventType="touchUpInside" id="QJZ-Bi-SdQ"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6u-u1-eGi" userLabel="editButton">
+                    <rect key="frame" x="315" y="10" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="J96-wU-Yfa"/>
+                        <constraint firstAttribute="height" constant="40" id="wAF-He-zJx"/>
+                    </constraints>
+                    <color key="tintColor" name="themeText"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="edit"/>
+                    <connections>
+                        <action selector="didTapEditButton:" destination="-1" eventType="touchUpInside" id="gVs-Dn-ula"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
@@ -492,17 +507,20 @@
                 <constraint firstItem="LfY-01-Pzp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="R56-6q-fma"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CWJ-ca-EhD" secondAttribute="trailing" constant="20" id="TBD-py-sgx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="zPL-mi-YeD" secondAttribute="bottom" constant="10" id="XLG-s4-zbb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a6u-u1-eGi" secondAttribute="trailing" constant="20" id="ahZ-SW-ngn"/>
                 <constraint firstItem="LVA-9M-s9F" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="bOe-ye-TND"/>
                 <constraint firstItem="7Zs-Cm-OWA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jL0-7X-Vs8"/>
                 <constraint firstItem="LVA-9M-s9F" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="pYU-3h-PJa"/>
                 <constraint firstItem="zPL-mi-YeD" firstAttribute="top" secondItem="LfY-01-Pzp" secondAttribute="bottom" constant="10" id="ptS-Hy-N3l"/>
+                <constraint firstItem="a6u-u1-eGi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="tmM-Gs-TpF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zPL-mi-YeD" secondAttribute="trailing" constant="20" id="zEJ-CS-EEy"/>
             </constraints>
-            <point key="canvasLocation" x="-1092" y="-1516"/>
+            <point key="canvasLocation" x="-2158" y="-1668"/>
         </view>
     </objects>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="edit" width="32" height="32"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="mappin" catalog="system" width="106" height="128"/>
         <namedColor name="background">

@@ -18,6 +18,7 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var likeButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet private weak var projectInfoView: UIView!
     @IBOutlet private weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var acreageLabel: UILabel!
@@ -43,6 +44,7 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet weak var projectNameLabel: UILabel!
     @IBOutlet weak var investorLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var projectInfoLabel: UILabel!
     
     
     lazy var viewModel = PostDetailViewModel()
@@ -78,6 +80,9 @@ class PostDetailViewController: BaseViewController {
                 self.viewModel.project = project
                 self.loadProjectInfo()
             }.disposed(by: viewModel.bag)
+        } else {
+            projectInfoLabel.isHidden = true
+            projectInfoView.isHidden = true
         }
     }
     
@@ -104,8 +109,10 @@ class PostDetailViewController: BaseViewController {
            let userId = UserDefaults.userInfo?.id,
            postUserId == userId {
             likeButton.isHidden = true
+            editButton.isHidden = false
             } else {
                 likeButton.isHidden = false
+                editButton.isHidden = true
                 if isFavoritePost(postId: post?.id) {
                     likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     likeButton.tintColor = UIColor(named: ColorName.redStatusText)
@@ -194,6 +201,12 @@ class PostDetailViewController: BaseViewController {
 //        let vc = NewPostViewController.instance(isEdit: true, postDetail: viewModel.postDetail)
 //        navigateTo(vc)
 //    }
+    
+    
+    @IBAction func didTapEditButton(_ sender: UIButton) {
+        let vc = NewPostViewController.instance(isEdit: true, postDetail: viewModel.postDetail)
+        navigateTo(vc)
+    }
     
     @IBAction func onClickedRealEstateLocationButton(_ sender: UIButton) {
         pinRealEstateLocation()

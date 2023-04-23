@@ -14,4 +14,9 @@ extension String {
         }
         return false
     }
+    
+//    func replaceCommaWithDot() -> String {
+//        guard let range = self.ranges(of: ",") else { return self }
+//        
+//    }
 }
