@@ -19,9 +19,6 @@ class BaseViewModel {
     let province = BehaviorRelay<[(id: String, name: String)]>(value: [])
     let district = BehaviorRelay<[(id: String, name: String)]>(value: [])
     let ward = BehaviorRelay<[(id: String, name: String)]>(value: [])
-    var selectedProvince = 0
-    var selectedDistrict = 0
-    var selectedWard = 0
     
     func parseProvincesArray(provinces: [Province]) -> [(id: String, name: String)] {
         var provinceArray = [(id: String, name: String)]()
@@ -48,17 +45,5 @@ class BaseViewModel {
         }
         let sortedWard = wardArray.sorted { $0.name < $1.name }
         return sortedWard
-    }
-    
-    func getAllProvinces() -> Observable<[Province]> {
-        return addressService.getAllProvinces()
-    }
-    
-    func getDistrictsByProvinceId() -> Observable<[District]> {
-        return addressService.getDistrictsByProvinceId(provinceId: province.value[selectedProvince].id)
-    }
-    
-    func getWardsByDistrictId() -> Observable<[Ward]> {
-        return addressService.getWardsByDistrictId(districtId: district.value[selectedDistrict].id)
     }
 }

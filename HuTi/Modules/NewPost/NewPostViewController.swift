@@ -98,6 +98,7 @@ class NewPostViewController: BaseViewController {
         setupPickerView()
         setupImageCollectionView()
         acreageTextField.delegate = self
+//        formattingTextField(sender: priceTextField)
         mapView.isUserInteractionEnabled = false
         currentLocationButton.isUserInteractionEnabled = false
         sellView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedSellView)))
@@ -469,6 +470,17 @@ extension NewPostViewController: UITextFieldDelegate {
     }
 }
 
+extension NewPostViewController {
+    func formattingTextField(sender: UITextField) {
+        sender.rx.controlEvent([.editingChanged])
+            .asObservable().subscribe({ _ in
+                let editedText = (sender.text)!.replacingOccurrences(of: ".", with: "")
+                let money = Int64(editedText)
+                sender.text = money?.formattedWithSeparator
+            }).disposed(by: viewModel.bag)
+    }
+}
+
 // MARK: - SetupPicker
 extension NewPostViewController {
     private func setupTypePickerView() {
@@ -689,11 +701,15 @@ extension NewPostViewController {
             typeTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.province:
             provinceTextField.text = viewModel.pickItem(pickerTag: sender.tag)
-            setupDistrictDataPicker()
-            setupProjectData()
+            if provinceTextField.text != "" {
+                setupDistrictDataPicker()
+                setupProjectData()
+            }
         case PickerTag.district:
             districtTextField.text = viewModel.pickItem(pickerTag: sender.tag)
-            setupWardDataPicker()
+            if districtTextField.text != "" {
+                setupWardDataPicker()
+            }
         case PickerTag.ward:
             wardTextField.text = viewModel.pickItem(pickerTag: sender.tag)
         case PickerTag.project:

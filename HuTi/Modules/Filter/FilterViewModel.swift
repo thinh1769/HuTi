@@ -17,6 +17,9 @@ class FilterViewModel: BaseViewModel {
     let bedroom = BehaviorRelay<[String]>(value: [])
     let houseDirection = BehaviorRelay<[String]>(value: [])
     let status = BehaviorRelay<[String]>(value: [])
+    var selectedProvince = (index: -1, id: "")
+    var selectedDistrict = (index: -1, id: "")
+    var selectedWard = -1
     var selectedFilterType = -1
     var selectedPrice = -1
     var selectedAcreage = -1
@@ -27,6 +30,18 @@ class FilterViewModel: BaseViewModel {
     var searchPostParams = [String: Any]()
     var searchProjectParams = [String: Any]()
     var page = 1
+    
+    func getAllProvinces() -> Observable<[Province]> {
+        return addressService.getAllProvinces()
+    }
+    
+    func getDistrictsByProvinceId() -> Observable<[District]> {
+        return addressService.getDistrictsByProvinceId(provinceId: selectedProvince.id)
+    }
+    
+    func getWardsByDistrictId() -> Observable<[Ward]> {
+        return addressService.getWardsByDistrictId(districtId: selectedDistrict.id)
+    }
     
     func pickItem(pickerTag: Int) -> String? {
         switch pickerTag{
@@ -40,29 +55,26 @@ class FilterViewModel: BaseViewModel {
                 return ""
             }
         case PickerTag.province:
-            if province.value.count > 0 && selectedProvince >= 0 {
-                return province.value[selectedProvince].name
-            } else if selectedProvince == -1 {
-                selectedProvince = 0
+            if province.value.count > 0 && selectedProvince.index >= 0 {
+                selectedProvince.id = province.value[selectedProvince.index].id
+                return province.value[selectedProvince.index].name
+            } else if selectedProvince.index == -1 {
+                selectedProvince.index = 0
+                selectedProvince.id = province.value[0].id
                 return province.value[0].name
             } else {
                 return ""
             }
         case PickerTag.district:
-            if district.value.count > 0 && selectedDistrict >= 0 {
-                return district.value[selectedDistrict].name
-            } else if selectedDistrict == -1 {
-                selectedDistrict = 0
-                return district.value[0].name
+            if district.value.count > 0 && selectedDistrict.index >= 0 {
+                selectedDistrict.id = district.value[selectedDistrict.index].id
+                return district.value[selectedDistrict.index].name
             } else {
                 return ""
             }
         case PickerTag.ward:
             if ward.value.count > 0 && selectedWard >= 0 {
                 return ward.value[selectedWard].name
-            } else if selectedWard == -1 {
-                selectedWard = 0
-                return ward.value[0].name
             } else {
                 return ""
             }

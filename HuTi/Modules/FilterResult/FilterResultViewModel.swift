@@ -19,28 +19,14 @@ class FilterResultViewModel: BaseViewModel {
     var tabBarItemTitle = TabBarItemTitle.sell
     var mainTabBarItemTitle = MainTitle.sell
     var tuppleOptionsList = [(key: Int, value: String)]()
-    var searchPostParams = [String: Any]()
+    var findPostParams = [String: Any]()
     var searchProjectParams = [String: Any]()
+    var selectedProvince = (index: -1, id: "")
+    var selectedDistrict = (index: -1, id: "")
     var page = 1
     
     func getListPosts(isSell: Bool) -> Observable<[Post]> {
         return postService.getListPosts(isSell: isSell, page: page)
-    }
-    
-//    func searchProject() {
-//        prepareProjectParam()
-//        viewModel.findProject().subscribe { [weak self] projects in
-//            guard let self = self else { return }
-//            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), selectedProvince: self.viewModel.selectedProvince, selectedDistrict: self.viewModel.selectedDistrict)
-//            self.isHiddenMainTabBar = false
-//            self.backToPreviousView()
-//        }.disposed(by: viewModel.bag)
-//    }
-    
-    func appendPostToArray(posts: [Post]) {
-        for post in posts {
-            postList.append(post)
-        }
     }
     
     func getListProjects() -> Observable<[Project]> {
@@ -72,7 +58,7 @@ class FilterResultViewModel: BaseViewModel {
     }
     
     func findPost() -> Observable<[Post]> {
-        return postService.findPost(param: searchPostParams, page: page)
+        return postService.findPost(param: findPostParams, page: page)
     }
     
     func findProject() -> Observable<[Project]> {

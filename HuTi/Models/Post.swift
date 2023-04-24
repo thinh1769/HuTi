@@ -10,7 +10,7 @@ import Foundation
 struct Post: Codable {
     var id: String?
     var title: String
-    var price: Double
+    var price: Int
     var acreage: Double?
     var address: String
     var provinceCode: String

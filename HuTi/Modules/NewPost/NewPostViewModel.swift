@@ -17,6 +17,9 @@ class NewPostViewModel: BaseViewModel {
     let houseDirection = BehaviorRelay<[String]>(value: [])
     let balconyDirection = BehaviorRelay<[String]>(value: [])
     let selectedImage = BehaviorRelay<[UIImage]>(value: [])
+    var selectedProvince = -1
+    var selectedDistrict = -1
+    var selectedWard = -1
     var selectedType = -1
     var selectedProject = -1
     var selectedLegal = -1
@@ -37,6 +40,18 @@ class NewPostViewModel: BaseViewModel {
     
     func setupDataImageCollectionView() {
         selectedImage.accept(images)
+    }
+    
+    func getAllProvinces() -> Observable<[Province]> {
+        return addressService.getAllProvinces()
+    }
+    
+    func getDistrictsByProvinceId() -> Observable<[District]> {
+        return addressService.getDistrictsByProvinceId(provinceId: province.value[selectedProvince].id)
+    }
+    
+    func getWardsByDistrictId() -> Observable<[Ward]> {
+        return addressService.getWardsByDistrictId(districtId: district.value[selectedDistrict].id)
     }
     
     func pickItem(pickerTag: Int) -> String? {
@@ -62,18 +77,12 @@ class NewPostViewModel: BaseViewModel {
         case PickerTag.district:
             if district.value.count > 0 && selectedDistrict >= 0 {
                 return district.value[selectedDistrict].name
-            } else if selectedDistrict == -1 {
-                selectedDistrict = 0
-                return district.value[0].name
             } else {
                 return ""
             }
         case PickerTag.ward:
             if ward.value.count > 0 && selectedWard >= 0 {
                 return ward.value[selectedWard].name
-            } else if selectedWard == -1 {
-                selectedWard = 0
-                return ward.value[0].name
             } else {
                 return ""
             }

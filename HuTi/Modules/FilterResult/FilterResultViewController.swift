@@ -69,8 +69,9 @@ class FilterResultViewController: BaseViewController {
         viewModel.getListPosts(isSell: isSell).subscribe { [weak self] posts in
             guard let self = self else { return }
             if posts.count > 0 {
-                self.viewModel.appendPostToArray(posts: posts)
-                self.viewModel.post.accept(self.viewModel.postList)
+                let mergePost = self.viewModel.post.value + posts
+                let sortedPost = mergePost.sorted { $0.createdAt > $1.createdAt }
+                self.viewModel.post.accept(sortedPost)
                 self.pinRealEstateLocation()
                 self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
             }
@@ -204,7 +205,7 @@ class FilterResultViewController: BaseViewController {
             viewModel.page = 1
             getListProjects()
         } else {
-            viewModel.postList.removeAll()
+            viewModel.post.accept([])
             viewModel.page = 1
             getListPosts()
         }
@@ -229,10 +230,16 @@ class FilterResultViewController: BaseViewController {
             guard let self = self else { return }
             if posts.count > 0 {
                 if self.viewModel.page == 1 {
-                    self.viewModel.post.accept(posts)
+                    let sortedPost = posts.sorted { $0.createdAt > $1.createdAt }
+                    self.viewModel.post.accept(sortedPost)
                 } else {
-                    self.viewModel.post.accept(self.viewModel.post.value + posts)
+                    let mergePost = self.viewModel.post.value + posts
+                    let sortedPost = mergePost.sorted { $0.createdAt > $1.createdAt }
+                    self.viewModel.post.accept(sortedPost)
                 }
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
+            } else if self.viewModel.page == 1 {
+                self.viewModel.post.accept([])
                 self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
             }
         }.disposed(by: viewModel.bag)
@@ -240,10 +247,10 @@ class FilterResultViewController: BaseViewController {
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {
-    func didTapApplyButton(listOptions: [(Int, String)], findPostParams: [String: Any]?, selectedProvince: Int, selectedDistrict: Int) {
+    func didTapApplyButton(listOptions: [(Int, String)], findPostParams: [String: Any]?, selectedProvince: (index: Int, id: String), selectedDistrict: (index: Int, id: String)) {
         viewModel.tuppleOptionsList = listOptions
         if let param = findPostParams {
-            viewModel.searchPostParams = param
+            viewModel.findPostParams = param
         }
         viewModel.parseOptionTuppleToArray()
         viewModel.selectedProvince = selectedProvince

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2260A8DD29F6D85300EE3E5B /* Numeric+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A8DC29F6D85300EE3E5B /* Numeric+Ext.swift */; };
 		2282B38129C6E7CA002C4125 /* NewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2282B38029C6E7CA002C4125 /* NewPostViewModel.swift */; };
 		228D5FD429CBE84B00439D78 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D5FD329CBE84B00439D78 /* FilterViewModel.swift */; };
 		22A099A429D04749008BE7C7 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A099A329D04749008BE7C7 /* BaseService.swift */; };
@@ -88,6 +89,7 @@
 
 /* Begin PBXFileReference section */
 		202975FB1ABBB5219A59709D /* Pods-HuTi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuTi.release.xcconfig"; path = "Target Support Files/Pods-HuTi/Pods-HuTi.release.xcconfig"; sourceTree = "<group>"; };
+		2260A8DC29F6D85300EE3E5B /* Numeric+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Ext.swift"; sourceTree = "<group>"; };
 		2282B38029C6E7CA002C4125 /* NewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewModel.swift; sourceTree = "<group>"; };
 		228D5FD329CBE84B00439D78 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		22A099A329D04749008BE7C7 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				22CB6A5D29D806DF009C4F4D /* DateFormatter+Ext.swift */,
 				22CF83A529DB219300683B98 /* UIImage+Ext.swift */,
 				22A3857D29EBCD9A00233908 /* String+Etx.swift */,
+				2260A8DC29F6D85300EE3E5B /* Numeric+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				FCC3650129B6D9A5001A9310 /* FilterResultViewController.swift in Sources */,
 				FCEE1A1E29B9DAD700AEF380 /* AccountViewController.swift in Sources */,
 				2282B38129C6E7CA002C4125 /* NewPostViewModel.swift in Sources */,
+				2260A8DD29F6D85300EE3E5B /* Numeric+Ext.swift in Sources */,
 				FCBF732F299CC4E500BF327A /* SignInViewController.swift in Sources */,
 				22AEC97029D5D4100076014A /* ConfirmPasswordViewModel.swift in Sources */,
 				FC0E76D1299F2B5D00E4818C /* BaseViewController.swift in Sources */,

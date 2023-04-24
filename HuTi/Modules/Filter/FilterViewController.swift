@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol FilterViewControllerDelegate: AnyObject {
-    func didTapApplyButton(listOptions: [(Int, String)], findPostParams: [String: Any]?, selectedProvince: Int, selectedDistrict: Int)
+    func didTapApplyButton(listOptions: [(Int, String)], findPostParams: [String: Any]?, selectedProvince: (index: Int, id: String), selectedDistrict: (index: Int, id: String))
     
     func didTapResetButton()
 }
@@ -46,10 +46,10 @@ class FilterViewController: BaseViewController {
     var viewModel = FilterViewModel()
     weak var delegate: FilterViewControllerDelegate?
     
-    func configSelectedOptions(optionsList: [(key: Int, value: String)], selectedProvince: Int, selectedDistrict: Int) {
+    func configSelectedOptions(optionsList: [(key: Int, value: String)], selectedProvince: (index: Int, id: String), selectedDistrict: (index: Int, id: String)) {
         viewModel.optionsList = optionsList
-//        viewModel.selectedProvince = selectedProvince
-//        viewModel.selectedDistrict = selectedDistrict
+        viewModel.selectedProvince = selectedProvince
+        viewModel.selectedDistrict = selectedDistrict
     }
     
     override func viewDidLoad() {
@@ -74,14 +74,21 @@ class FilterViewController: BaseViewController {
         isHiddenMainTabBar = true
         isTouchDismissKeyboardEnabled = true
         
-//        if viewModel.selectedProvince >= 0 {
-//            getAllProvince()
-//            setupDistrictDataPicker()
-//        }
-//
-//        if viewModel.selectedDistrict >= 0 {
-//            setupWardDataPicker()
-//        }
+        districtTextField.rx.controlEvent([.editingDidBegin])
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                if self.provinceTextField.text != "" {
+                    self.setupDistrictDataPicker()
+                }
+            }).disposed(by: viewModel.bag)
+        
+        wardTextField.rx.controlEvent([.editingDidBegin])
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                if self.districtTextField.text != "" {
+                    self.setupWardDataPicker()
+                }
+            }).disposed(by: viewModel.bag)
     }
     
     private func getAllProvince() {
@@ -139,16 +146,6 @@ class FilterViewController: BaseViewController {
         }
     }
     
-//    private func searchPost() {
-//        preparePostParam()
-//        viewModel.findPost().subscribe { [weak self] posts in
-//            guard let self = self else { return }
-//            self.delegate?.didTapApplyButton(listOptions: self.getApplyOptions(), selectedProvince: self.viewModel.selectedProvince, selectedDistrict: self.viewModel.selectedDistrict)
-//            self.isHiddenMainTabBar = false
-//            self.backToPreviousView()
-//        }.disposed(by: viewModel.bag)
-//    }
-//    
     private func searchProject() {
         prepareProjectParam()
         viewModel.findProject().subscribe { [weak self] projects in
@@ -201,7 +198,7 @@ class FilterViewController: BaseViewController {
         
         if let bedroom = bedroomTextField.text,
            bedroom != "" {
-            viewModel.searchPostParams.updateValue(bedroom, forKey: "bedroom")
+            viewModel.searchPostParams.updateValue(bedroom, forKey: "bedroomRange")
         }
         
         if let houseDirection = houseDirectionTextField.text,
@@ -307,12 +304,12 @@ extension FilterViewController {
             }.disposed(by: viewModel.bag)
 
         provincePicker.rx.itemSelected.bind { (row: Int, component: Int) in
-            self.viewModel.selectedProvince = row
+            self.viewModel.selectedProvince.index = row
+            self.viewModel.selectedProvince.id = self.viewModel.province.value[row].id
         }.disposed(by: viewModel.bag)
     }
 
     private func setupDistrictDataPicker() {
-        districtTextField.text = ""
         wardTextField.text = ""
         
         viewModel.getDistrictsByProvinceId().subscribe { [weak self] districts in
@@ -335,13 +332,12 @@ extension FilterViewController {
             }.disposed(by: viewModel.bag)
 
         districtPicker.rx.itemSelected.bind { (row: Int, component: Int) in
-            self.viewModel.selectedDistrict = row
+            self.viewModel.selectedDistrict.index = row
+            self.viewModel.selectedDistrict.id = self.viewModel.district.value[row].id
         }.disposed(by: viewModel.bag)
     }
 
     private func setupWardDataPicker() {
-        wardTextField.text = ""
-        
         viewModel.getWardsByDistrictId().subscribe { [weak self] wards in
             guard let self = self else { return }
             self.viewModel.ward.accept(self.viewModel.parseWardsArray(wards: wards))
@@ -487,11 +483,13 @@ extension FilterViewController {
         case PickerTag.province:
             provinceTextField.text = viewModel.pickItem(pickerTag: sender.tag)
             if provinceTextField.text != "" {
+                districtTextField.text = ""
                 setupDistrictDataPicker()
             }
         case PickerTag.district:
             districtTextField.text = viewModel.pickItem(pickerTag: sender.tag)
             if districtTextField.text != "" {
+                wardTextField.text = ""
                 setupWardDataPicker()
             }
         case PickerTag.ward:
