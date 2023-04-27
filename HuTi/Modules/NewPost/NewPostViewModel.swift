@@ -369,12 +369,14 @@ class NewPostViewModel: BaseViewModel {
            parseAcreage != post.acreage {
             isUpdated = true
             updatePostParams.updateValue(parseAcreage, forKey: "acreage")
+            updatePostParams.updateValue(getAcreageRange(acreage: parseAcreage), forKey: "acreageRange")
         }
         
         if let parsePrice = Int(price),
            parsePrice != post.price {
             isUpdated = true
             updatePostParams.updateValue(parsePrice, forKey: "price")
+            updatePostParams.updateValue(getPriceRange(price: parsePrice), forKey: "priceRange")
         }
         
         if legal != post.legal {
@@ -392,7 +394,10 @@ class NewPostViewModel: BaseViewModel {
             updatePostParams.updateValue(contactNumber, forKey: "contactNumber")
         }
         
+        /// Non required Field
+        
         if let postProject = post.projectName,
+           selectedProject > -1,
            project != postProject {
             isUpdated = true
             updatePostParams.updateValue(self.project.value[selectedProject].name, forKey: "projectName")
@@ -401,40 +406,74 @@ class NewPostViewModel: BaseViewModel {
         
         if let postFuniture = post.funiture,
            funiture != postFuniture {
-            
+            isUpdated = true
+            updatePostParams.updateValue(self.funiture.value[selectedFuniture], forKey: "funiture")
         }
-////                project == post.projectName &&
-////                funiture == post.funiture &&
-////                Int(bedroom) == post.bedroom &&
-////                Int(bathroom) == post.bathroom &&
-////                Int(floor) == post.floor &&
-////                houseDirection == post.houseDirection &&
-////                balconyDirection == post.balconyDirection &&
-////                Double(wayIn) == post.wayIn &&
-////                Double(facade) == post.facade &&
-//                contactName == post.contactName &&
-//                contactNumber == post.contactNumber {
-//            return isUpdated
-//        }
+        
+        if let bedroom = Int(bedroom),
+           let postBedroom = post.bedroom,
+           bedroom != postBedroom {
+            isUpdated = true
+            updatePostParams.updateValue(bedroom, forKey: "bedroom")
+            updatePostParams.updateValue(getBedroomRange(bedroom: bedroom), forKey: "bedroomRange")
+        }
+        
+        if let bathroom = Int(bathroom),
+           let postBathroom = post.bathroom,
+           bathroom != postBathroom {
+            isUpdated = true
+            updatePostParams.updateValue(bathroom, forKey: "bathroom")
+        }
+        
+        if let floor = Int(floor),
+           let postFloor = post.floor,
+           floor != postFloor {
+            isUpdated = true
+            updatePostParams.updateValue(floor, forKey: "floor")
+        }
+        
+        if let postHouseDirection = post.houseDirection,
+           selectedHouseDirection > -1,
+           self.houseDirection.value[selectedHouseDirection] != postHouseDirection {
+            isUpdated = true
+            updatePostParams.updateValue(self.houseDirection.value[selectedHouseDirection], forKey: "houseDirection")
+        }
+        
+        if let postBalconyDirection = post.balconyDirection,
+           selectedBalconyDirection > -1,
+           self.balconyDirection.value[selectedBalconyDirection] != postBalconyDirection {
+            isUpdated = true
+            updatePostParams.updateValue(self.balconyDirection.value[selectedBalconyDirection], forKey: "balconyDirection")
+        }
+        
+        if let postWayIn = post.wayIn,
+           let parseWayIn = Double(wayIn),
+           parseWayIn != postWayIn {
+            isUpdated = true
+            updatePostParams.updateValue(parseWayIn, forKey: "wayIn")
+        }
+           
+        if let postFacade = post.facade,
+           let parseFacade = Double(facade),
+           parseFacade != postFacade {
+            isUpdated = true
+            updatePostParams.updateValue(parseFacade, forKey: "facade")
+        }
         return isUpdated
     }
     
     func uploadImage(completion: @escaping() -> Void) {
         guard let data = imageSelected.pngData() else { return }
         
-        let now = Date()
-        let timeInterval = now.timeIntervalSince1970
-        
         let assetDataModel = AssetDataModel(data: data, pathFile: "", thumbnail: imageSelected)
         assetDataModel.compressed = true
         assetDataModel.compressData()
         assetDataModel.remoteName = imagesName.last ?? ""
-//        imagesName.append(assetDataModel.remoteName)
         
         awsService.uploadImage(data: assetDataModel, completionHandler:  { [weak self] _, error in
             guard self != nil else { return }
             if error != nil {
-                print("---------------- Lỗi upload lên AWS S3 : \(String(describing: error))")
+                print("---------------- Lỗi upload lên AWS S3 : \(String(describing: error))----------------")
             }
             completion()
         })

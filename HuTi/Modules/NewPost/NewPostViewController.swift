@@ -120,39 +120,7 @@ class NewPostViewController: BaseViewController {
                   let text = self.typeTextField.text
                 else { return }
             if text.count > 0 {
-                self.unhiddenAllView()
-                switch text {
-                case RealEstateType.apartment:
-                    self.floorView.isHidden = true
-                    self.wayInView.isHidden = true
-                    self.facadeView.isHidden = true
-                case RealEstateType.projectLand:
-                    self.funitureView.isHidden = true
-                    self.bedroomView.isHidden = true
-                    self.bathroomView.isHidden = true
-                    self.floorView.isHidden = true
-                    self.balconyView.isHidden = true
-                case RealEstateType.land:
-                    self.funitureView.isHidden = true
-                    self.bedroomView.isHidden = true
-                    self.bathroomView.isHidden = true
-                    self.floorView.isHidden = true
-                    self.balconyView.isHidden = true
-                case RealEstateType.codontel:
-                    self.floorView.isHidden = true
-                    self.wayInView.isHidden = true
-                    self.facadeView.isHidden = true
-                case RealEstateType.wareHouseFactory:
-                    self.bedroomView.isHidden = true
-                    self.floorView.isHidden = true
-                    self.balconyView.isHidden = true
-                case RealEstateType.office:
-                    self.floorView.isHidden = true
-                case RealEstateType.shopKiosk:
-                    self.bedroomView.isHidden = true
-                default:
-                    return
-                }
+                self.hiddenUnnecessaryView(text: text)
             }
         }.disposed(by: viewModel.bag)
     
@@ -367,6 +335,42 @@ class NewPostViewController: BaseViewController {
         imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
     }
     
+    private func hiddenUnnecessaryView(text: String) {
+        self.unhiddenAllView()
+        switch text {
+        case RealEstateType.apartment:
+            self.floorView.isHidden = true
+            self.wayInView.isHidden = true
+            self.facadeView.isHidden = true
+        case RealEstateType.projectLand:
+            self.funitureView.isHidden = true
+            self.bedroomView.isHidden = true
+            self.bathroomView.isHidden = true
+            self.floorView.isHidden = true
+            self.balconyView.isHidden = true
+        case RealEstateType.land:
+            self.funitureView.isHidden = true
+            self.bedroomView.isHidden = true
+            self.bathroomView.isHidden = true
+            self.floorView.isHidden = true
+            self.balconyView.isHidden = true
+        case RealEstateType.codontel:
+            self.floorView.isHidden = true
+            self.wayInView.isHidden = true
+            self.facadeView.isHidden = true
+        case RealEstateType.wareHouseFactory:
+            self.bedroomView.isHidden = true
+            self.floorView.isHidden = true
+            self.balconyView.isHidden = true
+        case RealEstateType.office:
+            self.floorView.isHidden = true
+        case RealEstateType.shopKiosk:
+            self.bedroomView.isHidden = true
+        default:
+            return
+        }
+    }
+    
     private func unhiddenAllView() {
         funitureView.isHidden = false
         bedroomView.isHidden = false
@@ -409,6 +413,7 @@ class NewPostViewController: BaseViewController {
         facadeTextField.text = "\(post.facade ?? 0)"
         contactNameTextField.text = post.contactName
         contactPhoneTextField.text = post.contactPhoneNumber
+        hiddenUnnecessaryView(text: post.realEstateType)
     }
 }
 

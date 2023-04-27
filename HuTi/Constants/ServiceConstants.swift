@@ -24,10 +24,8 @@ struct StatusCode {
 }
 
 struct Base {
-    static let URL = "http://192.168.2.9:3000/api/"
-//    static let URL = "http://172.20.10.3:3000/api/"
-//    static let URL = "http://172.19.203.191:3000/api/"
-//    static let URL = "http://localhost:3000/api/"
+//    static let URL = "http://192.168.2.9:3000/api/"
+    static let URL = "http://172.20.10.3:3000/api/"
 }
 
 enum APIConstants: String {
