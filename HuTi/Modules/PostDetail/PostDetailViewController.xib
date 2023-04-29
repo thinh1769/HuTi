@@ -22,6 +22,7 @@
                 <outlet property="bathroomView" destination="egO-yG-5Fv" id="3Oo-8C-IaT"/>
                 <outlet property="bedroomLabel" destination="Jpb-wz-kll" id="Xlf-1u-Xsm"/>
                 <outlet property="bedroomView" destination="WND-ZQ-2Lq" id="IKd-2s-7H7"/>
+                <outlet property="contactButton" destination="zPL-mi-YeD" id="brK-Da-s7u"/>
                 <outlet property="descriptionLabel" destination="ZeK-L5-2mU" id="P8L-kt-R9f"/>
                 <outlet property="editButton" destination="a6u-u1-eGi" id="3OY-KI-j9b"/>
                 <outlet property="facadeLabel" destination="Emg-cq-8Fg" id="VHD-eB-dQ3"/>
@@ -41,6 +42,7 @@
                 <outlet property="projectInfoLabel" destination="ysb-B9-1E6" id="5Ro-Np-b3a"/>
                 <outlet property="projectInfoView" destination="5xD-DW-7Iy" id="Cwk-DC-BSM"/>
                 <outlet property="projectNameLabel" destination="aFY-Ds-VRz" id="sZ9-Ev-26b"/>
+                <outlet property="scrollViewBottomConstraint" destination="ptS-Hy-N3l" id="fZI-Ah-9JQ"/>
                 <outlet property="titleLabel" destination="7Zs-Cm-OWA" id="43K-Qj-J4E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wayInLabel" destination="lxg-K1-qYL" id="QaB-w0-nOV"/>
@@ -462,6 +464,9 @@
                             <integer key="value" value="8"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapContactButton:" destination="-1" eventType="touchUpInside" id="VGC-2V-DRa"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWJ-ca-EhD" userLabel="likeButton">
                     <rect key="frame" x="315" y="10" width="40" height="40"/>
@@ -511,11 +516,11 @@
                 <constraint firstItem="LVA-9M-s9F" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="bOe-ye-TND"/>
                 <constraint firstItem="7Zs-Cm-OWA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jL0-7X-Vs8"/>
                 <constraint firstItem="LVA-9M-s9F" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="pYU-3h-PJa"/>
-                <constraint firstItem="zPL-mi-YeD" firstAttribute="top" secondItem="LfY-01-Pzp" secondAttribute="bottom" constant="10" id="ptS-Hy-N3l"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LfY-01-Pzp" secondAttribute="bottom" constant="60" id="ptS-Hy-N3l"/>
                 <constraint firstItem="a6u-u1-eGi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="tmM-Gs-TpF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zPL-mi-YeD" secondAttribute="trailing" constant="20" id="zEJ-CS-EEy"/>
             </constraints>
-            <point key="canvasLocation" x="-2158" y="-1668"/>
+            <point key="canvasLocation" x="-3121" y="-1847"/>
         </view>
     </objects>
     <resources>

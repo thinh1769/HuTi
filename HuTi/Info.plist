@@ -23,6 +23,10 @@
 	<string>HuTi cần vị trí của bạn!</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>HuTi cần sử dụng thư viện ảnh của bạn!</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>HuTi cần sử dụng mic của bạn!</string>
+	<key>Privacy - Phone Call Usage Description</key>
+	<string>HuTi sẽ dụng sim để gọi!</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

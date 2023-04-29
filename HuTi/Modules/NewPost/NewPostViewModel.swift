@@ -77,12 +77,18 @@ class NewPostViewModel: BaseViewModel {
         case PickerTag.district:
             if district.value.count > 0 && selectedDistrict >= 0 {
                 return district.value[selectedDistrict].name
+            } else if selectedDistrict == -1 && district.value.count > 0 {
+                selectedDistrict = 0
+                return district.value[0].name
             } else {
                 return ""
             }
         case PickerTag.ward:
             if ward.value.count > 0 && selectedWard >= 0 {
                 return ward.value[selectedWard].name
+            } else if selectedWard == -1 && ward.value.count > 0 {
+                selectedWard = 0
+                return ward.value[0].name
             } else {
                 return ""
             }
@@ -311,6 +317,8 @@ class NewPostViewModel: BaseViewModel {
                          _ contactNumber: String) -> Bool {
         guard let post = self.post else { return false }
         var isUpdated = false
+        
+        /// Required Field
         if isSelectedSell != post.isSell {
             isUpdated = true
             updatePostParams.updateValue(isSelectedSell, forKey: "isSell")
@@ -395,53 +403,61 @@ class NewPostViewModel: BaseViewModel {
         }
         
         /// Non required Field
-        
-        if let postProject = post.projectName,
-           selectedProject > -1,
-           project != postProject {
+        if selectedProject > -1 {
             isUpdated = true
             updatePostParams.updateValue(self.project.value[selectedProject].name, forKey: "projectName")
             updatePostParams.updateValue(self.project.value[selectedProject].id, forKey: "project")
         }
-        
-        if let postFuniture = post.funiture,
-           funiture != postFuniture {
+
+        if selectedFuniture > -1 {
             isUpdated = true
             updatePostParams.updateValue(self.funiture.value[selectedFuniture], forKey: "funiture")
         }
         
-        if let bedroom = Int(bedroom),
-           let postBedroom = post.bedroom,
-           bedroom != postBedroom {
-            isUpdated = true
-            updatePostParams.updateValue(bedroom, forKey: "bedroom")
-            updatePostParams.updateValue(getBedroomRange(bedroom: bedroom), forKey: "bedroomRange")
+        if let bedroom = Int(bedroom) {
+            if let postBedroom = post.bedroom {
+                if bedroom != postBedroom {
+                    isUpdated = true
+                    updatePostParams.updateValue(bedroom, forKey: "bedroom")
+                    updatePostParams.updateValue(getBedroomRange(bedroom: bedroom), forKey: "bedroomRange")
+                }
+            } else if bedroom > 0 {
+                isUpdated = true
+                updatePostParams.updateValue(bedroom, forKey: "bedroom")
+                updatePostParams.updateValue(getBedroomRange(bedroom: bedroom), forKey: "bedroomRange")
+            }
         }
         
-        if let bathroom = Int(bathroom),
-           let postBathroom = post.bathroom,
-           bathroom != postBathroom {
-            isUpdated = true
-            updatePostParams.updateValue(bathroom, forKey: "bathroom")
+        if let bathroom = Int(bathroom) {
+            if let postBathroom = post.bathroom {
+                if bathroom != postBathroom {
+                    isUpdated = true
+                    updatePostParams.updateValue(bathroom, forKey: "bathroom")
+                }
+            } else if bathroom > 0 {
+                isUpdated = true
+                updatePostParams.updateValue(bathroom, forKey: "bathroom")
+            }
         }
         
-        if let floor = Int(floor),
-           let postFloor = post.floor,
-           floor != postFloor {
-            isUpdated = true
-            updatePostParams.updateValue(floor, forKey: "floor")
+        if let floor = Int(floor) {
+            if let postFloor = post.floor {
+                if floor != postFloor {
+                    isUpdated = true
+                    updatePostParams.updateValue(floor, forKey: "floor")
+                }
+            } else if floor > 0 {
+                isUpdated = true
+                updatePostParams.updateValue(floor, forKey: "floor")
+            }
         }
         
-        if let postHouseDirection = post.houseDirection,
-           selectedHouseDirection > -1,
-           self.houseDirection.value[selectedHouseDirection] != postHouseDirection {
+        if selectedHouseDirection > -1 {
             isUpdated = true
             updatePostParams.updateValue(self.houseDirection.value[selectedHouseDirection], forKey: "houseDirection")
         }
         
-        if let postBalconyDirection = post.balconyDirection,
-           selectedBalconyDirection > -1,
-           self.balconyDirection.value[selectedBalconyDirection] != postBalconyDirection {
+        if selectedBalconyDirection > -1 {
             isUpdated = true
             updatePostParams.updateValue(self.balconyDirection.value[selectedBalconyDirection], forKey: "balconyDirection")
         }
@@ -460,6 +476,10 @@ class NewPostViewModel: BaseViewModel {
             updatePostParams.updateValue(parseFacade, forKey: "facade")
         }
         return isUpdated
+    }
+    
+    func updatePost() -> Observable<Post> {
+        return postService.updatePost(postId: post?.id ?? "", param: updatePostParams)
     }
     
     func uploadImage(completion: @escaping() -> Void) {

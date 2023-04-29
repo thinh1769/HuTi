@@ -45,7 +45,8 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet weak var investorLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var projectInfoLabel: UILabel!
-    
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contactButton: UIButton!
     
     lazy var viewModel = PostDetailViewModel()
     private var locationManager = CLLocationManager()
@@ -104,15 +105,18 @@ class PostDetailViewController: BaseViewController {
         descriptionLabel.text = post?.description
         self.pinRealEstateLocation()
         
-        
         if let postUserId = post?.userId,
            let userId = UserDefaults.userInfo?.id,
            postUserId == userId {
             likeButton.isHidden = true
             editButton.isHidden = false
+            scrollViewBottomConstraint.constant = 10
+            contactButton.isHidden = true
             } else {
                 likeButton.isHidden = false
                 editButton.isHidden = true
+                scrollViewBottomConstraint.constant = 60
+                contactButton.isHidden = false
                 if isFavoritePost(postId: post?.id) {
                     likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     likeButton.tintColor = UIColor(named: ColorName.redStatusText)
@@ -202,6 +206,14 @@ class PostDetailViewController: BaseViewController {
 //        navigateTo(vc)
 //    }
     
+    @IBAction func didTapContactButton(_ sender: UIButton) {
+        if let phoneCallURL = URL(string: "tel://\(viewModel.postDetail?.contactPhoneNumber ?? "")") {
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
+            }
+        }
+    }
     
     @IBAction func didTapEditButton(_ sender: UIButton) {
         let vc = NewPostViewController.instance(isEdit: true, postDetail: viewModel.postDetail)

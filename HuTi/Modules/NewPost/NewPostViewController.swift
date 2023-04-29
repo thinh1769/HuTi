@@ -282,9 +282,16 @@ class NewPostViewController: BaseViewController {
                                             contactPhoneTextField.text ?? "") {
             print("=============Đã chỉnh sửa post============")
             print("updatePostParams = \(viewModel.updatePostParams)")
+            
+            viewModel.updatePost().subscribe { [weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.popToRootViewController(animated: true)
+                self.showAlert(title: "Cập nhật tin đăng thành công")
+            }.disposed(by: viewModel.bag)
         } else {
             print("=============Chưa chỉnh sửa post============")
             print("updatePostParams = \(viewModel.updatePostParams)")
+            self.showAlert(title: "Bạn chưa chỉnh sửa thông tin tin đăng")
         }
     }
     

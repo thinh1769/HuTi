@@ -34,4 +34,8 @@ class PostService: BaseService {
     func findPost(param: [String: Any], page: Int) -> Observable<[Post]> {
         return request(api: "\(APIConstants.findPost.rawValue)?page=\(page)", method: .post, params: param)
     }
+    
+    func updatePost(postId: String, param: [String: Any]) -> Observable<Post> {
+        return request(api: APIConstants.updatePost.rawValue + postId, method: .put, params: param)
+    }
 }
