@@ -69,12 +69,19 @@ class FilterViewModel: BaseViewModel {
             if district.value.count > 0 && selectedDistrict.index >= 0 {
                 selectedDistrict.id = district.value[selectedDistrict.index].id
                 return district.value[selectedDistrict.index].name
+            } else if selectedDistrict.index == -1 && district.value.count > 0 {
+                selectedDistrict.index = 0
+                selectedDistrict.id = district.value[0].id
+                return district.value[0].name
             } else {
                 return ""
             }
         case PickerTag.ward:
             if ward.value.count > 0 && selectedWard >= 0 {
                 return ward.value[selectedWard].name
+            } else if selectedWard == -1 && ward.value.count > 0 {
+                selectedWard = 0
+                return ward.value[0].name
             } else {
                 return ""
             }

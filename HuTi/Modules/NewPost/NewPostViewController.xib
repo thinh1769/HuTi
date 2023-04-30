@@ -98,7 +98,7 @@
                     <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5R0-sq-jff" userLabel="infoStackView">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="2245"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="2325"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin cơ bản" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0K1-XT-s5v" userLabel="basicInfoTitleLabel">
                                     <rect key="frame" x="10" y="0.0" width="355" height="35"/>
@@ -1404,10 +1404,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juv-uQ-KV3" userLabel="imageCollectionView">
-                                    <rect key="frame" x="10" y="1860" width="355" height="120"/>
+                                    <rect key="frame" x="10" y="1860" width="355" height="200"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2s3-6U-ehq">
-                                            <rect key="frame" x="10" y="10" width="335" height="100"/>
+                                            <rect key="frame" x="10" y="10" width="335" height="180"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kqc-qV-aV6">
                                                 <size key="itemSize" width="128" height="128"/>
@@ -1423,7 +1423,7 @@
                                         <constraint firstAttribute="trailing" secondItem="2s3-6U-ehq" secondAttribute="trailing" constant="10" id="6m5-3p-8Th"/>
                                         <constraint firstItem="2s3-6U-ehq" firstAttribute="leading" secondItem="Juv-uQ-KV3" secondAttribute="leading" constant="10" id="YyS-3O-0UK"/>
                                         <constraint firstItem="2s3-6U-ehq" firstAttribute="top" secondItem="Juv-uQ-KV3" secondAttribute="top" constant="10" id="uRf-ek-jyI"/>
-                                        <constraint firstAttribute="height" constant="120" id="w8f-yP-2on"/>
+                                        <constraint firstAttribute="height" constant="200" id="w8f-yP-2on"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1432,7 +1432,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin liên hệ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxt-xk-jTi" userLabel="contactInfoTitleLabel">
-                                    <rect key="frame" x="10" y="1990" width="355" height="35"/>
+                                    <rect key="frame" x="10" y="2070" width="355" height="35"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="lD3-pZ-rUF"/>
                                     </constraints>
@@ -1441,7 +1441,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGU-wI-GdY" userLabel="contactInfoView">
-                                    <rect key="frame" x="10" y="2035" width="355" height="140"/>
+                                    <rect key="frame" x="10" y="2115" width="355" height="140"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-Ya-MYZ">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="140"/>
@@ -1550,7 +1550,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFa-E5-qJe" userLabel="postBtn">
-                                    <rect key="frame" x="10" y="2185" width="355" height="50"/>
+                                    <rect key="frame" x="10" y="2265" width="355" height="50"/>
                                     <color key="backgroundColor" red="0.75308537480000004" green="0.326120615" blue="0.26264229420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="zip-nv-aTu"/>

@@ -308,7 +308,7 @@ class NewPostViewController: BaseViewController {
             legalTextField.text == "" ||
             contactNameTextField.text == "" ||
             contactPhoneTextField.text == "" ||
-            viewModel.imagesName.count == 0 {
+            viewModel.imagesNameList.count == 0 {
             self.showAlert(title: "Vui lòng nhập đủ những thông tin bắt buộc")
             return false
         }
@@ -334,10 +334,30 @@ class NewPostViewController: BaseViewController {
     private func setupImageCollectionView() {
         imageCollectionView.register(NewPostImageCell.nib, forCellWithReuseIdentifier: NewPostImageCell.reusableIdentifier)
         
-        viewModel.selectedImage.asObservable()
-            .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { (index, element, cell) in
-                cell.config(image: element)
-            }.disposed(by: viewModel.bag)
+        if !viewModel.isEdit {
+            viewModel.selectedImage.asObservable()
+                .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { [weak self] (index, element, cell) in
+                    guard let self = self else { return }
+                    cell.config(image: element)
+                    
+                    cell.onTapRemove = {
+                        self.viewModel.imagesList.remove(at: index)
+                        self.viewModel.imagesNameList.remove(at: index)
+                        self.viewModel.setupDataImageCollectionView()
+                    }
+                }.disposed(by: viewModel.bag)
+        } else {
+            viewModel.imagesName.asObservable()
+                .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { [weak self] (index, element, cell) in
+                    guard let self = self else { return }
+                    cell.configImage(imageName: element, isEnabledRemove: true)
+                    
+                    cell.onTapRemove = {
+                        self.viewModel.imagesNameList.remove(at: index)
+                        self.viewModel.imagesName.accept(self.viewModel.imagesNameList)
+                    }
+                }.disposed(by: viewModel.bag)
+        }
         
         imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
     }
@@ -421,6 +441,8 @@ class NewPostViewController: BaseViewController {
         contactNameTextField.text = post.contactName
         contactPhoneTextField.text = post.contactPhoneNumber
         hiddenUnnecessaryView(text: post.realEstateType)
+        viewModel.imagesName.accept(post.images)
+        viewModel.imagesNameList = post.images
     }
 }
 
@@ -455,12 +477,12 @@ extension NewPostViewController: PHPickerViewControllerDelegate {
                 if let image = image {
                     print("---Đang tải hình ảnh lên")
                     self.viewModel.imageSelected = (image as! UIImage).rotate()
-                    self.viewModel.images.append(self.viewModel.imageSelected)
+                    self.viewModel.imagesList.append(self.viewModel.imageSelected)
                     self.viewModel.setupDataImageCollectionView()
                     
                     let now = Date()
                     let timeInterval = now.timeIntervalSince1970
-                    self.viewModel.imagesName.append("\(UserDefaults.userInfo?.id ?? "")_\(timeInterval)")
+                    self.viewModel.imagesNameList.append("\(UserDefaults.userInfo?.id ?? "")_\(timeInterval)")
                     self.viewModel.uploadImage {
                         DispatchQueue.main.async {
                             print("---upload image thành công")

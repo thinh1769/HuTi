@@ -123,7 +123,7 @@ class ProjectDetailViewController: BaseViewController {
         
         viewModel.images.asObservable()
             .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { (index, element, cell) in
-                cell.configImage(imageName: element)
+                cell.configImage(imageName: element, isEnabledRemove: false)
             }.disposed(by: viewModel.bag)
         
         imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)

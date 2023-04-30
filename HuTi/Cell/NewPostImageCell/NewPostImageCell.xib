@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,22 +19,46 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cHj-jw-x7e">
-                        <rect key="frame" x="0.0" y="0.0" width="223" height="166"/>
+                        <rect key="frame" x="0.0" y="10" width="218" height="156"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSS-dE-Rnl">
+                        <rect key="frame" x="200" y="0.0" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="QNg-AZ-iZZ"/>
+                            <constraint firstAttribute="height" constant="25" id="cMD-zS-Jd0"/>
+                        </constraints>
+                        <color key="tintColor" systemColor="systemGray2Color"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="xmark.circle.fill" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
+                        </state>
+                        <connections>
+                            <action selector="didTapRemove:" destination="gTV-IL-0wX" eventType="touchUpInside" id="hIk-Xi-DFa"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="cHj-jw-x7e" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ACg-JZ-cEt"/>
+                <constraint firstItem="cHj-jw-x7e" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="ACg-JZ-cEt"/>
+                <constraint firstItem="XSS-dE-Rnl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="HSC-SB-5lX"/>
+                <constraint firstAttribute="trailing" secondItem="XSS-dE-Rnl" secondAttribute="trailing" constant="3" id="OAa-9p-v3l"/>
                 <constraint firstItem="cHj-jw-x7e" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PpX-5B-dei"/>
                 <constraint firstAttribute="bottom" secondItem="cHj-jw-x7e" secondAttribute="bottom" id="R1Y-ZV-cZ3"/>
-                <constraint firstAttribute="trailing" secondItem="cHj-jw-x7e" secondAttribute="trailing" constant="5" id="gLk-Fc-W1Y"/>
+                <constraint firstAttribute="trailing" secondItem="cHj-jw-x7e" secondAttribute="trailing" constant="10" id="gLk-Fc-W1Y"/>
             </constraints>
             <size key="customSize" width="228" height="166"/>
             <connections>
                 <outlet property="imageView" destination="cHj-jw-x7e" id="OHt-JU-qVg"/>
+                <outlet property="removeButton" destination="XSS-dE-Rnl" id="Bmg-aQ-4Lf"/>
             </connections>
             <point key="canvasLocation" x="84" y="-10"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

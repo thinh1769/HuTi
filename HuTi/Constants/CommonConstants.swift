@@ -176,6 +176,6 @@ struct Alert {
     static let phoneBeginByZero = "Số điện thoại phải bắt đầu bằng số 0"
     static let pleaseUpdateAccountInfo = "Vui lòng cập nhật thông tin tài khoản"
     static let updatedAccountSuccessfully = "Cập nhật tài khoản thành công"
-    static let postSuccessfully = "Đăng tin thành công"
+    static let postSuccessfully = "Tin đăng sẽ được xem xét duyệt và đăng lên sớm nhất"
     static let pleaseChooseTypeProvince = "Vui lòng chọn loại và tỉnh thành"
 }

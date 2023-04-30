@@ -102,7 +102,7 @@ class DetailPopupView: UIView {
         case .ended:
             if translation.y > 100 {
                 UIView.animateKeyframes(withDuration: 0.4, delay: 0) {
-                    self.transform = CGAffineTransform(translationX: 0, y: 215)
+                    self.transform = CGAffineTransform(translationX: 0, y: 220)
                 } completion: { _ in
                     self.removeFromSuperview()
                     self.delegate?.deselectedAnnotationWhenDismissDetailPopup()

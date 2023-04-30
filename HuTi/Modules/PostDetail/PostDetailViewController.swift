@@ -94,7 +94,7 @@ class PostDetailViewController: BaseViewController {
         titleLabel.text = post?.title
         addressLabel.text = "\(post?.address ?? "") ,\(post?.wardName ?? ""), \(post?.districtName ?? ""), \(post?.provinceName ?? "")"
         acreageLabel.text = "\(post?.acreage ?? 0) m2"
-        priceLabel.text = "\(post?.price ?? 0) VNĐ"
+        priceLabel.text = "\((post?.price ?? 0).formattedWithSeparator)Đ"
         legelLabel.text = post?.legal
         funitureLabel.text = post?.funiture
         bedroomLabel.text = "\(post?.bedroom ?? 0)"
@@ -245,7 +245,7 @@ class PostDetailViewController: BaseViewController {
         
         viewModel.images.asObservable()
             .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { (index, element, cell) in
-                cell.configImage(imageName: element)
+                cell.configImage(imageName: element, isEnabledRemove: false)
             }.disposed(by: viewModel.bag)
         
         imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)

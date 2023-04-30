@@ -241,6 +241,7 @@ class FilterResultViewController: BaseViewController {
                 self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
             } else if self.viewModel.page == 1 {
                 self.viewModel.post.accept([])
+                self.removeAnnotation()
                 self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
             }
         }.disposed(by: viewModel.bag)
@@ -282,6 +283,7 @@ extension FilterResultViewController: CLLocationManagerDelegate {
     }
     
     private func pinRealEstateLocation() {
+        removeAnnotation()
         let posts = viewModel.post.value
         if posts.count > 0 {
             for post in posts {
@@ -290,6 +292,15 @@ extension FilterResultViewController: CLLocationManagerDelegate {
                 pin.title = post.id
                 pin.coordinate = coordinate
                 mapView.addAnnotation(pin)
+            }
+        }
+    }
+    
+    private func removeAnnotation() {
+        let annotations = mapView.annotations
+        for annotation in annotations {
+            if let annotation = annotation as? MKAnnotation {
+                mapView.removeAnnotation(annotation)
             }
         }
     }
@@ -352,7 +363,7 @@ extension FilterResultViewController: MKMapViewDelegate {
                 detailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 detailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                detailView.heightAnchor.constraint(equalToConstant: 215)
+                detailView.heightAnchor.constraint(equalToConstant: 220)
             ])
         }
     }

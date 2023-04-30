@@ -17,6 +17,7 @@ class NewPostViewModel: BaseViewModel {
     let houseDirection = BehaviorRelay<[String]>(value: [])
     let balconyDirection = BehaviorRelay<[String]>(value: [])
     let selectedImage = BehaviorRelay<[UIImage]>(value: [])
+    let imagesName = BehaviorRelay<[String]>(value: [])
     var selectedProvince = -1
     var selectedDistrict = -1
     var selectedWard = -1
@@ -29,8 +30,8 @@ class NewPostViewModel: BaseViewModel {
     var isSelectedSell = true
     var isEditBtnClicked = false
     var imageSelected = UIImage()
-    var images = [UIImage]()
-    var imagesName = [String]()
+    var imagesList = [UIImage]()
+    var imagesNameList = [String]()
     var searchProjectParams = [String: Any]()
     var isEdit = false
     var post: PostDetail?
@@ -39,7 +40,7 @@ class NewPostViewModel: BaseViewModel {
     var newPostParams = [String: Any]()
     
     func setupDataImageCollectionView() {
-        selectedImage.accept(images)
+        selectedImage.accept(imagesList)
     }
     
     func getAllProvinces() -> Observable<[Province]> {
@@ -163,7 +164,7 @@ class NewPostViewModel: BaseViewModel {
         newPostParams.updateValue(price, forKey: "price")
         newPostParams.updateValue(getPriceRange(price: price), forKey: "priceRange")
         newPostParams.updateValue(self.legal.value[selectedLegal], forKey: "legal")
-        newPostParams.updateValue(imagesName, forKey: "images")
+        newPostParams.updateValue(imagesNameList, forKey: "images")
         newPostParams.updateValue(contactName, forKey: "contactName")
         newPostParams.updateValue(contactPhoneNumber, forKey: "contactPhoneNumber")
         
@@ -402,6 +403,11 @@ class NewPostViewModel: BaseViewModel {
             updatePostParams.updateValue(contactNumber, forKey: "contactNumber")
         }
         
+        if imagesNameList.sorted() != post.images.sorted() {
+            isUpdated = true
+            updatePostParams.updateValue(imagesNameList, forKey: "images")
+        }
+        
         /// Non required Field
         if selectedProject > -1 {
             isUpdated = true
@@ -488,7 +494,7 @@ class NewPostViewModel: BaseViewModel {
         let assetDataModel = AssetDataModel(data: data, pathFile: "", thumbnail: imageSelected)
         assetDataModel.compressed = true
         assetDataModel.compressData()
-        assetDataModel.remoteName = imagesName.last ?? ""
+        assetDataModel.remoteName = imagesNameList.last ?? ""
         
         awsService.uploadImage(data: assetDataModel, completionHandler:  { [weak self] _, error in
             guard self != nil else { return }

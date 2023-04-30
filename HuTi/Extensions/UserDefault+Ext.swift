@@ -55,7 +55,6 @@ extension String {
     func getName() -> String {
         let components = self.components(separatedBy: " ")
         if components.count > 0 {
-//            let firstName = components.removeFirst()
             let lastName = components.joined(separator: " ")
             return lastName
         } else {
