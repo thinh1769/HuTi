@@ -8,6 +8,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import RxSwift
+import RxCocoa
 
 protocol PostDetailViewControllerDelegate: AnyObject {
     func didTappedLikeButton()
@@ -200,11 +202,6 @@ class PostDetailViewController: BaseViewController {
         viewModel.isFavorite = !viewModel.isFavorite
         delegate?.didTappedLikeButton()
     }
-    
-//    @IBAction func onClickedEditButton(_ sender: UIButton) {
-//        let vc = NewPostViewController.instance(isEdit: true, postDetail: viewModel.postDetail)
-//        navigateTo(vc)
-//    }
     
     @IBAction func didTapContactButton(_ sender: UIButton) {
         if let phoneCallURL = URL(string: "tel://\(viewModel.postDetail?.contactPhoneNumber ?? "")") {

@@ -12,8 +12,9 @@ import Security
 
 class AuthService: BaseService {
     func signIn(phoneNumber: String, password: String) -> Observable<User> {
-        let params = ["phoneNumber" : phoneNumber, "password": password]
-        return authRequest(api: APIConstants.signIn, method: .post, parameters: params)
+        let params: [String: Any] = ["phoneNumber" : phoneNumber, "password": password, "isAdmin": false]
+//        return authRequest(api: APIConstants.signIn.rawValue, method: .post, parameters: params)
+        return request(api: APIConstants.signIn.rawValue, method: .post, params: params)
     }
     
     func sendOTP(phoneNumber: String) -> Observable<User> {

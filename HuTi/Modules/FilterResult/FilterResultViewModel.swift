@@ -20,6 +20,7 @@ class FilterResultViewModel: BaseViewModel {
     var mainTabBarItemTitle = MainTitle.sell
     var tuppleOptionsList = [(key: Int, value: String)]()
     var findPostParams = [String: Any]()
+    let getApprovedPostParam = ["browseStatus": 1]
     var searchProjectParams = [String: Any]()
     var selectedProvince = (index: -1, id: "")
     var selectedDistrict = (index: -1, id: "")
@@ -57,8 +58,8 @@ class FilterResultViewModel: BaseViewModel {
         return -1
     }
     
-    func findPost() -> Observable<[Post]> {
-        return postService.findPost(param: findPostParams, page: page)
+    func findPost(param: [String: Any]) -> Observable<[Post]> {
+        return postService.findPost(param: param, page: page)
     }
     
     func findProject() -> Observable<[Project]> {

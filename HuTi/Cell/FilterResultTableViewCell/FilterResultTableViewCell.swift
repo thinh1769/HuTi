@@ -18,6 +18,9 @@ class FilterResultTableViewCell: UITableViewCell {
     @IBOutlet private weak var heartBtn: UIImageView!
     @IBOutlet private weak var cellView: UIView!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var bottomBrowseView: UIView!
+    @IBOutlet weak var browseStatusView: UIView!
+    @IBOutlet weak var browseStatusLabel: UILabel!
     
     static var reusableIdentifier: String {
         return String(describing: self)
@@ -37,6 +40,7 @@ class FilterResultTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         cellView.layer.cornerRadius = 10
         heartBtn.isHidden = false
+        bottomBrowseView.isHidden = true
         heartBtn.image = UIImage(systemName: "heart")
         heartBtn.tintColor = UIColor(named: ColorName.gray)
     }
@@ -57,7 +61,10 @@ class FilterResultTableViewCell: UITableViewCell {
         
         if isHiddenAuthorAndHeart {
             bottomView.isHidden = true
+            bottomBrowseView.isHidden = false
             addressLabel.numberOfLines = 0
+            configBrowseStatusView(post.browseStatus ?? 0)
+            
         }
         
         if let userId = UserDefaults.userInfo?.id,
@@ -75,6 +82,25 @@ class FilterResultTableViewCell: UITableViewCell {
         }
         
         self.thumbnail.image = nil
+    }
+    
+    private func configBrowseStatusView(_ status: Int) {
+        switch status {
+        case 2:
+            browseStatusView.backgroundColor = UIColor(named: ColorName.redStatusBackground)
+            browseStatusLabel.textColor = UIColor(named: ColorName.redStatusText)
+            browseStatusLabel.text = "Bị từ chối"
+        case 1:
+            browseStatusView.backgroundColor = UIColor(named: ColorName.greenStatusBackground)
+            browseStatusLabel.textColor = UIColor(named: ColorName.greenStatusText)
+            browseStatusLabel.text = "Đã duyệt"
+        case 0:
+            browseStatusView.backgroundColor = UIColor(named: ColorName.purpleStatusBackground)
+            browseStatusLabel.textColor = UIColor(named: ColorName.purpleStatusText)
+            browseStatusLabel.text = "Chờ duyệt"
+        default:
+            return
+        }
     }
     
 }

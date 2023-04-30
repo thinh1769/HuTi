@@ -520,7 +520,7 @@
                 <constraint firstItem="a6u-u1-eGi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="tmM-Gs-TpF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zPL-mi-YeD" secondAttribute="trailing" constant="20" id="zEJ-CS-EEy"/>
             </constraints>
-            <point key="canvasLocation" x="-3121" y="-1847"/>
+            <point key="canvasLocation" x="-3575" y="-1589"/>
         </view>
     </objects>
     <resources>

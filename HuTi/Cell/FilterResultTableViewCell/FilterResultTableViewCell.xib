@@ -57,13 +57,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2O-zO-iyh" userLabel="addressLabel">
-                                        <rect key="frame" x="0.0" y="45" width="282" height="30"/>
+                                        <rect key="frame" x="0.0" y="45" width="282" height="5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veH-fd-wvO" userLabel="bottomView">
-                                        <rect key="frame" x="0.0" y="75" width="282" height="25"/>
+                                        <rect key="frame" x="0.0" y="50" width="282" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWU-29-Zgc" userLabel="authorLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="255" height="25"/>
@@ -89,6 +89,40 @@
                                             <constraint firstAttribute="height" constant="25" id="hm8-ib-sV7"/>
                                             <constraint firstAttribute="bottom" secondItem="6pW-j4-s9h" secondAttribute="bottom" id="qW9-aF-ptD"/>
                                             <constraint firstAttribute="bottom" secondItem="QWU-29-Zgc" secondAttribute="bottom" id="xOE-wD-cob"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7x8-LI-fx9">
+                                        <rect key="frame" x="0.0" y="75" width="282" height="25"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91f-1b-u9u">
+                                                <rect key="frame" x="207" y="5" width="70" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đã duyệt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCA-wB-5iF">
+                                                        <rect key="frame" x="9.6666666666666856" y="3.0000000000000009" width="51" height="14.333333333333336"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" name="greenStatusText"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="greenStatusBackground"/>
+                                                <constraints>
+                                                    <constraint firstItem="nCA-wB-5iF" firstAttribute="centerX" secondItem="91f-1b-u9u" secondAttribute="centerX" id="92m-wa-VuU"/>
+                                                    <constraint firstAttribute="width" constant="70" id="Acq-y2-xHt"/>
+                                                    <constraint firstItem="nCA-wB-5iF" firstAttribute="centerY" secondItem="91f-1b-u9u" secondAttribute="centerY" id="G2J-jN-tdx"/>
+                                                    <constraint firstAttribute="height" constant="20" id="OrT-ck-JrJ"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="91f-1b-u9u" secondAttribute="bottom" id="dGx-cC-IkH"/>
+                                            <constraint firstAttribute="height" constant="25" id="jRX-Cy-V2F"/>
+                                            <constraint firstAttribute="trailing" secondItem="91f-1b-u9u" secondAttribute="trailing" constant="5" id="unO-0P-42q"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -120,7 +154,10 @@
             <connections>
                 <outlet property="addressLabel" destination="R2O-zO-iyh" id="GU7-97-Yxc"/>
                 <outlet property="authorLabel" destination="QWU-29-Zgc" id="f62-aK-EFY"/>
+                <outlet property="bottomBrowseView" destination="7x8-LI-fx9" id="Ruk-Ib-Fh8"/>
                 <outlet property="bottomView" destination="veH-fd-wvO" id="JM9-jJ-drI"/>
+                <outlet property="browseStatusLabel" destination="nCA-wB-5iF" id="55k-VD-Jia"/>
+                <outlet property="browseStatusView" destination="91f-1b-u9u" id="9hH-mk-tbw"/>
                 <outlet property="cellView" destination="iiy-Ds-CEU" id="BeW-p2-AFT"/>
                 <outlet property="heartBtn" destination="6pW-j4-s9h" id="osv-Fm-tIS"/>
                 <outlet property="postTitleLabel" destination="ARQ-rt-axh" id="m8S-WJ-YeY"/>
@@ -141,12 +178,21 @@
         <namedColor name="gray">
             <color red="0.66299998760223389" green="0.65499997138977051" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <namedColor name="greenStatusBackground">
+            <color red="0.9100000262260437" green="1" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="greenStatusText">
+            <color red="0.0" green="0.63700002431869507" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="themeText">
             <color red="0.75300002098083496" green="0.32600000500679016" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

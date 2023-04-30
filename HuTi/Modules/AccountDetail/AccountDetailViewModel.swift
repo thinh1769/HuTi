@@ -63,7 +63,7 @@ class AccountDetailViewModel: BaseViewModel {
         if checkGenderPickerIsChanged() {
             genderUpdated = gender.value[selectedGender]
         }
-        userUpdated = User(name: name, phoneNumber: phone, email: email, dateOfBirth: dob, gender: genderUpdated, identityCardNumber: identityCard)
+        userUpdated = User(id: UserDefaults.userInfo?.id ?? "",name: name, phoneNumber: phone, email: email, dateOfBirth: dob, gender: genderUpdated, identityCardNumber: identityCard)
         return authService.updateInfo(user: userUpdated)
     }
 }

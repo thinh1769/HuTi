@@ -54,29 +54,29 @@ class FilterResultViewController: BaseViewController {
     
     private func loadData() {
         if viewModel.tabBarItemTitle != TabBarItemTitle.project {
-            getListPosts()
+            findPost(param: viewModel.getApprovedPostParam)
         } else {
         getListProjects()
         mapButton.isHidden = true
         }
     }
     
-    private func getListPosts() {
-        var isSell = true
-        if viewModel.tabBarItemTitle == TabBarItemTitle.forRent {
-            isSell = false
-        }
-        viewModel.getListPosts(isSell: isSell).subscribe { [weak self] posts in
-            guard let self = self else { return }
-            if posts.count > 0 {
-                let mergePost = self.viewModel.post.value + posts
-                let sortedPost = mergePost.sorted { $0.createdAt > $1.createdAt }
-                self.viewModel.post.accept(sortedPost)
-                self.pinRealEstateLocation()
-                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
-            }
-        }.disposed(by: viewModel.bag)
-    }
+//    private func getListPosts() {
+//        var isSell = true
+//        if viewModel.tabBarItemTitle == TabBarItemTitle.forRent {
+//            isSell = false
+//        }
+//        viewModel.getListPosts(isSell: isSell).subscribe { [weak self] posts in
+//            guard let self = self else { return }
+//            if posts.count > 0 {
+//                let mergePost = self.viewModel.post.value + posts
+//                let sortedPost = mergePost.sorted { $0.createdAt > $1.createdAt }
+//                self.viewModel.post.accept(sortedPost)
+//                self.pinRealEstateLocation()
+//                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
+//            }
+//        }.disposed(by: viewModel.bag)
+//    }
     
     private func getListProjects() {
         viewModel.getListProjects().subscribe { [weak self] projects in
@@ -207,7 +207,7 @@ class FilterResultViewController: BaseViewController {
         } else {
             viewModel.post.accept([])
             viewModel.page = 1
-            getListPosts()
+            findPost(param: viewModel.getApprovedPostParam)
         }
         optionView.isHidden = true
     }
@@ -217,7 +217,7 @@ class FilterResultViewController: BaseViewController {
             guard let self = self else { return }
             self.viewModel.page += 1
             if self.viewModel.options.value.count > 0 {
-                self.findPost()
+                self.findPost(param: self.viewModel.findPostParams)
             } else {
                 self.loadData()
             }
@@ -225,8 +225,8 @@ class FilterResultViewController: BaseViewController {
         }
     }
     
-    private func findPost() {
-        viewModel.findPost().subscribe { [weak self] posts in
+    private func findPost(param: [String: Any]) {
+        viewModel.findPost(param: param).subscribe { [weak self] posts in
             guard let self = self else { return }
             if posts.count > 0 {
                 if self.viewModel.page == 1 {
@@ -237,6 +237,7 @@ class FilterResultViewController: BaseViewController {
                     let sortedPost = mergePost.sorted { $0.createdAt > $1.createdAt }
                     self.viewModel.post.accept(sortedPost)
                 }
+                self.pinRealEstateLocation()
                 self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
             } else if self.viewModel.page == 1 {
                 self.viewModel.post.accept([])
@@ -256,11 +257,7 @@ extension FilterResultViewController: FilterViewControllerDelegate {
         viewModel.selectedProvince = selectedProvince
         viewModel.selectedDistrict = selectedDistrict
         viewModel.page = 1
-        findPost()
-//        if let filterProject = projectResult {
-//            viewModel.project.accept(filterProject)
-//            self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
-//        }
+        findPost(param: viewModel.findPostParams)
         optionView.isHidden = false
     }
     

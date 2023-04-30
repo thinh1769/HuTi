@@ -75,6 +75,13 @@ class DetailPopupView: UIView {
             heartImage.image = UIImage(systemName: "heart")
             heartImage.tintColor = UIColor(named: ColorName.gray)
         }
+        
+        if let userId = UserDefaults.userInfo?.id,
+           userId == post.userId {
+            heartImage.isHidden = true
+        } else {
+            heartImage.isHidden = false
+        }
     }
     
     private func addPanGestureToDetailPopup() {
