@@ -13,6 +13,8 @@ import RxCocoa
 
 protocol PostDetailViewControllerDelegate: AnyObject {
     func didTappedLikeButton()
+    
+    func didTappedLikeButtonBackToMapView(_ postId: String)
 }
 
 class PostDetailViewController: BaseViewController {
@@ -94,7 +96,7 @@ class PostDetailViewController: BaseViewController {
         titleLabel.text = post?.title
         addressLabel.text = "\(post?.address ?? "") ,\(post?.wardName ?? ""), \(post?.districtName ?? ""), \(post?.provinceName ?? "")"
         acreageLabel.text = "\(post?.acreage ?? 0) m2"
-        priceLabel.text = "\((post?.price ?? 0).formattedWithSeparator)Đ"
+        priceLabel.text = "\((post?.price ?? 0).formattedWithSeparator)đ"
         legelLabel.text = post?.legal
         funitureLabel.text = post?.funiture
         bedroomLabel.text = "\(post?.bedroom ?? 0)"
@@ -174,6 +176,7 @@ class PostDetailViewController: BaseViewController {
     }
   
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
+        delegate?.didTappedLikeButtonBackToMapView(viewModel.postId)
         backToPreviousView()
     }
     

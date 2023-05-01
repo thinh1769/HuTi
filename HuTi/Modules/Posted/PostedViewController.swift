@@ -108,6 +108,9 @@ class PostedViewController: BaseViewController {
 }
 
 extension PostedViewController: PostDetailViewControllerDelegate {
+    func didTappedLikeButtonBackToMapView(_ postId: String) {
+    }
+    
     func didTappedLikeButton() {
         postedTableView.reloadData()
     }

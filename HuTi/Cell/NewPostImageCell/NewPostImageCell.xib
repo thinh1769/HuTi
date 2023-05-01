@@ -27,7 +27,7 @@
                             <constraint firstAttribute="width" constant="25" id="QNg-AZ-iZZ"/>
                             <constraint firstAttribute="height" constant="25" id="cMD-zS-Jd0"/>
                         </constraints>
-                        <color key="tintColor" systemColor="systemGray2Color"/>
+                        <color key="tintColor" systemColor="systemGray5Color"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="xmark.circle.fill" catalog="system">
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
@@ -57,8 +57,8 @@
     </objects>
     <resources>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

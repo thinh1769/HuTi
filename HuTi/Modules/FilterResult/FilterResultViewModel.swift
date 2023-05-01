@@ -20,7 +20,7 @@ class FilterResultViewModel: BaseViewModel {
     var mainTabBarItemTitle = MainTitle.sell
     var tuppleOptionsList = [(key: Int, value: String)]()
     var findPostParams = [String: Any]()
-    let getApprovedPostParam = ["browseStatus": 1]
+    var getApprovedPostParam: [String: Any] = ["browseStatus": 1]
     var searchProjectParams = [String: Any]()
     var selectedProvince = (index: -1, id: "")
     var selectedDistrict = (index: -1, id: "")

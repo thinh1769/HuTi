@@ -226,7 +226,13 @@ class FilterResultViewController: BaseViewController {
     }
     
     private func findPost(param: [String: Any]) {
-        viewModel.findPost(param: param).subscribe { [weak self] posts in
+        var findParams = param
+        var isSell = true
+        if viewModel.tabBarItemTitle == TabBarItemTitle.forRent {
+            isSell = false
+        }
+        findParams.updateValue(isSell, forKey: "isSell")
+        viewModel.findPost(param: findParams).subscribe { [weak self] posts in
             guard let self = self else { return }
             if posts.count > 0 {
                 if self.viewModel.page == 1 {
@@ -370,6 +376,12 @@ extension FilterResultViewController: MKMapViewDelegate {
 }
 
 extension FilterResultViewController: PostDetailViewControllerDelegate {
+    func didTappedLikeButtonBackToMapView(_ postId: String) {
+        if !mapView.isHidden {
+            self.addDetailView(postId)
+        }
+    }
+    
     func didTappedLikeButton() {
         filterResultTableView.reloadData()
     }
@@ -387,6 +399,7 @@ extension FilterResultViewController: DetailPopupViewDelegate {
     
     func onClickedPostDetailButton(_ postId: String) {
         let vc = PostDetailViewController.instance(postId: postId, isFavorite: isFavoritePost(postId: postId))
+        vc.delegate = self
         navigateTo(vc)
     }
 }
