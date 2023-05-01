@@ -206,8 +206,6 @@ class NewPostViewModel: BaseViewModel {
             newPostParams.updateValue(facade, forKey: "facade")
         }
         
-        print("------\(newPostParams)")
-        
         return postService.addPost(params: newPostParams)
     }
     
@@ -488,22 +486,32 @@ class NewPostViewModel: BaseViewModel {
         return postService.updatePost(postId: post?.id ?? "", param: updatePostParams)
     }
     
-    func uploadImage(completion: @escaping() -> Void) {
-        guard let data = imageSelected.pngData() else { return }
+    func uploadImages(completion: @escaping () -> Void) {
+        let dispatchGroup = DispatchGroup()
         
-        let assetDataModel = AssetDataModel(data: data, pathFile: "", thumbnail: imageSelected)
-        assetDataModel.compressed = true
-        assetDataModel.compressData()
-        assetDataModel.remoteName = imagesNameList.last ?? ""
+        for (index, element) in imagesList.enumerated() {
+            guard let data = element.pngData() else { continue }
+            
+            let assetDataModel = AssetDataModel(data: data, pathFile: "", thumbnail: element)
+            assetDataModel.compressed = true
+            assetDataModel.compressData()
+            assetDataModel.remoteName = imagesNameList[index]
+            
+            dispatchGroup.enter()
+            awsService.uploadImage(data: assetDataModel, completionHandler: { [weak self] _, error in
+                guard self != nil else { return }
+                if error != nil {
+                    print("---------------- Lỗi upload lên AWS S3 : \(String(describing: error))----------------")
+                }
+                dispatchGroup.leave()
+            })
+        }
         
-        awsService.uploadImage(data: assetDataModel, completionHandler:  { [weak self] _, error in
-            guard self != nil else { return }
-            if error != nil {
-                print("---------------- Lỗi upload lên AWS S3 : \(String(describing: error))----------------")
-            }
+        dispatchGroup.notify(queue: DispatchQueue.main) {
             completion()
-        })
+        }
     }
+
 }
 
 

@@ -237,25 +237,32 @@ class NewPostViewController: BaseViewController {
     @IBAction func onClickedPostBtn(_ sender: UIButton) {
         if !viewModel.isEdit {
             if validateForm(){
-                viewModel.addNewPost(address: addressTextField.text ?? ""
-                                     , long: mapView.centerCoordinate.longitude
-                                     , lat: mapView.centerCoordinate.latitude
-                                     , title: titleTextField.text ?? ""
-                                     , description: descriptionTextView.text ?? ""
-                                     , acreage: Double(acreageTextField.text ?? "") ?? 0
-                                     , price: Int(priceTextField.text ?? "") ?? 0
-                                     , bedroom: Int(bedroomNumberLabel.text ?? "") ?? 0
-                                     , bathroom: Int(bathroomNumberLabel.text ?? "") ?? 0
-                                     , floor: Int(floorNumberLabel.text ?? "") ?? 0
-                                     , wayIn: Double(wayInTextField.text ?? "") ?? 0
-                                     , facade: Double(facadeTextField.text ?? "") ?? 0
-                                     , contactName: contactNameTextField.text ?? ""
-                                     , contactPhoneNumber: contactPhoneTextField.text ?? "")
-                .subscribe { [weak self] _ in
-                    guard let self = self else { return }
-                    self.backToPreviousView()
-                    self.showAlert(title: Alert.postSuccessfully)
-                }.disposed(by: viewModel.bag)
+                showLoading()
+                viewModel.uploadImages {
+                    DispatchQueue.main.async {
+                        self.viewModel.addNewPost(address: self.addressTextField.text ?? ""
+                                                  , long: self.mapView.centerCoordinate.longitude
+                                                  , lat: self.mapView.centerCoordinate.latitude
+                                                  , title: self.titleTextField.text ?? ""
+                                                  , description: self.descriptionTextView.text ?? ""
+                                                  , acreage: Double(self.acreageTextField.text ?? "") ?? 0
+                                                  , price: Int(self.priceTextField.text ?? "") ?? 0
+                                                  , bedroom: Int(self.bedroomNumberLabel.text ?? "") ?? 0
+                                                  , bathroom: Int(self.bathroomNumberLabel.text ?? "") ?? 0
+                                                  , floor: Int(self.floorNumberLabel.text ?? "") ?? 0
+                                                  , wayIn: Double(self.wayInTextField.text ?? "") ?? 0
+                                                  , facade: Double(self.facadeTextField.text ?? "") ?? 0
+                                                  , contactName: self.contactNameTextField.text ?? ""
+                                                  , contactPhoneNumber: self.contactPhoneTextField.text ?? "")
+                        .subscribe { [weak self] _ in
+                            guard let self = self else { return }
+                            self.hideLoading()
+                            self.backToPreviousView()
+                            self.showAlert(title: Alert.postSuccessfully)
+                        }.disposed(by: self.viewModel.bag)
+                    }
+                    
+                }
             }
         } else if viewModel.checkUpdatePost(typeTextField.text ?? "",
                                             provinceTextField.text ?? "",
@@ -475,7 +482,6 @@ extension NewPostViewController: PHPickerViewControllerDelegate {
             item.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
                 guard let self = self else { return }
                 if let image = image {
-                    print("---Đang tải hình ảnh lên")
                     self.viewModel.imageSelected = (image as! UIImage).rotate()
                     self.viewModel.imagesList.append(self.viewModel.imageSelected)
                     self.viewModel.setupDataImageCollectionView()
@@ -483,11 +489,6 @@ extension NewPostViewController: PHPickerViewControllerDelegate {
                     let now = Date()
                     let timeInterval = now.timeIntervalSince1970
                     self.viewModel.imagesNameList.append("\(UserDefaults.userInfo?.id ?? "")_\(timeInterval)")
-                    self.viewModel.uploadImage {
-                        DispatchQueue.main.async {
-                            print("---upload image thành công")
-                        }
-                    }
                 }
             }
         }
