@@ -21,6 +21,7 @@ class FilterResultTableViewCell: UITableViewCell {
     @IBOutlet weak var bottomBrowseView: UIView!
     @IBOutlet weak var browseStatusView: UIView!
     @IBOutlet weak var browseStatusLabel: UILabel!
+    @IBOutlet weak var hiddenStatusView: UIView!
     
     static var reusableIdentifier: String {
         return String(describing: self)
@@ -39,6 +40,8 @@ class FilterResultTableViewCell: UITableViewCell {
     private func setupUI() {
         self.selectionStyle = .none
         cellView.layer.cornerRadius = 10
+        hiddenStatusView.layer.cornerRadius = 10
+        hiddenStatusView.isHidden = true
         heartBtn.isHidden = false
         bottomBrowseView.isHidden = true
         heartBtn.image = UIImage(systemName: "heart")
@@ -50,6 +53,13 @@ class FilterResultTableViewCell: UITableViewCell {
     }
     
     func configInfo(_  post: Post, isHiddenAuthorAndHeart: Bool, isFavorite: Bool?) {
+        if let status = post.status {
+            if status == 0 {
+                hiddenStatusView.isHidden = true
+            } else {
+                hiddenStatusView.isHidden = false
+            }
+        }
         postTitleLabel.text = post.title
         priceLabel.text = "\((post.price).formattedWithSeparator)đ"
         addressLabel.text = post.getFullAddress()

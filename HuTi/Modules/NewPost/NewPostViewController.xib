@@ -39,6 +39,7 @@
                 <outlet property="forRentView" destination="QFB-zJ-zsU" id="ga5-sF-a3t"/>
                 <outlet property="funitureTextField" destination="NWH-Ua-zbS" id="eZP-LS-VjN"/>
                 <outlet property="funitureView" destination="kpz-2T-gOV" id="dTU-ea-DYV"/>
+                <outlet property="hidePostButton" destination="OLT-LS-dUj" id="mSc-Q8-vfn"/>
                 <outlet property="houseDirectionTextField" destination="Lfc-ao-yQr" id="Jte-PN-DCL"/>
                 <outlet property="imageCollectionView" destination="2s3-6U-ehq" id="Oyh-O5-UCb"/>
                 <outlet property="increaseBathroomBtn" destination="dTS-za-H85" id="hzX-vg-LGm"/>
@@ -1581,20 +1582,36 @@
                         <constraint firstItem="5R0-sq-jff" firstAttribute="top" secondItem="eme-NT-hY5" secondAttribute="top" id="vNj-12-fph"/>
                     </constraints>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLT-LS-dUj">
+                    <rect key="frame" x="295" y="15" width="60" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="nCH-6V-tXm"/>
+                        <constraint firstAttribute="width" constant="60" id="ybm-01-EIX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <color key="tintColor" name="black"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Ẩn tin"/>
+                    <connections>
+                        <action selector="didTapHidePostButton:" destination="-1" eventType="touchUpInside" id="XF5-rZ-lKD"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eme-NT-hY5" secondAttribute="trailing" id="XtH-Ba-rmC"/>
+                <constraint firstItem="OLT-LS-dUj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="brR-kX-Udd"/>
                 <constraint firstItem="eFB-9t-KvU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="cN4-sE-yeX"/>
                 <constraint firstItem="eme-NT-hY5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dIF-Jv-8WN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OLT-LS-dUj" secondAttribute="trailing" constant="20" id="dSc-We-dUK"/>
                 <constraint firstItem="eme-NT-hY5" firstAttribute="top" secondItem="eFB-9t-KvU" secondAttribute="bottom" constant="20" id="elb-TF-5Wp"/>
                 <constraint firstItem="D44-Un-bLi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="kTH-9B-lHo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="eme-NT-hY5" secondAttribute="bottom" id="mgX-Xo-zTN"/>
                 <constraint firstItem="eFB-9t-KvU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="sZn-zJ-Jda"/>
                 <constraint firstItem="D44-Un-bLi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zO7-qh-kwn"/>
             </constraints>
-            <point key="canvasLocation" x="-1702" y="-297"/>
+            <point key="canvasLocation" x="-2028" y="-460"/>
         </view>
     </objects>
     <resources>

@@ -363,13 +363,13 @@ extension FilterResultViewController: MKMapViewDelegate {
 
         if detailView.superview == nil {
             self.view.addSubview(detailView)
-            
+            guard let tabBar = tabBarController?.tabBar else { return }
             detailView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 detailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 detailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                detailView.heightAnchor.constraint(equalToConstant: 220)
+                detailView.bottomAnchor.constraint(equalTo: tabBar.topAnchor),
+                detailView.heightAnchor.constraint(equalToConstant: 170)
             ])
         }
     }

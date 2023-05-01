@@ -59,6 +59,7 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var bathroomView: UIView!
     @IBOutlet weak var bedroomView: UIView!
     @IBOutlet weak var balconyView: UIView!
+    @IBOutlet weak var hidePostButton: UIButton!
     
     let typePicker = UIPickerView()
     let provincePicker = UIPickerView()
@@ -100,6 +101,7 @@ class NewPostViewController: BaseViewController {
         acreageTextField.delegate = self
 //        formattingTextField(sender: priceTextField)
         mapView.isUserInteractionEnabled = false
+        hidePostButton.isHidden = true
         currentLocationButton.isUserInteractionEnabled = false
         sellView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedSellView)))
         forRentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClickedForRentView)))
@@ -129,6 +131,7 @@ class NewPostViewController: BaseViewController {
         
         if viewModel.isEdit {
             loadPostDetailForEdit()
+            hidePostButton.isHidden = false
         }
     }
     
@@ -450,7 +453,34 @@ class NewPostViewController: BaseViewController {
         hiddenUnnecessaryView(text: post.realEstateType)
         viewModel.imagesName.accept(post.images)
         viewModel.imagesNameList = post.images
+        if let status = post.status {
+            if status == 0 {
+                hidePostButton.setTitle("Ẩn tin", for: .normal)
+            } else {
+                hidePostButton.setTitle("Hiện tin", for: .normal)
+            }
+        }
     }
+    
+    @IBAction func didTapHidePostButton(_ sender: UIButton) {
+        guard let post = viewModel.post,
+              let status = post.status
+        else { return }
+        if status == 0 {
+            viewModel.updatePostParams = ["status": 1]
+        } else if status == 1 {
+            viewModel.updatePostParams = ["status": 0]
+        }
+        viewModel.updatePost().subscribe { [weak self] _ in
+            guard let self = self else { return }
+            if status == 0 {
+                self.showAlert(title: "Ẩn tin đăng thành công")
+            } else if status == 1 {
+                self.showAlert(title: "Hiện tin đăng thành công")
+            }
+        }.disposed(by: viewModel.bag)
+    }
+    
 }
 
 extension NewPostViewController: UICollectionViewDelegateFlowLayout {

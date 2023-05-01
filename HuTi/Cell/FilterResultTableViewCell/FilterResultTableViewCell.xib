@@ -140,14 +140,23 @@
                             <constraint firstItem="8vt-8w-Mud" firstAttribute="top" secondItem="iiy-Ds-CEU" secondAttribute="top" constant="10" id="vax-EV-7VQ"/>
                         </constraints>
                     </view>
+                    <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EY-dc-SIg">
+                        <rect key="frame" x="0.0" y="0.0" width="412" height="120"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" name="background"/>
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="iiy-Ds-CEU" secondAttribute="bottom" constant="10" id="Jkc-ZU-dA9"/>
                     <constraint firstItem="iiy-Ds-CEU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kcg-J2-Ree"/>
+                    <constraint firstAttribute="trailing" secondItem="6EY-dc-SIg" secondAttribute="trailing" id="e3c-k4-keo"/>
+                    <constraint firstItem="6EY-dc-SIg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jGp-sm-3Ar"/>
                     <constraint firstItem="iiy-Ds-CEU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mmC-lV-rSb"/>
+                    <constraint firstAttribute="bottom" secondItem="6EY-dc-SIg" secondAttribute="bottom" constant="10" id="oIa-VG-iRl"/>
                     <constraint firstAttribute="trailing" secondItem="iiy-Ds-CEU" secondAttribute="trailing" id="qXY-pA-RQ7"/>
+                    <constraint firstItem="6EY-dc-SIg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="uHV-0U-9rf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -160,11 +169,12 @@
                 <outlet property="browseStatusView" destination="91f-1b-u9u" id="9hH-mk-tbw"/>
                 <outlet property="cellView" destination="iiy-Ds-CEU" id="BeW-p2-AFT"/>
                 <outlet property="heartBtn" destination="6pW-j4-s9h" id="osv-Fm-tIS"/>
+                <outlet property="hiddenStatusView" destination="6EY-dc-SIg" id="VXi-jK-o8P"/>
                 <outlet property="postTitleLabel" destination="ARQ-rt-axh" id="m8S-WJ-YeY"/>
                 <outlet property="priceLabel" destination="RY2-qN-Ilp" id="lAQ-NQ-wiR"/>
                 <outlet property="thumbnail" destination="8vt-8w-Mud" id="qh9-BU-p2M"/>
             </connections>
-            <point key="canvasLocation" x="120" y="-68.246445497630333"/>
+            <point key="canvasLocation" x="-75" y="-38"/>
         </tableViewCell>
     </objects>
     <resources>
