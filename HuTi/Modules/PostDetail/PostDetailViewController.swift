@@ -25,6 +25,7 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet private weak var projectInfoView: UIView!
     @IBOutlet private weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var acreageLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var legelLabel: UILabel!
@@ -92,24 +93,25 @@ class PostDetailViewController: BaseViewController {
     }
     
     private func loadPostDetail() {
-        let post = viewModel.postDetail
-        titleLabel.text = post?.title
-        addressLabel.text = "\(post?.address ?? "") ,\(post?.wardName ?? ""), \(post?.districtName ?? ""), \(post?.provinceName ?? "")"
-        acreageLabel.text = "\(post?.acreage ?? 0) m2"
-        priceLabel.text = "\((post?.price ?? 0).formattedWithSeparator)đ"
-        legelLabel.text = post?.legal
-        funitureLabel.text = post?.funiture
-        bedroomLabel.text = "\(post?.bedroom ?? 0)"
-        bathroomLabel.text = "\(post?.bathroom ?? 0)"
-        floorLabel.text = "\(post?.floor ?? 0)"
-        houseDirectionLabel.text = post?.houseDirection
-        balconyLabel.text = post?.balconyDirection
-        wayInLabel.text = "\(post?.wayIn ?? 0) m"
-        facadeLabel.text = "\(post?.facade ?? 0) m"
-        descriptionLabel.text = post?.description
+        guard let post = viewModel.postDetail else { return }
+        titleLabel.text = post.title
+        addressLabel.text = post.getFullAddress()
+        typeLabel.text = post.realEstateType
+        acreageLabel.text = "\(post.acreage) m2"
+        priceLabel.text = "\((post.price).formattedWithSeparator)đ"
+        legelLabel.text = post.legal
+        funitureLabel.text = post.funiture
+        bedroomLabel.text = "\(post.bedroom ?? 0)"
+        bathroomLabel.text = "\(post.bathroom ?? 0)"
+        floorLabel.text = "\(post.floor ?? 0)"
+        houseDirectionLabel.text = post.houseDirection
+        balconyLabel.text = post.balconyDirection
+        wayInLabel.text = "\(post.wayIn ?? 0) m"
+        facadeLabel.text = "\(post.facade ?? 0) m"
+        descriptionLabel.text = post.description
         self.pinRealEstateLocation()
         
-        if let postUserId = post?.userId,
+        if let postUserId = post.userId,
            let userId = UserDefaults.userInfo?.id,
            postUserId == userId {
             likeButton.isHidden = true
@@ -121,7 +123,7 @@ class PostDetailViewController: BaseViewController {
                 editButton.isHidden = true
                 scrollViewBottomConstraint.constant = 60
                 contactButton.isHidden = false
-                if isFavoritePost(postId: post?.id) {
+                if isFavoritePost(postId: post.id) {
                     likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     likeButton.tintColor = UIColor(named: ColorName.redStatusText)
                 } else {

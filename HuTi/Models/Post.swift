@@ -71,5 +71,9 @@ struct PostDetail: Codable {
     var username: String?
     var contactName: String?
     var contactPhoneNumber: String?
+    
+    func getFullAddress() -> String {
+        return "\(address), \(wardName), \(districtName), \(provinceName)"
+    }
 }
 
