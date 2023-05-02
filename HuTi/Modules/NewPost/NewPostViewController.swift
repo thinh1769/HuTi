@@ -334,11 +334,15 @@ class NewPostViewController: BaseViewController {
     
     @IBAction func onClickedImageButton(_ sender: UIButton) {
         config.filter = .images
-        config.selectionLimit = 10
+        config.selectionLimit = 10 - viewModel.imagesList.count
         
-        let picker = PHPickerViewController(configuration: config)
-        picker.delegate = self
-        self.present(picker, animated: true, completion: nil)
+        if config.selectionLimit > 0 {
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+            self.present(picker, animated: true, completion: nil)
+        } else {
+            showAlert(title: "Chỉ được chọn tối đa 10 hình ảnh")
+        }
     }
     
     private func setupImageCollectionView() {

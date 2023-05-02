@@ -48,7 +48,7 @@ enum APIConstants: String {
     case findPost = "post/find"
     case findProject = "project/find"
     case getProject = "project"
-    case getProjectById = "project/"
+    case getProjectById = "project/get-project-by-id/"
     case likePost = "user/like-post/"
     case dislikePost = "user/dislike-post/"
     
