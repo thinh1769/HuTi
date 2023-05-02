@@ -38,7 +38,12 @@ class FilterResultViewController: BaseViewController {
         loadData()
         mapView.delegate = self
         mapView.isHidden = true
+        
         userLocationButton.isHidden = true
+        userLocationButton.layer.masksToBounds = true
+        userLocationButton.layer.borderColor = UIColor(named: ColorName.gray)?.cgColor
+        userLocationButton.layer.borderWidth = 1
+        
         optionView.isHidden = true
         titleLabel.text = viewModel.mainTabBarItemTitle
         setupCollectionView()

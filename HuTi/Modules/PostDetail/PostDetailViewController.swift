@@ -27,8 +27,9 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet private weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var acreageLabel: UILabel!
+    @IBOutlet weak var isSellLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var legelLabel: UILabel!
+    @IBOutlet weak var legalLabel: UILabel!
     @IBOutlet weak var funitureView: UIStackView!
     @IBOutlet weak var funitureLabel: UILabel!
     @IBOutlet weak var bedroomView: UIStackView!
@@ -52,6 +53,9 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet weak var projectInfoLabel: UILabel!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var contactView: UIView!
+    @IBOutlet weak var contactNameLabel: UILabel!
+    @IBOutlet weak var contactPhoneLabel: UILabel!
     
     lazy var viewModel = PostDetailViewModel()
     private var locationManager = CLLocationManager()
@@ -77,6 +81,11 @@ class PostDetailViewController: BaseViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        contactView.layer.masksToBounds = true
+        contactView.layer.borderWidth = 1
+        contactView.layer.borderColor = UIColor(named: ColorName.themeText)?.cgColor
+        contactView.layer.cornerRadius = 8
     }
     
     private func getProjectInfo() {
@@ -97,9 +106,14 @@ class PostDetailViewController: BaseViewController {
         titleLabel.text = post.title
         addressLabel.text = post.getFullAddress()
         typeLabel.text = post.realEstateType
+        if post.isSell {
+            isSellLabel.text = TabBarItemTitle.sell
+        } else {
+            isSellLabel.text = TabBarItemTitle.forRent
+        }
         acreageLabel.text = "\(post.acreage) m2"
         priceLabel.text = "\((post.price).formattedWithSeparator)đ"
-        legelLabel.text = post.legal
+        legalLabel.text = post.legal
         funitureLabel.text = post.funiture
         bedroomLabel.text = "\(post.bedroom ?? 0)"
         bathroomLabel.text = "\(post.bathroom ?? 0)"
@@ -118,11 +132,17 @@ class PostDetailViewController: BaseViewController {
             editButton.isHidden = false
             scrollViewBottomConstraint.constant = 10
             contactButton.isHidden = true
+            contactView.isHidden = true
             } else {
                 likeButton.isHidden = false
                 editButton.isHidden = true
                 scrollViewBottomConstraint.constant = 60
                 contactButton.isHidden = false
+                contactView.isHidden = false
+                
+                contactNameLabel.text = post.contactName
+                contactPhoneLabel.text = post.contactPhoneNumber
+                
                 if isFavoritePost(postId: post.id) {
                     likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     likeButton.tintColor = UIColor(named: ColorName.redStatusText)
@@ -243,6 +263,11 @@ class PostDetailViewController: BaseViewController {
             }
         }
         UserDefaults.userInfo?.likePosts?.remove(at: removeIndex)
+    }
+    
+    
+    @IBAction func didTapSeeOtherPostsButton(_ sender: UIButton) {
+        
     }
     
     private func setupImageCollectionView() {
