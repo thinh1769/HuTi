@@ -60,37 +60,9 @@ class FilterResultViewController: BaseViewController {
         if viewModel.tabBarItemTitle != TabBarItemTitle.project {
             findPost(param: viewModel.getApprovedPostParam)
         } else {
-        getListProjects()
-        mapButton.isHidden = true
+            findProject(param: viewModel.findProjectParams)
+            mapButton.isHidden = true
         }
-    }
-    
-//    private func getListPosts() {
-//        var isSell = true
-//        if viewModel.tabBarItemTitle == TabBarItemTitle.forRent {
-//            isSell = false
-//        }
-//        viewModel.getListPosts(isSell: isSell).subscribe { [weak self] posts in
-//            guard let self = self else { return }
-//            if posts.count > 0 {
-//                let mergePost = self.viewModel.post.value + posts
-//                let sortedPost = mergePost.sorted { $0.createdAt > $1.createdAt }
-//                self.viewModel.post.accept(sortedPost)
-//                self.pinRealEstateLocation()
-//                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
-//            }
-//        }.disposed(by: viewModel.bag)
-//    }
-    
-    private func getListProjects() {
-        viewModel.getListProjects().subscribe { [weak self] projects in
-            guard let self = self else { return }
-            if projects.count > 0 {
-                self.viewModel.appendProjectToArray(projects: projects)
-                self.viewModel.project.accept(self.viewModel.projectList)
-                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
-            }
-        }.disposed(by: viewModel.bag)
     }
     
     private func setupCollectionView() {
@@ -204,16 +176,16 @@ class FilterResultViewController: BaseViewController {
     private func refreshData() {
         viewModel.optionsList = []
         viewModel.options.accept(viewModel.optionsList)
+        viewModel.page = 1
+        optionView.isHidden = true
         if viewModel.tabBarItemTitle == TabBarItemTitle.project {
-            viewModel.projectList.removeAll()
-            viewModel.page = 1
-            getListProjects()
+            viewModel.project.accept([])
+            viewModel.findProjectParams = [String: Any]()
+            findProject(param: viewModel.findProjectParams)
         } else {
             viewModel.post.accept([])
-            viewModel.page = 1
             findPost(param: viewModel.getApprovedPostParam)
         }
-        optionView.isHidden = true
     }
     
     private func filterResultInfiniteScroll() {
@@ -221,7 +193,11 @@ class FilterResultViewController: BaseViewController {
             guard let self = self else { return }
             self.viewModel.page += 1
             if self.viewModel.options.value.count > 0 {
-                self.findPost(param: self.viewModel.findPostParams)
+                if self.viewModel.tabBarItemTitle != TabBarItemTitle.project {
+                    self.findPost(param: self.viewModel.findPostParams)
+                } else {
+                    self.findProject(param: self.viewModel.findProjectParams)
+                }
             } else {
                 self.loadData()
             }
@@ -256,20 +232,43 @@ class FilterResultViewController: BaseViewController {
             }
         }.disposed(by: viewModel.bag)
     }
+    
+    private func findProject(param: [String: Any]) {
+        viewModel.findProject(param: param).subscribe { [weak self] projects in
+            guard let self = self else { return }
+            if projects.count > 0 {
+                if self.viewModel.page == 1 {
+                    self.viewModel.project.accept(projects)
+                } else {
+                    self.viewModel.project.accept(self.viewModel.project.value + projects)
+                }
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
+            } else if self.viewModel.page == 1 {
+                self.viewModel.project.accept([])
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
+            }
+        }.disposed(by: viewModel.bag)
+    }
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {
-    func didTapApplyButton(listOptions: [(Int, String)], findPostParams: [String: Any]?, selectedProvince: (index: Int, id: String), selectedDistrict: (index: Int, id: String)) {
+    func didTapApplyButton(listOptions: [(Int, String)], findPostParams: [String : Any]?, findProjectParams: [String : Any]?, selectedProvince: (index: Int, id: String), selectedDistrict: (index: Int, id: String)) {
         viewModel.tuppleOptionsList = listOptions
-        if let param = findPostParams {
-            viewModel.findPostParams = param
-        }
         viewModel.parseOptionTuppleToArray()
         viewModel.selectedProvince = selectedProvince
         viewModel.selectedDistrict = selectedDistrict
         viewModel.page = 1
-        findPost(param: viewModel.findPostParams)
         optionView.isHidden = false
+        
+        if let param = findPostParams {
+            viewModel.findPostParams = param
+            findPost(param: viewModel.findPostParams)
+        }
+        
+        if let param = findProjectParams {
+            viewModel.findProjectParams = param
+            findProject(param: viewModel.findProjectParams)
+        }
     }
     
     func didTapResetButton() {

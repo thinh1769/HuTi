@@ -477,6 +477,7 @@ class NewPostViewController: BaseViewController {
         }
         viewModel.updatePost().subscribe { [weak self] _ in
             guard let self = self else { return }
+            self.navigationController?.popToRootViewController(animated: true)
             if status == 0 {
                 self.showAlert(title: "Ẩn tin đăng thành công")
             } else if status == 1 {

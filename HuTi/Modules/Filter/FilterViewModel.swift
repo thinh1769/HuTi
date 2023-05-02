@@ -27,7 +27,7 @@ class FilterViewModel: BaseViewModel {
     var selectedFilterHouseDirection = -1
     var selectedStatus = -1
     var optionsList = [(key: Int, value: String)]()
-    var searchPostParams : [String: Any] = ["browseStatus": 1]
+    var searchPostParams : [String: Any] = ["browseStatus": 1, "status": 0]
     var searchProjectParams = [String: Any]()
     var page = 1
     
