@@ -27,6 +27,7 @@ class FilterResultViewController: BaseViewController {
     private let provinceSpan = MKCoordinateSpan(latitudeDelta: 0.7, longitudeDelta: 0.7)
     private let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     private let postSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    var detailViewBottomConstraint: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,9 @@ class FilterResultViewController: BaseViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        if let tabBar = tabBarController?.tabBar {
+            detailViewBottomConstraint = tabBar.bounds.height
+        }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissDetailPopupView))
         self.mapView.addGestureRecognizer(tapGesture)
@@ -363,12 +367,11 @@ extension FilterResultViewController: MKMapViewDelegate {
 
         if detailView.superview == nil {
             self.view.addSubview(detailView)
-            guard let tabBar = tabBarController?.tabBar else { return }
             detailView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 detailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 detailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                detailView.bottomAnchor.constraint(equalTo: tabBar.topAnchor),
+                detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -detailViewBottomConstraint),
                 detailView.heightAnchor.constraint(equalToConstant: 170)
             ])
         }

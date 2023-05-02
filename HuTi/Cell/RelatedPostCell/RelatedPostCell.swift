@@ -35,7 +35,7 @@ class RelatedPostCell: UICollectionViewCell {
     
     func config(_ post: Post) {
         titleLabel.text = post.title
-        priceLabel.text = "\(post.price)VNĐ"
+        priceLabel.text = "\((post.price).formattedWithSeparator)đ"
         acreageLabel.text = "\(post.acreage ?? 0)m2"
         
         if let url = URL(string: "\(AWSConstants.objectURL)\(post.thumbnail)") {
