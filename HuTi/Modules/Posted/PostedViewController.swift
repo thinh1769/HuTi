@@ -17,6 +17,11 @@ class PostedViewController: BaseViewController {
     
     var viewModel = PostedViewModel()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mainTabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -98,11 +103,13 @@ class PostedViewController: BaseViewController {
     }
     
     private func infiniteScroll() {
-        postedTableView.addInfiniteScrolling { [weak self] in
-            guard let self = self else { return }
-            self.viewModel.page += 1
-            self.loadData()
-            self.postedTableView.infiniteScrollingView.stopAnimating()
+        if viewModel.post.value.count >= CommonConstants.pageSize {
+            postedTableView.addInfiniteScrolling { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.page += 1
+                self.loadData()
+                self.postedTableView.infiniteScrollingView.stopAnimating()
+            }
         }
     }
 }

@@ -24,6 +24,7 @@ struct CommonConstants {
     static let sell = "đang bán"
     static let forRent = "đang cho thuê"
     static let project = "dự án"
+    static let pageSize = 5
 }
 
 struct TextFieldPlaceHolder {
@@ -104,6 +105,7 @@ struct ClassNibName {
     static let ProjectDetailViewController = "ProjectDetailViewController"
     static let SignUpViewController = "SignUpViewController"
     static let NewPostViewController = "NewPostViewController"
+    static let UserDetailViewController = "UserDetailViewController"
 }
 
 struct MainTitle {

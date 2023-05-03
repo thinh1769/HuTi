@@ -53,7 +53,8 @@ class AuthService: BaseService {
     func dislikePost(postId: String) -> Observable<String> {
         return request(api: APIConstants.dislikePost.rawValue + postId, method: .put)
     }
-//    func logOut() -> Observable<String> {
-//        return request(api: .logout)
-//    }
+
+    func getUserById(userId: String) -> Observable<User> {
+        return request(api: APIConstants.getUserById.rawValue + userId, method: .get)
+    }
 }

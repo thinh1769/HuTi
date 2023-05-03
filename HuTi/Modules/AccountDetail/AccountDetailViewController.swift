@@ -34,6 +34,7 @@ class AccountDetailViewController: BaseViewController {
         identityCardTextField.text = UserDefaults.userInfo?.identityCardNumber ?? ""
         phoneTextField.text = UserDefaults.userInfo?.phoneNumber ?? ""
         emailTextField.text = UserDefaults.userInfo?.email ?? ""
+        self.mainTabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidLoad() {

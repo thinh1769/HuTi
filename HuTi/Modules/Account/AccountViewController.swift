@@ -15,6 +15,8 @@ class AccountViewController: BaseViewController {
     var viewModel = AccountViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mainTabBarController?.tabBar.isHidden = false
         guard let name = UserDefaults.userInfo?.name else { return }
         accountNameLabel.text = name
     }

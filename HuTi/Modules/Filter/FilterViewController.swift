@@ -52,6 +52,11 @@ class FilterViewController: BaseViewController {
         viewModel.selectedDistrict = selectedDistrict
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mainTabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

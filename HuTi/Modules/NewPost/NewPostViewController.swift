@@ -77,6 +77,7 @@ class NewPostViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.mainTabBarController?.tabBar.isHidden = true
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         

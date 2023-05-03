@@ -62,6 +62,11 @@ class PostDetailViewController: BaseViewController {
     private let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
     weak var delegate: PostDetailViewControllerDelegate?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mainTabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -267,7 +272,8 @@ class PostDetailViewController: BaseViewController {
     
     
     @IBAction func didTapSeeOtherPostsButton(_ sender: UIButton) {
-        
+        let vc = UserDetailViewController.instance(userId: viewModel.postDetail?.userId ?? "")
+        navigateTo(vc)
     }
     
     private func setupImageCollectionView() {

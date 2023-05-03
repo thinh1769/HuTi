@@ -29,6 +29,11 @@ class FilterResultViewController: BaseViewController {
     private let postSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     var detailViewBottomConstraint: CGFloat = 0
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mainTabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -199,8 +204,10 @@ class FilterResultViewController: BaseViewController {
             self.viewModel.page += 1
             if self.viewModel.options.value.count > 0 {
                 if self.viewModel.tabBarItemTitle != TabBarItemTitle.project {
-                    self.findPost(param: self.viewModel.findPostParams)
-                } else {
+                    if self.viewModel.post.value.count >= CommonConstants.pageSize {
+                        self.findPost(param: self.viewModel.findPostParams)
+                    }
+                } else if self.viewModel.project.value.count >= CommonConstants.pageSize {
                     self.findProject(param: self.viewModel.findProjectParams)
                 }
             } else {
