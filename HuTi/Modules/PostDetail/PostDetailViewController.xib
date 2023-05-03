@@ -508,7 +508,7 @@
                                                             <rect key="frame" x="10" y="70" width="295" height="25"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" title="Xem thêm các tin đăng khác">
+                                                            <state key="normal" title="Xem thêm thông tin người đăng">
                                                                 <color key="titleColor" name="gray"/>
                                                             </state>
                                                             <connections>
@@ -624,7 +624,7 @@
                 <constraint firstItem="a6u-u1-eGi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="tmM-Gs-TpF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zPL-mi-YeD" secondAttribute="trailing" constant="20" id="zEJ-CS-EEy"/>
             </constraints>
-            <point key="canvasLocation" x="-6206" y="-2100"/>
+            <point key="canvasLocation" x="-6458" y="-2038"/>
         </view>
     </objects>
     <resources>

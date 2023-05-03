@@ -66,10 +66,15 @@ class SignInViewController: BaseViewController {
                 UserDefaults.token = user.token
                 self.hideLoading()
                 self.setRootTabBar()
-            } onError: { [weak self] _ in
+            } onError: { [weak self] error in
                 guard let self = self else { return }
                 self.hideLoading()
-                self.showAlert(title: Alert.wrongSignInInfo)
+                let er = error as! ServiceError
+                if er.get() == "Tài khoản đã bị khóa!" {
+                    self.showAlert(title: er.get())
+                } else {
+                    self.showAlert(title: Alert.wrongSignInInfo)
+                }
             } onCompleted: {
                 self.hideLoading()
             }.disposed(by: viewModel.bag)
