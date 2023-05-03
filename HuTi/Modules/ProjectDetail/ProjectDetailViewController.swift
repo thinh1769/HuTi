@@ -89,11 +89,7 @@ class ProjectDetailViewController: BaseViewController {
         configStatusView(project.status)
         projectTypeLabel.text = project.projectType
         acreageLabel.text = "\(project.acreage)"
-        if let price = project.price {
-            priceLabel.text = price
-        } else {
-            priceView.isHidden = true
-        }
+        priceLabel.text = project.getPrice()
         
         if let building = project.building {
             buildingLabel.text = "\(building)"
