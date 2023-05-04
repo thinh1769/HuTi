@@ -80,7 +80,7 @@ class UserDetailViewController: BaseViewController {
         
         viewModel.post.asObservable()
             .bind(to: postTableView.rx.items(cellIdentifier: FilterResultTableViewCell.reusableIdentifier, cellType: FilterResultTableViewCell.self)) { (index, element, cell) in
-                cell.configInfo(element, isHiddenAuthorAndHeart: true, isFavorite: self.isFavoritePost(postId: element.id))
+                cell.configInfo(element, isHiddenAuthorAndHeart: true, isFavorite: self.isFavoritePost(postId: element.id), isShowBrowseStatus: false)
 
             }.disposed(by: viewModel.bag)
         
@@ -121,13 +121,13 @@ class UserDetailViewController: BaseViewController {
     }
     
     private func postTableViewInfiniteScroll() {
-        if viewModel.post.value.count >= CommonConstants.pageSize {
-            postTableView.addInfiniteScrolling { [weak self] in
-                guard let self = self else { return }
+        postTableView.addInfiniteScrolling { [weak self] in
+            guard let self = self else { return }
+            if self.viewModel.post.value.count >= CommonConstants.pageSize {
                 self.viewModel.page += 1
                 self.getPostByUser()
-                self.postTableView.infiniteScrollingView.stopAnimating()
             }
+            self.postTableView.infiniteScrollingView.stopAnimating()
         }
     }
 }

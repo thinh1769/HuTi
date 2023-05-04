@@ -52,7 +52,7 @@ class FilterResultTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configInfo(_  post: Post, isHiddenAuthorAndHeart: Bool, isFavorite: Bool?) {
+    func configInfo(_  post: Post, isHiddenAuthorAndHeart: Bool, isFavorite: Bool?, isShowBrowseStatus: Bool? = true) {
         if let status = post.status {
             if status == 0 {
                 hiddenStatusView.isHidden = true
@@ -71,12 +71,18 @@ class FilterResultTableViewCell: UITableViewCell {
         
         if isHiddenAuthorAndHeart {
             bottomView.isHidden = true
-            bottomBrowseView.isHidden = false
+            if let browseStatus = isShowBrowseStatus {
+                if browseStatus {
+                    bottomBrowseView.isHidden = false
+                } else {
+                    bottomBrowseView.isHidden = true
+                }
+            }
             addressLabel.numberOfLines = 0
             configBrowseStatusView(post.browseStatus ?? 0)
             
         }
-        
+
         if let userId = UserDefaults.userInfo?.id,
            userId == post.userId {
             heartBtn.isHidden = true

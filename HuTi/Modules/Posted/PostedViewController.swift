@@ -103,13 +103,13 @@ class PostedViewController: BaseViewController {
     }
     
     private func infiniteScroll() {
-        if viewModel.post.value.count >= CommonConstants.pageSize {
-            postedTableView.addInfiniteScrolling { [weak self] in
-                guard let self = self else { return }
+        postedTableView.addInfiniteScrolling { [weak self] in
+            guard let self = self else { return }
+            if self.viewModel.post.value.count >= CommonConstants.pageSize {
                 self.viewModel.page += 1
                 self.loadData()
-                self.postedTableView.infiniteScrollingView.stopAnimating()
             }
+            self.postedTableView.infiniteScrollingView.stopAnimating()
         }
     }
 }
