@@ -14,7 +14,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPostViewController" customModule="HuTi" customModuleProvider="target">
             <connections>
+                <outlet property="acreageLabel" destination="Rqd-dX-a5o" id="ezN-2Y-vMf"/>
                 <outlet property="acreageTextField" destination="Uyh-Tb-3OW" id="aJF-HC-Xzb"/>
+                <outlet property="addressLabel" destination="dBQ-2j-g7z" id="b7h-jf-FSj"/>
                 <outlet property="addressTextField" destination="KR2-kh-aGz" id="hQw-YA-RDd"/>
                 <outlet property="balconyDirectionTextField" destination="fQ4-NX-kpg" id="SmO-JR-qEh"/>
                 <outlet property="balconyView" destination="O3b-JY-sXR" id="LJO-rg-VP1"/>
@@ -22,13 +24,17 @@
                 <outlet property="bathroomView" destination="zL3-Qh-BYb" id="sI2-H3-9tO"/>
                 <outlet property="bedroomNumberLabel" destination="jCe-Op-3AM" id="Eiv-B9-xiC"/>
                 <outlet property="bedroomView" destination="xyF-A7-fNH" id="hJo-qh-MTM"/>
+                <outlet property="contactNameLabel" destination="8Xu-M5-phC" id="OVX-da-qFN"/>
                 <outlet property="contactNameTextField" destination="Z6a-GL-z4a" id="bum-aO-f5Y"/>
+                <outlet property="contactPhoneLabel" destination="XxZ-sf-EzA" id="GZu-sg-cPS"/>
                 <outlet property="contactPhoneTextField" destination="l9i-V3-GMk" id="Vsc-gc-cZd"/>
                 <outlet property="currentLocationButton" destination="VKh-CF-1xd" id="TFU-MN-Sd6"/>
                 <outlet property="decreaseBathroomBtn" destination="CXJ-TP-u93" id="Wan-5h-fdZ"/>
                 <outlet property="decreaseBedroomBtn" destination="Xd7-hq-9Ma" id="lmW-G6-knt"/>
                 <outlet property="decreaseFloorBtn" destination="3zE-OD-C22" id="1nA-4X-uLJ"/>
+                <outlet property="descriptionLabel" destination="6GM-jq-qhS" id="Z1x-jf-9Qz"/>
                 <outlet property="descriptionTextView" destination="Pba-CJ-l0r" id="taS-kk-1RQ"/>
+                <outlet property="districtLabel" destination="IaH-4V-44g" id="nt6-t4-yJH"/>
                 <outlet property="districtTextField" destination="Q93-6u-N9E" id="xRB-VU-hYt"/>
                 <outlet property="editLocationBtn" destination="Wjp-qj-C97" id="LrZ-II-8J7"/>
                 <outlet property="facadeTextField" destination="HyY-k1-dyA" id="2MQ-bc-zOM"/>
@@ -45,18 +51,25 @@
                 <outlet property="increaseBathroomBtn" destination="dTS-za-H85" id="hzX-vg-LGm"/>
                 <outlet property="increaseBedroomBtn" destination="azg-DG-M9C" id="vnf-Co-G42"/>
                 <outlet property="increaseFloorBtn" destination="i84-vh-NxT" id="Wsf-51-C3U"/>
+                <outlet property="legalLabel" destination="JT1-da-eYN" id="7Fw-xb-Rln"/>
                 <outlet property="legalTextField" destination="CXv-or-2P6" id="YFg-tK-Zwa"/>
+                <outlet property="locationLabel" destination="wG8-fX-1kk" id="Gxe-3d-XKz"/>
                 <outlet property="mapView" destination="bwD-1l-kiM" id="tUh-Rh-IWG"/>
+                <outlet property="postTitleLabel" destination="OJc-4B-YjM" id="gNg-kU-MLI"/>
+                <outlet property="priceLabel" destination="HEf-n6-dFF" id="Hc0-TS-7x4"/>
                 <outlet property="priceTextField" destination="oaU-jl-sbR" id="EGb-B8-MTm"/>
                 <outlet property="projectTextField" destination="Uph-BF-TtB" id="KzK-Cp-eTa"/>
+                <outlet property="provinceLabel" destination="CRu-fb-Dfp" id="q6I-k3-HN0"/>
                 <outlet property="provinceTextField" destination="OZd-cE-pdO" id="Oxz-Pm-195"/>
                 <outlet property="sellCheckmarkImage" destination="ESq-lg-euA" id="XGW-Zg-TUn"/>
                 <outlet property="sellView" destination="mh8-7W-GRT" id="3hV-0X-4NY"/>
                 <outlet property="submitButton" destination="bFa-E5-qJe" id="Yl9-7U-E0v"/>
-                <outlet property="titleLabel" destination="D44-Un-bLi" id="q1T-m7-trD"/>
+                <outlet property="titleLabel" destination="D44-Un-bLi" id="PN6-gW-FUB"/>
                 <outlet property="titleTextField" destination="tTD-Ed-xcB" id="ot7-ZD-0TG"/>
+                <outlet property="typeLabel" destination="lLl-iZ-ekL" id="rSW-Cs-V6o"/>
                 <outlet property="typeTextField" destination="vDW-yl-gnP" id="NBn-lD-5RC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wardLabel" destination="pP1-PG-1bn" id="4ox-iI-zF8"/>
                 <outlet property="wardTextField" destination="u5v-hG-nj1" id="NNq-uu-98T"/>
                 <outlet property="wayInTextField" destination="Chh-Ta-vOA" id="Rnk-hH-BwL"/>
                 <outlet property="wayInView" destination="RvH-8v-OBu" id="CFq-Rx-Cb2"/>
@@ -1611,7 +1624,7 @@
                 <constraint firstItem="eFB-9t-KvU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="sZn-zJ-Jda"/>
                 <constraint firstItem="D44-Un-bLi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zO7-qh-kwn"/>
             </constraints>
-            <point key="canvasLocation" x="-2028" y="-460"/>
+            <point key="canvasLocation" x="-2158" y="-699"/>
         </view>
     </objects>
     <resources>

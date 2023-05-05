@@ -60,6 +60,19 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var bedroomView: UIView!
     @IBOutlet weak var balconyView: UIView!
     @IBOutlet weak var hidePostButton: UIButton!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var provinceLabel: UILabel!
+    @IBOutlet weak var districtLabel: UILabel!
+    @IBOutlet weak var wardLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var postTitleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var acreageLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var legalLabel: UILabel!
+    @IBOutlet weak var contactNameLabel: UILabel!
+    @IBOutlet weak var contactPhoneLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     let typePicker = UIPickerView()
     let provincePicker = UIPickerView()
@@ -134,6 +147,24 @@ class NewPostViewController: BaseViewController {
             loadPostDetailForEdit()
             hidePostButton.isHidden = false
         }
+        
+        setRequiredLabel()
+    }
+    
+    private func setRequiredLabel() {
+        typeLabel.attributedText = typeLabel.requiredLabel()
+        provinceLabel.attributedText = provinceLabel.requiredLabel()
+        districtLabel.attributedText = districtLabel.requiredLabel()
+        wardLabel.attributedText = wardLabel.requiredLabel()
+        locationLabel.attributedText = locationLabel.requiredLabel()
+        postTitleLabel.attributedText = postTitleLabel.requiredLabel()
+        descriptionLabel.attributedText = descriptionLabel.requiredLabel()
+        acreageLabel.attributedText = acreageLabel.requiredLabel()
+        priceLabel.attributedText = priceLabel.requiredLabel()
+        legalLabel.attributedText = legalLabel.requiredLabel()
+        contactNameLabel.attributedText = contactNameLabel.requiredLabel()
+        contactPhoneLabel.attributedText = contactPhoneLabel.requiredLabel()
+        addressLabel.attributedText = addressLabel.requiredLabel()
     }
     
     private func setupPickerView() {
@@ -320,7 +351,7 @@ class NewPostViewController: BaseViewController {
             contactNameTextField.text == "" ||
             contactPhoneTextField.text == "" ||
             viewModel.imagesNameList.count == 0 {
-            self.showAlert(title: "Vui lòng nhập đủ những thông tin bắt buộc")
+            self.showAlert(title: "Vui lòng nhập đầy đủ những thông tin bắt buộc")
             return false
         }
         

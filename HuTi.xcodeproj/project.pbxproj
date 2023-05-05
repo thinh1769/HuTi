@@ -47,6 +47,7 @@
 		8276A1912A028E5700F24D19 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8276A18F2A028E5700F24D19 /* UserDetailViewController.swift */; };
 		8276A1922A028E5700F24D19 /* UserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8276A1902A028E5700F24D19 /* UserDetailViewController.xib */; };
 		8276A1942A028E6A00F24D19 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8276A1932A028E6A00F24D19 /* UserDetailViewModel.swift */; };
+		82AA13332A056A8D00C5E714 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AA13322A056A8C00C5E714 /* UILabel+Ext.swift */; };
 		8E04D744477EEFCB514E8B28 /* Pods_HuTi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29605AC57F7499D1B086D28D /* Pods_HuTi.framework */; };
 		FC0E76C5299CDD4600E4818C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */; };
 		FC0E76C6299CDD4600E4818C /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0E76C4299CDD4600E4818C /* SignUpViewController.xib */; };
@@ -134,6 +135,7 @@
 		8276A18F2A028E5700F24D19 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		8276A1902A028E5700F24D19 /* UserDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailViewController.xib; sourceTree = "<group>"; };
 		8276A1932A028E6A00F24D19 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		82AA13322A056A8C00C5E714 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		FC0E76C3299CDD4600E4818C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC0E76C4299CDD4600E4818C /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		FC0E76C9299F254C00E4818C /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				22CF83A529DB219300683B98 /* UIImage+Ext.swift */,
 				22A3857D29EBCD9A00233908 /* String+Etx.swift */,
 				2260A8DC29F6D85300EE3E5B /* Numeric+Ext.swift */,
+				82AA13322A056A8C00C5E714 /* UILabel+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 				FCC3AD4B29C4236E0050B58B /* BackButton.swift in Sources */,
 				22CF83A329D9B34600683B98 /* NewPostImageCell.swift in Sources */,
 				FCC364FD29B6D91D001A9310 /* MainTabBarController.swift in Sources */,
+				82AA13332A056A8D00C5E714 /* UILabel+Ext.swift in Sources */,
 				FC2E2C2029B73B4400DADA16 /* Post.swift in Sources */,
 				FCBF7316299CC33500BF327A /* AppDelegate.swift in Sources */,
 				22CB6A6829D86B71009C4F4D /* PostService.swift in Sources */,
