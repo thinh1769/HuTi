@@ -38,4 +38,9 @@ class PostService: BaseService {
     func updatePost(postId: String, param: [String: Any]) -> Observable<Post> {
         return request(api: APIConstants.updatePost.rawValue + postId, method: .put, params: param)
     }
+    
+    func searchKeyword(keyword: String, page: Int) -> Observable<[Post]> {
+        let param: [String: Any] = ["keyword": keyword]
+        return request(api: "\(APIConstants.searchPostByKeyword.rawValue)?page=\(page)", method: .post, params: param)
+    }
 }

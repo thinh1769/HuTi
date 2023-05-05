@@ -7,6 +7,7 @@
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +18,8 @@
                 <outlet property="mapView" destination="PvB-YN-gVZ" id="6Rl-Ix-xAo"/>
                 <outlet property="optionCollectionView" destination="0id-pZ-wd4" id="93Q-6F-nYd"/>
                 <outlet property="optionView" destination="VT0-sV-kCD" id="fYq-AJ-f65"/>
+                <outlet property="searchTextField" destination="UqB-FH-x5G" id="6ch-K9-jtx"/>
+                <outlet property="searchView" destination="b77-LS-F5V" id="slp-g0-ZL8"/>
                 <outlet property="subtitleLabel" destination="yvh-9K-Cv8" id="ZkJ-PH-dl8"/>
                 <outlet property="titleLabel" destination="lEM-Uz-LPX" id="Zyn-qB-hXO"/>
                 <outlet property="userLocationButton" destination="YjE-rM-lQM" id="01I-e3-6No"/>
@@ -100,19 +103,90 @@
                                 <constraint firstItem="0id-pZ-wd4" firstAttribute="top" secondItem="VT0-sV-kCD" secondAttribute="top" id="fm9-ca-TiL"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b77-LS-F5V">
+                            <rect key="frame" x="0.0" y="60" width="390" height="50"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="632-Id-4Ri">
+                                    <rect key="frame" x="10" y="0.0" width="370" height="50"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Đường Quang Trung" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UqB-FH-x5G">
+                                            <rect key="frame" x="50" y="5" width="240" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="7LP-Fx-vSE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="R6K-2m-TlI">
+                                            <rect key="frame" x="10" y="10.999999999999996" width="30" height="28.333333333333332"/>
+                                            <color key="tintColor" name="gray"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="W7e-Ro-no8"/>
+                                                <constraint firstAttribute="width" constant="30" id="aUT-G7-Ot0"/>
+                                            </constraints>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehg-6T-VxW">
+                                            <rect key="frame" x="300" y="10" width="60" height="30"/>
+                                            <color key="backgroundColor" name="themeText"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="2di-L6-vw2"/>
+                                                <constraint firstAttribute="height" constant="30" id="fWz-5h-JKb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                            <color key="tintColor" name="white"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Tìm">
+                                                <color key="titleColor" name="white"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="didTapSearchByKeyword:" destination="-1" eventType="touchUpInside" id="qb1-gW-EaS"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ehg-6T-VxW" secondAttribute="trailing" constant="10" id="1gi-ue-Q9j"/>
+                                        <constraint firstItem="R6K-2m-TlI" firstAttribute="leading" secondItem="632-Id-4Ri" secondAttribute="leading" constant="10" id="7ou-6m-0Vz"/>
+                                        <constraint firstItem="ehg-6T-VxW" firstAttribute="centerY" secondItem="632-Id-4Ri" secondAttribute="centerY" id="8zs-1a-jbL"/>
+                                        <constraint firstAttribute="height" constant="50" id="AV0-a7-YTC"/>
+                                        <constraint firstItem="ehg-6T-VxW" firstAttribute="leading" secondItem="UqB-FH-x5G" secondAttribute="trailing" constant="10" id="Ham-SQ-nOl"/>
+                                        <constraint firstItem="UqB-FH-x5G" firstAttribute="leading" secondItem="R6K-2m-TlI" secondAttribute="trailing" constant="10" id="der-FG-N0L"/>
+                                        <constraint firstItem="R6K-2m-TlI" firstAttribute="centerY" secondItem="632-Id-4Ri" secondAttribute="centerY" id="ivk-I5-ter"/>
+                                        <constraint firstItem="UqB-FH-x5G" firstAttribute="centerY" secondItem="632-Id-4Ri" secondAttribute="centerY" id="stU-Xv-mim"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="632-Id-4Ri" firstAttribute="leading" secondItem="b77-LS-F5V" secondAttribute="leading" constant="10" id="KWT-yt-M1J"/>
+                                <constraint firstAttribute="trailing" secondItem="632-Id-4Ri" secondAttribute="trailing" constant="10" id="aYi-Ms-9UP"/>
+                                <constraint firstItem="632-Id-4Ri" firstAttribute="centerY" secondItem="b77-LS-F5V" secondAttribute="centerY" id="cBq-zT-l0R"/>
+                                <constraint firstAttribute="height" constant="50" id="nVd-fh-KFx"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAJ-i7-jSo">
-                            <rect key="frame" x="0.0" y="60" width="390" height="668"/>
+                            <rect key="frame" x="0.0" y="120" width="390" height="608"/>
                             <subviews>
                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvB-YN-gVZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="668"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="608"/>
                                     <standardMapConfiguration key="preferredConfiguration"/>
                                 </mapView>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-U2-856">
-                                    <rect key="frame" x="10" y="0.0" width="370" height="668"/>
+                                    <rect key="frame" x="10" y="0.0" width="370" height="608"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YjE-rM-lQM">
-                                    <rect key="frame" x="330" y="608" width="40" height="40"/>
+                                    <rect key="frame" x="330" y="548" width="40" height="40"/>
                                     <color key="backgroundColor" name="white"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="VuA-xa-zhF"/>
@@ -175,12 +249,13 @@
                 <constraint firstItem="kSU-Ch-f5g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="u0E-py-R0T"/>
                 <constraint firstItem="yvh-9K-Cv8" firstAttribute="top" secondItem="lEM-Uz-LPX" secondAttribute="bottom" constant="10" id="zw3-W0-tet"/>
             </constraints>
-            <point key="canvasLocation" x="-2478" y="-740"/>
+            <point key="canvasLocation" x="-3345" y="-722"/>
         </view>
     </objects>
     <resources>
         <image name="filter-icon" width="32" height="32"/>
         <image name="location.fill" catalog="system" width="128" height="119"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="map" catalog="system" width="128" height="112"/>
         <namedColor name="background">
             <color red="0.98000001907348633" green="0.92900002002716064" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -188,11 +263,17 @@
         <namedColor name="black">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <namedColor name="gray">
+            <color red="0.66299998760223389" green="0.65499997138977051" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="themeText">
             <color red="0.75300002098083496" green="0.32600000500679016" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

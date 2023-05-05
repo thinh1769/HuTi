@@ -24,13 +24,13 @@ class FilterResultViewModel: BaseViewModel {
     var selectedDistrict = (index: -1, id: "")
     var page = 1
     
-//    func getListPosts(isSell: Bool) -> Observable<[Post]> {
-//        return postService.getListPosts(isSell: isSell, page: page)
-//    }
-//
-//    func getListProjects() -> Observable<[Project]> {
-//        return projectService.getListProjects(page: page)
-//    }
+    //    func getListPosts(isSell: Bool) -> Observable<[Post]> {
+    //        return postService.getListPosts(isSell: isSell, page: page)
+    //    }
+    //
+    //    func getListProjects() -> Observable<[Project]> {
+    //        return projectService.getListProjects(page: page)
+    //    }
     
     func parseOptionTuppleToArray() {
         optionsList = []
@@ -56,5 +56,13 @@ class FilterResultViewModel: BaseViewModel {
     
     func findProject(param: [String: Any]) -> Observable<[Project]> {
         return projectService.findProject(params: param, page: page)
+    }
+    
+    func searchPostByKeyword(keyword: String) -> Observable<[Post]> {
+        return postService.searchKeyword(keyword: keyword, page: page)
+    }
+    
+    func searchProjectByKeyword(keyword: String) -> Observable<[Project]> {
+        return projectService.searchByKeyword(keyword: keyword, page: page)
     }
 }

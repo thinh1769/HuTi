@@ -21,6 +21,8 @@ class FilterResultViewController: BaseViewController {
     @IBOutlet private weak var filterResultTableView: UITableView!
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet weak var userLocationButton: UIButton!
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchView: UIView!
     
     var viewModel = FilterResultViewModel()
     private var locationManager = CLLocationManager()
@@ -50,6 +52,15 @@ class FilterResultViewController: BaseViewController {
         userLocationButton.layer.borderWidth = 1
         
         optionView.isHidden = true
+        searchView.isHidden = false
+        var placeHolder = "Nhập tên đường"
+        if viewModel.tabBarItemTitle == TabBarItemTitle.project {
+            placeHolder = "Nhập tên dự án"
+        }
+        searchTextField.attributedPlaceholder = NSAttributedString(
+            string: placeHolder,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
+        )
         titleLabel.text = viewModel.mainTabBarItemTitle
         setupCollectionView()
         setupTableView()
@@ -188,6 +199,8 @@ class FilterResultViewController: BaseViewController {
         viewModel.options.accept(viewModel.optionsList)
         viewModel.page = 1
         optionView.isHidden = true
+        searchView.isHidden = false
+        searchTextField.text = ""
         if viewModel.tabBarItemTitle == TabBarItemTitle.project {
             viewModel.project.accept([])
             viewModel.findProjectParams = [String: Any]()
@@ -209,6 +222,11 @@ class FilterResultViewController: BaseViewController {
                     }
                 } else if self.viewModel.project.value.count >= CommonConstants.pageSize {
                     self.findProject(param: self.viewModel.findProjectParams)
+                }
+            } else if let text = self.searchTextField.text,
+                      text.count > 1 {
+                if self.viewModel.post.value.count >= CommonConstants.pageSize {
+                    self.searchByKeyword()
                 }
             } else {
                 self.loadData()
@@ -261,6 +279,58 @@ class FilterResultViewController: BaseViewController {
             }
         }.disposed(by: viewModel.bag)
     }
+    
+    @IBAction func didTapSearchByKeyword(_ sender: UIButton) {
+        searchByKeyword()
+    }
+    
+    private func searchByKeyword() {
+        if self.viewModel.tabBarItemTitle == TabBarItemTitle.project {
+            self.searchProjectByKeyword()
+        } else {
+            self.searchPostByKeyword()
+        }
+    }
+    
+    private func searchPostByKeyword() {
+        guard let keyword = searchTextField.text,
+              keyword.count > 1  else { return }
+        viewModel.searchPostByKeyword(keyword: keyword).subscribe { [weak self] posts in
+            guard let self = self else { return }
+            if posts.count > 0 {
+                if self.viewModel.page == 1 {
+                    self.viewModel.post.accept(posts)
+                } else {
+                    self.viewModel.post.accept(self.viewModel.post.value + posts)
+                }
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
+                self.pinRealEstateLocation()
+            } else if self.viewModel.page == 1 {
+                self.viewModel.post.accept([])
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
+            }
+        }.disposed(by: viewModel.bag)
+    }
+    
+    private func searchProjectByKeyword() {
+        guard let keyword = searchTextField.text,
+              keyword.count > 1  else { return }
+        viewModel.searchProjectByKeyword(keyword: keyword).subscribe { [weak self] projects in
+            guard let self = self else { return }
+            if projects.count > 0 {
+                if self.viewModel.page == 1 {
+                    self.viewModel.project.accept(projects)
+                } else {
+                    self.viewModel.project.accept(self.viewModel.project.value + projects)
+                }
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
+            } else if self.viewModel.page == 1 {
+                self.viewModel.project.accept([])
+                self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
+            }
+        }.disposed(by: viewModel.bag)
+    }
+    
 }
 
 extension FilterResultViewController: FilterViewControllerDelegate {
@@ -271,6 +341,7 @@ extension FilterResultViewController: FilterViewControllerDelegate {
         viewModel.selectedDistrict = selectedDistrict
         viewModel.page = 1
         optionView.isHidden = false
+        searchView.isHidden = true
         
         if let param = findPostParams {
             viewModel.findPostParams = param
@@ -361,6 +432,7 @@ extension FilterResultViewController: MKMapViewDelegate {
         guard let tempId = annotation.title,
               let id = tempId
         else { return }
+        self.view.endEditing(true)
         addDetailView(id)
     }
     

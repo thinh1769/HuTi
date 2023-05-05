@@ -26,4 +26,8 @@ class ProjectService: BaseService {
         }
     }
     
+    func searchByKeyword(keyword: String, page: Int) -> Observable<[Project]> {
+        let param: [String: Any] = ["keyword": keyword]
+        return request(api: "\(APIConstants.searchProjectByKeyword.rawValue)?page=\(page)", method: .post, params: param)
+    }
 }
