@@ -285,10 +285,13 @@ class FilterResultViewController: BaseViewController {
     }
     
     private func searchByKeyword() {
-        if self.viewModel.tabBarItemTitle == TabBarItemTitle.project {
-            self.searchProjectByKeyword()
+        viewModel.page = 1
+        if viewModel.tabBarItemTitle == TabBarItemTitle.project {
+            viewModel.project.accept([])
+            searchProjectByKeyword()
         } else {
-            self.searchPostByKeyword()
+            viewModel.post.accept([])
+            searchPostByKeyword()
         }
     }
     

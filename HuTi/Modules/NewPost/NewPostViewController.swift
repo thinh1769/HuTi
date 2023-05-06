@@ -126,7 +126,8 @@ class NewPostViewController: BaseViewController {
                   let text = self.provinceTextField.text
                 else { return }
             if text.count > 0 {
-                self.moveCameraToLocation(21.0031177, 105.8201408)
+                let provinceCoordinate = self.viewModel.getProvinceCoordinate(provinceName: text)
+                self.moveCameraToLocation(provinceCoordinate.lat, provinceCoordinate.long)
             }
         }.disposed(by: viewModel.bag)
         

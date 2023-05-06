@@ -486,6 +486,30 @@ class NewPostViewModel: BaseViewModel {
         return postService.updatePost(postId: post?.id ?? "", param: updatePostParams)
     }
     
+    func getProvinceCoordinate(provinceName: String) -> ProvinceCoordinate {
+        for (_, coordinate) in CommonConstants.coordinate.enumerated() {
+            if provinceName == "Tỉnh \(coordinate.name)" {
+                return coordinate
+            } else {
+                switch provinceName {
+                case "Thành phố Cần Thơ":
+                    return ProvinceCoordinate(name: "Cần Thơ", lat: 10.0653203, long: 105.5591218)
+                case "Thành phố Hà Nội":
+                    return ProvinceCoordinate(name: "Hà Nội", lat: 21.0031177, long: 105.8201408)
+                case "Thành phố Hải Phòng":
+                    return ProvinceCoordinate(name: "Hải Phòng", lat: 20.7976740, long: 106.5819789)
+                case "Thành phố Hồ Chí Minh":
+                    return ProvinceCoordinate(name: "Hồ Chí Minh", lat: 10.8230989, long: 106.6296638)
+                case "Thành phố Đà Nẵng":
+                    return ProvinceCoordinate(name: "Đà Nẵng", lat: 16.0544563, long: 108.0717219)
+                default:
+                    continue
+                }
+            }
+        }
+        return ProvinceCoordinate(name: "", lat: 0, long: 0)
+    }
+    
     func uploadImages(completion: @escaping () -> Void) {
         let dispatchGroup = DispatchGroup()
         

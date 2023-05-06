@@ -32,3 +32,10 @@ struct Ward: Codable {
     var province_name: String
     var full_name: String
 }
+
+struct ProvinceCoordinate {
+    var name: String
+    var lat: Double
+    var long: Double
+}
+
