@@ -392,6 +392,21 @@
                         <action selector="onClickedEditButton:" destination="-1" eventType="touchUpInside" id="o5Q-4z-YyG"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PmW-XA-ZM7">
+                    <rect key="frame" x="125" y="585" width="125" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="6rl-Fb-VMJ"/>
+                        <constraint firstAttribute="width" constant="125" id="MWz-FC-sy4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Đổi mật khẩu">
+                        <color key="titleColor" name="themeText"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapChangePasswordButton:" destination="-1" eventType="touchUpInside" id="97h-dg-dnV"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
@@ -404,7 +419,9 @@
                 <constraint firstItem="my7-KO-QoL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="OZH-Uq-5ml"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="my7-KO-QoL" secondAttribute="trailing" constant="20" id="UsS-6a-O6y"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ept-iE-04R" secondAttribute="trailing" constant="20" id="bcy-uU-9BX"/>
+                <constraint firstItem="PmW-XA-ZM7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bmM-pz-gFu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="M9i-b1-OsC" secondAttribute="trailing" constant="20" id="e9v-tF-jx5"/>
+                <constraint firstItem="PmW-XA-ZM7" firstAttribute="top" secondItem="my7-KO-QoL" secondAttribute="bottom" constant="10" id="h4a-jz-VYQ"/>
                 <constraint firstItem="my7-KO-QoL" firstAttribute="top" secondItem="Ept-iE-04R" secondAttribute="bottom" constant="20" id="pyV-oE-bJZ"/>
                 <constraint firstItem="bXn-mJ-nCx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wSM-ND-tlU"/>
                 <constraint firstItem="Ept-iE-04R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="zFu-ZN-Ve4"/>

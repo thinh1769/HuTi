@@ -92,6 +92,12 @@ class AccountDetailViewController: BaseViewController {
         viewModel.identityCard = identityCardTextField.text ?? ""
         viewModel.email = emailTextField.text ?? ""
     }
+    
+    @IBAction func didTapChangePasswordButton(_ sender: UIButton) {
+        let vc = ConfirmPasswordViewController()
+        navigateTo(vc)
+    }
+    
 }
 
 extension AccountDetailViewController {
