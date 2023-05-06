@@ -64,7 +64,7 @@ class SignUpViewController: BaseViewController {
                         self.showAlert(title: Alert.registedPhoneNumber)
                     } onCompleted: { [weak self] in
                         guard let self = self else { return }
-                        let vc = OTPViewController.instance(phoneNumber: phoneNumber, isRegister: true)
+                        let vc = OTPViewController.instance(phoneNumber: phoneNumber, type: ConfirmPasswordType.register)
                         self.hideLoading()
                         self.navigateTo(vc)
                     }.disposed(by: viewModel.bag)
@@ -77,7 +77,7 @@ class SignUpViewController: BaseViewController {
                         self.showAlert(title: Alert.nonRegistedPhoneNumber)
                     } onCompleted: { [weak self] in
                         guard let self = self else { return }
-                        let vc = OTPViewController.instance(phoneNumber: phoneNumber, isRegister: false)
+                        let vc = OTPViewController.instance(phoneNumber: phoneNumber, type: ConfirmPasswordType.forgotPassword)
                         self.hideLoading()
                         self.navigateTo(vc)
                     }.disposed(by: viewModel.bag)

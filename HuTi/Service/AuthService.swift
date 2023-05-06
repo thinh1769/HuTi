@@ -46,6 +46,11 @@ class AuthService: BaseService {
         return authRequest(api: APIConstants.resetPassword, method: .put, parameters: params)
     }
     
+    func changePassword(oldPassword: String, newPassword: String) -> Observable<User> {
+        let params = ["oldPassword": oldPassword, "newPassword": newPassword]
+        return authRequest(api: APIConstants.changePassword, method: .put, parameters: params)
+    }
+    
     func likePost(postId: String) -> Observable<String> {
         return request(api: APIConstants.likePost.rawValue + postId, method: .put)
     }

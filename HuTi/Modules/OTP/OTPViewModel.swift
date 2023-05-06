@@ -11,7 +11,7 @@ import RxSwift
 
 class OTPViewModel: BaseViewModel {
     var phoneNumber = ""
-    var isRegister = true
+    var type = 0
     
     func confirmOTP(otp: String) -> Observable<User> {
         return authService.confirmOTP(phoneNumber: phoneNumber, otp: otp)

@@ -94,7 +94,7 @@ class AccountDetailViewController: BaseViewController {
     }
     
     @IBAction func didTapChangePasswordButton(_ sender: UIButton) {
-        let vc = ConfirmPasswordViewController()
+        let vc = ConfirmPasswordViewController.instance(phoneNumber: nil, otp: nil, type: ConfirmPasswordType.changePassword)
         navigateTo(vc)
     }
     

@@ -11,10 +11,24 @@ import RxCocoa
 
 class ConfirmPasswordViewController: BaseViewController {
     
+    @IBOutlet weak var oldPasswordView: UIView!
+    @IBOutlet weak var oldPasswordTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var oldPassChangeSecureTextButton: UIButton!
+    @IBOutlet weak var passChangeSecureTextButton: UIButton!
+    @IBOutlet weak var confirmPassChangeSecureTextButton: UIButton!
     
     var viewModel = ConfirmPasswordViewModel()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if viewModel.type == ConfirmPasswordType.changePassword {
+            oldPasswordView.isHidden = false
+        } else {
+            oldPasswordView.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +40,13 @@ class ConfirmPasswordViewController: BaseViewController {
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
 
+        var passwordPlaceHolder = CommonConstants.password
+        if viewModel.type == ConfirmPasswordType.changePassword {
+            passwordPlaceHolder = "Mật khẩu mới"
+        }
+        
         passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: CommonConstants.password,
+            string: passwordPlaceHolder,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
         confirmPasswordTextField.attributedPlaceholder = NSAttributedString(
@@ -53,8 +72,8 @@ class ConfirmPasswordViewController: BaseViewController {
             showAlert(title: Alert.notTheSamePass)
             return
         }
-        showLoading()
-        if viewModel.isRegister {
+        if viewModel.type == ConfirmPasswordType.register {
+            showLoading()
             viewModel.register(password: pass).subscribe { [weak self] user in
                 guard let self = self else { return }
                 UserDefaults.userInfo = user
@@ -62,7 +81,8 @@ class ConfirmPasswordViewController: BaseViewController {
                 self.hideLoading()
                 self.setRootTabBar()
             }.disposed(by: viewModel.bag)
-        } else {
+        } else if viewModel.type == ConfirmPasswordType.forgotPassword {
+            showLoading()
             viewModel.resetPassword(password: pass).subscribe { _ in
             } onError: { _ in
             } onCompleted: { [weak self] in
@@ -71,8 +91,62 @@ class ConfirmPasswordViewController: BaseViewController {
                 self.hideLoading()
                 self.navigateTo(vc)
             }.disposed(by: viewModel.bag)
+        } else {
+            guard let oldPass = oldPasswordTextField.text,
+                  oldPass.count > 4
+            else {
+                showAlert(title: Alert.numberOfPass)
+                return
+            }
+            if oldPass == pass {
+                showAlert(title: "Mật khẩu mới trùng với mật khẩu hiện tại")
+                return
+            }
+            showLoading()
+            viewModel.changePassword(oldPassword: oldPass, newPassword: pass).subscribe { _ in
+            } onError: { [weak self] error in
+                guard let self = self else { return }
+                self.hideLoading()
+                self.showAlert(title: "Mật khẩu hiện tại không đúng")
+            } onCompleted: { [weak self] in
+                guard let self = self else { return }
+                self.hideLoading()
+                self.backToPreviousView()
+                self.showAlert(title: "Đổi mật khẩu thành công")
+            }.disposed(by: viewModel.bag)
         }
     }
+    
+    @IBAction func didTapChangeSecureTextOldPassButton(_ sender: UIButton) {
+        if oldPasswordTextField.isSecureTextEntry {
+            oldPasswordTextField.isSecureTextEntry = false
+            oldPassChangeSecureTextButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        } else {
+            oldPasswordTextField.isSecureTextEntry = true
+            oldPassChangeSecureTextButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+    }
+    
+    @IBAction func didTapChangeSecureTextPassButton(_ sender: UIButton) {
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+            passChangeSecureTextButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        } else {
+            passwordTextField.isSecureTextEntry = true
+            passChangeSecureTextButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+    }
+    
+    @IBAction func didTapChangeSecureTextConfirmPassButton(_ sender: UIButton) {
+        if confirmPasswordTextField.isSecureTextEntry {
+            confirmPasswordTextField.isSecureTextEntry = false
+            confirmPassChangeSecureTextButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        } else {
+            confirmPasswordTextField.isSecureTextEntry = true
+            confirmPassChangeSecureTextButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+    }
+    
 }
 
 extension ConfirmPasswordViewController: UITextFieldDelegate {
@@ -84,11 +158,15 @@ extension ConfirmPasswordViewController: UITextFieldDelegate {
 }
 
 extension ConfirmPasswordViewController {
-    class func instance(phoneNumber: String, otp: String, isRegister: Bool) -> ConfirmPasswordViewController {
+    class func instance(phoneNumber: String?, otp: String?, type: Int) -> ConfirmPasswordViewController {
         let controller = ConfirmPasswordViewController(nibName: ClassNibName.ConfirmPasswordViewController, bundle: Bundle.main)
-        controller.viewModel.phoneNumber = phoneNumber
-        controller.viewModel.otp = otp
-        controller.viewModel.isRegister = isRegister
+        if let phoneNumber = phoneNumber {
+            controller.viewModel.phoneNumber = phoneNumber
+        }
+        if let otp = otp {
+            controller.viewModel.otp = otp
+        }
+        controller.viewModel.type = type
         return controller
     }
 }
