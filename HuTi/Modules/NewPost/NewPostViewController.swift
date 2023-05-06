@@ -271,9 +271,9 @@ class NewPostViewController: BaseViewController {
     }
     
     @IBAction func onClickedPostBtn(_ sender: UIButton) {
-        if !viewModel.isEdit {
-            if validateForm(){
-                showLoading()
+        if validateForm() {
+            showLoading()
+            if !viewModel.isEdit {
                 viewModel.uploadImages {
                     DispatchQueue.main.async {
                         self.viewModel.addNewPost(address: self.addressTextField.text ?? ""
@@ -297,44 +297,54 @@ class NewPostViewController: BaseViewController {
                             self.showAlert(title: Alert.postSuccessfully)
                         }.disposed(by: self.viewModel.bag)
                     }
-                    
                 }
+            } else if viewModel.checkUpdatePost(typeTextField.text ?? "",
+                                                provinceTextField.text ?? "",
+                                                districtTextField.text ?? "",
+                                                wardTextField.text ?? "",
+                                                addressTextField.text ?? "",
+                                                projectTextField.text ?? "",
+                                                mapView.centerCoordinate.latitude,
+                                                mapView.centerCoordinate.longitude,
+                                                titleTextField.text ?? "",
+                                                descriptionTextView.text ?? "",
+                                                acreageTextField.text ?? "",
+                                                priceTextField.text ?? "",
+                                                legalTextField.text ?? "",
+                                                funitureTextField.text ?? "",
+                                                bedroomNumberLabel.text ?? "",
+                                                bathroomNumberLabel.text ?? "",
+                                                floorNumberLabel.text ?? "",
+                                                houseDirectionTextField.text ?? "",
+                                                balconyDirectionTextField.text ?? "",
+                                                wayInTextField.text ?? "",
+                                                facadeTextField.text ?? "",
+                                                contactNameTextField.text ?? "",
+                                                contactPhoneTextField.text ?? "") {
+                viewModel.updatePostParams.updateValue(0, forKey: "browseStatus")
+                if viewModel.isAddImage {
+                    viewModel.uploadImages {
+                        DispatchQueue.main.async {
+                            self.viewModel.updatePost().subscribe { [weak self] _ in
+                                guard let self = self else { return }
+                                self.hideLoading()
+                                self.navigationController?.popToRootViewController(animated: true)
+                                self.showAlert(title: "Cập nhật tin đăng thành công, vui lòng chờ xét duyệt")
+                            }.disposed(by: self.viewModel.bag)
+                        }
+                    }
+                } else {
+                    viewModel.updatePost().subscribe { [weak self] _ in
+                        guard let self = self else { return }
+                        self.hideLoading()
+                        self.navigationController?.popToRootViewController(animated: true)
+                        self.showAlert(title: "Cập nhật tin đăng thành công, vui lòng chờ xét duyệt")
+                    }.disposed(by: viewModel.bag)
+                }
+            } else {
+                hideLoading()
+                showAlert(title: "Bạn chưa chỉnh sửa thông tin tin đăng")
             }
-        } else if viewModel.checkUpdatePost(typeTextField.text ?? "",
-                                            provinceTextField.text ?? "",
-                                            districtTextField.text ?? "",
-                                            wardTextField.text ?? "",
-                                            addressTextField.text ?? "",
-                                            projectTextField.text ?? "",
-                                            mapView.centerCoordinate.latitude,
-                                            mapView.centerCoordinate.longitude,
-                                            titleTextField.text ?? "",
-                                            descriptionTextView.text ?? "",
-                                            acreageTextField.text ?? "",
-                                            priceTextField.text ?? "",
-                                            legalTextField.text ?? "",
-                                            funitureTextField.text ?? "",
-                                            bedroomNumberLabel.text ?? "",
-                                            bathroomNumberLabel.text ?? "",
-                                            floorNumberLabel.text ?? "",
-                                            houseDirectionTextField.text ?? "",
-                                            balconyDirectionTextField.text ?? "",
-                                            wayInTextField.text ?? "",
-                                            facadeTextField.text ?? "",
-                                            contactNameTextField.text ?? "",
-                                            contactPhoneTextField.text ?? "") {
-            print("=============Đã chỉnh sửa post============")
-            viewModel.updatePostParams.updateValue(0, forKey: "browseStatus")
-            print("updatePostParams = \(viewModel.updatePostParams)")
-            viewModel.updatePost().subscribe { [weak self] _ in
-                guard let self = self else { return }
-                self.navigationController?.popToRootViewController(animated: true)
-                self.showAlert(title: "Cập nhật tin đăng thành công, vui lòng chờ xét duyệt")
-            }.disposed(by: viewModel.bag)
-        } else {
-            print("=============Chưa chỉnh sửa post============")
-            print("updatePostParams = \(viewModel.updatePostParams)")
-            self.showAlert(title: "Bạn chưa chỉnh sửa thông tin tin đăng")
         }
     }
     
@@ -351,8 +361,8 @@ class NewPostViewController: BaseViewController {
             legalTextField.text == "" ||
             contactNameTextField.text == "" ||
             contactPhoneTextField.text == "" ||
-            viewModel.imagesNameList.count == 0 {
-            self.showAlert(title: "Vui lòng nhập đầy đủ những thông tin bắt buộc")
+            viewModel.image.value.count == 0 {
+            showAlert(title: "Vui lòng nhập đầy đủ những thông tin bắt buộc")
             return false
         }
         
@@ -367,7 +377,7 @@ class NewPostViewController: BaseViewController {
     
     @IBAction func onClickedImageButton(_ sender: UIButton) {
         config.filter = .images
-        config.selectionLimit = 10 - viewModel.imagesList.count
+        config.selectionLimit = 10 - viewModel.image.value.count
         
         if config.selectionLimit > 0 {
             let picker = PHPickerViewController(configuration: config)
@@ -381,30 +391,19 @@ class NewPostViewController: BaseViewController {
     private func setupImageCollectionView() {
         imageCollectionView.register(NewPostImageCell.nib, forCellWithReuseIdentifier: NewPostImageCell.reusableIdentifier)
         
-        if !viewModel.isEdit {
-            viewModel.selectedImage.asObservable()
-                .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { [weak self] (index, element, cell) in
-                    guard let self = self else { return }
-                    cell.config(image: element)
-                    
-                    cell.onTapRemove = {
-                        self.viewModel.imagesList.remove(at: index)
-                        self.viewModel.imagesNameList.remove(at: index)
-                        self.viewModel.setupDataImageCollectionView()
-                    }
-                }.disposed(by: viewModel.bag)
-        } else {
-            viewModel.imagesName.asObservable()
-                .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { [weak self] (index, element, cell) in
-                    guard let self = self else { return }
-                    cell.configImage(imageName: element, isEnabledRemove: true)
-                    
-                    cell.onTapRemove = {
-                        self.viewModel.imagesNameList.remove(at: index)
-                        self.viewModel.imagesName.accept(self.viewModel.imagesNameList)
-                    }
-                }.disposed(by: viewModel.bag)
-        }
+        viewModel.image.asObservable()
+            .bind(to: imageCollectionView.rx.items(cellIdentifier: NewPostImageCell.reusableIdentifier, cellType: NewPostImageCell.self)) { [weak self] (index, element, cell) in
+                guard let self = self else { return }
+                if let image = element.image {
+                    cell.config(image: image)
+                } else {
+                    cell.configImage(imageName: element.name, isEnabledRemove: true)
+                }
+                cell.onTapRemove = {
+                    self.viewModel.imagesList.remove(at: index)
+                    self.viewModel.image.accept(self.viewModel.imagesList)
+                }
+            }.disposed(by: viewModel.bag)
         
         imageCollectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
     }
@@ -488,8 +487,8 @@ class NewPostViewController: BaseViewController {
         contactNameTextField.text = post.contactName
         contactPhoneTextField.text = post.contactPhoneNumber
         hiddenUnnecessaryView(text: post.realEstateType)
-        viewModel.imagesName.accept(post.images)
-        viewModel.imagesNameList = post.images
+        viewModel.image.accept(viewModel.convertImageArrayToTupple(imageArray: post.images))
+        viewModel.imagesList = viewModel.convertImageArrayToTupple(imageArray: post.images)
         if let status = post.status {
             if status == 0 {
                 hidePostButton.setTitle("Ẩn tin", for: .normal)
@@ -550,13 +549,11 @@ extension NewPostViewController: PHPickerViewControllerDelegate {
             item.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
                 guard let self = self else { return }
                 if let image = image {
-                    self.viewModel.imageSelected = (image as! UIImage).rotate()
-                    self.viewModel.imagesList.append(self.viewModel.imageSelected)
-                    self.viewModel.setupDataImageCollectionView()
-                    
                     let now = Date()
                     let timeInterval = now.timeIntervalSince1970
-                    self.viewModel.imagesNameList.append("\(UserDefaults.userInfo?.id ?? "")_\(timeInterval)")
+                    self.viewModel.imageSelected = (image as! UIImage).rotate()
+                    self.viewModel.imagesList.append((image: self.viewModel.imageSelected, name: "\(UserDefaults.userInfo?.id ?? "")_\(timeInterval)"))
+                    self.viewModel.image.accept(self.viewModel.imagesList)
                 }
             }
         }

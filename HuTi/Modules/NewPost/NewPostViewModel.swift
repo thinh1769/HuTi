@@ -16,8 +16,7 @@ class NewPostViewModel: BaseViewModel {
     let funiture = BehaviorRelay<[String]>(value: [])
     let houseDirection = BehaviorRelay<[String]>(value: [])
     let balconyDirection = BehaviorRelay<[String]>(value: [])
-    let selectedImage = BehaviorRelay<[UIImage]>(value: [])
-    let imagesName = BehaviorRelay<[String]>(value: [])
+    let image = BehaviorRelay<[(image: UIImage?, name: String)]>(value: [])
     var selectedProvince = -1
     var selectedDistrict = -1
     var selectedWard = -1
@@ -30,18 +29,14 @@ class NewPostViewModel: BaseViewModel {
     var isSelectedSell = true
     var isEditBtnClicked = false
     var imageSelected = UIImage()
-    var imagesList = [UIImage]()
-    var imagesNameList = [String]()
+    var imagesList = [(image: UIImage?, name: String)]()
     var searchProjectParams = [String: Any]()
     var isEdit = false
     var post: PostDetail?
     var projectDetail: Project?
     var updatePostParams = [String: Any]()
     var newPostParams = [String: Any]()
-    
-    func setupDataImageCollectionView() {
-        selectedImage.accept(imagesList)
-    }
+    var isAddImage = false
     
     func getAllProvinces() -> Observable<[Province]> {
         return addressService.getAllProvinces()
@@ -49,6 +44,22 @@ class NewPostViewModel: BaseViewModel {
     
     func getDistrictsByProvinceId() -> Observable<[District]> {
         return addressService.getDistrictsByProvinceId(provinceId: province.value[selectedProvince].id)
+    }
+    
+    func convertImageArrayToTupple(imageArray: [String]) -> [(image: UIImage?, name: String)] {
+        var imageTupple = [(image: UIImage?, name: String)]()
+        for (_, element) in imageArray.enumerated() {
+            imageTupple.append((image: nil, name: element))
+        }
+        return imageTupple
+    }
+    
+    func convertImageTuppleToArray(imageTupple: [(image: UIImage?, name: String)]) -> [String] {
+        var imageArray = [String]()
+        for (_, element) in imageTupple.enumerated() {
+            imageArray.append(element.name)
+        }
+        return imageArray
     }
     
     func getWardsByDistrictId() -> Observable<[Ward]> {
@@ -164,7 +175,7 @@ class NewPostViewModel: BaseViewModel {
         newPostParams.updateValue(price, forKey: "price")
         newPostParams.updateValue(getPriceRange(price: price), forKey: "priceRange")
         newPostParams.updateValue(self.legal.value[selectedLegal], forKey: "legal")
-        newPostParams.updateValue(imagesNameList, forKey: "images")
+        newPostParams.updateValue(convertImageTuppleToArray(imageTupple: image.value), forKey: "images")
         newPostParams.updateValue(contactName, forKey: "contactName")
         newPostParams.updateValue(contactPhoneNumber, forKey: "contactPhoneNumber")
         
@@ -401,9 +412,11 @@ class NewPostViewModel: BaseViewModel {
             updatePostParams.updateValue(contactNumber, forKey: "contactNumber")
         }
         
-        if imagesNameList.sorted() != post.images.sorted() {
+        let parseImagesNameList = convertImageTuppleToArray(imageTupple: image.value)
+        if parseImagesNameList.sorted() != post.images.sorted() {
             isUpdated = true
-            updatePostParams.updateValue(imagesNameList, forKey: "images")
+            isAddImage = true
+            updatePostParams.updateValue(parseImagesNameList, forKey: "images")
         }
         
         /// Non required Field
@@ -512,14 +525,15 @@ class NewPostViewModel: BaseViewModel {
     
     func uploadImages(completion: @escaping () -> Void) {
         let dispatchGroup = DispatchGroup()
-        
-        for (index, element) in imagesList.enumerated() {
-            guard let data = element.pngData() else { continue }
+        let imagesList = image.value
+        for (_, element) in imagesList.enumerated() {
+            guard let image = element.image,
+                  let data = image.pngData() else { continue }
             
-            let assetDataModel = AssetDataModel(data: data, pathFile: "", thumbnail: element)
+            let assetDataModel = AssetDataModel(data: data, pathFile: "", thumbnail: image)
             assetDataModel.compressed = true
             assetDataModel.compressData()
-            assetDataModel.remoteName = imagesNameList[index]
+            assetDataModel.remoteName = element.name
             
             dispatchGroup.enter()
             awsService.uploadImage(data: assetDataModel, completionHandler: { [weak self] _, error in
