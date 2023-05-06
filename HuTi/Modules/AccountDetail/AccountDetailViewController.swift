@@ -125,6 +125,9 @@ extension AccountDetailViewController {
         dobPicker.tag = PickerTag.dob
         dobPicker.datePickerMode = .date
         dobPicker.preferredDatePickerStyle = .wheels
+        dobPicker.minimumDate = Date().getMinimumDate()
+        dobPicker.maximumDate = Date().getMaximumDate()
+        
         dobTextField.inputAccessoryView = setupPickerToolBar(pickerTag: PickerTag.dob)
     }
     
