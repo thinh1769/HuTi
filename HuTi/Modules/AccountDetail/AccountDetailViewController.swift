@@ -21,6 +21,7 @@ class AccountDetailViewController: BaseViewController {
     @IBOutlet weak var editGenderIcon: UIImageView!
     @IBOutlet weak var editDobIcon: UIImageView!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var editEmailButton: UIButton!
     
     let genderPicker = UIPickerView()
     let dobPicker = UIDatePicker()
@@ -35,6 +36,9 @@ class AccountDetailViewController: BaseViewController {
         phoneTextField.text = UserDefaults.userInfo?.phoneNumber ?? ""
         emailTextField.text = UserDefaults.userInfo?.email ?? ""
         self.mainTabBarController?.tabBar.isHidden = true
+        changeTextFieldStatus(false)
+        editButton.setImage(UIImage(named: ImageName.edit), for: .normal)
+        viewModel.isEditButtonClicked = false
     }
     
     override func viewDidLoad() {
@@ -45,9 +49,9 @@ class AccountDetailViewController: BaseViewController {
     }
     
     private func setupUI() {
-        changeTextFieldStatus(false)
         emailTextField.isUserInteractionEnabled = false
         isTouchDismissKeyboardEnabled = true
+        phoneTextField.delegate = self
     }
 
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
@@ -84,6 +88,7 @@ class AccountDetailViewController: BaseViewController {
         phoneTextField.isUserInteractionEnabled = status
         editDobIcon.isHidden = !status
         editGenderIcon.isHidden = !status
+        editEmailButton.isHidden = !status
     }
     
     private func updateUserInfoViewModel() {
@@ -94,7 +99,12 @@ class AccountDetailViewController: BaseViewController {
     }
     
     @IBAction func didTapChangePasswordButton(_ sender: UIButton) {
-        let vc = ConfirmPasswordViewController.instance(email: nil, otp: nil, type: ConfirmPasswordType.changePassword)
+        let vc = ConfirmPasswordViewController.instance(email: nil, otp: nil, type: AuthenType.changePassword)
+        navigateTo(vc)
+    }
+    
+    @IBAction func didTapChangeEmailButton(_ sender: UIButton) {
+        let vc = SignUpViewController.instance(type: AuthenType.changeEmail)
         navigateTo(vc)
     }
     
@@ -172,5 +182,13 @@ extension AccountDetailViewController {
     
     @objc private func cancelPicker() {
         view.window?.endEditing(true)
+    }
+}
+
+extension AccountDetailViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 10
     }
 }

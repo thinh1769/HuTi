@@ -28,10 +28,10 @@ class SignUpViewController: BaseViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
         
-        if !viewModel.isRegister {
-            bottomStackView.isHidden = true
-        } else {
+        if viewModel.type != AuthenType.register {
             bottomStackView.isHidden = false
+        } else {
+            bottomStackView.isHidden = true
         }
     }
     
@@ -47,7 +47,7 @@ class SignUpViewController: BaseViewController {
     @IBAction func onClickedContinueBtn(_ sender: UIButton) {
         guard let email = emailTextField.text else { return }
         showLoading()
-        if viewModel.isRegister {
+        if viewModel.type != AuthenType.forgotPassword {
             viewModel.sendOTP(email: email)
                 .subscribe { _ in
                 } onError: { [weak self] _ in
@@ -56,7 +56,7 @@ class SignUpViewController: BaseViewController {
                     self.showAlert(title: Alert.registedPhoneNumber)
                 } onCompleted: { [weak self] in
                     guard let self = self else { return }
-                    let vc = OTPViewController.instance(email: email, type: ConfirmPasswordType.register)
+                    let vc = OTPViewController.instance(email: email, type: self.viewModel.type)
                     self.hideLoading()
                     self.navigateTo(vc)
                 }.disposed(by: viewModel.bag)
@@ -69,7 +69,7 @@ class SignUpViewController: BaseViewController {
                     self.showAlert(title: Alert.nonRegistedPhoneNumber)
                 } onCompleted: { [weak self] in
                     guard let self = self else { return }
-                    let vc = OTPViewController.instance(email: email, type: ConfirmPasswordType.forgotPassword)
+                    let vc = OTPViewController.instance(email: email, type: self.viewModel.type)
                     self.hideLoading()
                     self.navigateTo(vc)
                 }.disposed(by: viewModel.bag)
@@ -86,9 +86,9 @@ extension SignUpViewController: UITextFieldDelegate {
 }
 
 extension SignUpViewController {
-    class func instance(isRegister: Bool) -> SignUpViewController {
+    class func instance(type: Int) -> SignUpViewController {
         let controller = SignUpViewController(nibName: ClassNibName.SignUpViewController, bundle: Bundle.main)
-        controller.viewModel.isRegister = isRegister
+        controller.viewModel.type = type
         return controller
     }
 }

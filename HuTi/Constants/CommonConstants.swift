@@ -123,10 +123,11 @@ struct PickerTag {
     static let dob = 14
 }
 
-struct ConfirmPasswordType {
+struct AuthenType {
     static let register = 0
     static let forgotPassword = 1
     static let changePassword = 2
+    static let changeEmail = 3
 }
 
 struct ImageName {

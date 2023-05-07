@@ -58,9 +58,24 @@ class OTPViewController: BaseViewController {
             self.showAlert(title: Alert.wrongOTP)
         } onCompleted: { [weak self] in
             guard let self = self else { return }
-            let vc = ConfirmPasswordViewController.instance(email: self.viewModel.email, otp: otp, type: self.viewModel.type)
+            if self.viewModel.type == AuthenType.changeEmail {
+                self.changeEmail()
+            } else {
+                let vc = ConfirmPasswordViewController.instance(email: self.viewModel.email, otp: otp, type: self.viewModel.type)
+                self.hideLoading()
+                self.navigateTo(vc)
+            }
+        }.disposed(by: viewModel.bag)
+    }
+    
+    private func changeEmail() {
+        viewModel.updateEmail().subscribe { [weak self] _ in
+            guard let self = self else { return }
             self.hideLoading()
-            self.navigateTo(vc)
+            UserDefaults.userInfo?.email = self.viewModel.email
+            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
+            self.showAlert(title: "Thay đổi email thành công")
         }.disposed(by: viewModel.bag)
     }
     

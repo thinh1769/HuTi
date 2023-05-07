@@ -23,7 +23,7 @@ class ConfirmPasswordViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if viewModel.type == ConfirmPasswordType.changePassword {
+        if viewModel.type == AuthenType.changePassword {
             oldPasswordView.isHidden = false
         } else {
             oldPasswordView.isHidden = true
@@ -41,7 +41,7 @@ class ConfirmPasswordViewController: BaseViewController {
         confirmPasswordTextField.delegate = self
 
         var passwordPlaceHolder = CommonConstants.password
-        if viewModel.type == ConfirmPasswordType.changePassword {
+        if viewModel.type == AuthenType.changePassword {
             passwordPlaceHolder = "Mật khẩu mới"
         }
         
@@ -72,7 +72,7 @@ class ConfirmPasswordViewController: BaseViewController {
             showAlert(title: Alert.notTheSamePass)
             return
         }
-        if viewModel.type == ConfirmPasswordType.register {
+        if viewModel.type == AuthenType.register {
             showLoading()
             viewModel.register(password: pass).subscribe { [weak self] user in
                 guard let self = self else { return }
@@ -81,7 +81,7 @@ class ConfirmPasswordViewController: BaseViewController {
                 self.hideLoading()
                 self.setRootTabBar()
             }.disposed(by: viewModel.bag)
-        } else if viewModel.type == ConfirmPasswordType.forgotPassword {
+        } else if viewModel.type == AuthenType.forgotPassword {
             showLoading()
             viewModel.resetPassword(password: pass).subscribe { _ in
             } onError: { _ in

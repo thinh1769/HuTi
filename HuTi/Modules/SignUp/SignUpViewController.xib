@@ -26,7 +26,7 @@
                     <rect key="frame" x="0.0" y="59" width="430" height="279.66666666666669"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5js-Fn-cSt" userLabel="phoneView">
-                    <rect key="frame" x="40" y="358.66666666666669" width="350" height="50"/>
+                    <rect key="frame" x="20" y="358.66666666666669" width="390" height="50"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WIA-QE-7OF" userLabel="personIcon">
                             <rect key="frame" x="10" y="11.666666666666668" width="30" height="27.333333333333336"/>
@@ -37,7 +37,7 @@
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WK2-Hq-MyD" userLabel="phoneTextField">
-                            <rect key="frame" x="50" y="0.0" width="300" height="50"/>
+                            <rect key="frame" x="50" y="0.0" width="340" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                         </textField>
@@ -59,7 +59,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnb-tm-0r8" userLabel="signInButton">
-                    <rect key="frame" x="40" y="438.66666666666669" width="350" height="50"/>
+                    <rect key="frame" x="20" y="438.66666666666669" width="390" height="50"/>
                     <color key="backgroundColor" red="0.75308537480000004" green="0.326120615" blue="0.26264229420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="I6F-cr-IR5"/>
@@ -131,13 +131,13 @@
             <constraints>
                 <constraint firstItem="cK4-XA-tPy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="79w-4D-FYw"/>
                 <constraint firstItem="cK4-XA-tPy" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ArK-hh-XtP"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5js-Fn-cSt" secondAttribute="trailing" constant="40" id="DGS-pV-9P4"/>
-                <constraint firstItem="nnb-tm-0r8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="Dlf-vu-IQJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5js-Fn-cSt" secondAttribute="trailing" constant="20" id="DGS-pV-9P4"/>
+                <constraint firstItem="nnb-tm-0r8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Dlf-vu-IQJ"/>
                 <constraint firstItem="73I-HT-2fS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="It3-RE-u7D"/>
                 <constraint firstItem="nnb-tm-0r8" firstAttribute="top" secondItem="5js-Fn-cSt" secondAttribute="bottom" constant="30" id="Omo-pq-2bB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OpV-1p-H79" secondAttribute="bottom" constant="20" id="PXQ-6C-A2H"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nnb-tm-0r8" secondAttribute="trailing" constant="40" id="Q8a-mF-Wgj"/>
-                <constraint firstItem="5js-Fn-cSt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="UgQ-9r-uBf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nnb-tm-0r8" secondAttribute="trailing" constant="20" id="Q8a-mF-Wgj"/>
+                <constraint firstItem="5js-Fn-cSt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UgQ-9r-uBf"/>
                 <constraint firstItem="OpV-1p-H79" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dYr-zg-aEk"/>
                 <constraint firstItem="73I-HT-2fS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="kCr-nz-rnR"/>
                 <constraint firstItem="cK4-XA-tPy" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="pyq-dI-SNh"/>

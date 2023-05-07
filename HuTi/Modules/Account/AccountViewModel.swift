@@ -11,6 +11,7 @@ class AccountViewModel: BaseViewModel {
     func checkUpdateInfo() -> Bool {
         guard let name = UserDefaults.userInfo?.name,
               name != "",
+              name != "HuTi User",
               let dateOfBirth = UserDefaults.userInfo?.dateOfBirth,
               dateOfBirth != "",
               let gender = UserDefaults.userInfo?.gender,

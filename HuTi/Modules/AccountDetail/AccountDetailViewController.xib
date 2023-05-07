@@ -15,6 +15,7 @@
                 <outlet property="dobTextField" destination="Ujs-qG-mMm" id="71a-cE-NKU"/>
                 <outlet property="editButton" destination="M9i-b1-OsC" id="R86-To-8Nc"/>
                 <outlet property="editDobIcon" destination="C60-Ii-uep" id="EBU-gc-Jhe"/>
+                <outlet property="editEmailButton" destination="dLu-vX-rRC" id="0TM-r2-Xq4"/>
                 <outlet property="editGenderIcon" destination="7QU-oV-wyE" id="moY-wF-Gnx"/>
                 <outlet property="emailTextField" destination="dH9-Zd-aic" id="iYJ-7D-Rn4"/>
                 <outlet property="genderTextField" destination="LKl-ba-r9R" id="ccF-bI-04R"/>
@@ -243,7 +244,7 @@
                                                     </constraints>
                                                     <color key="textColor" name="black"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hay-Td-Gvz">
                                                     <rect key="frame" x="0.0" y="52" width="295" height="1"/>
@@ -285,7 +286,7 @@
                                                     </constraints>
                                                     <color key="textColor" name="black"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Luw-Eb-xnc">
                                                     <rect key="frame" x="0.0" y="52" width="295" height="1"/>
@@ -321,14 +322,29 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dH9-Zd-aic">
-                                                    <rect key="frame" x="0.0" y="20" width="295" height="30"/>
+                                                    <rect key="frame" x="0.0" y="20" width="250" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="9Os-wz-cUK"/>
                                                     </constraints>
                                                     <color key="textColor" name="gray"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLu-vX-rRC">
+                                                    <rect key="frame" x="255" y="15" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Nrl-BS-aWZ"/>
+                                                        <constraint firstAttribute="width" constant="30" id="UnM-gg-bh1"/>
+                                                    </constraints>
+                                                    <color key="tintColor" name="themeText"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="pencil.circle.fill" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didTapChangeEmailButton:" destination="-1" eventType="touchUpInside" id="H4u-i6-P9q"/>
+                                                    </connections>
+                                                </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nvm-5P-jay">
                                                     <rect key="frame" x="0.0" y="52" width="295" height="1"/>
                                                     <color key="backgroundColor" name="themeText"/>
@@ -340,12 +356,14 @@
                                             <constraints>
                                                 <constraint firstItem="nvm-5P-jay" firstAttribute="leading" secondItem="745-vy-eCR" secondAttribute="leading" id="2B1-V1-Aol"/>
                                                 <constraint firstAttribute="height" constant="60" id="3ss-mr-vwZ"/>
+                                                <constraint firstItem="dLu-vX-rRC" firstAttribute="centerY" secondItem="745-vy-eCR" secondAttribute="centerY" id="K7v-Yh-tFt"/>
                                                 <constraint firstItem="dH9-Zd-aic" firstAttribute="top" secondItem="MJw-ML-EJ4" secondAttribute="bottom" id="KWM-vH-anq"/>
                                                 <constraint firstAttribute="trailing" secondItem="MJw-ML-EJ4" secondAttribute="trailing" id="cSW-ex-at3"/>
                                                 <constraint firstItem="dH9-Zd-aic" firstAttribute="leading" secondItem="745-vy-eCR" secondAttribute="leading" id="f4W-91-UIL"/>
                                                 <constraint firstItem="MJw-ML-EJ4" firstAttribute="top" secondItem="745-vy-eCR" secondAttribute="top" id="gSN-ck-mX4"/>
                                                 <constraint firstAttribute="trailing" secondItem="nvm-5P-jay" secondAttribute="trailing" id="jmD-qc-BL9"/>
-                                                <constraint firstAttribute="trailing" secondItem="dH9-Zd-aic" secondAttribute="trailing" id="u8N-Gp-CS1"/>
+                                                <constraint firstItem="dLu-vX-rRC" firstAttribute="leading" secondItem="dH9-Zd-aic" secondAttribute="trailing" constant="5" id="sZ0-1g-bmn"/>
+                                                <constraint firstAttribute="trailing" secondItem="dLu-vX-rRC" secondAttribute="trailing" constant="10" id="wUg-Y6-8Wi"/>
                                                 <constraint firstItem="nvm-5P-jay" firstAttribute="top" secondItem="dH9-Zd-aic" secondAttribute="bottom" constant="2" id="wct-NL-vPN"/>
                                                 <constraint firstItem="MJw-ML-EJ4" firstAttribute="leading" secondItem="745-vy-eCR" secondAttribute="leading" id="yQL-b7-BQM"/>
                                             </constraints>
@@ -426,13 +444,14 @@
                 <constraint firstItem="bXn-mJ-nCx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wSM-ND-tlU"/>
                 <constraint firstItem="Ept-iE-04R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="zFu-ZN-Ve4"/>
             </constraints>
-            <point key="canvasLocation" x="-44" y="93"/>
+            <point key="canvasLocation" x="82" y="104"/>
         </view>
     </objects>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="edit" width="32" height="32"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="123"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
         <namedColor name="background">
             <color red="0.98000001907348633" green="0.92900002002716064" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

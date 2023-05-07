@@ -41,7 +41,7 @@ class SignInViewController: BaseViewController {
     }
     
     @IBAction func onClickedSignUpBtn(_ sender: UIButton) {
-        let vc = SignUpViewController.instance(isRegister: true)
+        let vc = SignUpViewController.instance(type: AuthenType.register)
         navigateTo(vc)
     }
     
@@ -87,7 +87,7 @@ class SignInViewController: BaseViewController {
     }
     
     @IBAction func onClickedForgotPasswordButton(_ sender: UIButton) {
-        let vc = SignUpViewController.instance(isRegister: false)
+        let vc = SignUpViewController.instance(type: AuthenType.forgotPassword)
         navigateTo(vc)
     }
 }

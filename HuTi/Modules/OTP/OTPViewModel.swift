@@ -16,4 +16,9 @@ class OTPViewModel: BaseViewModel {
     func confirmOTP(otp: String) -> Observable<User> {
         return authService.confirmOTP(email: email, otp: otp)
     }
+    
+    func updateEmail() -> Observable<User> {
+        let userUpdated = User(email: email)
+        return authService.updateInfo(user: userUpdated)
+    }
 }

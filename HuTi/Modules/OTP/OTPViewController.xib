@@ -73,7 +73,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfa-St-661" userLabel="signInButton">
-                    <rect key="frame" x="40" y="517.66666666666663" width="350" height="50"/>
+                    <rect key="frame" x="20" y="517.66666666666663" width="390" height="50"/>
                     <color key="backgroundColor" red="0.75308537480000004" green="0.326120615" blue="0.26264229420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="h1K-iR-jih"/>
@@ -99,7 +99,7 @@
                 <constraint firstItem="Pcg-io-QgJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="550-OG-Ci8"/>
                 <constraint firstItem="Bfa-St-661" firstAttribute="top" secondItem="YwJ-NR-4Pe" secondAttribute="bottom" constant="20" id="5WE-AU-zhw"/>
                 <constraint firstItem="Pcg-io-QgJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5ms-H8-hFh"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bfa-St-661" secondAttribute="trailing" constant="40" id="8LJ-dn-Fab"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bfa-St-661" secondAttribute="trailing" constant="20" id="8LJ-dn-Fab"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HD6-Kv-5X7" secondAttribute="trailing" constant="40" id="OkT-Lr-CLt"/>
                 <constraint firstItem="YwJ-NR-4Pe" firstAttribute="top" secondItem="HD6-Kv-5X7" secondAttribute="bottom" constant="20" id="QzB-jd-nzn"/>
                 <constraint firstItem="HD6-Kv-5X7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="RC0-B6-wf6"/>
@@ -107,7 +107,7 @@
                 <constraint firstItem="Pcg-io-QgJ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="V9Z-aF-tGl"/>
                 <constraint firstItem="YwJ-NR-4Pe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="W1H-WY-d5q"/>
                 <constraint firstItem="HD6-Kv-5X7" firstAttribute="top" secondItem="Pcg-io-QgJ" secondAttribute="bottom" constant="20" id="a49-sG-2mD"/>
-                <constraint firstItem="Bfa-St-661" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="dBu-41-2Wd"/>
+                <constraint firstItem="Bfa-St-661" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="dBu-41-2Wd"/>
                 <constraint firstItem="EkF-hb-JCt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="e2x-bW-GiO"/>
                 <constraint firstItem="Pcg-io-QgJ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="nTG-Wy-Bxh"/>
             </constraints>

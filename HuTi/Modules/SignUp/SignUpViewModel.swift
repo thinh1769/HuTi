@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 class SignUpViewModel: BaseViewModel {
-    var isRegister = true
+    var type = AuthenType.register
     
     func sendOTP(email: String) -> Observable<User> {
         return authService.sendOTP(email: email)
