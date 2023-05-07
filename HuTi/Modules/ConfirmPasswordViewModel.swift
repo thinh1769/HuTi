@@ -11,15 +11,15 @@ import RxSwift
 
 class ConfirmPasswordViewModel: BaseViewModel {
     var otp = ""
-    var phoneNumber = ""
+    var email = ""
     var type = 0
     
     func register(password: String) -> Observable<User> {
-        return authService.register(phoneNumber: phoneNumber, otp: otp, password: password)
+        return authService.register(email: email, otp: otp, password: password)
     }
     
     func resetPassword(password: String) -> Observable<User> {
-        return authService.resetPassword(phoneNumber: phoneNumber, otp: otp, password: password)
+        return authService.resetPassword(email: email, otp: otp, password: password)
     }
     
     func changePassword(oldPassword: String, newPassword: String) -> Observable<User> {

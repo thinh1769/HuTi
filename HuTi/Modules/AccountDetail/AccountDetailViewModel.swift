@@ -18,7 +18,7 @@ class AccountDetailViewModel: BaseViewModel {
     var email = UserDefaults.userInfo?.email ?? ""
     var isEditButtonClicked = false
     var selectedGender = -1
-    var userUpdated = User(phoneNumber: UserDefaults.userInfo?.phoneNumber ?? "")
+    var userUpdated = User(email: UserDefaults.userInfo?.email ?? "")
     
     func pickItem(pickerTag: Int) -> String? {
         switch pickerTag{
@@ -41,7 +41,7 @@ class AccountDetailViewModel: BaseViewModel {
             dob == UserDefaults.userInfo?.dateOfBirth ?? "" &&
             !checkGenderPickerIsChanged() &&
             identityCard == UserDefaults.userInfo?.identityCardNumber ?? "" &&
-            email == UserDefaults.userInfo?.email ?? "" {
+            phone == UserDefaults.userInfo?.phoneNumber ?? "" {
             return false
         } else {
             return true

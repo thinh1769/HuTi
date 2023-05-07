@@ -90,6 +90,7 @@ class ConfirmPasswordViewController: BaseViewController {
                 let vc = SignInViewController()
                 self.hideLoading()
                 self.navigateTo(vc)
+                self.showAlert(title: "Lấy lại mật khẩu thành công!\nMời đăng nhập lại")
             }.disposed(by: viewModel.bag)
         } else {
             guard let oldPass = oldPasswordTextField.text,
@@ -158,10 +159,10 @@ extension ConfirmPasswordViewController: UITextFieldDelegate {
 }
 
 extension ConfirmPasswordViewController {
-    class func instance(phoneNumber: String?, otp: String?, type: Int) -> ConfirmPasswordViewController {
+    class func instance(email: String?, otp: String?, type: Int) -> ConfirmPasswordViewController {
         let controller = ConfirmPasswordViewController(nibName: ClassNibName.ConfirmPasswordViewController, bundle: Bundle.main)
-        if let phoneNumber = phoneNumber {
-            controller.viewModel.phoneNumber = phoneNumber
+        if let email = email {
+            controller.viewModel.email = email
         }
         if let otp = otp {
             controller.viewModel.otp = otp

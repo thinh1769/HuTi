@@ -11,7 +11,7 @@ import RxSwift
 
 class SignUpViewController: BaseViewController {
 
-    @IBOutlet private weak var phoneTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet weak var bottomStackView: UIStackView!
     
     var viewModel = SignUpViewModel()
@@ -22,9 +22,9 @@ class SignUpViewController: BaseViewController {
     }
     
     private func setupUI() {
-        phoneTextField.delegate = self
-        phoneTextField.attributedPlaceholder = NSAttributedString(
-            string: CommonConstants.phoneNumber,
+        emailTextField.delegate = self
+        emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "Email",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
         
@@ -45,43 +45,34 @@ class SignUpViewController: BaseViewController {
     }
     
     @IBAction func onClickedContinueBtn(_ sender: UIButton) {
-        guard let phoneNumber = phoneTextField.text,
-              phoneNumber.count == 10
-        else {
-            showAlert(title: Alert.numberOfPhoneNumber)
-            return
-        }
-        if !phoneNumber.isMatches(RegexConstants.PHONE_NUMBER) {
-            showAlert(title: Alert.phoneBeginByZero)
+        guard let email = emailTextField.text else { return }
+        showLoading()
+        if viewModel.isRegister {
+            viewModel.sendOTP(email: email)
+                .subscribe { _ in
+                } onError: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.hideLoading()
+                    self.showAlert(title: Alert.registedPhoneNumber)
+                } onCompleted: { [weak self] in
+                    guard let self = self else { return }
+                    let vc = OTPViewController.instance(email: email, type: ConfirmPasswordType.register)
+                    self.hideLoading()
+                    self.navigateTo(vc)
+                }.disposed(by: viewModel.bag)
         } else {
-            showLoading()
-            if viewModel.isRegister {
-                viewModel.sendOTP(phoneNumber: phoneNumber)
-                    .subscribe { _ in
-                    } onError: { [weak self] _ in
-                        guard let self = self else { return }
-                        self.hideLoading()
-                        self.showAlert(title: Alert.registedPhoneNumber)
-                    } onCompleted: { [weak self] in
-                        guard let self = self else { return }
-                        let vc = OTPViewController.instance(phoneNumber: phoneNumber, type: ConfirmPasswordType.register)
-                        self.hideLoading()
-                        self.navigateTo(vc)
-                    }.disposed(by: viewModel.bag)
-            } else {
-                viewModel.sendOTPResetPassword(phoneNumber: phoneNumber)
-                    .subscribe { _ in
-                    } onError: { [weak self] _ in
-                        guard let self = self else { return }
-                        self.hideLoading()
-                        self.showAlert(title: Alert.nonRegistedPhoneNumber)
-                    } onCompleted: { [weak self] in
-                        guard let self = self else { return }
-                        let vc = OTPViewController.instance(phoneNumber: phoneNumber, type: ConfirmPasswordType.forgotPassword)
-                        self.hideLoading()
-                        self.navigateTo(vc)
-                    }.disposed(by: viewModel.bag)
-            }
+            viewModel.sendOTPResetPassword(email: email)
+                .subscribe { _ in
+                } onError: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.hideLoading()
+                    self.showAlert(title: Alert.nonRegistedPhoneNumber)
+                } onCompleted: { [weak self] in
+                    guard let self = self else { return }
+                    let vc = OTPViewController.instance(email: email, type: ConfirmPasswordType.forgotPassword)
+                    self.hideLoading()
+                    self.navigateTo(vc)
+                }.disposed(by: viewModel.bag)
         }
     }
 }
@@ -90,7 +81,7 @@ extension SignUpViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let newLength = text.count + string.count - range.length
-        return newLength <= 10
+        return newLength <= 30
     }
 }
 

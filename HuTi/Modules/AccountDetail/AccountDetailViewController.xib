@@ -283,7 +283,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="msQ-5k-o7O"/>
                                                     </constraints>
-                                                    <color key="textColor" name="gray"/>
+                                                    <color key="textColor" name="black"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -325,7 +325,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="9Os-wz-cUK"/>
                                                     </constraints>
-                                                    <color key="textColor" name="black"/>
+                                                    <color key="textColor" name="gray"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>

@@ -12,11 +12,11 @@ import RxRelay
 class SignUpViewModel: BaseViewModel {
     var isRegister = true
     
-    func sendOTP(phoneNumber: String) -> Observable<User> {
-        return authService.sendOTP(phoneNumber: phoneNumber)
+    func sendOTP(email: String) -> Observable<User> {
+        return authService.sendOTP(email: email)
     }
     
-    func sendOTPResetPassword(phoneNumber: String) -> Observable<User> {
-        return authService.sendOTPResetPassword(phoneNumber: phoneNumber)
+    func sendOTPResetPassword(email: String) -> Observable<User> {
+        return authService.sendOTPResetPassword(email: email)
     }
 }

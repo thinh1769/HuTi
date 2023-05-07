@@ -11,8 +11,9 @@ import RxCocoa
 
 class SignInViewController: BaseViewController {
 
-    @IBOutlet private weak var phoneTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet weak var changeSecurePassTextFieldButton: UIButton!
     
     var viewModel = SignInViewModel()
     
@@ -22,15 +23,15 @@ class SignInViewController: BaseViewController {
     }
     
     private func setupUI() {
-        phoneTextField.text = "0000099999"
+        emailTextField.text = "thinh1769@gmail.com"
         passwordTextField.text = "11111"
         passwordTextField.delegate = self
-        phoneTextField.delegate = self
+        emailTextField.delegate = self
         isHiddenMainTabBar = true
         isTouchDismissKeyboardEnabled = true
         
-        phoneTextField.attributedPlaceholder = NSAttributedString(
-            string: CommonConstants.phoneNumber,
+        emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "Email",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
         passwordTextField.attributedPlaceholder = NSAttributedString(
@@ -45,12 +46,7 @@ class SignInViewController: BaseViewController {
     }
     
     @IBAction func onClickedSignInBtn(_ sender: UIButton) {
-        guard let phoneNumber = phoneTextField.text,
-              phoneNumber.count == 10
-        else {
-            self.showAlert(title: Alert.numberOfPhoneNumber)
-            return
-        }
+        guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text,
               password.count > 4,
               password.count < 21
@@ -59,7 +55,7 @@ class SignInViewController: BaseViewController {
             return
         }
         showLoading()
-        viewModel.signIn(phoneNumber: phoneNumber, password: password)
+        viewModel.signIn(email: email, password: password)
             .subscribe { [weak self] user in
                 guard let self = self else { return}
                 UserDefaults.userInfo = user
@@ -80,6 +76,15 @@ class SignInViewController: BaseViewController {
             }.disposed(by: viewModel.bag)
     }
     
+    @IBAction func didTapChangeSecurePassTextFieldButton(_ sender: UIButton) {
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+            changeSecurePassTextFieldButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        } else {
+            passwordTextField.isSecureTextEntry = true
+            changeSecurePassTextFieldButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+    }
     
     @IBAction func onClickedForgotPasswordButton(_ sender: UIButton) {
         let vc = SignUpViewController.instance(isRegister: false)
@@ -91,8 +96,8 @@ extension SignInViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let newLength = text.count + string.count - range.length
-        if textField == phoneTextField {
-            return newLength <= 10
+        if textField == emailTextField {
+            return newLength <= 30
         } else {
             return newLength <= 20
         }

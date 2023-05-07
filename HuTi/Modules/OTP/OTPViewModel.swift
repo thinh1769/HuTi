@@ -10,10 +10,10 @@ import RxRelay
 import RxSwift
 
 class OTPViewModel: BaseViewModel {
-    var phoneNumber = ""
+    var email = ""
     var type = 0
     
     func confirmOTP(otp: String) -> Observable<User> {
-        return authService.confirmOTP(phoneNumber: phoneNumber, otp: otp)
+        return authService.confirmOTP(email: email, otp: otp)
     }
 }

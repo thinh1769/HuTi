@@ -46,7 +46,7 @@ class AccountDetailViewController: BaseViewController {
     
     private func setupUI() {
         changeTextFieldStatus(false)
-        phoneTextField.isUserInteractionEnabled = false
+        emailTextField.isUserInteractionEnabled = false
         isTouchDismissKeyboardEnabled = true
     }
 
@@ -81,7 +81,7 @@ class AccountDetailViewController: BaseViewController {
         dobTextField.isUserInteractionEnabled = status
         genderTextField.isUserInteractionEnabled = status
         identityCardTextField.isUserInteractionEnabled = status
-        emailTextField.isUserInteractionEnabled = status
+        phoneTextField.isUserInteractionEnabled = status
         editDobIcon.isHidden = !status
         editGenderIcon.isHidden = !status
     }
@@ -90,11 +90,11 @@ class AccountDetailViewController: BaseViewController {
         viewModel.name = nameTextField.text ?? ""
         viewModel.dob = dobTextField.text ?? ""
         viewModel.identityCard = identityCardTextField.text ?? ""
-        viewModel.email = emailTextField.text ?? ""
+        viewModel.phone = phoneTextField.text ?? ""
     }
     
     @IBAction func didTapChangePasswordButton(_ sender: UIButton) {
-        let vc = ConfirmPasswordViewController.instance(phoneNumber: nil, otp: nil, type: ConfirmPasswordType.changePassword)
+        let vc = ConfirmPasswordViewController.instance(email: nil, otp: nil, type: ConfirmPasswordType.changePassword)
         navigateTo(vc)
     }
     

@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="HuTi" customModuleProvider="target">
             <connections>
                 <outlet property="bottomStackView" destination="OpV-1p-H79" id="9LK-eE-awA"/>
-                <outlet property="phoneTextField" destination="WK2-Hq-MyD" id="05w-E2-t9H"/>
+                <outlet property="emailTextField" destination="WK2-Hq-MyD" id="05w-E2-t9H"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,10 +36,10 @@
                                 <constraint firstAttribute="width" constant="30" id="Neu-3j-REC"/>
                             </constraints>
                         </imageView>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WK2-Hq-MyD" userLabel="phoneTextField">
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WK2-Hq-MyD" userLabel="phoneTextField">
                             <rect key="frame" x="50" y="0.0" width="300" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                            <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
