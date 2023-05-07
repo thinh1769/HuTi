@@ -23,7 +23,7 @@ class SignInViewController: BaseViewController {
     }
     
     private func setupUI() {
-        emailTextField.text = "thinh1769@gmail.com"
+        emailTextField.text = "thinhnguyen@phenikaamaas.com"
         passwordTextField.text = "11111"
         passwordTextField.delegate = self
         emailTextField.delegate = self

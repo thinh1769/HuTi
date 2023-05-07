@@ -283,8 +283,10 @@ class NewPostViewModel: BaseViewModel {
             return PickerData.bedroom[2]
         } else if bedroom == 4 {
             return PickerData.bedroom[3]
-        } else {
+        } else if bedroom > 4 {
             return PickerData.bedroom[4]
+        } else {
+            return ""
         }
     }
     
