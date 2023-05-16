@@ -1522,7 +1522,7 @@
                                                             </constraints>
                                                             <color key="textColor" name="black"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7u-Ix-tyf">
                                                             <rect key="frame" x="0.0" y="52" width="325" height="1"/>
