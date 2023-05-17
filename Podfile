@@ -15,6 +15,7 @@ pod 'MBProgressHUD'
 pod 'AWSS3'
 pod 'SDWebImage'
 pod 'SVPullToRefresh'
+pod 'SnapKit'
 
 post_install do |installer|
     installer.generated_projects.each do |project|

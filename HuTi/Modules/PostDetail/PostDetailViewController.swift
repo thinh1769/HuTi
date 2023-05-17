@@ -10,6 +10,7 @@ import MapKit
 import CoreLocation
 import RxSwift
 import RxCocoa
+import SnapKit
 
 protocol PostDetailViewControllerDelegate: AnyObject {
     func didTappedLikeButton()
@@ -57,10 +58,13 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactPhoneLabel: UILabel!
     
+    lazy private var grayBackgroundView = makeGrayBackgroundView()
     lazy var viewModel = PostDetailViewModel()
     private var locationManager = CLLocationManager()
     private let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
     weak var delegate: PostDetailViewControllerDelegate?
+    let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+    var bottomSafeAreaPadding: CGFloat?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -91,6 +95,8 @@ class PostDetailViewController: BaseViewController {
         contactView.layer.borderWidth = 1
         contactView.layer.borderColor = UIColor(named: ColorName.themeText)?.cgColor
         contactView.layer.cornerRadius = 8
+        
+        bottomSafeAreaPadding = self.window?.safeAreaInsets.bottom
     }
     
     private func getProjectInfo() {
@@ -296,6 +302,49 @@ class PostDetailViewController: BaseViewController {
         wayInView.isHidden = false
         facadeView.isHidden = false
     }
+    
+    @IBAction func onTapReportButton(_ sender: UIButton) {
+        didTapReport()
+    }
+    
+    private func didTapReport() {
+        self.view.addSubview(grayBackgroundView)
+        
+        grayBackgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        let reportView = ReportPopupView(frame: CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: 380 + (bottomSafeAreaPadding ?? 0)))
+        reportView.delegate = self
+        reportView.tag = SubviewTag.detailView.rawValue
+        reportView.bottomSafeAreaPadding = bottomSafeAreaPadding ?? 0
+        self.view.addSubview(reportView)
+
+        let finalFrame = CGRect(x: 0, y: self.view.bounds.height - 380 - (bottomSafeAreaPadding ?? 0), width: self.view.bounds.width, height: 380 + (bottomSafeAreaPadding ?? 0))
+        
+        UIView.animate(withDuration: 0.4) {
+            reportView.frame = finalFrame
+        }
+    }
+    
+    @objc private func didTapGrayBackgroundView() {
+        for subview in view.subviews {
+            if subview.tag == SubviewTag.detailView.rawValue {
+                UIView.animateKeyframes(withDuration: 0.3, delay: 0) {
+                    subview.transform = CGAffineTransform(translationX: 0, y: 380)
+                } completion: { _ in
+                    subview.removeFromSuperview()
+                }
+            }
+        }
+        grayBackgroundView.removeFromSuperview()
+    }
+}
+
+extension PostDetailViewController: ReportPopupViewDelegate {
+    func dismissBottomView() {
+        grayBackgroundView.removeFromSuperview()
+    }
 }
 
 extension PostDetailViewController: CLLocationManagerDelegate {
@@ -334,5 +383,15 @@ extension PostDetailViewController {
         controller.viewModel.postId = postId
         controller.viewModel.isFavorite = isFavorite
         return controller
+    }
+}
+
+extension PostDetailViewController {
+    private func makeGrayBackgroundView() -> UIView {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .black
+        view.alpha = 0.3
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapGrayBackgroundView)))
+        return view
     }
 }
