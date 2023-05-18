@@ -13,7 +13,7 @@ import RxCocoa
 protocol ReportPopupViewDelegate: AnyObject {
     func dismissBottomView()
     
-//    func didSelectRoute(route: BMBusRoute)
+    func didAddReport(content: String)
 }
 
 class ReportPopupView: UIView {
@@ -93,7 +93,11 @@ class ReportPopupView: UIView {
     }
     
     @objc private func didTapSubmitButton() {
-        
+        guard let text = textView.text,
+              text.count > 0
+        else { return }
+        delegate?.didAddReport(content: text)
+        self.dismissBottomView()
     }
     
     private func addPanGestureToBottomView() {

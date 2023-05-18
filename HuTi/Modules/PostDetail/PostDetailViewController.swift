@@ -345,6 +345,15 @@ extension PostDetailViewController: ReportPopupViewDelegate {
     func dismissBottomView() {
         grayBackgroundView.removeFromSuperview()
     }
+    
+    func didAddReport(content: String) {
+        self.showLoading()
+        viewModel.addReport(content: content).subscribe { [weak self] _ in
+            guard let self = self else { return }
+            self.hideLoading()
+            self.showAlert(title: "Cảm ơn bạn đã báo cáo tin đăng, đội ngũ admin sẽ sớm xem xét lại tin đăng này!")
+        }.disposed(by: viewModel.bag)
+    }
 }
 
 extension PostDetailViewController: CLLocationManagerDelegate {

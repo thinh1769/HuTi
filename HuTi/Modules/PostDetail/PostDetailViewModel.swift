@@ -15,6 +15,7 @@ class PostDetailViewModel: BaseViewModel {
     var postDetail: PostDetail?
     var project: Project?
     var isFavorite = false
+    let reportService = ReportService()
     
     func getPostDetail(postId: String) -> Observable<PostDetail> {
         return postService.getPostById(postId: postId)
@@ -30,5 +31,10 @@ class PostDetailViewModel: BaseViewModel {
     
     func dislikePost() -> Observable<String> {
         return authService.dislikePost(postId: postId)
+    }
+    
+    func addReport(content: String) -> Observable<String> {
+        let params = ["postId": postId, "content": content]
+        return reportService.addReport(params: params)
     }
 }

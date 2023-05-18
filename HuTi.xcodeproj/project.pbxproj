@@ -45,6 +45,7 @@
 		22FC682229DE64860091CB4C /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC682129DE64860091CB4C /* ProjectService.swift */; };
 		22FC682429DE65130091CB4C /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC682329DE65130091CB4C /* Project.swift */; };
 		8209454A2A152A3500D7DA25 /* ReportPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820945492A152A3500D7DA25 /* ReportPopupView.swift */; };
+		820945552A164B6E00D7DA25 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820945542A164B6E00D7DA25 /* ReportService.swift */; };
 		8276A1912A028E5700F24D19 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8276A18F2A028E5700F24D19 /* UserDetailViewController.swift */; };
 		8276A1922A028E5700F24D19 /* UserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8276A1902A028E5700F24D19 /* UserDetailViewController.xib */; };
 		8276A1942A028E6A00F24D19 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8276A1932A028E6A00F24D19 /* UserDetailViewModel.swift */; };
@@ -135,6 +136,7 @@
 		29605AC57F7499D1B086D28D /* Pods_HuTi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuTi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		620668C98BB036879901C46F /* Pods-HuTi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuTi.debug.xcconfig"; path = "Target Support Files/Pods-HuTi/Pods-HuTi.debug.xcconfig"; sourceTree = "<group>"; };
 		820945492A152A3500D7DA25 /* ReportPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopupView.swift; sourceTree = "<group>"; };
+		820945542A164B6E00D7DA25 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		8276A18F2A028E5700F24D19 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		8276A1902A028E5700F24D19 /* UserDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailViewController.xib; sourceTree = "<group>"; };
 		8276A1932A028E6A00F24D19 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				22CB6A6729D86B71009C4F4D /* PostService.swift */,
 				22FC682129DE64860091CB4C /* ProjectService.swift */,
 				22CF839829D9B10900683B98 /* AWSService.swift */,
+				820945542A164B6E00D7DA25 /* ReportService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				22CF839D29D9B14C00683B98 /* AssetDataModel.swift in Sources */,
 				22FC682229DE64860091CB4C /* ProjectService.swift in Sources */,
 				8276A1912A028E5700F24D19 /* UserDetailViewController.swift in Sources */,
+				820945552A164B6E00D7DA25 /* ReportService.swift in Sources */,
 				22EC390829CA968F00174D65 /* ResponseMain.swift in Sources */,
 				FCC3AD4729C2F8C60050B58B /* PostDetailViewController.swift in Sources */,
 				FC0E76CB299F254C00E4818C /* OTPViewController.swift in Sources */,
