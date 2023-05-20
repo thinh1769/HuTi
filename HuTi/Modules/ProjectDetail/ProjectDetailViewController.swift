@@ -38,7 +38,7 @@ class ProjectDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.mainTabBarController?.tabBar.isHidden = false
+        self.mainTabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidLoad() {

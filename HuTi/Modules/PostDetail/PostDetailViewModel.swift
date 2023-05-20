@@ -37,4 +37,20 @@ class PostDetailViewModel: BaseViewModel {
         let params = ["postId": postId, "content": content]
         return reportService.addReport(params: params)
     }
+    
+    func checkUpdateInfo() -> Bool {
+        guard let name = UserDefaults.userInfo?.name,
+              name != "",
+              name != "HuTi User",
+              let dateOfBirth = UserDefaults.userInfo?.dateOfBirth,
+              dateOfBirth != "",
+              let gender = UserDefaults.userInfo?.gender,
+              gender != "",
+              let identityCardNumber = UserDefaults.userInfo?.identityCardNumber,
+              identityCardNumber != "",
+              let email = UserDefaults.userInfo?.email,
+              email != ""
+        else { return false }
+        return true
+    }
 }

@@ -14,6 +14,8 @@ protocol ReportPopupViewDelegate: AnyObject {
     func dismissBottomView()
     
     func didAddReport(content: String)
+    
+    func didTapSubmitButtonWithEmptyContent()
 }
 
 class ReportPopupView: UIView {
@@ -85,7 +87,7 @@ class ReportPopupView: UIView {
     
     @objc private func dismissBottomView() {
         UIView.animateKeyframes(withDuration: 0.3, delay: 0) {
-            self.transform = CGAffineTransform(translationX: 0, y: 400)
+            self.transform = CGAffineTransform(translationX: 0, y: 330)
         } completion: { _ in
             self.removeFromSuperview()
             self.delegate?.dismissBottomView()
@@ -95,7 +97,10 @@ class ReportPopupView: UIView {
     @objc private func didTapSubmitButton() {
         guard let text = textView.text,
               text.count > 0
-        else { return }
+        else {
+            delegate?.didTapSubmitButtonWithEmptyContent()
+            return
+        }
         delegate?.didAddReport(content: text)
         self.dismissBottomView()
     }
@@ -116,7 +121,7 @@ class ReportPopupView: UIView {
         case .ended:
             if translation.y > 100 {
                 UIView.animateKeyframes(withDuration: 0.3, delay: 0) {
-                    self.transform = CGAffineTransform(translationX: 0, y: 380)
+                    self.transform = CGAffineTransform(translationX: 0, y: 330)
                 } completion: { _ in
                     self.removeFromSuperview()
                     self.delegate?.dismissBottomView()

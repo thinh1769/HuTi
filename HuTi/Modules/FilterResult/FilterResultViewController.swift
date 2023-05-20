@@ -214,8 +214,8 @@ class FilterResultViewController: BaseViewController {
     private func filterResultInfiniteScroll() {
         filterResultTableView.addInfiniteScrolling { [weak self] in
             guard let self = self else { return }
-            self.viewModel.page += 1
             if self.viewModel.options.value.count > 0 {
+                self.viewModel.page += 1
                 if self.viewModel.tabBarItemTitle != TabBarItemTitle.project {
                     if self.viewModel.post.value.count >= CommonConstants.pageSize {
                         self.findPost(param: self.viewModel.findPostParams)

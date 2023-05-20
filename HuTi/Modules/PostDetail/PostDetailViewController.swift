@@ -68,7 +68,7 @@ class PostDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.mainTabBarController?.tabBar.isHidden = false
+        self.mainTabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -304,7 +304,11 @@ class PostDetailViewController: BaseViewController {
     }
     
     @IBAction func onTapReportButton(_ sender: UIButton) {
-        didTapReport()
+        if viewModel.checkUpdateInfo() {
+            didTapReport()
+        } else {
+            self.showAlert(title: Alert.pleaseUpdateAccountInfo)
+        }
     }
     
     private func didTapReport() {
@@ -314,13 +318,13 @@ class PostDetailViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        let reportView = ReportPopupView(frame: CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: 380 + (bottomSafeAreaPadding ?? 0)))
+        let reportView = ReportPopupView(frame: CGRect(x: 0, y: self.view.bounds.height, width: self.view.bounds.width, height: 330 + (bottomSafeAreaPadding ?? 0)))
         reportView.delegate = self
         reportView.tag = SubviewTag.detailView.rawValue
         reportView.bottomSafeAreaPadding = bottomSafeAreaPadding ?? 0
         self.view.addSubview(reportView)
 
-        let finalFrame = CGRect(x: 0, y: self.view.bounds.height - 380 - (bottomSafeAreaPadding ?? 0), width: self.view.bounds.width, height: 380 + (bottomSafeAreaPadding ?? 0))
+        let finalFrame = CGRect(x: 0, y: self.view.bounds.height - 330 - (bottomSafeAreaPadding ?? 0), width: self.view.bounds.width, height: 330 + (bottomSafeAreaPadding ?? 0))
         
         UIView.animate(withDuration: 0.4) {
             reportView.frame = finalFrame
@@ -353,6 +357,10 @@ extension PostDetailViewController: ReportPopupViewDelegate {
             self.hideLoading()
             self.showAlert(title: "Cảm ơn bạn đã báo cáo tin đăng, đội ngũ admin sẽ sớm xem xét lại tin đăng này!")
         }.disposed(by: viewModel.bag)
+    }
+    
+    func didTapSubmitButtonWithEmptyContent() {
+        self.showAlert(title: "Vui lòng nhập nội dung báo cáo")
     }
 }
 
