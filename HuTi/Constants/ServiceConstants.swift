@@ -24,11 +24,14 @@ struct StatusCode {
 }
 
 struct Base {
-    //Wifi
-    static let URL = "http://192.168.2.14:3000/api/"
-    
-    //iPhone
+    ///Wifi home
+//    static let URL = "http://192.168.2.14:3000/api/"
+
+    ///iPhone
 //    static let URL = "http://172.20.10.3:3000/api/"
+    
+    ///Deployed Server
+    static let URL = "https://khoa-luan-tot-nghiep.onrender.com/api/"
 }
 
 enum APIConstants: String {

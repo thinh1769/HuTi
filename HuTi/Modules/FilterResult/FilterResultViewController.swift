@@ -226,9 +226,11 @@ class FilterResultViewController: BaseViewController {
             } else if let text = self.searchTextField.text,
                       text.count > 1 {
                 if self.viewModel.post.value.count >= CommonConstants.pageSize {
+                    self.viewModel.page += 1
                     self.searchByKeyword()
                 }
             } else {
+                self.viewModel.page += 1
                 self.loadData()
             }
             self.filterResultTableView.infiniteScrollingView.stopAnimating()

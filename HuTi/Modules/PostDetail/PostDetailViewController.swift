@@ -57,6 +57,7 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet weak var contactView: UIView!
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactPhoneLabel: UILabel!
+    @IBOutlet weak var reportButton: UIButton!
     
     lazy private var grayBackgroundView = makeGrayBackgroundView()
     lazy var viewModel = PostDetailViewModel()
@@ -140,12 +141,14 @@ class PostDetailViewController: BaseViewController {
            let userId = UserDefaults.userInfo?.id,
            postUserId == userId {
             likeButton.isHidden = true
+            reportButton.isHidden = true
             editButton.isHidden = false
             scrollViewBottomConstraint.constant = 10
             contactButton.isHidden = true
             contactView.isHidden = true
             } else {
                 likeButton.isHidden = false
+                reportButton.isHidden = false
                 editButton.isHidden = true
                 scrollViewBottomConstraint.constant = 60
                 contactButton.isHidden = false
