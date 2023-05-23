@@ -51,6 +51,7 @@
                 <outlet property="increaseBathroomBtn" destination="dTS-za-H85" id="hzX-vg-LGm"/>
                 <outlet property="increaseBedroomBtn" destination="azg-DG-M9C" id="vnf-Co-G42"/>
                 <outlet property="increaseFloorBtn" destination="i84-vh-NxT" id="Wsf-51-C3U"/>
+                <outlet property="isSellView" destination="in4-W8-bfy" id="Ser-EQ-oNh"/>
                 <outlet property="legalLabel" destination="JT1-da-eYN" id="7Fw-xb-Rln"/>
                 <outlet property="legalTextField" destination="CXv-or-2P6" id="YFg-tK-Zwa"/>
                 <outlet property="locationLabel" destination="wG8-fX-1kk" id="Gxe-3d-XKz"/>

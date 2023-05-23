@@ -35,6 +35,7 @@
                 <outlet property="funitureLabel" destination="JDi-hB-9Os" id="ftp-qa-fch"/>
                 <outlet property="funitureView" destination="HhE-hl-A9n" id="lwI-1j-M51"/>
                 <outlet property="houseDirectionLabel" destination="Rf7-sz-7AY" id="kvQ-rx-H6a"/>
+                <outlet property="houseDirectionView" destination="J6x-20-CgT" id="uMa-Zg-RQw"/>
                 <outlet property="imageCollectionView" destination="dNH-O3-qI0" id="LDp-zH-AuB"/>
                 <outlet property="investorLabel" destination="qHF-FA-9Zz" id="is1-1r-k6u"/>
                 <outlet property="isSellLabel" destination="MeC-tL-oct" id="nkX-Jq-F1B"/>
@@ -266,7 +267,7 @@
                                                             <color key="textColor" name="black"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpb-wz-kll">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpb-wz-kll">
                                                             <rect key="frame" x="157.5" y="0.0" width="157.5" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                             <color key="textColor" name="black"/>
@@ -283,7 +284,7 @@
                                                             <color key="textColor" name="black"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLP-xa-e8J">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLP-xa-e8J">
                                                             <rect key="frame" x="157.5" y="0.0" width="157.5" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                             <color key="textColor" name="black"/>
@@ -300,7 +301,7 @@
                                                             <color key="textColor" name="black"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAB-jG-Zmu">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAB-jG-Zmu">
                                                             <rect key="frame" x="157.5" y="0.0" width="157.5" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                             <color key="textColor" name="black"/>
@@ -655,7 +656,7 @@
                 <constraint firstItem="a6u-u1-eGi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="tmM-Gs-TpF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zPL-mi-YeD" secondAttribute="trailing" constant="20" id="zEJ-CS-EEy"/>
             </constraints>
-            <point key="canvasLocation" x="-7385" y="-1525"/>
+            <point key="canvasLocation" x="-7959" y="-1285"/>
         </view>
     </objects>
     <resources>

@@ -40,6 +40,7 @@ class PostDetailViewController: BaseViewController {
     @IBOutlet weak var floorView: UIStackView!
     @IBOutlet weak var floorLabel: UILabel!
     @IBOutlet weak var houseDirectionLabel: UILabel!
+    @IBOutlet weak var houseDirectionView: UIStackView!
     @IBOutlet weak var balconyView: UIStackView!
     @IBOutlet weak var balconyLabel: UILabel!
     @IBOutlet weak var wayInView: UIStackView!
@@ -115,6 +116,41 @@ class PostDetailViewController: BaseViewController {
     
     private func loadPostDetail() {
         guard let post = viewModel.postDetail else { return }
+        
+        unhiddenAllView()
+        switch post.realEstateType {
+        case RealEstateType.apartment:
+            self.floorView.isHidden = true
+            self.wayInView.isHidden = true
+            self.facadeView.isHidden = true
+        case RealEstateType.projectLand:
+            self.funitureView.isHidden = true
+            self.bedroomView.isHidden = true
+            self.bathroomView.isHidden = true
+            self.floorView.isHidden = true
+            self.balconyView.isHidden = true
+        case RealEstateType.land:
+            self.funitureView.isHidden = true
+            self.bedroomView.isHidden = true
+            self.bathroomView.isHidden = true
+            self.floorView.isHidden = true
+            self.balconyView.isHidden = true
+        case RealEstateType.codontel:
+            self.floorView.isHidden = true
+            self.wayInView.isHidden = true
+            self.facadeView.isHidden = true
+        case RealEstateType.wareHouseFactory:
+            self.bedroomView.isHidden = true
+            self.floorView.isHidden = true
+            self.balconyView.isHidden = true
+        case RealEstateType.office:
+            self.floorView.isHidden = true
+        case RealEstateType.shopKiosk:
+            self.bedroomView.isHidden = true
+        default:
+            self.titleLabel.isHidden = false
+        }
+        
         titleLabel.text = post.title
         addressLabel.text = post.getFullAddress()
         typeLabel.text = post.realEstateType
@@ -126,14 +162,59 @@ class PostDetailViewController: BaseViewController {
         acreageLabel.text = "\(post.acreage) m2"
         priceLabel.text = "\((post.price).formattedWithSeparator)đ"
         legalLabel.text = post.legal
-        funitureLabel.text = post.funiture
-        bedroomLabel.text = "\(post.bedroom ?? 0)"
-        bathroomLabel.text = "\(post.bathroom ?? 0)"
-        floorLabel.text = "\(post.floor ?? 0)"
-        houseDirectionLabel.text = post.houseDirection
-        balconyLabel.text = post.balconyDirection
-        wayInLabel.text = "\(post.wayIn ?? 0) m"
-        facadeLabel.text = "\(post.facade ?? 0) m"
+        
+        if let funiture = post.funiture {
+            funitureLabel.text = funiture
+        } else {
+            funitureView.isHidden = true
+        }
+        if let bedroom = post.bedroom,
+           bedroom > 0 {
+            bedroomLabel.text = "\(bedroom)"
+        } else {
+            bedroomView.isHidden = true
+        }
+        
+        if let bathroom = post.bathroom,
+           bathroom > 0 {
+            bathroomLabel.text = "\(bathroom)"
+        } else {
+            bathroomView.isHidden = true
+        }
+        
+        if let floor = post.floor,
+           floor > 0 {
+            floorLabel.text = "\(floor)"
+        } else {
+            floorView.isHidden = true
+        }
+        
+        if let houseDirection = post.houseDirection {
+            houseDirectionLabel.text = houseDirection
+        } else {
+            houseDirectionView.isHidden = true
+        }
+        
+        if let balcony = post.balconyDirection {
+            balconyLabel.text = balcony
+        } else {
+            balconyView.isHidden = true
+        }
+        
+        if let wayIn = post.wayIn,
+           wayIn > 0 {
+            wayInLabel.text = "\(wayIn)"
+        } else {
+            wayInView.isHidden = true
+        }
+        
+        if let facade = post.facade,
+           facade > 0 {
+            facadeLabel.text = "\(facade)m"
+        } else {
+            facadeView.isHidden = true
+        }
+    
         descriptionLabel.text = post.description
         self.pinRealEstateLocation()
         
@@ -165,40 +246,6 @@ class PostDetailViewController: BaseViewController {
                     likeButton.tintColor = UIColor(named: ColorName.gray)
                 }
             }
-        
-        unhiddenAllView()
-        switch viewModel.postDetail?.realEstateType {
-        case RealEstateType.apartment:
-            self.floorView.isHidden = true
-            self.wayInView.isHidden = true
-            self.facadeView.isHidden = true
-        case RealEstateType.projectLand:
-            self.funitureView.isHidden = true
-            self.bedroomView.isHidden = true
-            self.bathroomView.isHidden = true
-            self.floorView.isHidden = true
-            self.balconyView.isHidden = true
-        case RealEstateType.land:
-            self.funitureView.isHidden = true
-            self.bedroomView.isHidden = true
-            self.bathroomView.isHidden = true
-            self.floorView.isHidden = true
-            self.balconyView.isHidden = true
-        case RealEstateType.codontel:
-            self.floorView.isHidden = true
-            self.wayInView.isHidden = true
-            self.facadeView.isHidden = true
-        case RealEstateType.wareHouseFactory:
-            self.bedroomView.isHidden = true
-            self.floorView.isHidden = true
-            self.balconyView.isHidden = true
-        case RealEstateType.office:
-            self.floorView.isHidden = true
-        case RealEstateType.shopKiosk:
-            self.bedroomView.isHidden = true
-        default:
-            return
-        }
     }
     
     private func loadProjectInfo() {

@@ -73,6 +73,7 @@ class NewPostViewController: BaseViewController {
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactPhoneLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var isSellView: UIStackView!
     
     let typePicker = UIPickerView()
     let provincePicker = UIPickerView()
@@ -97,10 +98,12 @@ class NewPostViewController: BaseViewController {
         if viewModel.isEdit {
             titleLabel.text = "Chỉnh sửa"
             submitButton.setTitle("Lưu", for: .normal)
+            isSellView.isHidden = true
         } else {
             titleLabel.text = "Đăng tin mới"
             submitButton.setTitle("Đăng tin", for: .normal)
             locationManager.startUpdatingLocation()
+            isSellView.isHidden = false
         }
     }
     
