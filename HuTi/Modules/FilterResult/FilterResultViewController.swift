@@ -35,6 +35,7 @@ class FilterResultViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.mainTabBarController?.tabBar.isHidden = false
+        loadData()
     }
     
     override func viewDidLoad() {
@@ -43,7 +44,6 @@ class FilterResultViewController: BaseViewController {
     }
     
     private func setupUI() {
-        loadData()
         mapView.delegate = self
         mapView.isHidden = true
         emptyView.isHidden = true
