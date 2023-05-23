@@ -13,11 +13,15 @@ class OTPViewController: BaseViewController {
 
     @IBOutlet private weak var OTPTextField: UITextField!
     @IBOutlet private weak var OTPView: UIView!
+    @IBOutlet weak var resendButton: UIButton!
+    @IBOutlet weak var timerLabel: UILabel!
     
     var arrayOTPLabel: [UILabel] = []
     let OTPStackView = UIStackView()
     let numberOfOTP = 6
     var viewModel = OTPViewModel()
+    var countdownTimer: Timer?
+    var remainingTime = 60
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +35,7 @@ class OTPViewController: BaseViewController {
         OTPTextField.delegate = self
         isTouchDismissKeyboardEnabled = true
         setupOTPStackView()
+        timerLabel.isHidden = true
         
         OTPTextField.rx.controlEvent([.editingChanged]).subscribe { [weak self] _ in
             guard let self = self,
@@ -81,6 +86,64 @@ class OTPViewController: BaseViewController {
     
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
         backToPreviousView()
+    }
+    
+    @IBAction func didTapResendButton(_ sender: UIButton) {
+        remainingTime = 60
+        timerLabel.text = "\(remainingTime)s"
+        timerLabel.isHidden = false
+        resendButton.setTitleColor(UIColor(named: ColorName.gray), for: .normal)
+        resendButton.isUserInteractionEnabled = false
+        startTimer()
+        sendOTP()
+    }
+    
+    private func sendOTP() {
+        showLoading()
+        if viewModel.type != AuthenType.forgotPassword {
+            viewModel.sendOTP(email: viewModel.email)
+                .subscribe { _ in
+                } onError: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.hideLoading()
+                    self.showAlert(title: Alert.registedPhoneNumber)
+                } onCompleted: { [weak self] in
+                    guard let self = self else { return }
+                    self.hideLoading()
+                }.disposed(by: viewModel.bag)
+        } else {
+            viewModel.sendOTPResetPassword(email: viewModel.email)
+                .subscribe { _ in
+                } onError: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.hideLoading()
+                    self.showAlert(title: Alert.nonRegistedPhoneNumber)
+                } onCompleted: { [weak self] in
+                    guard let self = self else { return }
+                    self.hideLoading()
+                }.disposed(by: viewModel.bag)
+        }
+    }
+    
+    func startTimer() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        if remainingTime > 0 {
+            remainingTime -= 1
+            timerLabel.text = "\(remainingTime)s"
+        } else {
+            stopTimer()
+            timerLabel.isHidden = true
+            resendButton.setTitleColor(UIColor(named: ColorName.themeText), for: .normal)
+            resendButton.isUserInteractionEnabled = true
+        }
+    }
+    
+    func stopTimer() {
+        countdownTimer?.invalidate()
+        countdownTimer = nil
     }
     
     private func setupOTPStackView() {

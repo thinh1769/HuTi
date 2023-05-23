@@ -23,6 +23,7 @@ class FilterResultViewController: BaseViewController {
     @IBOutlet weak var userLocationButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var emptyView: UIView!
     
     var viewModel = FilterResultViewModel()
     private var locationManager = CLLocationManager()
@@ -45,7 +46,7 @@ class FilterResultViewController: BaseViewController {
         loadData()
         mapView.delegate = self
         mapView.isHidden = true
-        
+        emptyView.isHidden = true
         userLocationButton.isHidden = true
         userLocationButton.layer.masksToBounds = true
         userLocationButton.layer.borderColor = UIColor(named: ColorName.gray)?.cgColor
@@ -158,6 +159,7 @@ class FilterResultViewController: BaseViewController {
         filterResultTableView.isHidden = !filterResultTableView.isHidden
         if !mapView.isHidden {
             mapButton.setImage(UIImage(named: ImageName.list), for: .normal)
+            emptyView.isHidden = true
         } else {
             for subview in view.subviews{
                 if subview.tag == SubviewTag.detailView.rawValue {
@@ -166,6 +168,18 @@ class FilterResultViewController: BaseViewController {
             }
             deselectedAnnotationWhenDismissDetailPopup()
             mapButton.setImage(UIImage(systemName: ImageName.map), for: .normal)
+            
+            if viewModel.tabBarItemTitle == TabBarItemTitle.project {
+                if viewModel.project.value.count == 0 {
+                    emptyView.isHidden = false
+                } else {
+                    emptyView.isHidden = true
+                }
+            } else if viewModel.post.value.count == 0 {
+                emptyView.isHidden = false
+            } else {
+                emptyView.isHidden = true
+            }
         }
     }
     
@@ -257,8 +271,10 @@ class FilterResultViewController: BaseViewController {
                 }
                 self.pinRealEstateLocation()
                 self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
+                self.emptyView.isHidden = true
             } else if self.viewModel.page == 1 {
                 self.viewModel.post.accept([])
+                self.emptyView.isHidden = false
                 self.removeAnnotation()
                 self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.post.value.count) \(CommonConstants.realEstate)"
             }
@@ -275,9 +291,11 @@ class FilterResultViewController: BaseViewController {
                     self.viewModel.project.accept(self.viewModel.project.value + projects)
                 }
                 self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
+                self.emptyView.isHidden = true
             } else if self.viewModel.page == 1 {
                 self.viewModel.project.accept([])
                 self.subtitleLabel.text = "\(CommonConstants.firstSubtitle) \(self.viewModel.project.value.count) \(CommonConstants.project)"
+                self.emptyView.isHidden = false
             }
         }.disposed(by: viewModel.bag)
     }

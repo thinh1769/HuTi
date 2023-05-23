@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostedViewController" customModule="HuTi" customModuleProvider="target">
             <connections>
+                <outlet property="emptyView" destination="OwS-DA-0qf" id="sy6-Ve-PA6"/>
                 <outlet property="postedTableView" destination="VxE-bH-vxA" id="G7z-7P-pbK"/>
                 <outlet property="titleLabel" destination="zAR-Uy-1J4" id="3uE-TS-C5c"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -54,26 +55,58 @@
                     <rect key="frame" x="10" y="129" width="410" height="769"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwS-DA-0qf">
+                    <rect key="frame" x="112" y="351" width="206" height="230"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="uGw-PV-PnY">
+                            <rect key="frame" x="0.0" y="0.0" width="206" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="7iT-9H-0qE"/>
+                                <constraint firstAttribute="width" constant="206" id="aHH-Im-gPO"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Không có dữ liệu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdx-aB-4Ny">
+                            <rect key="frame" x="39.333333333333336" y="210" width="127.66666666666666" height="20.333333333333343"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" name="gray"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="230" id="eCR-b3-ac3"/>
+                        <constraint firstAttribute="width" constant="206" id="ukI-YE-4jU"/>
+                        <constraint firstItem="uGw-PV-PnY" firstAttribute="centerX" secondItem="OwS-DA-0qf" secondAttribute="centerX" id="vhI-3t-lWI"/>
+                        <constraint firstItem="uGw-PV-PnY" firstAttribute="top" secondItem="OwS-DA-0qf" secondAttribute="top" id="zap-kj-RPL"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VxE-bH-vxA" secondAttribute="trailing" constant="10" id="2MD-00-4GY"/>
+                <constraint firstItem="OwS-DA-0qf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="3Qu-q0-7ZW"/>
                 <constraint firstItem="uZz-t1-kZh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="6k9-fC-81J"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VxE-bH-vxA" secondAttribute="bottom" id="Acp-vd-TY7"/>
                 <constraint firstItem="uZz-t1-kZh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="LK2-k3-DNT"/>
+                <constraint firstItem="OwS-DA-0qf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZMD-dQ-OU3"/>
                 <constraint firstItem="VxE-bH-vxA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="aM1-ts-YmW"/>
                 <constraint firstItem="VxE-bH-vxA" firstAttribute="top" secondItem="uZz-t1-kZh" secondAttribute="bottom" constant="20" id="s38-zg-on4"/>
                 <constraint firstItem="zAR-Uy-1J4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="s6u-Bz-2jt"/>
                 <constraint firstItem="zAR-Uy-1J4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="vaY-zi-bwa"/>
             </constraints>
-            <point key="canvasLocation" x="261" y="-5"/>
+            <point key="canvasLocation" x="232" y="-15"/>
         </view>
     </objects>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="empty" width="274.66665649414062" height="267.33334350585938"/>
         <namedColor name="background">
             <color red="0.98000001907348633" green="0.92900002002716064" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="gray">
+            <color red="0.66299998760223389" green="0.65499997138977051" blue="0.68199998140335083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="themeText">
             <color red="0.75300002098083496" green="0.32600000500679016" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

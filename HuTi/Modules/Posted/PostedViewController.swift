@@ -14,6 +14,7 @@ class PostedViewController: BaseViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet private weak var postedTableView: UITableView!
+    @IBOutlet weak var emptyView: UIView!
     
     var viewModel = PostedViewModel()
     
@@ -33,6 +34,7 @@ class PostedViewController: BaseViewController {
         setupTableView()
         addPullToRefresh()
         infiniteScroll()
+        emptyView.isHidden = true
     }
     
     private func loadData() {
@@ -49,6 +51,9 @@ class PostedViewController: BaseViewController {
             if postedPost.count > 0 {
                 self.viewModel.appendPostToArray(posts: postedPost)
                 self.viewModel.post.accept(self.viewModel.postList)
+                self.emptyView.isHidden = true
+            } else {
+                self.emptyView.isHidden = false
             }
         }.disposed(by: viewModel.bag)
     }
@@ -59,6 +64,9 @@ class PostedViewController: BaseViewController {
             if favoritePost.count > 0 {
                 self.viewModel.appendPostToArray(posts: favoritePost)
                 self.viewModel.post.accept(self.viewModel.postList)
+                self.emptyView.isHidden = true
+            } else {
+                self.emptyView.isHidden = false
             }
         }.disposed(by: viewModel.bag)
     }

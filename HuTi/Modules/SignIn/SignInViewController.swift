@@ -23,8 +23,8 @@ class SignInViewController: BaseViewController {
     }
     
     private func setupUI() {
-        emailTextField.text = "thinhnguyen@phenikaamaas.com"
-        passwordTextField.text = "11111"
+//        emailTextField.text = "thinhnguyen@phenikaamaas.com"
+//        passwordTextField.text = "11111"
         passwordTextField.delegate = self
         emailTextField.delegate = self
         isHiddenMainTabBar = true

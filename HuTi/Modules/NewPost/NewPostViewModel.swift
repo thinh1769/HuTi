@@ -107,7 +107,7 @@ class NewPostViewModel: BaseViewModel {
         case PickerTag.project:
             if project.value.count > 0 && selectedProject >= 0 {
                 return project.value[selectedProject].name
-            } else if selectedProject == -1 {
+            } else if selectedProject == -1 && project.value.count > 0 {
                 selectedProject = 0
                 return project.value[0].name
             } else {
