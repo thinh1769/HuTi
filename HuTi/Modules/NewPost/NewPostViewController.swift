@@ -116,6 +116,9 @@ class NewPostViewController: BaseViewController {
         setupPickerView()
         setupImageCollectionView()
         acreageTextField.delegate = self
+        wayInTextField.delegate = self
+        facadeTextField.delegate = self
+        contactPhoneTextField.delegate = self
 //        formattingTextField(sender: priceTextField)
         mapView.isUserInteractionEnabled = false
         hidePostButton.isHidden = true
@@ -274,7 +277,7 @@ class NewPostViewController: BaseViewController {
     }
     
     @IBAction func onClickedPostBtn(_ sender: UIButton) {
-        if validateForm() {
+        if validateForm() && validatePhoneNumber() {
             showLoading()
             if !viewModel.isEdit {
                 viewModel.uploadImages {
@@ -363,17 +366,23 @@ class NewPostViewController: BaseViewController {
             priceTextField.text == "" ||
             legalTextField.text == "" ||
             contactNameTextField.text == "" ||
-            contactPhoneTextField.text == "" ||
             viewModel.image.value.count == 0 {
             showAlert(title: "Vui lòng nhập đầy đủ những thông tin bắt buộc")
             return false
         }
-        
-        if let text = acreageTextField.text,
-            text.isMatches(RegexConstants.DOUBLE) {
-            print("is matched---------------")
-        } else {
-            print("not matched---------------")
+        return true
+    }
+    
+    private func validatePhoneNumber() -> Bool {
+        if let phone = contactPhoneTextField.text {
+            if phone.count < 10 {
+                showAlert(title: "Vui lòng nhập đầy đủ số điện thoại")
+                return false
+            }
+            if phone.first != "0" {
+                showAlert(title: Alert.phoneBeginByZero)
+                return false
+            }
         }
         return true
     }
@@ -565,11 +574,18 @@ extension NewPostViewController: PHPickerViewControllerDelegate {
 
 extension NewPostViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string == "," {
-            textField.text = (textField.text ?? "") + "."
-            return false
+        if textField != contactPhoneTextField {
+            if string == "," {
+                textField.text = (textField.text ?? "") + "."
+                return false
+            } else {
+                return true
+            }
+        } else {
+            guard let text = textField.text else { return true }
+            let newLength = text.count + string.count - range.length
+            return newLength <= 10
         }
-        return true
     }
 }
 

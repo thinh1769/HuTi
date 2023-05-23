@@ -52,6 +52,7 @@ class AccountDetailViewController: BaseViewController {
         emailTextField.isUserInteractionEnabled = false
         isTouchDismissKeyboardEnabled = true
         phoneTextField.delegate = self
+        identityCardTextField.delegate = self
     }
 
     @IBAction func onClickedBackBtn(_ sender: UIButton) {
@@ -66,7 +67,7 @@ class AccountDetailViewController: BaseViewController {
             editButton.setImage(UIImage(named: ImageName.edit), for: .normal)
             changeTextFieldStatus(false)
             updateUserInfoViewModel()
-            if viewModel.isInfoUpdated() {
+            if viewModel.isInfoUpdated() && validateForm() {
                 showLoading()
                 viewModel.updateInfo().subscribe { [weak self] _ in
                     guard let self = self else { return }
@@ -78,6 +79,32 @@ class AccountDetailViewController: BaseViewController {
             }
         }
         viewModel.isEditButtonClicked = !viewModel.isEditButtonClicked
+    }
+    
+    private func validateForm() -> Bool {
+        if let name = nameTextField.text,
+           name == "HuTi User" || name == "" {
+            showAlert(title: "Vui lòng nhập hoặc thay đổi họ tên")
+            return false
+        }
+        
+        if let identity = identityCardTextField.text,
+           identity.count < 9 || identity.count == 10 || identity.count == 11 {
+            showAlert(title: "Vui lòng nhập đầy đủ số CMND/CCCD")
+            return false
+        }
+        
+        if let phone = phoneTextField.text {
+            if phone.count < 10 {
+                showAlert(title: "Vui lòng nhập đầy đủ số điện thoại")
+                return false
+            }
+            if phone.first != "0" {
+                showAlert(title: "Số điện thoại phải bắt đầu bằng số 0")
+                return false
+            }
+        }
+        return true
     }
     
     private func changeTextFieldStatus(_ status: Bool) {
@@ -189,6 +216,10 @@ extension AccountDetailViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let newLength = text.count + string.count - range.length
-        return newLength <= 10
+        if textField == phoneTextField {
+            return newLength <= 10
+        } else {
+            return newLength <= 12
+        }
     }
 }

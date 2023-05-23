@@ -28,7 +28,7 @@ class SignUpViewController: BaseViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: ColorName.gray)!]
         )
         
-        if viewModel.type != AuthenType.register {
+        if viewModel.type == AuthenType.register {
             bottomStackView.isHidden = false
         } else {
             bottomStackView.isHidden = true
