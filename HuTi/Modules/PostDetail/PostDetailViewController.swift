@@ -203,7 +203,7 @@ class PostDetailViewController: BaseViewController {
         
         if let wayIn = post.wayIn,
            wayIn > 0 {
-            wayInLabel.text = "\(wayIn)"
+            wayInLabel.text = "\(wayIn)m"
         } else {
             wayInView.isHidden = true
         }

@@ -35,12 +35,12 @@ class FilterResultViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.mainTabBarController?.tabBar.isHidden = false
-        loadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        loadData()
     }
     
     private func setupUI() {
@@ -238,14 +238,30 @@ class FilterResultViewController: BaseViewController {
                     self.findProject(param: self.viewModel.findProjectParams)
                 }
             } else if let text = self.searchTextField.text,
-                      text.count > 1 {
-                if self.viewModel.post.value.count >= CommonConstants.pageSize {
-                    self.viewModel.page += 1
-                    self.searchByKeyword()
+                      text.count > 0 {
+                if self.viewModel.tabBarItemTitle != TabBarItemTitle.project {
+                    if self.viewModel.post.value.count >= CommonConstants.pageSize {
+                        self.viewModel.page += 1
+                        self.searchByKeyword(keyword: text)
+                    }
+                } else {
+                    if self.viewModel.project.value.count >= CommonConstants.pageSize {
+                        self.viewModel.page += 1
+                        self.searchByKeyword(keyword: text)
+                    }
                 }
             } else {
-                self.viewModel.page += 1
-                self.loadData()
+                if self.viewModel.tabBarItemTitle != TabBarItemTitle.project {
+                    if self.viewModel.post.value.count >= CommonConstants.pageSize {
+                        self.viewModel.page += 1
+                        self.loadData()
+                    }
+                } else {
+                    if self.viewModel.project.value.count >= CommonConstants.pageSize {
+                        self.viewModel.page += 1
+                        self.loadData()
+                    }
+                }
             }
             self.filterResultTableView.infiniteScrollingView.stopAnimating()
         }
@@ -301,25 +317,30 @@ class FilterResultViewController: BaseViewController {
     }
     
     @IBAction func didTapSearchByKeyword(_ sender: UIButton) {
-        searchByKeyword()
+        guard let keyword = searchTextField.text,
+              keyword.count > 0
+        else {
+            showAlert(title: "Vui lòng nhập thông tin vào ô tìm kiếm")
+            return
+        }
+        searchByKeyword(keyword: keyword)
     }
     
-    private func searchByKeyword() {
+    private func searchByKeyword(keyword: String) {
         viewModel.page = 1
         if viewModel.tabBarItemTitle == TabBarItemTitle.project {
             viewModel.project.accept([])
-            searchProjectByKeyword()
+            searchProjectByKeyword(keyword: keyword)
         } else {
             viewModel.post.accept([])
-            searchPostByKeyword()
+            searchPostByKeyword(keyword: keyword)
         }
     }
     
-    private func searchPostByKeyword() {
-        guard let keyword = searchTextField.text,
-              keyword.count > 1  else { return }
-        viewModel.searchPostByKeyword(keyword: keyword).subscribe { [weak self] posts in
+    private func searchPostByKeyword(keyword: String) {
+        viewModel.searchPostByKeyword(keyword: keyword).subscribe { [weak self] listPost in
             guard let self = self else { return }
+            let posts = self.viewModel.filterPostAfterSearchByKeyword(posts: listPost)
             if posts.count > 0 {
                 if self.viewModel.page == 1 {
                     self.viewModel.post.accept(posts)
@@ -335,9 +356,7 @@ class FilterResultViewController: BaseViewController {
         }.disposed(by: viewModel.bag)
     }
     
-    private func searchProjectByKeyword() {
-        guard let keyword = searchTextField.text,
-              keyword.count > 1  else { return }
+    private func searchProjectByKeyword(keyword: String) {
         viewModel.searchProjectByKeyword(keyword: keyword).subscribe { [weak self] projects in
             guard let self = self else { return }
             if projects.count > 0 {

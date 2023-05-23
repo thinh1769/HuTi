@@ -9,6 +9,7 @@ import Foundation
 
 struct Post: Codable {
     var id: String?
+    var isSell: Bool?
     var title: String
     var price: Int
     var acreage: Double?

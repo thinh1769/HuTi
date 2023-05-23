@@ -65,4 +65,21 @@ class FilterResultViewModel: BaseViewModel {
     func searchProjectByKeyword(keyword: String) -> Observable<[Project]> {
         return projectService.searchByKeyword(keyword: keyword, page: page)
     }
+    
+    func filterPostAfterSearchByKeyword(posts: [Post]) -> [Post] {
+        if posts.count > 0 {
+            var result = [Post]()
+            for post in posts {
+                if let isSell = post.isSell {
+                    if isSell && tabBarItemTitle == TabBarItemTitle.sell ||
+                        !isSell && tabBarItemTitle == TabBarItemTitle.forRent {
+                        result.append(post)
+                    }
+                }
+            }
+            return result
+        } else {
+            return [Post]()
+        }
+    }
 }

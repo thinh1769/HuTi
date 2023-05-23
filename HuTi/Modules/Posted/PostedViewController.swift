@@ -49,10 +49,14 @@ class PostedViewController: BaseViewController {
         viewModel.getPostedPost().subscribe { [weak self] postedPost in
             guard let self = self else { return }
             if postedPost.count > 0 {
-                self.viewModel.appendPostToArray(posts: postedPost)
-                self.viewModel.post.accept(self.viewModel.postList)
+                if self.viewModel.page == 1 {
+                    self.viewModel.post.accept(postedPost)
+                } else {
+                    self.viewModel.post.accept(self.viewModel.post.value + postedPost)
+                }
                 self.emptyView.isHidden = true
-            } else {
+            } else if self.viewModel.page == 1 {
+                self.viewModel.post.accept([])
                 self.emptyView.isHidden = false
             }
         }.disposed(by: viewModel.bag)
@@ -62,10 +66,14 @@ class PostedViewController: BaseViewController {
         viewModel.getFavoritePost().subscribe { [weak self] favoritePost in
             guard let self = self else { return }
             if favoritePost.count > 0 {
-                self.viewModel.appendPostToArray(posts: favoritePost)
-                self.viewModel.post.accept(self.viewModel.postList)
+                if self.viewModel.page == 1 {
+                    self.viewModel.post.accept(favoritePost)
+                } else {
+                    self.viewModel.post.accept(self.viewModel.post.value + favoritePost)
+                }
                 self.emptyView.isHidden = true
-            } else {
+            } else if self.viewModel.page == 1 {
+                self.viewModel.post.accept([])
                 self.emptyView.isHidden = false
             }
         }.disposed(by: viewModel.bag)
