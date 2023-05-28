@@ -576,7 +576,9 @@ extension NewPostViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField != contactPhoneTextField {
             if string == "," {
-                textField.text = (textField.text ?? "") + "."
+                if !checkContainsDot(text: textField.text) {
+                    textField.text = (textField.text ?? "") + "."
+                }
                 return false
             } else {
                 return true
@@ -586,6 +588,14 @@ extension NewPostViewController: UITextFieldDelegate {
             let newLength = text.count + string.count - range.length
             return newLength <= 10
         }
+    }
+    
+    func checkContainsDot(text: String?) -> Bool {
+        guard let text = text else { return true }
+        if text.contains(".") {
+            return true
+        }
+        return false
     }
 }
 
